@@ -1,5 +1,3 @@
-'use client';
-
 import Link from 'next/link';
 
 // Call to Action component
@@ -117,7 +115,7 @@ export function TimeSaved({ hours, task, frequency = "per week" }) {
       </div>
       <p className="text-slate-700 mb-2">saved by automating {task}</p>
       <p className="text-sm text-emerald-600">
-        That's roughly <strong>{yearly} hours per year</strong> back in your life.
+        That&apos;s roughly <strong>{yearly} hours per year</strong> back in your life.
       </p>
     </div>
   );
@@ -153,8 +151,8 @@ export function YouTube({ id, title = "Video" }) {
   );
 }
 
-// Export all MDX components
-export const mdxComponents = {
+// Default export as object for MDXRemote
+const MDXComponents = {
   CallToAction,
   Callout,
   Tool,
@@ -163,3 +161,5 @@ export const mdxComponents = {
   RelatedPost,
   YouTube,
 };
+
+export default MDXComponents;

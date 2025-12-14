@@ -2,8 +2,7 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { getAllPostSlugs, getPostBySlug, getRelatedPosts, pillarLabels, pillarColors } from '@/lib/posts';
 import { MDXRemote } from 'next-mdx-remote/rsc';
-import { mdxComponents } from '../../components/MDXComponents';
-import { Icons, Logo } from '../../components/Icons';
+import MDXComponents from '../../components/MDXComponents';
 
 export async function generateStaticParams() {
   const slugs = getAllPostSlugs();
@@ -28,6 +27,13 @@ export async function generateMetadata({ params }) {
   };
 }
 
+// Simple arrow icon as inline SVG (avoids client component issues)
+const ArrowLeftIcon = () => (
+  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+  </svg>
+);
+
 // Related post card
 function RelatedPostCard({ post }) {
   const colors = pillarColors[post.pillar] || { bg: '#f3f4f6', text: '#374151' };
@@ -51,6 +57,24 @@ function RelatedPostCard({ post }) {
     </Link>
   );
 }
+
+// Simple Logo for Server Component
+const Logo = () => (
+  <Link href="/" className="block hover:opacity-90 transition-opacity">
+    <svg width="100" height="34" viewBox="0 0 260 100" fill="none" xmlns="http://www.w3.org/2000/svg" className="h-8 w-auto">
+      <rect x="10" y="20" width="12" height="60" fill="#0F172A"/>
+      <path d="M28 50 L48 20 L62 20 L38 55 L62 80 L48 80 L28 55" fill="#0F172A"/>
+      <text x="85" y="80" textAnchor="middle" fill="#0F172A" fontFamily="monospace" fontWeight="bold" fontSize="64">A</text>
+      <rect x="122" y="15" width="16" height="15" fill="#EA580C"/>
+      <rect x="122" y="35" width="16" height="45" fill="#334155"/>
+      <text x="175" y="80" textAnchor="middle" fill="#0F172A" fontFamily="monospace" fontWeight="bold" fontSize="64">A</text>
+      <g transform="translate(260, 0) scale(-1, 1)">
+        <rect x="10" y="20" width="12" height="60" fill="#0F172A"/>
+        <path d="M28 50 L48 20 L62 20 L38 55 L62 80 L48 80 L28 55" fill="#0F172A"/>
+      </g>
+    </svg>
+  </Link>
+);
 
 export default function BlogPostPage({ params }) {
   const post = getPostBySlug(params.slug);
@@ -83,7 +107,7 @@ export default function BlogPostPage({ params }) {
           href="/blog"
           className="text-sm text-slate-500 hover:text-slate-700 mb-8 inline-flex items-center gap-1"
         >
-          <Icons.ArrowLeft className="w-4 h-4" /> Back to all posts
+          <ArrowLeftIcon /> Back to all posts
         </Link>
 
         {/* Article Header */}
@@ -117,7 +141,7 @@ export default function BlogPostPage({ params }) {
 
         {/* Article Content */}
         <article className="prose-kaiak">
-          <MDXRemote source={post.content} components={mdxComponents} />
+          <MDXRemote source={post.content} components={MDXComponents} />
         </article>
 
         {/* Related Posts */}
