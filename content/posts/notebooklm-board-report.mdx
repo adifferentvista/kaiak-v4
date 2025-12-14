@@ -1,0 +1,162 @@
+---
+title: "NotebookLM Ate My Board Report (And Made It Better)"
+description: "You have 47 documents, 3 spreadsheets, and a week of meeting notes. The board wants a 2-page summary by Friday. Here's how I stopped drowning in sources."
+date: "2024-01-22"
+pillar: "practical-ai"
+contentType: "trending"
+readTime: "6 min read"
+featured: false
+interlinks:
+  - "what-to-automate-what-to-protect"
+  - "claude-parent-emails"
+---
+
+{/* 
+EXPANDED OUTLINE
+Target final length: 1,200-1,500 words
+*/}
+
+## The Board Report From Hell
+
+**The setup:** Every quarter, same drill. The board wants a concise update on enrollment, finances, program developments, and strategic initiatives. Sounds simple. Except the information lives in:
+
+- Google Drive folders nested three levels deep
+- A finance spreadsheet that gets updated weekly
+- Meeting notes from leadership team sessions
+- Email threads where actual decisions got made
+- That one Slack conversation where we changed direction on the capital campaign
+
+**The old way:** I'd spend a full day just *gathering*. Then another day synthesizing. Then a third day actually writing something coherent. Three days for a two-page document.
+
+**What broke me:** Last quarter, I missed a key decision we'd made in a staff meeting because I couldn't find my notes. The board asked about it. I looked unprepared. I was unprepared.
+
+---
+
+## Enter NotebookLM
+
+**What it actually is:** Google's AI notebook that lets you upload sources and have conversations with them. Think of it as ChatGPT that can only reference documents you've given it - no hallucination from random internet training data.
+
+<Tool 
+  name="NotebookLM" 
+  description="Upload PDFs, Google Docs, websites. Ask questions. Get answers with citations to specific sources."
+  link="https://notebooklm.google.com"
+  free
+/>
+
+**Why it's different for this use case:**
+- Everything is grounded in your actual documents
+- Citations point to specific passages
+- It handles multiple sources simultaneously
+- Audio overview feature creates a "podcast" summary (surprisingly useful for review)
+
+---
+
+## The Workflow I've Landed On
+
+**Phase 1: The Source Dump (30 minutes)**
+
+Upload everything remotely relevant:
+- Previous board report
+- Current enrollment data
+- Financial summary
+- Strategic plan document
+- Meeting notes from the quarter
+- Any significant email threads (copy/paste into a doc)
+
+**Don't curate too carefully.** Let the AI do the filtering. Your job is completeness.
+
+**Phase 2: The Interrogation (45 minutes)**
+
+Ask structured questions:
+
+```
+"What were the major enrollment changes this quarter compared to last?"
+
+"Summarize all decisions made about the capital campaign across these sources."
+
+"What strategic plan goals showed progress this quarter? What showed setbacks?"
+
+"Are there any contradictions between what we planned and what we discussed in meetings?"
+```
+
+<Callout type="tip" title="The Contradiction Question">
+That last question is gold. It surfaces the gaps between your stated strategy and your actual conversations. Boards notice these gaps. Better you find them first.
+</Callout>
+
+**Phase 3: The Draft (60 minutes)**
+
+Ask NotebookLM to generate a first draft:
+
+```
+"Based on all sources, draft a 2-page board report covering:
+1. Enrollment update (one paragraph)
+2. Financial position (one paragraph) 
+3. Program highlights (3-4 bullet points)
+4. Strategic initiative progress (one paragraph per initiative)
+5. Challenges and decisions needed (one paragraph)
+
+Keep the tone professional but direct. Flag anywhere you're uncertain about the data."
+```
+
+**Phase 4: The Human Pass (45 minutes)**
+
+This is where you earn your salary:
+- Verify the numbers match your spreadsheets
+- Add context the documents don't capture
+- Adjust tone for your specific board
+- Remove anything you're not ready to discuss
+
+---
+
+## What NotebookLM Gets Wrong
+
+**It's not magic. Real limitations:**
+
+- **Numbers can be misread** - Always verify financial figures against source
+- **Nuance gets flattened** - A "we're considering" in meeting notes becomes "we decided" in the summary
+- **Recent context wins** - If you uploaded an old strategic plan and new meeting notes, it might weight the old plan too heavily
+- **No emotional intelligence** - It won't flag that "we should discuss timeline" means "the board chair is worried"
+
+**The podcast feature is fun but weird** - Creates a surprisingly engaging audio summary, but the AI "hosts" sometimes make things up. Use it for review, not as a source.
+
+---
+
+## The Time Math
+
+<BeforeAfter 
+  before="3 full days gathering, synthesizing, and writing"
+  after="Half a day with AI assistance, better citations, fewer missed details"
+/>
+
+<TimeSaved hours={16} task="quarterly board report preparation" frequency="per quarter" />
+
+That's not 16 hours of sitting around. That's 16 hours you can spend on the actual strategic thinking your board expects from you.
+
+---
+
+## The Bigger Question
+
+<RelatedPost 
+  slug="what-to-automate-what-to-protect" 
+  title="What to Automate vs. What to Protect"
+  context="Board reports are a clear automation win. But not everything is →"
+/>
+
+This workflow works because board reports are synthesis tasks - pulling together existing information into a coherent narrative. The AI handles the gathering and first-pass organization. You handle the judgment and relationships.
+
+Not every leadership task fits that pattern. Some things should stay manual, even if they're tedious.
+
+---
+
+## Start Here
+
+**Next board report:**
+
+1. Create a NotebookLM notebook for Q2 (or whenever your next report is due)
+2. Start uploading sources now, as they're created
+3. Ask it questions weekly, not just at deadline time
+4. Use it as a running research assistant, not just a last-minute summarizer
+
+The tool gets better the more complete your sources are. Start early.
+
+<CallToAction />

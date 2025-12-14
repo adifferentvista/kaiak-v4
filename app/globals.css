@@ -1,0 +1,74 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base styles */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Typography for prose/blog content */
+.prose-kaiak {
+  @apply text-slate-700 leading-relaxed;
+}
+
+.prose-kaiak h2 {
+  @apply font-serif text-2xl text-navy mt-12 mb-4;
+}
+
+.prose-kaiak h3 {
+  @apply font-serif text-xl text-navy mt-8 mb-3;
+}
+
+.prose-kaiak p {
+  @apply mb-4;
+}
+
+.prose-kaiak a {
+  @apply text-orange-600 hover:underline;
+}
+
+.prose-kaiak blockquote {
+  @apply border-l-4 border-slate-300 pl-4 italic text-slate-600 my-6;
+}
+
+.prose-kaiak code {
+  @apply bg-slate-100 px-1.5 py-0.5 rounded text-sm font-mono;
+}
+
+.prose-kaiak pre {
+  @apply bg-slate-900 text-slate-100 p-4 rounded-lg overflow-x-auto my-6;
+}
+
+.prose-kaiak pre code {
+  @apply bg-transparent p-0;
+}
+
+.prose-kaiak ul, .prose-kaiak ol {
+  @apply my-4 pl-6;
+}
+
+.prose-kaiak li {
+  @apply mb-2;
+}
+
+.prose-kaiak ul li {
+  @apply list-disc;
+}
+
+.prose-kaiak ol li {
+  @apply list-decimal;
+}
+
+.prose-kaiak hr {
+  @apply my-8 border-slate-200;
+}
+
+.prose-kaiak strong {
+  @apply text-navy font-semibold;
+}
