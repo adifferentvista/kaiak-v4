@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { Icons, Logo } from './components/Icons';
+import ExitIntentPopup from './components/ExitIntentPopup';
 
 // ============================================
 // SAMPLE POSTS (for Latest from Blog)
@@ -36,6 +37,8 @@ export default function HomePage() {
 
   return (
     <div className="font-sans antialiased bg-cream text-slate-800">
+      {/* Exit Intent Popup */}
+      <ExitIntentPopup />
 
       {/* ========== NAVIGATION ========== */}
       <nav className="fixed top-0 left-0 right-0 z-40 border-b border-slate-200/50 bg-cream/95 backdrop-blur-sm">
@@ -99,18 +102,22 @@ export default function HomePage() {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <p className="font-medium text-sm tracking-wide uppercase mb-4 text-orange-600">About</p>
-              <h2 className="font-serif text-3xl md:text-4xl mb-6 text-navy">I've been where you are.</h2>
+              <h2 className="font-serif text-3xl md:text-4xl mb-6 text-navy">I&apos;ve been where you are.</h2>
               <div className="space-y-4 text-slate-600 leading-relaxed">
                 <p>For 20 years, I led international schools—managing staff, parents, budgets, accreditation, and the endless stream of emails that never stops.</p>
-                <p>I've built handbooks from scratch. Created policy frameworks. Designed reporting systems. Survived IB authorization visits.</p>
+                <p>I&apos;ve built handbooks from scratch. Created policy frameworks. Designed reporting systems. Survived IB authorization visits.</p>
                 <p>Now I help new leaders skip the painful parts. I combine that operational experience with AI tools to build systems that <strong className="text-navy">actually stick</strong>.</p>
               </div>
             </div>
             <div className="rounded-2xl p-8 text-center bg-blue-gray">
-              <div className="w-32 h-32 bg-slate-200 rounded-full mx-auto mb-4"></div>
+              <img 
+                src="/benedict.png" 
+                alt="Benedict - Founder of KAIAK" 
+                className="w-32 h-32 rounded-full mx-auto mb-4 object-cover"
+              />
               <p className="font-serif text-xl text-navy">Benedict</p>
               <p className="text-slate-500 text-sm mb-4">Founder, KAIAK</p>
-              <p className="text-xs text-slate-400">20 years in international education<br />IB PYP, MYP, DP experience<br />Based in Indonesia</p>
+              <p className="text-xs text-slate-400">20 years in international education<br />IB PYP, MYP, DP experience</p>
             </div>
           </div>
         </div>
@@ -123,7 +130,7 @@ export default function HomePage() {
             <p className="font-medium text-sm tracking-wide uppercase mb-4 text-amber-400">Services</p>
             <h2 className="font-serif text-3xl md:text-4xl mb-4">Two Ways I Can Help</h2>
             <p className="text-slate-300 max-w-2xl mx-auto">
-              Whether you need to get your time back or build your foundations, I've got you covered.
+              Whether you need to get your time back or build your foundations, I&apos;ve got you covered.
             </p>
           </div>
 
@@ -135,7 +142,7 @@ export default function HomePage() {
               <p className="text-slate-400 text-sm mb-6">For established leaders drowning in admin</p>
               
               <p className="text-slate-300 leading-relaxed mb-6">
-                I'll build your second brain, automate your workflows, and train you to use AI tools that actually save time. Done-with-you in 6 weeks.
+                I&apos;ll build your second brain, automate your workflows, and train you to use AI tools that actually save time. Done-with-you in 6 weeks.
               </p>
               
               <ul className="space-y-3 mb-8 flex-grow">
@@ -159,9 +166,9 @@ export default function HomePage() {
                 <button 
                   onClick={() => Calendly.initPopupWidget({url: 'https://calendly.com/ben-kaiak/30min'})}
                   className="block w-full text-center px-6 py-3 rounded-lg font-medium bg-amber-500 text-navy hover:bg-amber-400 transition-colors cursor-pointer"
->
-                   Book Discovery Call
-                  </button>
+                >
+                  Book Discovery Call
+                </button>
               </div>
             </div>
 
@@ -172,7 +179,7 @@ export default function HomePage() {
               <p className="text-slate-400 text-sm mb-6">For new Heads building from scratch</p>
               
               <p className="text-slate-300 leading-relaxed mb-6">
-                I'll build your handbooks, policies, and reporting systems fast. Skip the months of template hunting and get operational foundations done right.
+                I&apos;ll build your handbooks, policies, and reporting systems fast. Skip the months of template hunting and get operational foundations done right.
               </p>
               
               <ul className="space-y-3 mb-8 flex-grow">
@@ -195,16 +202,16 @@ export default function HomePage() {
                 <p className="text-xs text-slate-400 mb-4">4-8 week engagement</p>
                 <button 
                   onClick={() => Calendly.initPopupWidget({url: 'https://calendly.com/ben-kaiak/30min'})}
-                  className="inline-block px-10 py-4 rounded-lg font-semibold text-lg mb-6 bg-amber-500 text-navy hover:bg-amber-400 transition-colors cursor-pointer"
->
-                   Book Your Free Call
+                  className="block w-full text-center px-6 py-3 rounded-lg font-medium bg-amber-500 text-navy hover:bg-amber-400 transition-colors cursor-pointer"
+                >
+                  Book Discovery Call
                 </button>
               </div>
             </div>
           </div>
 
           <p className="text-center text-slate-400 text-sm mt-8">
-            Not sure which is right for you? Book a free 30-minute call and we'll figure it out together.
+            Not sure which is right for you? Book a free 30-minute call and we&apos;ll figure it out together.
           </p>
         </div>
       </section>
@@ -222,7 +229,7 @@ export default function HomePage() {
             {/* Product 1: Guide */}
             <div className="bg-white rounded-2xl border border-slate-200 p-8 shadow-sm">
               <div className="flex justify-between items-start mb-4">
-                <span className="text-xs font-bold px-2 py-1 rounded-full uppercase tracking-wide bg-amber-100 text-amber-800">Available Now</span>
+                <span className="text-xs font-bold px-2 py-1 rounded-full uppercase tracking-wide bg-amber-100 text-amber-800">Coming Soon</span>
                 <span className="text-2xl">📘</span>
               </div>
               <h3 className="font-serif text-2xl mb-3 text-navy">The No-Admin Second Brain Guide</h3>
@@ -241,7 +248,7 @@ export default function HomePage() {
                   <span className="text-xs font-bold px-2 py-1 rounded-full bg-green-100 text-green-700">LAUNCH</span>
                 </div>
                 <a href="/products/second-brain-guide" className="text-white px-5 py-2.5 rounded-lg font-medium text-sm bg-navy hover:bg-navy-light transition-colors">
-                  Get the Guide
+                  Join Waitlist
                 </a>
               </div>
             </div>
@@ -315,13 +322,13 @@ export default function HomePage() {
         <div className="max-w-3xl mx-auto px-6 text-center">
           <h2 className="font-serif text-3xl md:text-4xl mb-6">Ready to get your time back?</h2>
           <p className="text-slate-300 text-lg mb-10 max-w-xl mx-auto">
-            Book a free 30-minute discovery call. We'll talk about what's eating your time and whether I can help.
+            Book a free 30-minute discovery call. We&apos;ll talk about what&apos;s eating your time and whether I can help.
           </p>
           <button 
             onClick={() => Calendly.initPopupWidget({url: 'https://calendly.com/ben-kaiak/30min'})}
             className="inline-block px-10 py-4 rounded-lg font-semibold text-lg mb-6 bg-amber-500 text-navy hover:bg-amber-400 transition-colors cursor-pointer"
           >
-             Book Your Free Call
+            Book Your Free Call
           </button>
           <p className="text-slate-400">Or email me directly: <a href="mailto:ben@kaiak.io" className="text-amber-400 hover:underline">ben@kaiak.io</a></p>
         </div>
