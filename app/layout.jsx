@@ -1,4 +1,5 @@
 import './globals.css'
+import Script from 'next/script'
 
 export const metadata = {
   title: 'KAIAK | AI & Systems for Leaders',
@@ -8,7 +9,7 @@ export const metadata = {
   openGraph: {
     title: 'KAIAK | AI & Systems for Leaders',
     description: 'I help leaders reclaim 10+ hours a week through AI automation, smart systems, and operational foundations.',
-    url: 'https://kaiak.co',
+    url: 'https://kaiak.io',
     siteName: 'KAIAK',
     locale: 'en_US',
     type: 'website',
@@ -27,7 +28,16 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className="font-sans antialiased">{children}</body>
+      <head>
+        <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" />
+      </head>
+      <body className="font-sans antialiased">
+        {children}
+        <Script 
+          src="https://assets.calendly.com/assets/external/widget.js" 
+          strategy="lazyOnload"
+        />
+      </body>
     </html>
   )
 }

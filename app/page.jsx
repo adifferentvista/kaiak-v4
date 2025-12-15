@@ -156,9 +156,12 @@ export default function HomePage() {
               <div className="pt-6 border-t border-navy-border">
                 <p className="text-2xl font-serif mb-1">$2,500 – $4,000</p>
                 <p className="text-xs text-slate-400 mb-4">6-week engagement</p>
-                <a href="#contact" className="block text-center px-6 py-3 rounded-lg font-medium bg-amber-500 text-navy hover:bg-amber-400 transition-colors">
-                  Book Discovery Call
-                </a>
+                <button 
+                  onClick={() => Calendly.initPopupWidget({url: 'https://calendly.com/ben-kaiak/30min'})}
+                  className="block w-full text-center px-6 py-3 rounded-lg font-medium bg-amber-500 text-navy hover:bg-amber-400 transition-colors cursor-pointer"
+>
+                   Book Discovery Call
+                  </button>
               </div>
             </div>
 
@@ -190,9 +193,12 @@ export default function HomePage() {
               <div className="pt-6 border-t border-navy-border">
                 <p className="text-2xl font-serif mb-1">$3,500 – $5,500</p>
                 <p className="text-xs text-slate-400 mb-4">4-8 week engagement</p>
-                <a href="#contact" className="block text-center px-6 py-3 rounded-lg font-medium bg-amber-500 text-navy hover:bg-amber-400 transition-colors">
-                  Book Discovery Call
-                </a>
+                <button 
+                  onClick={() => Calendly.initPopupWidget({url: 'https://calendly.com/ben-kaiak/30min'})}
+                  className="inline-block px-10 py-4 rounded-lg font-semibold text-lg mb-6 bg-amber-500 text-navy hover:bg-amber-400 transition-colors cursor-pointer"
+>
+                   Book Your Free Call
+                </button>
               </div>
             </div>
           </div>
