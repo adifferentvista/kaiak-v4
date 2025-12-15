@@ -317,13 +317,13 @@ export default function HomePage() {
           <p className="text-slate-300 text-lg mb-10 max-w-xl mx-auto">
             Book a free 30-minute discovery call. We'll talk about what's eating your time and whether I can help.
           </p>
-          <a 
-            href="https://calendar.google.com/YOUR_BOOKING_LINK" 
-            className="inline-block px-10 py-4 rounded-lg font-semibold text-lg mb-6 bg-amber-500 text-navy hover:bg-amber-400 transition-colors"
+          <button 
+            onClick={() => Calendly.initPopupWidget({url: 'https://calendly.com/ben-kaiak/30min'})}
+            className="inline-block px-10 py-4 rounded-lg font-semibold text-lg mb-6 bg-amber-500 text-navy hover:bg-amber-400 transition-colors cursor-pointer"
           >
-            Book Your Free Call
-          </a>
-          <p className="text-slate-400">Or email me directly: <a href="mailto:benedict@kaiak.co" className="text-amber-400 hover:underline">benedict@kaiak.co</a></p>
+             Book Your Free Call
+          </button>
+          <p className="text-slate-400">Or email me directly: <a href="mailto:ben@kaiak.io" className="text-amber-400 hover:underline">ben@kaiak.io</a></p>
         </div>
       </section>
 
@@ -339,11 +339,11 @@ export default function HomePage() {
               <a href="/blog" className="hover:text-white transition-colors">Blog</a>
               <a href="#services" className="hover:text-white transition-colors">Services</a>
               <a href="/products/second-brain-guide" className="hover:text-white transition-colors">The Guide</a>
-              <a href="https://linkedin.com/in/YOUR_HANDLE" className="hover:text-white transition-colors">LinkedIn</a>
+              <a href="https://linkedin.com/in/benedictrinne" className="hover:text-white transition-colors">LinkedIn</a>
             </div>
           </div>
           <div className="mt-8 pt-8 text-sm text-center border-t border-navy-mid">
-            <p>© {currentYear} KAIAK. Based in Indonesia, working globally.</p>
+            <p>© {currentYear} KAIAK. Less admin. More impact.</p>
           </div>
         </div>
       </footer>
