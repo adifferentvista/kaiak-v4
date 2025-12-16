@@ -33,9 +33,46 @@ export default function RootLayout({ children }) {
       </head>
       <body className="font-sans antialiased">
         {children}
+        
+        {/* Calendly */}
         <Script 
           src="https://assets.calendly.com/assets/external/widget.js" 
           strategy="lazyOnload"
+        />
+        
+        {/* Google Analytics */}
+        <Script 
+          src="https://www.googletagmanager.com/gtag/js?id=G-EFQFMJWN6P" 
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-EFQFMJWN6P');
+          `}
+        </Script>
+        
+        {/* iubenda Cookie Banner */}
+        <Script id="iubenda-config" strategy="beforeInteractive">
+          {`
+            var _iub = _iub || [];
+            _iub.csConfiguration = {"siteId":4350956,"cookiePolicyId":49134491,"lang":"en","storage":{"useSiteId":true}};
+          `}
+        </Script>
+        <Script 
+          src="https://cs.iubenda.com/autoblocking/4350956.js" 
+          strategy="beforeInteractive"
+        />
+        <Script 
+          src="//cdn.iubenda.com/cs/gpp/stub.js" 
+          strategy="beforeInteractive"
+        />
+        <Script 
+          src="//cdn.iubenda.com/cs/iubenda_cs.js" 
+          strategy="beforeInteractive"
+          charSet="UTF-8"
         />
       </body>
     </html>
