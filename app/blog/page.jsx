@@ -1,5 +1,6 @@
 import { getAllPosts } from '@/lib/posts'
-import { Logo, Icons } from '../components/Icons'
+import { Logo } from '../components/Icons'
+import NewsletterForm from '../components/NewsletterForm'
 
 export const metadata = {
   title: 'Blog | KAIAK - AI & Systems for Leaders',
@@ -177,20 +178,7 @@ export default function BlogPage() {
             <p className="text-slate-300 mb-6">
               Practical AI strategies for leaders. No fluff, no spam.
             </p>
-            <form className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto" onSubmit={(e) => e.preventDefault()}>
-              <input
-                type="email"
-                placeholder="you@company.com"
-                required
-                className="flex-1 px-4 py-3 rounded-lg text-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-amber-400"
-              />
-              <button
-                type="submit"
-                className="px-6 py-3 rounded-lg font-medium bg-amber-500 text-navy hover:bg-amber-400 transition-colors"
-              >
-                Subscribe
-              </button>
-            </form>
+            <NewsletterForm />
           </div>
         </section>
 

@@ -2,6 +2,7 @@ import { MDXRemote } from 'next-mdx-remote/rsc'
 import { getAllPosts, getPostBySlug } from '@/lib/posts'
 import MDXComponents from '@/app/components/MDXComponents'
 import { Logo } from '@/app/components/Icons'
+import CalendlyButton from '@/app/components/CalendlyButton'
 
 // Generate static paths for all posts
 export async function generateStaticParams() {
@@ -224,12 +225,9 @@ export default async function BlogPost({ params }) {
             <p className="text-slate-300 mb-6">
               Book a free 30-minute call and let&apos;s talk about what&apos;s eating your time.
             </p>
-            <button
-              onClick={() => Calendly.initPopupWidget({url: 'https://calendly.com/ben-kaiak/30min'})}
-              className="inline-block px-8 py-3 rounded-lg font-medium bg-amber-500 text-navy hover:bg-amber-400 transition-colors cursor-pointer"
-            >
+            <CalendlyButton className="inline-block px-8 py-3 rounded-lg font-medium bg-amber-500 text-navy hover:bg-amber-400 transition-colors cursor-pointer">
               Book Your Free Call
-            </button>
+            </CalendlyButton>
           </div>
         </section>
       </div>
