@@ -1,160 +1,206 @@
-import Link from 'next/link';
-import { getAllPosts, getFeaturedPosts, pillarLabels, pillarColors } from '@/lib/posts';
-import { Icons, Logo } from '../components/Icons';
+import { getAllPosts } from '@/lib/posts'
+import { Logo, Icons } from '../components/Icons'
 
 export const metadata = {
-  title: 'Blog | KAIAK',
-  description: 'Thoughts on AI, systems, and reclaiming your time from administrative chaos.',
-};
+  title: 'Blog | KAIAK - AI & Systems for Leaders',
+  description: 'Practical insights on AI automation, productivity systems, and leadership. Notes from the trenches of building systems that actually work.',
+  openGraph: {
+    title: 'Blog | KAIAK',
+    description: 'Practical insights on AI automation, productivity systems, and leadership.',
+    url: 'https://kaiak.io/blog',
+    siteName: 'KAIAK',
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Blog | KAIAK',
+    description: 'Practical insights on AI automation, productivity systems, and leadership.',
+  },
+  alternates: {
+    canonical: 'https://kaiak.io/blog',
+  },
+}
 
-// Post Card Component
-function PostCard({ post, featured = false }) {
-  const pillar = pillarColors[post.pillar] || { bg: '#f3f4f6', text: '#374151' };
-  
+// Pillar labels for display
+const pillarLabels = {
+  'practical-ai': 'Practical AI',
+  'systems-thinking': 'Systems',
+  'leadership': 'Leadership',
+  'no-admin-life': 'No-Admin Life',
+}
+
+// JSON-LD for blog listing page
+function BlogJsonLd() {
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Blog',
+    name: 'KAIAK Blog',
+    description: 'Practical insights on AI automation, productivity systems, and leadership.',
+    url: 'https://kaiak.io/blog',
+    author: {
+      '@type': 'Person',
+      name: 'Benedict',
+      url: 'https://kaiak.io/#about',
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'KAIAK',
+      url: 'https://kaiak.io',
+    },
+  }
+
   return (
-    <Link href={`/blog/${post.slug}`} className="block group">
-      <article className={`
-        border border-slate-200 rounded-xl p-6 
-        hover:border-slate-300 hover:shadow-sm 
-        transition-all duration-200 bg-white
-        ${featured ? 'md:p-8' : ''}
-      `}>
-        <div className="flex items-center gap-3 mb-3">
-          <span 
-            className="text-xs font-bold px-2 py-1 rounded-full uppercase tracking-wide"
-            style={{ backgroundColor: pillar.bg, color: pillar.text }}
-          >
-            {pillarLabels[post.pillar] || post.pillar}
-          </span>
-          <span className="text-xs text-slate-400">{post.readTime}</span>
-          {post.contentType === 'evergreen' && (
-            <span className="text-xs text-slate-400">✦ Evergreen</span>
-          )}
-        </div>
-
-        <h3 className={`
-          font-serif text-navy group-hover:text-slate-600 transition-colors
-          ${featured ? 'text-2xl mb-3' : 'text-lg mb-2'}
-        `}>
-          {post.title}
-        </h3>
-
-        <p className={`text-slate-600 leading-relaxed ${featured ? 'text-base' : 'text-sm'}`}>
-          {post.description}
-        </p>
-
-        <p className="text-xs text-slate-400 mt-4">
-          {new Date(post.date).toLocaleDateString('en-US', {
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric',
-          })}
-        </p>
-      </article>
-    </Link>
-  );
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+    />
+  )
 }
 
 export default function BlogPage() {
-  const allPosts = getAllPosts();
-  const featuredPosts = getFeaturedPosts();
-  const recentPosts = allPosts.filter(p => !p.featured).slice(0, 6);
+  const allPosts = getAllPosts()
+  
+  // Featured posts (marked with featured: true in frontmatter)
+  const featuredPosts = allPosts.filter((post) => post.featured)
+  
+  // Recent posts (non-featured, sorted by date)
+  const recentPosts = allPosts.filter((post) => !post.featured)
 
   return (
-    <div className="min-h-screen font-sans bg-cream">
-      {/* Navigation */}
-      <nav className="border-b border-slate-200/50 bg-cream/95 backdrop-blur-sm">
-        <div className="max-w-5xl mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
-            <Logo />
-            <div className="flex items-center gap-6">
-              <Link href="/" className="text-slate-600 hover:text-slate-900 text-sm font-medium">Home</Link>
-              <Link href="/blog" className="text-slate-900 text-sm font-medium">Blog</Link>
-              <Link href="/products/second-brain-guide" className="text-slate-600 hover:text-slate-900 text-sm font-medium">The Guide</Link>
+    <>
+      <BlogJsonLd />
+      
+      <div className="min-h-screen bg-cream">
+        {/* Navigation */}
+        <nav className="border-b border-slate-200/50 bg-cream/95 backdrop-blur-sm">
+          <div className="max-w-4xl mx-auto px-6 py-4">
+            <div className="flex items-center justify-between">
+              <a href="/">
+                <Logo />
+              </a>
+              <div className="flex items-center gap-6">
+                <a href="/" className="text-slate-600 hover:text-slate-900 text-sm font-medium">
+                  Home
+                </a>
+                <a href="/#services" className="text-slate-600 hover:text-slate-900 text-sm font-medium">
+                  Services
+                </a>
+                <a href="/#contact" className="hidden md:block px-4 py-2 rounded-lg text-sm font-medium text-white bg-navy hover:bg-navy-light transition-colors">
+                  Work With Me
+                </a>
+              </div>
             </div>
           </div>
-        </div>
-      </nav>
+        </nav>
 
-      <main className="max-w-4xl mx-auto px-6 py-16">
-        {/* Header */}
-        <header className="mb-16">
-          <h1 className="text-4xl font-serif text-navy mb-4">
-            Thinking Out Loud
-          </h1>
-          <p className="text-xl text-slate-600 max-w-2xl">
-            Notes on building AI systems that actually work, 
-            from someone still figuring it out in the trenches.
-          </p>
-        </header>
+        <main className="max-w-4xl mx-auto px-6 py-12">
+          {/* Header */}
+          <header className="mb-12">
+            <h1 className="font-serif text-4xl text-navy mb-4">Thinking Out Loud</h1>
+            <p className="text-lg text-slate-600 max-w-2xl">
+              Notes on building AI systems that actually work, from someone still figuring it out in the trenches.
+            </p>
+          </header>
 
-        {/* Start Here - Featured/Evergreen */}
-        {featuredPosts.length > 0 && (
-          <section className="mb-16">
+          {/* Start Here - Featured Posts */}
+          {featuredPosts.length > 0 && (
+            <section className="mb-16">
+              <div className="flex items-center gap-3 mb-6">
+                <h2 className="text-sm font-semibold text-slate-500 uppercase tracking-wide">
+                  Start Here
+                </h2>
+                <div className="flex-1 h-px bg-slate-200" />
+              </div>
+              <div className="space-y-4">
+                {featuredPosts.map((post) => (
+                  <a
+                    key={post.slug}
+                    href={`/blog/${post.slug}`}
+                    className="block p-6 rounded-xl border border-slate-200 hover:border-slate-300 hover:shadow-sm transition-all bg-white"
+                  >
+                    <div className="flex items-center gap-3 mb-2">
+                      <span className="text-xs font-bold px-2 py-1 rounded-full uppercase tracking-wide bg-amber-100 text-amber-800">
+                        {pillarLabels[post.pillar] || post.category}
+                      </span>
+                      <span className="text-sm text-slate-400">{post.readTime}</span>
+                    </div>
+                    <h3 className="font-serif text-xl text-navy mb-2">{post.title}</h3>
+                    <p className="text-slate-600 text-sm">{post.description}</p>
+                  </a>
+                ))}
+              </div>
+            </section>
+          )}
+
+          {/* All Posts */}
+          <section>
             <div className="flex items-center gap-3 mb-6">
               <h2 className="text-sm font-semibold text-slate-500 uppercase tracking-wide">
-                Start Here
+                All Posts
               </h2>
               <div className="flex-1 h-px bg-slate-200" />
             </div>
-            <div className="space-y-6">
-              {featuredPosts.map((post) => (
-                <PostCard key={post.slug} post={post} featured />
-              ))}
-            </div>
-          </section>
-        )}
-
-        {/* Recent Posts */}
-        {recentPosts.length > 0 && (
-          <section className="mb-16">
-            <div className="flex items-center gap-3 mb-6">
-              <h2 className="text-sm font-semibold text-slate-500 uppercase tracking-wide">
-                Recent Posts
-              </h2>
-              <div className="flex-1 h-px bg-slate-200" />
-            </div>
-            <div className="grid md:grid-cols-2 gap-6">
+            <div className="space-y-4">
               {recentPosts.map((post) => (
-                <PostCard key={post.slug} post={post} />
+                <a
+                  key={post.slug}
+                  href={`/blog/${post.slug}`}
+                  className="flex items-center justify-between p-6 rounded-xl border border-slate-200 hover:border-slate-300 hover:shadow-sm transition-all bg-white"
+                >
+                  <div className="flex-1">
+                    <div className="flex items-center gap-3 mb-2">
+                      <span className="text-xs font-bold px-2 py-1 rounded-full uppercase tracking-wide bg-amber-100 text-amber-800">
+                        {pillarLabels[post.pillar] || post.category}
+                      </span>
+                      <span className="text-sm text-slate-400">{post.readTime}</span>
+                    </div>
+                    <h3 className="font-serif text-lg text-navy">{post.title}</h3>
+                  </div>
+                  <span className="hidden sm:block text-sm text-slate-400 ml-4">
+                    {new Date(post.date).toLocaleDateString('en-US', {
+                      month: 'short',
+                      day: 'numeric',
+                      year: 'numeric',
+                    })}
+                  </span>
+                </a>
               ))}
             </div>
           </section>
-        )}
+        </main>
 
-        {/* Browse by Pillar */}
-        <section>
-          <div className="flex items-center gap-3 mb-6">
-            <h2 className="text-sm font-semibold text-slate-500 uppercase tracking-wide">
-              Browse by Topic
-            </h2>
-            <div className="flex-1 h-px bg-slate-200" />
-          </div>
-          <div className="grid md:grid-cols-2 gap-4">
-            {Object.entries(pillarLabels).map(([key, label]) => {
-              const count = allPosts.filter(p => p.pillar === key).length;
-              const colors = pillarColors[key];
-              return (
-                <Link 
-                  key={key}
-                  href={`/blog?pillar=${key}`}
-                  className="p-4 border border-slate-200 rounded-lg hover:border-slate-300 transition-colors bg-white"
-                >
-                  <h3 className="font-medium text-navy">{label}</h3>
-                  <p className="text-sm text-slate-500 mt-1">{count} posts</p>
-                </Link>
-              );
-            })}
+        {/* Newsletter CTA */}
+        <section className="py-12 bg-navy text-white">
+          <div className="max-w-2xl mx-auto px-6 text-center">
+            <h3 className="font-serif text-2xl mb-4">Get the weekly dispatch</h3>
+            <p className="text-slate-300 mb-6">
+              Practical AI strategies for leaders. No fluff, no spam.
+            </p>
+            <form className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto" onSubmit={(e) => e.preventDefault()}>
+              <input
+                type="email"
+                placeholder="you@company.com"
+                required
+                className="flex-1 px-4 py-3 rounded-lg text-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-amber-400"
+              />
+              <button
+                type="submit"
+                className="px-6 py-3 rounded-lg font-medium bg-amber-500 text-navy hover:bg-amber-400 transition-colors"
+              >
+                Subscribe
+              </button>
+            </form>
           </div>
         </section>
-      </main>
 
-      {/* Footer */}
-      <footer className="py-8 border-t border-slate-200 bg-cream">
-        <div className="max-w-4xl mx-auto px-6 text-center text-sm text-slate-500">
-          <p>© {new Date().getFullYear()} KAIAK. <Link href="/" className="text-orange-600 hover:underline">Back to home</Link></p>
-        </div>
-      </footer>
-    </div>
-  );
+        {/* Footer */}
+        <footer className="py-8 bg-navy-dark text-slate-400">
+          <div className="max-w-4xl mx-auto px-6 text-center text-sm">
+            <p>© {new Date().getFullYear()} KAIAK. Less admin. More impact.</p>
+          </div>
+        </footer>
+      </div>
+    </>
+  )
 }
