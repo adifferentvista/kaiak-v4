@@ -23,13 +23,6 @@ export const metadata = {
     index: true,
     follow: true,
   },
-  icons: {
-    icon: [
-      { url: '/favicon-dark.png', media: '(prefers-color-scheme: light)' },
-      { url: '/favicon-light.png', media: '(prefers-color-scheme: dark)' },
-    ],
-    apple: '/apple-touch-icon.png',
-  },
 }
 
 export default function RootLayout({ children }) {
