@@ -14,17 +14,65 @@ export async function generateMetadata({ params }) {
   if (!post) {
     return { title: 'Post Not Found | KAIAK' };
   }
+  
+  const url = `https://kaiak.io/blog/${params.slug}`;
+  
   return {
     title: `${post.title} | KAIAK`,
     description: post.description,
+    authors: [{ name: 'Benedict' }],
     openGraph: {
       title: post.title,
       description: post.description,
+      url,
+      siteName: 'KAIAK',
+      locale: 'en_US',
       type: 'article',
       publishedTime: post.date,
       authors: ['Benedict'],
     },
+    twitter: {
+      card: 'summary_large_image',
+      title: post.title,
+      description: post.description,
+    },
+    alternates: {
+      canonical: url,
+    },
   };
+}
+
+// JSON-LD structured data for SEO
+function ArticleJsonLd({ post, slug }) {
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: post.title,
+    description: post.description,
+    author: {
+      '@type': 'Person',
+      name: 'Benedict',
+      url: 'https://kaiak.io/#about',
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'KAIAK',
+      url: 'https://kaiak.io',
+    },
+    datePublished: new Date(post.date).toISOString(),
+    dateModified: new Date(post.date).toISOString(),
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': `https://kaiak.io/blog/${slug}`,
+    },
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+    />
+  );
 }
 
 // Simple arrow icon as inline SVG (avoids client component issues)
@@ -37,11 +85,11 @@ const ArrowLeftIcon = () => (
 // Related post card
 function RelatedPostCard({ post }) {
   const colors = pillarColors[post.pillar] || { bg: '#f3f4f6', text: '#374151' };
-  
+
   return (
     <Link href={`/blog/${post.slug}`} className="block group py-4 border-b border-slate-100 hover:bg-slate-50 px-2 -mx-2 rounded transition-colors">
       <div className="flex items-center gap-2 mb-1">
-        <span 
+        <span
           className="text-xs font-medium px-2 py-0.5 rounded-full"
           style={{ backgroundColor: colors.bg, color: colors.text }}
         >
@@ -78,7 +126,7 @@ const Logo = () => (
 
 export default function BlogPostPage({ params }) {
   const post = getPostBySlug(params.slug);
-  
+
   if (!post) {
     notFound();
   }
@@ -87,100 +135,105 @@ export default function BlogPostPage({ params }) {
   const colors = pillarColors[post.pillar] || { bg: '#f3f4f6', text: '#374151' };
 
   return (
-    <div className="min-h-screen font-sans bg-cream">
-      {/* Navigation */}
-      <nav className="border-b border-slate-200/50 bg-cream/95 backdrop-blur-sm">
-        <div className="max-w-3xl mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
-            <Logo />
-            <div className="flex items-center gap-6">
-              <Link href="/" className="text-slate-600 hover:text-slate-900 text-sm font-medium">Home</Link>
-              <Link href="/blog" className="text-slate-600 hover:text-slate-900 text-sm font-medium">Blog</Link>
+    <>
+      {/* JSON-LD Structured Data for SEO */}
+      <ArticleJsonLd post={post} slug={params.slug} />
+      
+      <div className="min-h-screen font-sans bg-cream">
+        {/* Navigation */}
+        <nav className="border-b border-slate-200/50 bg-cream/95 backdrop-blur-sm">
+          <div className="max-w-3xl mx-auto px-6 py-4">
+            <div className="flex items-center justify-between">
+              <Logo />
+              <div className="flex items-center gap-6">
+                <Link href="/" className="text-slate-600 hover:text-slate-900 text-sm font-medium">Home</Link>
+                <Link href="/blog" className="text-slate-600 hover:text-slate-900 text-sm font-medium">Blog</Link>
+              </div>
             </div>
           </div>
-        </div>
-      </nav>
+        </nav>
 
-      <main className="max-w-3xl mx-auto px-6 py-12">
-        {/* Back link */}
-        <Link 
-          href="/blog"
-          className="text-sm text-slate-500 hover:text-slate-700 mb-8 inline-flex items-center gap-1"
-        >
-          <ArrowLeftIcon /> Back to all posts
-        </Link>
-
-        {/* Article Header */}
-        <header className="mb-12 mt-6">
-          <div className="flex items-center gap-3 mb-4">
-            <span 
-              className="text-xs font-medium px-2 py-1 rounded-full"
-              style={{ backgroundColor: colors.bg, color: colors.text }}
-            >
-              {pillarLabels[post.pillar]}
-            </span>
-            <span className="text-sm text-slate-500">{post.readTime}</span>
-          </div>
-
-          <h1 className="text-3xl md:text-4xl font-serif text-navy mb-4 leading-tight">
-            {post.title}
-          </h1>
-
-          <p className="text-xl text-slate-600 mb-6">
-            {post.description}
-          </p>
-
-          <p className="text-sm text-slate-400">
-            {new Date(post.date).toLocaleDateString('en-US', {
-              year: 'numeric',
-              month: 'long',
-              day: 'numeric',
-            })}
-          </p>
-        </header>
-
-        {/* Article Content */}
-        <article className="prose-kaiak">
-          <MDXRemote source={post.content} components={MDXComponents} />
-        </article>
-
-        {/* Related Posts */}
-        {relatedPosts.length > 0 && (
-          <aside className="mt-16 pt-12 border-t border-slate-200">
-            <h2 className="text-sm font-semibold text-slate-500 uppercase tracking-wide mb-6">
-              Keep Reading
-            </h2>
-            <div className="space-y-2">
-              {relatedPosts.map((relatedPost) => (
-                <RelatedPostCard key={relatedPost.slug} post={relatedPost} />
-              ))}
-            </div>
-          </aside>
-        )}
-
-        {/* CTA */}
-        <div className="mt-16 p-8 bg-white rounded-xl border border-slate-200 text-center">
-          <h3 className="text-xl font-serif text-navy mb-2">
-            Want help building systems like this?
-          </h3>
-          <p className="text-slate-600 mb-6">
-            I help leaders automate the chaos and get their time back.
-          </p>
-          <Link 
-            href="/#contact"
-            className="inline-block bg-navy text-white px-6 py-3 rounded-lg font-medium hover:bg-navy-light transition-colors"
+        <main className="max-w-3xl mx-auto px-6 py-12">
+          {/* Back link */}
+          <Link
+            href="/blog"
+            className="text-sm text-slate-500 hover:text-slate-700 mb-8 inline-flex items-center gap-1"
           >
-            Book a Call
+            <ArrowLeftIcon /> Back to all posts
           </Link>
-        </div>
-      </main>
 
-      {/* Footer */}
-      <footer className="py-8 border-t border-slate-200 bg-cream mt-16">
-        <div className="max-w-3xl mx-auto px-6 text-center text-sm text-slate-500">
-          <p>© {new Date().getFullYear()} KAIAK. <Link href="/" className="text-orange-600 hover:underline">Back to home</Link></p>
-        </div>
-      </footer>
-    </div>
+          {/* Article Header */}
+          <header className="mb-12 mt-6">
+            <div className="flex items-center gap-3 mb-4">
+              <span
+                className="text-xs font-medium px-2 py-1 rounded-full"
+                style={{ backgroundColor: colors.bg, color: colors.text }}
+              >
+                {pillarLabels[post.pillar]}
+              </span>
+              <span className="text-sm text-slate-500">{post.readTime}</span>
+            </div>
+
+            <h1 className="text-3xl md:text-4xl font-serif text-navy mb-4 leading-tight">
+              {post.title}
+            </h1>
+
+            <p className="text-xl text-slate-600 mb-6">
+              {post.description}
+            </p>
+
+            <p className="text-sm text-slate-400">
+              {new Date(post.date).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+              })}
+            </p>
+          </header>
+
+          {/* Article Content */}
+          <article className="prose-kaiak">
+            <MDXRemote source={post.content} components={MDXComponents} />
+          </article>
+
+          {/* Related Posts */}
+          {relatedPosts.length > 0 && (
+            <aside className="mt-16 pt-12 border-t border-slate-200">
+              <h2 className="text-sm font-semibold text-slate-500 uppercase tracking-wide mb-6">
+                Keep Reading
+              </h2>
+              <div className="space-y-2">
+                {relatedPosts.map((relatedPost) => (
+                  <RelatedPostCard key={relatedPost.slug} post={relatedPost} />
+                ))}
+              </div>
+            </aside>
+          )}
+
+          {/* CTA */}
+          <div className="mt-16 p-8 bg-white rounded-xl border border-slate-200 text-center">
+            <h3 className="text-xl font-serif text-navy mb-2">
+              Want help building systems like this?
+            </h3>
+            <p className="text-slate-600 mb-6">
+              I help leaders automate the chaos and get their time back.
+            </p>
+            <Link
+              href="/#contact"
+              className="inline-block bg-navy text-white px-6 py-3 rounded-lg font-medium hover:bg-navy-light transition-colors"
+            >
+              Book a Call
+            </Link>
+          </div>
+        </main>
+
+        {/* Footer */}
+        <footer className="py-8 border-t border-slate-200 bg-cream mt-16">
+          <div className="max-w-3xl mx-auto px-6 text-center text-sm text-slate-500">
+            <p>© {new Date().getFullYear()} KAIAK. <Link href="/" className="text-orange-600 hover:underline">Back to home</Link></p>
+          </div>
+        </footer>
+      </div>
+    </>
   );
 }
