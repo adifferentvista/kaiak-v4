@@ -13,13 +13,10 @@ module.exports = {
         cream: '#FDFBF7',
         'cream-dark': '#F5F0E8',
         
-        // Navy shades (full scale for homepage)
+        // Navy shades
         navy: {
           DEFAULT: '#0F172A',
           light: '#1E293B',
-          mid: '#1E3A5F',
-          dark: '#0B1221',
-          border: '#334155',
         },
         
         // Orange accent (same in both modes)
