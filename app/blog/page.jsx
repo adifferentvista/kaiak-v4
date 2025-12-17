@@ -10,7 +10,7 @@ export const metadata = {
 // Post Card Component
 function PostCard({ post, featured = false }) {
   const pillar = pillarColors[post.pillar] || { bg: '#f3f4f6', text: '#374151' };
-  
+
   return (
     <Link href={`/blog/${post.slug}`} className="block group">
       <article className={`
@@ -20,16 +20,13 @@ function PostCard({ post, featured = false }) {
         ${featured ? 'md:p-8' : ''}
       `}>
         <div className="flex items-center gap-3 mb-3">
-          <span 
+          <span
             className="text-xs font-bold px-2 py-1 rounded-full uppercase tracking-wide"
             style={{ backgroundColor: pillar.bg, color: pillar.text }}
           >
             {pillarLabels[post.pillar] || post.pillar}
           </span>
           <span className="text-xs text-slate-400">{post.readTime}</span>
-          {post.contentType === 'evergreen' && (
-            <span className="text-xs text-slate-400">✦ Evergreen</span>
-          )}
         </div>
 
         <h3 className={`
@@ -83,7 +80,7 @@ export default function BlogPage() {
             Thinking Out Loud
           </h1>
           <p className="text-xl text-slate-600 max-w-2xl">
-            Notes on building AI systems that actually work, 
+            Notes on building AI systems that actually work,
             from someone still figuring it out in the trenches.
           </p>
         </header>
@@ -135,7 +132,7 @@ export default function BlogPage() {
               const count = allPosts.filter(p => p.pillar === key).length;
               const colors = pillarColors[key];
               return (
-                <Link 
+                <Link
                   key={key}
                   href={`/blog?pillar=${key}`}
                   className="p-4 border border-slate-200 rounded-lg hover:border-slate-300 transition-colors bg-white"
