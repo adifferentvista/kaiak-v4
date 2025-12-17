@@ -1,26 +1,38 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: 'class',
   content: [
-    './app/**/*.{js,ts,jsx,tsx,mdx}',
+    './pages/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{js,ts,jsx,tsx,mdx}',
-    './content/**/*.{js,ts,jsx,tsx,mdx}',
+    './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
     extend: {
       colors: {
-        cream: '#fdfbf7',
+        // Light mode primary
+        cream: '#FDFBF7',
+        'cream-dark': '#F5F0E8',
+        
+        // Navy shades
         navy: {
-          DEFAULT: '#102a43',
-          light: '#1a365d',
-          mid: '#243b53',
-          dark: '#0f172a',
-          border: '#2c4a7c',
+          DEFAULT: '#0F172A',
+          light: '#1E293B',
         },
-        'blue-gray': '#f0f4f8',
+        
+        // Orange accent (same in both modes)
+        orange: {
+          DEFAULT: '#EA580C',
+          light: '#F97316',
+          dark: '#C2410C',
+        },
+        
+        // Blue-gray for subtle backgrounds
+        'blue-gray': '#F1F5F9',
       },
       fontFamily: {
-        serif: ['Georgia', 'Cambria', 'Times New Roman', 'serif'],
-        sans: ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+        sans: ['Inter', 'system-ui', 'sans-serif'],
+        serif: ['Instrument Serif', 'Georgia', 'serif'],
+        mono: ['Space Mono', 'monospace'],
       },
     },
   },

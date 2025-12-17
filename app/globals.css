@@ -2,73 +2,233 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Import fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap');
+
+/* CSS Variables for theming */
+:root {
+  /* Light mode (default) */
+  --color-background: #FDFBF7;
+  --color-surface: #FFFFFF;
+  --color-surface-secondary: #F1F5F9;
+  --color-text-primary: #0F172A;
+  --color-text-secondary: #475569;
+  --color-text-muted: #94A3B8;
+  --color-border: #E2E8F0;
+  --color-accent: #EA580C;
+  --color-accent-hover: #C2410C;
+}
+
+.dark {
+  /* Dark mode */
+  --color-background: #0F172A;
+  --color-surface: #1E293B;
+  --color-surface-secondary: #334155;
+  --color-text-primary: #F8FAFC;
+  --color-text-secondary: #CBD5E1;
+  --color-text-muted: #94A3B8;
+  --color-border: #334155;
+  --color-accent: #EA580C;
+  --color-accent-hover: #F97316;
+}
+
 /* Base styles */
-html {
-  scroll-behavior: smooth;
-}
-
 body {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-/* Typography for prose/blog content */
+/* Smooth transitions for theme changes */
+* {
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.15s ease;
+}
+
+/* Override for elements that shouldn't transition */
+*:focus,
+button:active,
+a:active {
+  transition: none;
+}
+
+/* Custom utility classes */
+@layer utilities {
+  .bg-cream {
+    background-color: var(--color-background);
+  }
+  
+  .bg-surface {
+    background-color: var(--color-surface);
+  }
+  
+  .text-navy {
+    color: var(--color-text-primary);
+  }
+}
+
+/* Prose styles for blog content - Light mode */
 .prose-kaiak {
-  @apply text-slate-700 leading-relaxed;
+  color: #334155;
+  line-height: 1.75;
 }
 
 .prose-kaiak h2 {
-  @apply font-serif text-2xl text-navy mt-12 mb-4;
+  color: #0F172A;
+  font-family: 'Instrument Serif', Georgia, serif;
+  font-size: 1.75rem;
+  font-weight: 400;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #E2E8F0;
 }
 
 .prose-kaiak h3 {
-  @apply font-serif text-xl text-navy mt-8 mb-3;
+  color: #0F172A;
+  font-family: 'Instrument Serif', Georgia, serif;
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
 }
 
 .prose-kaiak p {
-  @apply mb-4;
-}
-
-.prose-kaiak a {
-  @apply text-orange-600 hover:underline;
-}
-
-.prose-kaiak blockquote {
-  @apply border-l-4 border-slate-300 pl-4 italic text-slate-600 my-6;
-}
-
-.prose-kaiak code {
-  @apply bg-slate-100 px-1.5 py-0.5 rounded text-sm font-mono;
-}
-
-.prose-kaiak pre {
-  @apply bg-slate-900 text-slate-100 p-4 rounded-lg overflow-x-auto my-6;
-}
-
-.prose-kaiak pre code {
-  @apply bg-transparent p-0;
-}
-
-.prose-kaiak ul, .prose-kaiak ol {
-  @apply my-4 pl-6;
-}
-
-.prose-kaiak li {
-  @apply mb-2;
-}
-
-.prose-kaiak ul li {
-  @apply list-disc;
-}
-
-.prose-kaiak ol li {
-  @apply list-decimal;
-}
-
-.prose-kaiak hr {
-  @apply my-8 border-slate-200;
+  margin-bottom: 1.25rem;
 }
 
 .prose-kaiak strong {
-  @apply text-navy font-semibold;
+  color: #0F172A;
+  font-weight: 600;
+}
+
+.prose-kaiak em {
+  font-style: italic;
+}
+
+.prose-kaiak a {
+  color: #EA580C;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.prose-kaiak a:hover {
+  color: #C2410C;
+}
+
+.prose-kaiak ul,
+.prose-kaiak ol {
+  margin-bottom: 1.25rem;
+  padding-left: 1.5rem;
+}
+
+.prose-kaiak li {
+  margin-bottom: 0.5rem;
+}
+
+.prose-kaiak ul li {
+  list-style-type: disc;
+}
+
+.prose-kaiak ol li {
+  list-style-type: decimal;
+}
+
+.prose-kaiak blockquote {
+  border-left: 3px solid #EA580C;
+  padding-left: 1rem;
+  margin: 1.5rem 0;
+  font-style: italic;
+  color: #64748B;
+  background: #FFF7ED;
+  padding: 1rem;
+  border-radius: 0 0.5rem 0.5rem 0;
+}
+
+.prose-kaiak hr {
+  border: none;
+  border-top: 1px solid #E2E8F0;
+  margin: 2.5rem 0;
+}
+
+.prose-kaiak code {
+  background: #F1F5F9;
+  padding: 0.2rem 0.4rem;
+  border-radius: 0.25rem;
+  font-size: 0.875em;
+  font-family: 'Space Mono', monospace;
+}
+
+.prose-kaiak pre {
+  background: #1E293B;
+  color: #E2E8F0;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+  margin: 1.5rem 0;
+}
+
+.prose-kaiak pre code {
+  background: none;
+  padding: 0;
+  color: inherit;
+}
+
+/* Prose styles - Dark mode */
+.dark .prose-kaiak {
+  color: #CBD5E1;
+}
+
+.dark .prose-kaiak h2 {
+  color: #F8FAFC;
+  border-bottom-color: #334155;
+}
+
+.dark .prose-kaiak h3 {
+  color: #F8FAFC;
+}
+
+.dark .prose-kaiak strong {
+  color: #F8FAFC;
+}
+
+.dark .prose-kaiak a {
+  color: #FB923C;
+}
+
+.dark .prose-kaiak a:hover {
+  color: #FDBA74;
+}
+
+.dark .prose-kaiak blockquote {
+  background: #1E293B;
+  color: #94A3B8;
+  border-left-color: #EA580C;
+}
+
+.dark .prose-kaiak hr {
+  border-top-color: #334155;
+}
+
+.dark .prose-kaiak code {
+  background: #334155;
+  color: #E2E8F0;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-muted);
 }

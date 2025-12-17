@@ -1,6 +1,5 @@
 import './globals.css'
 import Script from 'next/script'
-import { ThemeProvider } from './components/ThemeProvider'
 
 export const metadata = {
   title: 'KAIAK | AI & Systems for Leaders',
@@ -35,34 +34,13 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en">
       <head>
         {/* Calendly CSS */}
         <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" />
-        
-        {/* Prevent flash of wrong theme */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                try {
-                  var theme = localStorage.getItem('kaiak-theme');
-                  var isDark = theme === 'dark' || 
-                    (theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches) ||
-                    (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches);
-                  if (isDark) {
-                    document.documentElement.classList.add('dark');
-                  }
-                } catch (e) {}
-              })();
-            `,
-          }}
-        />
       </head>
-      <body className="font-sans antialiased bg-cream dark:bg-navy transition-colors">
-        <ThemeProvider>
-          {children}
-        </ThemeProvider>
+      <body className="font-sans antialiased">
+        {children}
         
         {/* Calendly */}
         <Script
