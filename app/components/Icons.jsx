@@ -1,30 +1,33 @@
-import Link from 'next/link';
-
-// Logo with dark mode support
+// Logo component - NO Link wrapper (parent handles linking)
 export const Logo = () => (
-  <Link href="/" className="block hover:opacity-90 transition-opacity">
-    <svg width="100" height="34" viewBox="0 0 260 100" fill="none" xmlns="http://www.w3.org/2000/svg" className="h-8 w-auto">
-      {/* Left K */}
+  <svg 
+    width="100" 
+    height="34" 
+    viewBox="0 0 260 100" 
+    fill="none" 
+    xmlns="http://www.w3.org/2000/svg" 
+    className="h-8 w-auto hover:opacity-90 transition-opacity"
+  >
+    {/* Left K */}
+    <rect x="10" y="20" width="12" height="60" className="fill-[#0F172A] dark:fill-[#F8FAFC]"/>
+    <path d="M28 50 L48 20 L62 20 L38 55 L62 80 L48 80 L28 55" className="fill-[#0F172A] dark:fill-[#F8FAFC]"/>
+    
+    {/* First A */}
+    <text x="85" y="80" textAnchor="middle" className="fill-[#0F172A] dark:fill-[#F8FAFC]" fontFamily="monospace" fontWeight="bold" fontSize="64">A</text>
+    
+    {/* Center I (the "Spark") - Orange dot + stem */}
+    <rect x="122" y="15" width="16" height="15" fill="#EA580C"/>
+    <rect x="122" y="35" width="16" height="45" className="fill-[#334155] dark:fill-[#F8FAFC]"/>
+    
+    {/* Second A */}
+    <text x="175" y="80" textAnchor="middle" className="fill-[#0F172A] dark:fill-[#F8FAFC]" fontFamily="monospace" fontWeight="bold" fontSize="64">A</text>
+    
+    {/* Right K (mirrored) */}
+    <g transform="translate(260, 0) scale(-1, 1)">
       <rect x="10" y="20" width="12" height="60" className="fill-[#0F172A] dark:fill-[#F8FAFC]"/>
       <path d="M28 50 L48 20 L62 20 L38 55 L62 80 L48 80 L28 55" className="fill-[#0F172A] dark:fill-[#F8FAFC]"/>
-      
-      {/* First A */}
-      <text x="85" y="80" textAnchor="middle" className="fill-[#0F172A] dark:fill-[#F8FAFC]" fontFamily="monospace" fontWeight="bold" fontSize="64">A</text>
-      
-      {/* Center I (the "Spark") - Orange dot + stem */}
-      <rect x="122" y="15" width="16" height="15" fill="#EA580C"/>
-      <rect x="122" y="35" width="16" height="45" className="fill-[#334155] dark:fill-[#F8FAFC]"/>
-      
-      {/* Second A */}
-      <text x="175" y="80" textAnchor="middle" className="fill-[#0F172A] dark:fill-[#F8FAFC]" fontFamily="monospace" fontWeight="bold" fontSize="64">A</text>
-      
-      {/* Right K (mirrored) */}
-      <g transform="translate(260, 0) scale(-1, 1)">
-        <rect x="10" y="20" width="12" height="60" className="fill-[#0F172A] dark:fill-[#F8FAFC]"/>
-        <path d="M28 50 L48 20 L62 20 L38 55 L62 80 L48 80 L28 55" className="fill-[#0F172A] dark:fill-[#F8FAFC]"/>
-      </g>
-    </svg>
-  </Link>
+    </g>
+  </svg>
 );
 
 // Icon components

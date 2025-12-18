@@ -7,6 +7,7 @@ export const metadata = {
   description: 'I help leaders reclaim 10+ hours a week through AI automation, smart systems, and operational foundations that actually work.',
   keywords: ['leadership', 'AI for education', 'productivity', 'school operations', 'NotebookLM', 'second brain', 'workflow automation'],
   authors: [{ name: 'Benedict' }],
+  metadataBase: new URL('https://kaiak.io'),
   openGraph: {
     title: 'KAIAK | AI & Systems for Leaders',
     description: 'I help leaders reclaim 10+ hours a week through AI automation, smart systems, and operational foundations.',
@@ -14,15 +15,22 @@ export const metadata = {
     siteName: 'KAIAK',
     locale: 'en_US',
     type: 'website',
+    // TODO: Add images once you have an OG image
+    // images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'KAIAK' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'KAIAK | AI & Systems for Leaders',
     description: 'I help leaders reclaim 10+ hours a week through AI automation and smart systems.',
+    // TODO: Add images once you have a Twitter card image
+    // images: ['/twitter-image.png'],
   },
   robots: {
     index: true,
     follow: true,
+  },
+  alternates: {
+    canonical: 'https://kaiak.io',
   },
   icons: {
     icon: [
@@ -59,7 +67,7 @@ export default function RootLayout({ children }) {
           }}
         />
       </head>
-      <body className="font-sans antialiased bg-cream dark:bg-navy transition-colors">
+      <body className="font-sans antialiased bg-cream dark:bg-navy">
         <ThemeProvider>
           {children}
         </ThemeProvider>
@@ -84,7 +92,7 @@ export default function RootLayout({ children }) {
           `}
         </Script>
         
-        {/* iubenda Cookie Banner */}
+        {/* iubenda Cookie Banner - Fixed with https:// URLs */}
         <Script id="iubenda-config" strategy="beforeInteractive">
           {`
             var _iub = _iub || [];
@@ -101,13 +109,12 @@ export default function RootLayout({ children }) {
           strategy="beforeInteractive"
         />
         <Script 
-          src="//cdn.iubenda.com/cs/gpp/stub.js" 
+          src="https://cdn.iubenda.com/cs/gpp/stub.js" 
           strategy="beforeInteractive"
         />
         <Script 
-          src="//cdn.iubenda.com/cs/iubenda_cs.js" 
-          charset="UTF-8" 
-          async 
+          src="https://cdn.iubenda.com/cs/iubenda_cs.js" 
+          charSet="UTF-8" 
           strategy="beforeInteractive"
         />
       </body>
