@@ -2,10 +2,11 @@
 
 import { useState, useEffect } from 'react';
 
+const CALENDLY_URL = 'https://calendly.com/ben-kaiak/30min';
+
 export default function BookingButton({ 
   children = "Book Discovery Call", 
-  className = "",
-  calendlyUrl = "https://calendly.com/ben-kaiak/30min"
+  className = ""
 }) {
   const [calendlyReady, setCalendlyReady] = useState(false);
 
@@ -24,7 +25,7 @@ export default function BookingButton({
       }
     }, 100);
 
-    // Cleanup after 10 seconds (stop checking)
+    // Stop checking after 10 seconds
     const timeout = setTimeout(() => {
       clearInterval(checkCalendly);
     }, 10000);
@@ -35,13 +36,15 @@ export default function BookingButton({
     };
   }, []);
 
-  const handleClick = () => {
+  const handleClick = (e) => {
+    e.preventDefault();
+    
     // Safe call with optional chaining
     if (typeof window !== 'undefined' && window.Calendly?.initPopupWidget) {
-      window.Calendly.initPopupWidget({ url: calendlyUrl });
+      window.Calendly.initPopupWidget({ url: CALENDLY_URL });
     } else {
       // Fallback: open Calendly in new tab if popup doesn't work
-      window.open(calendlyUrl, '_blank', 'noopener,noreferrer');
+      window.open(CALENDLY_URL, '_blank', 'noopener,noreferrer');
     }
   };
 

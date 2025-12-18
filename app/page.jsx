@@ -7,7 +7,7 @@ import NewsletterForm from './components/NewsletterForm';
 import { Icons } from './components/Icons';
 
 // ============================================
-// SAMPLE POSTS (for Latest from Blog)
+// DATA
 // ============================================
 const latestPosts = [
   {
@@ -38,16 +38,19 @@ export default function HomePage() {
 
   return (
     <div className="font-sans antialiased bg-cream dark:bg-navy text-slate-800 dark:text-slate-200">
-      {/* Exit Intent Popup (Client Component) */}
-      <ExitIntentPopup />
-
-      {/* Navigation (Client Component) */}
-      <Navbar />
-
-      {/* Skip to main content link for accessibility */}
-      <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-20 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-white focus:text-navy focus:rounded">
+      {/* 1. Skip Link FIRST - before everything else for accessibility */}
+      <a 
+        href="#main-content" 
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-white focus:text-navy focus:rounded shadow-lg"
+      >
         Skip to main content
       </a>
+
+      {/* 2. Exit Intent Popup */}
+      <ExitIntentPopup />
+
+      {/* 3. Navigation */}
+      <Navbar />
 
       <main id="main-content">
         {/* ========== HERO ========== */}
@@ -94,7 +97,6 @@ export default function HomePage() {
                 </div>
               </div>
               <div className="rounded-2xl p-8 text-center bg-blue-gray dark:bg-slate-800">
-                {/* Optimized Image */}
                 <div className="relative w-32 h-32 mx-auto mb-4">
                   <Image
                     src="/benedict.png"

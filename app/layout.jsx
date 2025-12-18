@@ -1,6 +1,29 @@
-import './globals.css'
 import Script from 'next/script'
+import { Inter, Instrument_Serif, Space_Mono } from 'next/font/google'
 import { ThemeProvider } from './components/ThemeProvider'
+import './globals.css'
+
+// Fonts using next/font (Performance: no render-blocking @import)
+const inter = Inter({ 
+  subsets: ['latin'], 
+  variable: '--font-inter',
+  display: 'swap',
+})
+
+const instrumentSerif = Instrument_Serif({ 
+  weight: '400',
+  style: ['normal', 'italic'],
+  subsets: ['latin'], 
+  variable: '--font-instrument',
+  display: 'swap',
+})
+
+const spaceMono = Space_Mono({
+  weight: ['400', '700'],
+  subsets: ['latin'],
+  variable: '--font-mono',
+  display: 'swap',
+})
 
 export const metadata = {
   title: 'KAIAK | AI & Systems for Leaders',
@@ -15,15 +38,11 @@ export const metadata = {
     siteName: 'KAIAK',
     locale: 'en_US',
     type: 'website',
-    // TODO: Add images once you have an OG image
-    // images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'KAIAK' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'KAIAK | AI & Systems for Leaders',
     description: 'I help leaders reclaim 10+ hours a week through AI automation and smart systems.',
-    // TODO: Add images once you have a Twitter card image
-    // images: ['/twitter-image.png'],
   },
   robots: {
     index: true,
@@ -43,7 +62,11 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html 
+      lang="en" 
+      suppressHydrationWarning 
+      className={`${inter.variable} ${instrumentSerif.variable} ${spaceMono.variable}`}
+    >
       <head>
         {/* Calendly CSS */}
         <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" />
@@ -72,7 +95,7 @@ export default function RootLayout({ children }) {
           {children}
         </ThemeProvider>
         
-        {/* Calendly */}
+        {/* Calendly JS */}
         <Script
           src="https://assets.calendly.com/assets/external/widget.js"
           strategy="lazyOnload"
@@ -92,7 +115,7 @@ export default function RootLayout({ children }) {
           `}
         </Script>
         
-        {/* iubenda Cookie Banner - Fixed with https:// URLs */}
+        {/* iubenda Cookie Banner - All URLs are https */}
         <Script id="iubenda-config" strategy="beforeInteractive">
           {`
             var _iub = _iub || [];

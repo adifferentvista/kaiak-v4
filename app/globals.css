@@ -2,10 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Import fonts */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap');
+/* 
+ * FONTS: Now loaded via next/font in layout.jsx
+ * Applied via CSS variables: --font-inter, --font-instrument, --font-mono
+ * NO @import needed (better performance)
+ */
 
-/* CSS Variables for theming */
 :root {
   /* Light mode (default) */
   --color-background: #FDFBF7;
@@ -32,22 +34,29 @@
   --color-accent-hover: #F97316;
 }
 
-/* Base styles - only animate body for theme switching */
+/* Base styles */
 body {
   background-color: var(--color-background);
   color: var(--color-text-primary);
+  /* Only animate body for theme switching */
   transition: background-color 0.3s ease, color 0.3s ease;
+  /* Apply fonts from next/font variables */
+  font-family: var(--font-inter), system-ui, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-instrument), Georgia, serif;
+}
+
+code, pre {
+  font-family: var(--font-mono), monospace;
 }
 
 /* 
- * REMOVED: Global transition on all elements
- * This was causing jank and performance issues on mobile
- * 
- * OLD (don't use):
- * * { transition: background-color 0.2s ease, border-color 0.2s ease, color 0.15s ease; }
+ * CRITICAL FIX: NO global * { transition } 
+ * That was causing mobile jank and layout thrashing
+ * Use .theme-transition on specific interactive elements only
  */
-
-/* Targeted transition class - use on specific elements that need animation */
 .theme-transition {
   transition: background-color 0.2s ease, border-color 0.2s ease, color 0.15s ease;
 }
@@ -86,7 +95,7 @@ body {
 
 .prose-kaiak h2 {
   color: #0F172A;
-  font-family: 'Instrument Serif', Georgia, serif;
+  font-family: var(--font-instrument), Georgia, serif;
   font-size: 1.75rem;
   font-weight: 400;
   margin-top: 2.5rem;
@@ -97,7 +106,7 @@ body {
 
 .prose-kaiak h3 {
   color: #0F172A;
-  font-family: 'Instrument Serif', Georgia, serif;
+  font-family: var(--font-instrument), Georgia, serif;
   font-size: 1.25rem;
   font-weight: 500;
   margin-top: 2rem;
@@ -167,7 +176,7 @@ body {
   padding: 0.2rem 0.4rem;
   border-radius: 0.25rem;
   font-size: 0.875em;
-  font-family: 'Space Mono', monospace;
+  font-family: var(--font-mono), monospace;
 }
 
 .prose-kaiak pre {

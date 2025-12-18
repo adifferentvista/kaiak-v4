@@ -5,6 +5,7 @@ module.exports = {
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{js,ts,jsx,tsx,mdx}',
     './app/**/*.{js,ts,jsx,tsx,mdx}',
+    './content/**/*.{md,mdx}',
   ],
   theme: {
     extend: {
@@ -13,7 +14,7 @@ module.exports = {
         cream: '#FDFBF7',
         'cream-dark': '#F5F0E8',
         
-        // Navy shades (full scale for homepage)
+        // Navy shades (full scale)
         navy: {
           DEFAULT: '#0F172A',
           light: '#1E293B',
@@ -33,9 +34,9 @@ module.exports = {
         'blue-gray': '#F1F5F9',
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
-        serif: ['Instrument Serif', 'Georgia', 'serif'],
-        mono: ['Space Mono', 'monospace'],
+        sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
+        serif: ['var(--font-instrument)', 'Georgia', 'serif'],
+        mono: ['var(--font-mono)', 'monospace'],
       },
     },
   },

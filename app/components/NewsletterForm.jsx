@@ -22,11 +22,11 @@ export default function NewsletterForm() {
       //   headers: { 'Content-Type': 'application/json' },
       //   body: JSON.stringify({ api_key: 'YOUR_API_KEY', email }),
       // });
+      // if (!response.ok) throw new Error('Subscription failed');
 
       // For now, simulate success (remove this when you connect ConvertKit)
       await new Promise(resolve => setTimeout(resolve, 500));
       
-      // Simulated success
       setStatus('success');
       setMessage("Thanks! Check your inbox.");
       setEmail('');

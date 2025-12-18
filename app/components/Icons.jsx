@@ -1,4 +1,4 @@
-// Logo component - NO Link wrapper (parent handles linking)
+// Logo component - NO Link wrapper (parent handles linking to prevent nested <a> hydration error)
 export const Logo = () => (
   <svg 
     width="100" 

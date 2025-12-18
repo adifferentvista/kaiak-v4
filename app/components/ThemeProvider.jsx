@@ -1,84 +1,71 @@
-'use client'
+'use client';
 
-import { createContext, useContext, useEffect, useState } from 'react'
+import { createContext, useContext, useEffect, useState } from 'react';
 
 const ThemeContext = createContext({
   theme: 'system',
   setTheme: () => {},
-  resolvedTheme: 'light',
-})
+});
 
 export function ThemeProvider({ children }) {
-  const [theme, setTheme] = useState('system')
-  const [resolvedTheme, setResolvedTheme] = useState('light')
-  const [mounted, setMounted] = useState(false)
+  const [theme, setTheme] = useState('system');
+  const [mounted, setMounted] = useState(false);
 
-  // On mount, read from localStorage
   useEffect(() => {
-    const stored = localStorage.getItem('kaiak-theme')
+    setMounted(true);
+    const stored = localStorage.getItem('kaiak-theme');
     if (stored) {
-      setTheme(stored)
+      setTheme(stored);
     }
-    setMounted(true)
-  }, [])
+  }, []);
 
-  // Apply theme to document
   useEffect(() => {
-    if (!mounted) return
+    if (!mounted) return;
 
-    const root = document.documentElement
+    const root = document.documentElement;
     
-    let resolved = theme
-    if (theme === 'system') {
-      resolved = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
-    }
-    
-    setResolvedTheme(resolved)
-    
-    if (resolved === 'dark') {
-      root.classList.add('dark')
+    if (theme === 'dark') {
+      root.classList.add('dark');
+    } else if (theme === 'light') {
+      root.classList.remove('dark');
     } else {
-      root.classList.remove('dark')
-    }
-
-    localStorage.setItem('kaiak-theme', theme)
-  }, [theme, mounted])
-
-  // Listen for system theme changes
-  useEffect(() => {
-    if (theme !== 'system') return
-
-    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
-    
-    const handleChange = (e) => {
-      setResolvedTheme(e.matches ? 'dark' : 'light')
-      if (e.matches) {
-        document.documentElement.classList.add('dark')
+      // System preference
+      const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (isDark) {
+        root.classList.add('dark');
       } else {
-        document.documentElement.classList.remove('dark')
+        root.classList.remove('dark');
       }
     }
 
-    mediaQuery.addEventListener('change', handleChange)
-    return () => mediaQuery.removeEventListener('change', handleChange)
-  }, [theme])
+    localStorage.setItem('kaiak-theme', theme);
+  }, [theme, mounted]);
 
-  // Prevent flash of wrong theme
-  if (!mounted) {
-    return <div style={{ visibility: 'hidden' }}>{children}</div>
-  }
+  // Listen for system preference changes
+  useEffect(() => {
+    if (!mounted || theme !== 'system') return;
+
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    
+    const handleChange = (e) => {
+      if (e.matches) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    };
+
+    mediaQuery.addEventListener('change', handleChange);
+    return () => mediaQuery.removeEventListener('change', handleChange);
+  }, [theme, mounted]);
 
   return (
-    <ThemeContext.Provider value={{ theme, setTheme, resolvedTheme }}>
+    <ThemeContext.Provider value={{ theme, setTheme }}>
       {children}
     </ThemeContext.Provider>
-  )
+  );
 }
 
 export function useTheme() {
-  const context = useContext(ThemeContext)
-  if (!context) {
-    throw new Error('useTheme must be used within a ThemeProvider')
-  }
-  return context
+  return useContext(ThemeContext);
 }
