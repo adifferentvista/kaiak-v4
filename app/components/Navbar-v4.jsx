@@ -30,9 +30,9 @@ export default function Navbar() {
             <ThemeToggle />
           </div>
 
-          {/* Desktop CTA - Now links to /booking */}
+          {/* Desktop CTA */}
           <Link
-            href="/booking"
+            href="/#contact"
             className="hidden md:block px-5 py-2.5 rounded-lg text-sm font-medium text-white bg-navy-mid dark:bg-amber-500 dark:text-navy hover:bg-navy dark:hover:bg-amber-400 theme-transition"
           >
             Work With Me
@@ -95,9 +95,8 @@ export default function Navbar() {
               <ThemeToggle />
               <span className="text-sm text-slate-500 dark:text-slate-400">Theme</span>
             </div>
-            {/* Mobile CTA - Now links to /booking */}
             <Link
-              href="/booking"
+              href="/#contact"
               className="block text-white px-5 py-3 rounded-lg text-center font-medium bg-navy-mid dark:bg-amber-500 dark:text-navy"
               onClick={closeMobileMenu}
               role="menuitem"

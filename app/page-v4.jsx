@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Navbar from './components/Navbar';
 import ExitIntentPopup from './components/ExitIntentPopup';
+import BookingButton from './components/BookingButton';
 import NewsletterForm from './components/NewsletterForm';
 import { Icons } from './components/Icons';
 
@@ -154,12 +155,9 @@ export default function HomePage() {
                 <div className="pt-6 border-t border-navy-border dark:border-slate-700">
                   <p className="text-2xl font-serif mb-1">$2,500 – $4,000</p>
                   <p className="text-xs text-slate-400 mb-4">6-week engagement</p>
-                  <Link 
-                    href="/booking" 
-                    className="block w-full text-center px-6 py-3 rounded-lg font-medium bg-amber-500 text-navy hover:bg-amber-400 theme-transition"
-                  >
+                  <BookingButton className="block w-full text-center px-6 py-3 rounded-lg font-medium bg-amber-500 text-navy hover:bg-amber-400 theme-transition cursor-pointer">
                     Book Discovery Call
-                  </Link>
+                  </BookingButton>
                 </div>
               </div>
 
@@ -191,12 +189,9 @@ export default function HomePage() {
                 <div className="pt-6 border-t border-navy-border dark:border-slate-700">
                   <p className="text-2xl font-serif mb-1">$3,500 – $5,500</p>
                   <p className="text-xs text-slate-400 mb-4">4-8 week engagement</p>
-                  <Link 
-                    href="/booking" 
-                    className="block w-full text-center px-6 py-3 rounded-lg font-medium bg-amber-500 text-navy hover:bg-amber-400 theme-transition"
-                  >
+                  <BookingButton className="block w-full text-center px-6 py-3 rounded-lg font-medium bg-amber-500 text-navy hover:bg-amber-400 theme-transition cursor-pointer">
                     Book Discovery Call
-                  </Link>
+                  </BookingButton>
                 </div>
               </div>
             </div>
@@ -321,12 +316,9 @@ export default function HomePage() {
             <p className="text-slate-300 dark:text-slate-400 text-lg mb-10 max-w-xl mx-auto">
               Book a free 30-minute discovery call. We&apos;ll talk about what&apos;s eating your time and whether I can help.
             </p>
-            <Link 
-              href="/booking" 
-              className="inline-block px-10 py-4 rounded-lg font-semibold text-lg mb-6 bg-amber-500 text-navy hover:bg-amber-400 theme-transition"
-            >
+            <BookingButton className="inline-block px-10 py-4 rounded-lg font-semibold text-lg mb-6 bg-amber-500 text-navy hover:bg-amber-400 theme-transition cursor-pointer">
               Book Your Free Call
-            </Link>
+            </BookingButton>
             <p className="text-slate-400">
               Or email me directly: <a href="mailto:ben@kaiak.io" className="text-amber-400 hover:underline">ben@kaiak.io</a>
             </p>
