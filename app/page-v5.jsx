@@ -4,16 +4,36 @@ import Navbar from './components/Navbar';
 import ExitIntentPopup from './components/ExitIntentPopup';
 import NewsletterForm from './components/NewsletterForm';
 import { Icons } from './components/Icons';
-import { getLatestPosts, pillarLabels } from '@/lib/posts';
+
+// ============================================
+// DATA
+// ============================================
+const latestPosts = [
+  {
+    slug: 'claude-parent-emails',
+    title: 'How I Use Claude to Draft 20 Parent Emails in 15 Minutes',
+    category: 'Practical AI',
+    date: 'Jan 15, 2025',
+  },
+  {
+    slug: 'notion-cathedral-kitchen',
+    title: 'Your Notion Setup Failed Because You Built a Cathedral, Not a Kitchen',
+    category: 'Systems',
+    date: 'Jan 29, 2025',
+  },
+  {
+    slug: 'running-school-vs-run-by-school',
+    title: 'The Difference Between Running a School and Being Run By One',
+    category: 'Leadership',
+    date: 'Feb 19, 2025',
+  },
+];
 
 // ============================================
 // MAIN PAGE (Server Component)
 // ============================================
 export default function HomePage() {
   const currentYear = new Date().getFullYear();
-  
-  // Pull latest posts dynamically from MDX files (no more hardcoded dates!)
-  const latestPosts = getLatestPosts(3);
 
   return (
     <div className="font-sans antialiased bg-cream dark:bg-navy text-slate-800 dark:text-slate-200">
@@ -48,13 +68,13 @@ export default function HomePage() {
             <div className="flex flex-col sm:flex-row gap-4">
               <Link 
                 href="/#services" 
-                className="text-white px-8 py-4 rounded-lg font-medium text-center shadow-lg bg-navy-mid dark:bg-amber-500 dark:text-navy hover:bg-navy dark:hover:bg-amber-400 theme-transition focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:ring-offset-2"
+                className="text-white px-8 py-4 rounded-lg font-medium text-center shadow-lg bg-navy-mid dark:bg-amber-500 dark:text-navy hover:bg-navy dark:hover:bg-amber-400 theme-transition"
               >
                 See How I Can Help
               </Link>
               <Link 
                 href="/blog" 
-                className="border-2 border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-300 px-8 py-4 rounded-lg font-medium text-center hover:bg-slate-50 dark:hover:bg-slate-800 theme-transition focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-2"
+                className="border-2 border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-300 px-8 py-4 rounded-lg font-medium text-center hover:bg-slate-50 dark:hover:bg-slate-800 theme-transition"
               >
                 Read the Blog
               </Link>
@@ -136,7 +156,7 @@ export default function HomePage() {
                   <p className="text-xs text-slate-400 mb-4">6-week engagement</p>
                   <Link 
                     href="/booking" 
-                    className="block w-full text-center px-6 py-3 rounded-lg font-medium bg-amber-500 text-navy hover:bg-amber-400 theme-transition focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:ring-offset-2"
+                    className="block w-full text-center px-6 py-3 rounded-lg font-medium bg-amber-500 text-navy hover:bg-amber-400 theme-transition"
                   >
                     Book Discovery Call
                   </Link>
@@ -173,7 +193,7 @@ export default function HomePage() {
                   <p className="text-xs text-slate-400 mb-4">4-8 week engagement</p>
                   <Link 
                     href="/booking" 
-                    className="block w-full text-center px-6 py-3 rounded-lg font-medium bg-amber-500 text-navy hover:bg-amber-400 theme-transition focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:ring-offset-2"
+                    className="block w-full text-center px-6 py-3 rounded-lg font-medium bg-amber-500 text-navy hover:bg-amber-400 theme-transition"
                   >
                     Book Discovery Call
                   </Link>
@@ -213,14 +233,14 @@ export default function HomePage() {
                   <li className="flex items-center gap-2"><Icons.Check className="w-4 h-4 text-green-500" /> Monthly logbook template</li>
                 </ul>
                 <div className="pt-4 border-t border-slate-100 dark:border-slate-700 flex items-center justify-between">
-                  <div className="flex items-center gap-3">
-                    <span className="text-lg text-slate-400 line-through" aria-label="Original price">$97</span>
-                    <span className="text-2xl font-bold text-navy dark:text-white" aria-label="Sale price">$49</span>
+                  <div className="flex items-center gap-2">
+                    <span className="text-lg text-slate-400 line-through">$97</span>
+                    <span className="text-2xl font-bold text-navy dark:text-white">$49</span>
                     <span className="text-xs font-bold px-2 py-1 rounded-full bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300">LAUNCH</span>
                   </div>
                   <Link 
                     href="/products/second-brain-guide" 
-                    className="text-white px-5 py-2.5 rounded-lg font-medium text-sm bg-navy dark:bg-amber-500 dark:text-navy hover:bg-navy-light dark:hover:bg-amber-400 theme-transition focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:ring-offset-2"
+                    className="text-white px-5 py-2.5 rounded-lg font-medium text-sm bg-navy dark:bg-amber-500 dark:text-navy hover:bg-navy-light dark:hover:bg-amber-400 theme-transition"
                   >
                     Join Waitlist
                   </Link>
@@ -252,7 +272,7 @@ export default function HomePage() {
               </div>
               <Link 
                 href="/blog" 
-                className="hidden sm:flex items-center gap-2 font-medium text-orange-600 dark:text-orange-400 hover:text-orange-700 dark:hover:text-orange-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-400 focus-visible:ring-offset-2 rounded"
+                className="hidden sm:flex items-center gap-2 font-medium text-orange-600 dark:text-orange-400 hover:text-orange-700 dark:hover:text-orange-300"
               >
                 View all <Icons.ArrowRight className="w-4 h-4" />
               </Link>
@@ -263,21 +283,15 @@ export default function HomePage() {
                 <Link
                   key={post.slug}
                   href={`/blog/${post.slug}`}
-                  className="flex items-center justify-between p-6 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-slate-300 dark:hover:border-slate-600 hover:shadow-sm theme-transition bg-cream dark:bg-slate-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-400 focus-visible:ring-offset-2"
+                  className="flex items-center justify-between p-6 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-slate-300 dark:hover:border-slate-600 hover:shadow-sm theme-transition bg-cream dark:bg-slate-800"
                 >
                   <div className="flex items-center gap-6">
                     <span className="text-xs font-bold px-2 py-1 rounded-full uppercase tracking-wide bg-amber-100 dark:bg-amber-900/30 text-amber-800 dark:text-amber-300">
-                      {pillarLabels[post.pillar] || post.pillar}
+                      {post.category}
                     </span>
                     <span className="font-serif text-lg text-navy dark:text-white">{post.title}</span>
                   </div>
-                  <span className="hidden sm:block text-sm text-slate-400 dark:text-slate-500">
-                    {new Date(post.date).toLocaleDateString('en-US', {
-                      year: 'numeric',
-                      month: 'short',
-                      day: 'numeric',
-                    })}
-                  </span>
+                  <span className="hidden sm:block text-sm text-slate-400 dark:text-slate-500">{post.date}</span>
                 </Link>
               ))}
             </div>
@@ -309,7 +323,7 @@ export default function HomePage() {
             </p>
             <Link 
               href="/booking" 
-              className="inline-block px-10 py-4 rounded-lg font-semibold text-lg mb-6 bg-amber-500 text-navy hover:bg-amber-400 theme-transition focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:ring-offset-2"
+              className="inline-block px-10 py-4 rounded-lg font-semibold text-lg mb-6 bg-amber-500 text-navy hover:bg-amber-400 theme-transition"
             >
               Book Your Free Call
             </Link>

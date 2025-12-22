@@ -30,11 +30,10 @@ export const metadata = {
   description: 'I help leaders reclaim 10+ hours a week through AI automation, smart systems, and operational foundations that actually work.',
   keywords: ['leadership', 'AI for education', 'productivity', 'school operations', 'NotebookLM', 'second brain', 'workflow automation'],
   authors: [{ name: 'Benedict' }],
-  // Canonical URL: kaiak.io (non-www)
   metadataBase: new URL('https://kaiak.io'),
   openGraph: {
     title: 'KAIAK | AI & Systems for Leaders',
-    description: 'I help leaders reclaim 10+ hours a week through AI automation and smart systems.',
+    description: 'I help leaders reclaim 10+ hours a week through AI automation, smart systems, and operational foundations.',
     url: 'https://kaiak.io',
     siteName: 'KAIAK',
     locale: 'en_US',
@@ -96,7 +95,7 @@ export default function RootLayout({ children }) {
           {children}
         </ThemeProvider>
         
-        {/* Calendly JS - kept for /booking page embed */}
+        {/* Calendly JS */}
         <Script
           src="https://assets.calendly.com/assets/external/widget.js"
           strategy="lazyOnload"

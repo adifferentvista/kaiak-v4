@@ -75,7 +75,9 @@ export default function BlogPage({ searchParams }) {
       <nav className="border-b border-slate-200/50 dark:border-slate-700/50 bg-cream/95 dark:bg-navy/95 backdrop-blur-sm">
         <div className="max-w-5xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
-            <Logo />
+            <Link href="/" aria-label="KAIAK Home">
+              <Logo />
+            </Link> 
             <div className="flex items-center gap-4">
               <Link href="/" className="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white text-sm font-medium">Home</Link>
               <Link href="/blog" className="text-slate-900 dark:text-white text-sm font-medium">Blog</Link>
