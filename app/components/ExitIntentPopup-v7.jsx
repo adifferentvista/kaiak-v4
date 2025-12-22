@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 
 const CONVERTKIT_FORM_ID = '8895661'; // Newsletter form
+const CONVERTKIT_API_KEY = 'QURGsDf8S5wli698VTrBtg';
 
 export default function ExitIntentPopup() {
   const [isVisible, setIsVisible] = useState(false);
@@ -53,33 +54,42 @@ export default function ExitIntentPopup() {
     setStatus('loading');
 
     try {
-      const formData = new FormData();
-      formData.append('email_address', email);
-      
       const response = await fetch(
-        `https://app.convertkit.com/forms/${CONVERTKIT_FORM_ID}/subscriptions`,
+        `https://api.convertkit.com/v3/forms/${CONVERTKIT_FORM_ID}/subscribe`,
         {
           method: 'POST',
-          body: formData,
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            api_key: CONVERTKIT_API_KEY,
+            email: email,
+          }),
         }
       );
 
-      // Success
-      setStatus('success');
-      setEmail('');
+      if (!response.ok) {
+        throw new Error('Subscription failed');
+      }
+
+      const data = await response.json();
       
-      // Auto-close after 3 seconds
-      setTimeout(() => {
-        setIsVisible(false);
-      }, 3000);
+      if (data.subscription) {
+        setStatus('success');
+        setEmail('');
+        
+        // Auto-close after 3 seconds
+        setTimeout(() => {
+          setIsVisible(false);
+        }, 3000);
+      } else {
+        throw new Error('Subscription failed');
+      }
 
     } catch (error) {
-      // ConvertKit might redirect on success, treat as success
-      setStatus('success');
-      setEmail('');
+      setStatus('error');
       
+      // Reset error after 3 seconds
       setTimeout(() => {
-        setIsVisible(false);
+        setStatus('idle');
       }, 3000);
     }
   };

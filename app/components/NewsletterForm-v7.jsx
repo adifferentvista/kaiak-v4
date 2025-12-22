@@ -2,11 +2,12 @@
 
 import { useState } from 'react';
 
-const CONVERTKIT_FORM_ID = '8895661'; // Newsletter form
+const CONVERTKIT_FORM_ID = '8895661';
+const CONVERTKIT_API_KEY = 'QURGsDf8S5wli698VTrBtg';
 
 export default function NewsletterForm() {
   const [email, setEmail] = useState('');
-  const [honeypot, setHoneypot] = useState('');
+  const [honeypot, setHoneypot] = useState(''); // Spam protection
   const [status, setStatus] = useState('idle'); // idle, loading, success, error
   const [message, setMessage] = useState('');
 
@@ -25,39 +26,43 @@ export default function NewsletterForm() {
     setStatus('loading');
 
     try {
-      // Use ConvertKit's form submission endpoint (more reliable than API)
-      const formData = new FormData();
-      formData.append('email_address', email);
-      
       const response = await fetch(
-        `https://app.convertkit.com/forms/${CONVERTKIT_FORM_ID}/subscriptions`,
+        `https://api.convertkit.com/v3/forms/${CONVERTKIT_FORM_ID}/subscribe`,
         {
           method: 'POST',
-          body: formData,
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            api_key: CONVERTKIT_API_KEY,
+            email: email,
+          }),
         }
       );
 
-      if (response.ok || response.status === 200 || response.status === 302) {
-        setStatus('success');
-        setMessage("Thanks! Check your inbox.");
-        setEmail('');
-        
-        // Reset after 5 seconds
-        setTimeout(() => {
-          setStatus('idle');
-          setMessage('');
-        }, 5000);
-      } else {
+      if (!response.ok) {
         throw new Error('Subscription failed');
       }
 
-    } catch (error) {
-      // ConvertKit might redirect on success, which can throw
-      // Check if it's actually a success
-      setStatus('success');
-      setMessage("Thanks! Check your inbox.");
-      setEmail('');
+      const data = await response.json();
       
+      if (data.subscription) {
+        setStatus('success');
+        setMessage("Thanks! Check your inbox.");
+        setEmail('');
+      } else {
+        throw new Error('Subscription failed');
+      }
+      
+      // Reset after 5 seconds
+      setTimeout(() => {
+        setStatus('idle');
+        setMessage('');
+      }, 5000);
+
+    } catch (error) {
+      setStatus('error');
+      setMessage('Something went wrong. Please try again.');
+      
+      // Reset after 5 seconds
       setTimeout(() => {
         setStatus('idle');
         setMessage('');

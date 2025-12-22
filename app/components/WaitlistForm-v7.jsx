@@ -3,6 +3,7 @@
 import { useState } from 'react';
 
 const CONVERTKIT_FORM_ID = '8895758'; // Guide Waitlist form
+const CONVERTKIT_API_KEY = 'QURGsDf8S5wli698VTrBtg';
 
 export default function WaitlistForm() {
   const [email, setEmail] = useState('');
@@ -25,27 +26,41 @@ export default function WaitlistForm() {
     setStatus('loading');
 
     try {
-      const formData = new FormData();
-      formData.append('email_address', email);
-      
       const response = await fetch(
-        `https://app.convertkit.com/forms/${CONVERTKIT_FORM_ID}/subscriptions`,
+        `https://api.convertkit.com/v3/forms/${CONVERTKIT_FORM_ID}/subscribe`,
         {
           method: 'POST',
-          body: formData,
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            api_key: CONVERTKIT_API_KEY,
+            email: email,
+          }),
         }
       );
 
-      // Success
-      setStatus('success');
-      setMessage("You're on the waitlist! We'll email you when it launches.");
-      setEmail('');
+      if (!response.ok) {
+        throw new Error('Subscription failed');
+      }
+
+      const data = await response.json();
+      
+      if (data.subscription) {
+        setStatus('success');
+        setMessage("You're on the waitlist! We'll email you when it launches.");
+        setEmail('');
+      } else {
+        throw new Error('Subscription failed');
+      }
 
     } catch (error) {
-      // ConvertKit might redirect on success, treat as success
-      setStatus('success');
-      setMessage("You're on the waitlist! We'll email you when it launches.");
-      setEmail('');
+      setStatus('error');
+      setMessage('Something went wrong. Please try again.');
+      
+      // Reset error after 5 seconds
+      setTimeout(() => {
+        setStatus('idle');
+        setMessage('');
+      }, 5000);
     }
   };
 
@@ -84,7 +99,7 @@ export default function WaitlistForm() {
       <button
         type="submit"
         disabled={status === 'loading'}
-        className="w-full text-white px-6 py-3 rounded-lg font-medium bg-amber-500 text-navy hover:bg-amber-400 theme-transition disabled:opacity-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:ring-offset-2"
+        className="w-full text-white px-6 py-3 rounded-lg font-medium bg-navy dark:bg-amber-500 dark:text-navy hover:bg-navy-light dark:hover:bg-amber-400 theme-transition disabled:opacity-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:ring-offset-2"
       >
         {status === 'loading' ? 'Joining...' : 'Join the Waitlist'}
       </button>
