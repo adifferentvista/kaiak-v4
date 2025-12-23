@@ -14,7 +14,7 @@ export default function sitemap() {
       priority: 0.7,
     };
   });
-  
+
   // Static pages
   const staticPages = [
     {
@@ -30,18 +30,12 @@ export default function sitemap() {
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/booking`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.9,
-    },
-    {
       url: `${baseUrl}/products/second-brain-guide`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.8,
     },
   ];
-  
+
   return [...staticPages, ...blogUrls];
 }
