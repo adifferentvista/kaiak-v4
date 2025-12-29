@@ -129,13 +129,13 @@ export default function BlogContent({ allPosts, featuredPosts, initialPillar, in
     return posts;
   }, [allPosts, activePillar, searchQuery]);
 
-  // Get non-featured posts for "Recent Posts" section
-  const recentPosts = useMemo(() => {
-    if (activePillar || searchQuery.trim()) {
-      return filteredPosts;
-    }
-    return allPosts.filter(p => !p.featured);
-  }, [filteredPosts, allPosts, activePillar, searchQuery]);
+  // Get posts for "All Posts" section (includes featured posts)
+const recentPosts = useMemo(() => {
+  if (activePillar || searchQuery.trim()) {
+    return filteredPosts;
+  }
+  return allPosts;
+}, [filteredPosts, allPosts, activePillar, searchQuery]);
 
   // Count posts per pillar
   const pillarCounts = useMemo(() => {
