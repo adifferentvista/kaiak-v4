@@ -24,18 +24,17 @@ export default function Navbar() {
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center gap-8">
             <Link href="/blog" className={navLinkClass}>Blog</Link>
-            <Link href="/#services" className={navLinkClass}>Services</Link>
-            <Link href="/products/second-brain-guide" className={navLinkClass}>The Guide</Link>
+            <Link href="/work-with-me" className={navLinkClass}>Services</Link>
             <Link href="/#about" className={navLinkClass}>About</Link>
             <ThemeToggle />
           </div>
 
-          {/* Desktop CTA - Now links to /booking */}
+          {/* Desktop CTA */}
           <Link
             href="/booking"
             className="hidden md:block px-5 py-2.5 rounded-lg text-sm font-medium text-white bg-navy-mid dark:bg-amber-500 dark:text-navy hover:bg-navy dark:hover:bg-amber-400 theme-transition"
           >
-            Work With Me
+            Book a Call
           </Link>
 
           {/* Mobile Menu Toggle */}
@@ -68,20 +67,12 @@ export default function Navbar() {
               Blog
             </Link>
             <Link
-              href="/#services"
+              href="/work-with-me"
               className="block text-slate-600 dark:text-slate-300 font-medium"
               onClick={closeMobileMenu}
               role="menuitem"
             >
               Services
-            </Link>
-            <Link
-              href="/products/second-brain-guide"
-              className="block text-slate-600 dark:text-slate-300 font-medium"
-              onClick={closeMobileMenu}
-              role="menuitem"
-            >
-              The Guide
             </Link>
             <Link
               href="/#about"
@@ -95,14 +86,14 @@ export default function Navbar() {
               <ThemeToggle />
               <span className="text-sm text-slate-500 dark:text-slate-400">Theme</span>
             </div>
-            {/* Mobile CTA - Now links to /booking */}
+            {/* Mobile CTA */}
             <Link
               href="/booking"
               className="block text-white px-5 py-3 rounded-lg text-center font-medium bg-navy-mid dark:bg-amber-500 dark:text-navy"
               onClick={closeMobileMenu}
               role="menuitem"
             >
-              Work With Me
+              Book a Call
             </Link>
           </div>
         </div>

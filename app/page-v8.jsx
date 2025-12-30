@@ -4,7 +4,7 @@ import Navbar from './components/Navbar';
 import ExitIntentPopup from './components/ExitIntentPopup';
 import NewsletterForm from './components/NewsletterForm';
 import { Icons } from './components/Icons';
-import { getFeaturedPosts, pillarLabels } from '@/lib/posts';
+import { getLatestPosts, pillarLabels } from '@/lib/posts';
 
 // ============================================
 // MAIN PAGE (Server Component)
@@ -12,8 +12,8 @@ import { getFeaturedPosts, pillarLabels } from '@/lib/posts';
 export default function HomePage() {
   const currentYear = new Date().getFullYear();
   
-  // Pull featured/anchor posts for homepage
-  const featuredPosts = getFeaturedPosts();
+  // Pull latest posts dynamically from MDX files
+  const latestPosts = getLatestPosts(3);
 
   return (
     <div className="font-sans antialiased bg-cream dark:bg-navy text-slate-800 dark:text-slate-200">
@@ -273,13 +273,13 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* ========== START HERE - FEATURED POSTS ========== */}
+        {/* ========== LATEST FROM BLOG ========== */}
         <section className="py-20 md:py-28 bg-cream dark:bg-navy border-t border-slate-100 dark:border-slate-700">
           <div className="max-w-5xl mx-auto px-6">
             <div className="flex justify-between items-end mb-12">
               <div>
                 <p className="font-medium text-sm tracking-wide uppercase mb-4 text-orange-600 dark:text-orange-400">From the Blog</p>
-                <h2 className="font-serif text-3xl md:text-4xl text-navy dark:text-white">Start Here</h2>
+                <h2 className="font-serif text-3xl md:text-4xl text-navy dark:text-white">Latest Posts</h2>
               </div>
               <Link 
                 href="/blog" 
@@ -290,7 +290,7 @@ export default function HomePage() {
             </div>
 
             <div className="space-y-4">
-              {featuredPosts.map((post) => (
+              {latestPosts.map((post) => (
                 <Link
                   key={post.slug}
                   href={`/blog/${post.slug}`}

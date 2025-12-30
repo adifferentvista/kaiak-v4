@@ -188,7 +188,7 @@ const recentPosts = useMemo(() => {
             <div className="flex items-center gap-4">
               <Link href="/" className="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white text-sm font-medium">Home</Link>
               <Link href="/blog" className="text-slate-900 dark:text-white text-sm font-medium">Blog</Link>
-              <Link href="/products/second-brain-guide" className="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white text-sm font-medium">The Guide</Link>
+              <Link href="/work-with-me" className="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white text-sm font-medium">Services</Link>
               <ThemeToggle />
             </div>
           </div>
@@ -196,13 +196,13 @@ const recentPosts = useMemo(() => {
       </nav>
 
       <main className="max-w-4xl mx-auto px-6 py-16">
-        {/* Header */}
+        {/* Header - UPDATED TAGLINE */}
         <header className="mb-8">
           <h1 className="text-4xl font-serif text-navy dark:text-white mb-4">
-            Thinking Out Loud
+            The KAIAK Blog
           </h1>
           <p className="text-xl text-slate-600 dark:text-slate-300 max-w-2xl">
-            Notes on building AI systems that actually work, from someone still figuring it out in the trenches.
+            Practical notes on AI, systems, and school leadership.
           </p>
         </header>
 

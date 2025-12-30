@@ -4,7 +4,7 @@ import WaitlistForm from '../../components/WaitlistForm';
 
 export const metadata = {
   title: 'The No-Admin Second Brain Guide | KAIAK',
-  description: 'A complete system for capturing, organizing, and retrieving everything—without spending hours on maintenance. Built specifically for busy leaders.',
+  description: 'A complete system for capturing, organizing, and retrieving everything—without spending hours on maintenance. Built specifically for busy school leaders.',
 };
 
 export default function SecondBrainGuideWaitlist() {
@@ -27,11 +27,6 @@ export default function SecondBrainGuideWaitlist() {
       {/* Main Content */}
       <main className="py-20 md:py-28">
         <div className="max-w-2xl mx-auto px-6 text-center">
-          {/* Badge */}
-          <span className="inline-block text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-wide bg-amber-100 dark:bg-amber-900/30 text-amber-800 dark:text-amber-300 mb-6">
-            Coming Soon
-          </span>
-
           {/* Icon */}
           <div className="text-6xl mb-6">📘</div>
 
@@ -42,7 +37,7 @@ export default function SecondBrainGuideWaitlist() {
 
           {/* Description */}
           <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed mb-8 max-w-xl mx-auto">
-            A complete system for capturing, organizing, and retrieving everything—without spending hours on maintenance. Built specifically for busy leaders.
+            A complete system for capturing, organizing, and retrieving everything—without spending hours on maintenance. Built specifically for busy school leaders.
           </p>
 
           {/* What's included */}
@@ -64,14 +59,16 @@ export default function SecondBrainGuideWaitlist() {
             </ul>
           </div>
 
-          {/* Pricing preview */}
+          {/* Pricing preview - FIXED DISPLAY */}
           <div className="mb-10">
             <div className="flex items-center justify-center gap-3 mb-2">
               <span className="text-2xl text-slate-400 line-through" aria-label="Original price">$97</span>
-              <span className="text-4xl font-bold text-navy dark:text-white" aria-label="Sale price">$49</span>
-              <span className="text-xs font-bold px-2 py-1 rounded-full bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300">LAUNCH PRICE</span>
+              <span className="text-4xl font-bold text-navy dark:text-white" aria-label="Launch price">$49</span>
             </div>
-            <p className="text-sm text-slate-500 dark:text-slate-400">Early supporters get the best price</p>
+            <p className="text-sm text-slate-500 dark:text-slate-400">
+              <span className="inline-block px-2 py-0.5 rounded bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 font-medium text-xs mr-2">LAUNCH PRICE</span>
+              Early supporters get the best price
+            </p>
           </div>
 
           {/* Email signup */}

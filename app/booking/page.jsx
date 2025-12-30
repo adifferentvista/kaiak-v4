@@ -2,8 +2,8 @@ import Link from 'next/link';
 import { Logo } from '../components/Icons';
 
 export const metadata = {
-  title: 'Book a Call | KAIAK',
-  description: 'Schedule a free 30-minute discovery call. We\'ll talk about what\'s eating your time and whether I can help.',
+  title: 'Book a Strategy Call | KAIAK',
+  description: 'Schedule a free 30-minute strategy call. We\'ll discuss what\'s eating your time and whether I can help.',
 };
 
 export default function BookingPage() {
@@ -25,10 +25,10 @@ export default function BookingPage() {
             Free 30-Minute Call
           </p>
           <h1 className="font-serif text-4xl md:text-5xl mb-6 text-navy dark:text-white">
-            Let's Talk
+            Book a Strategy Call
           </h1>
           <p className="text-lg text-slate-600 dark:text-slate-300 max-w-xl mx-auto">
-            Book a free discovery call. We'll talk about what's eating your time and figure out if I can help.
+            A free 30-minute call to discuss what&apos;s eating your time and whether I can help.
           </p>
         </div>
 
@@ -38,15 +38,15 @@ export default function BookingPage() {
           <ul className="space-y-3 text-slate-600 dark:text-slate-300">
             <li className="flex items-start gap-3">
               <span className="text-orange-500 mt-1">✓</span>
-              <span><strong className="text-navy dark:text-white">No pitch, no pressure.</strong> This is a conversation, not a sales call.</span>
+              <span><strong className="text-navy dark:text-white">We&apos;ll diagnose where your time is actually going.</strong> Most leaders are surprised by what we uncover.</span>
             </li>
             <li className="flex items-start gap-3">
               <span className="text-orange-500 mt-1">✓</span>
-              <span><strong className="text-navy dark:text-white">We'll diagnose the problem.</strong> Where's your time actually going?</span>
+              <span><strong className="text-navy dark:text-white">I&apos;ll share relevant approaches I&apos;ve seen work.</strong> Specific to international schools, not generic advice.</span>
             </li>
             <li className="flex items-start gap-3">
               <span className="text-orange-500 mt-1">✓</span>
-              <span><strong className="text-navy dark:text-white">You'll leave with clarity.</strong> Even if we don't work together, you'll know your next step.</span>
+              <span><strong className="text-navy dark:text-white">You&apos;ll leave with clarity on your next step</strong> — whether we work together or not.</span>
             </li>
           </ul>
         </div>
@@ -58,7 +58,7 @@ export default function BookingPage() {
             width="100%"
             height="700"
             frameBorder="0"
-            title="Schedule a call with Benedict"
+            title="Schedule a strategy call with Benedict Rinne"
             className="dark:hidden"
           />
           <iframe
@@ -66,7 +66,7 @@ export default function BookingPage() {
             width="100%"
             height="700"
             frameBorder="0"
-            title="Schedule a call with Benedict"
+            title="Schedule a strategy call with Benedict Rinne"
             className="hidden dark:block"
           />
         </div>
