@@ -78,7 +78,7 @@ export default function HomePage() {
 
               {/* Right: Illustration/Graphic */}
               <div className="hidden md:block">
-                <div className="relative backdrop-blur-md bg-white/80 dark:bg-slate-800/80 border border-slate-200/50 dark:border-slate-700/50 rounded-2xl p-8 shadow-xl">
+                <div className="relative bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl p-8 shadow-xl">
                   {/* Dashboard mockup */}
                   <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-700 pb-6 mb-6">
                     <div>

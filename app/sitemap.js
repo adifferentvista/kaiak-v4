@@ -36,6 +36,12 @@ export default function sitemap() {
       priority: 0.9,
     },
     {
+      url: `${baseUrl}/work-with-me`,          // ← ADD THIS BLOCK
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    },
+    {
       url: `${baseUrl}/products/second-brain-guide`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
