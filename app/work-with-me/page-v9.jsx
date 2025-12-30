@@ -69,48 +69,18 @@ export default function WorkWithMePage() {
           </div>
         </section>
 
-        {/* Three Options */}
+        {/* Two Options */}
         <section className="py-20 md:py-28 text-white bg-navy dark:bg-navy-dark">
           <div className="max-w-6xl mx-auto px-6">
             <div className="text-center mb-16">
               <p className="font-medium text-sm tracking-wide uppercase mb-4 text-amber-400">Choose Your Path</p>
-              <h2 className="font-serif text-3xl md:text-4xl mb-4">Three Ways I Can Help</h2>
+              <h2 className="font-serif text-3xl md:text-4xl mb-4">Two Ways I Can Help</h2>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-8">
-              {/* Service 0: Quick Win */}
-              <div className="rounded-2xl p-8 flex flex-col bg-navy-light dark:bg-slate-800 border border-navy-border dark:border-slate-700">
-                <div className="text-4xl mb-6">⚡</div>
-                <h3 className="font-serif text-2xl mb-2">Quick Win Sprint</h3>
-                <p className="text-amber-400 text-sm font-medium mb-4">Fast results, focused scope.</p>
-                <p className="text-slate-400 text-sm mb-6">For leaders needing immediate relief</p>
-
-                <p className="text-slate-300 leading-relaxed mb-6">
-                  In just one week, we&apos;ll implement one targeted solution to save you time immediately. Perfect if you need a quick win before committing to a larger engagement.
-                </p>
-
-                <ul className="space-y-3 mb-8 flex-grow">
-                  {[
-                    'One workflow automated',
-                    'Email system setup OR',
-                    'One reporting template',
-                    'Quick implementation guide',
-                    '7 days of email support',
-                  ].map((item) => (
-                    <li key={item} className="flex items-start gap-2 text-sm text-slate-300">
-                      <Icons.Check className="w-5 h-5 flex-shrink-0 text-amber-400" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-
-                <div className="pt-6 border-t border-navy-border dark:border-slate-700">
-                  <p className="text-sm text-slate-400 mb-4">Timeline: 1 week</p>
-                </div>
-              </div>
+            <div className="grid md:grid-cols-2 gap-8">
               {/* Service 1: AI Systems */}
               <div className="rounded-2xl p-8 flex flex-col bg-navy-light dark:bg-slate-800 border border-navy-border dark:border-slate-700">
-                <div className="text-4xl mb-6">🚀</div>
+                <div className="text-4xl mb-6">⚡</div>
                 <h3 className="font-serif text-2xl mb-2">AI Systems Implementation</h3>
                 <p className="text-amber-400 text-sm font-medium mb-4">Get your time back.</p>
                 <p className="text-slate-400 text-sm mb-6">For established leaders drowning in admin</p>
@@ -179,7 +149,7 @@ export default function WorkWithMePage() {
             <div className="text-center mb-16">
               <p className="font-medium text-sm tracking-wide uppercase mb-4 text-orange-600 dark:text-orange-400">The Process</p>
               <h2 className="font-serif text-3xl md:text-4xl mb-4 text-navy dark:text-white">How It Works</h2>
-              <p className="text-slate-600 dark:text-slate-400">Same process for all services.</p>
+              <p className="text-slate-600 dark:text-slate-400">Same process for both services.</p>
             </div>
 
             <div className="space-y-6">
