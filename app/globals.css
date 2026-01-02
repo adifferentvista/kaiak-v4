@@ -253,3 +253,10 @@ code, pre {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--color-text-muted);
 }
+/* ... all your existing styles above ... */
+
+/* Marquee animation */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}

@@ -434,146 +434,22 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* ========== 7. TOOL STACK (Core Tools + Scrolling Marquee) ========== */}
-        <section className="py-16 bg-slate-50 dark:bg-navy border-y border-slate-200 dark:border-slate-800 overflow-hidden">
+        {/* ========== 7. TOOL STACK (Clean Text Grid) ========== */}
+        <section className="py-16 bg-slate-50 dark:bg-navy border-y border-slate-200 dark:border-slate-800">
           <div className="max-w-5xl mx-auto px-6">
             <p className="text-center text-slate-500 dark:text-slate-500 text-sm font-medium uppercase tracking-widest mb-8">
               We Optimize the Tools You Already Use
             </p>
-            
-            {/* Core Tools Grid */}
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4 mb-12">
-              {/* NotebookLM */}
-              <div className="text-center p-4 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
-                <div className="w-10 h-10 mx-auto mb-2 flex items-center justify-center">
-                  <Image src="/logos/notebooklm.svg" alt="NotebookLM" width={32} height={32} className="dark:invert" />
-                </div>
-                <h3 className="font-sans font-semibold text-navy dark:text-white text-xs">NotebookLM</h3>
-              </div>
-
-              {/* ChatGPT */}
-              <div className="text-center p-4 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
-                <div className="w-10 h-10 mx-auto mb-2 flex items-center justify-center">
-                  <Image src="/logos/openai.svg" alt="ChatGPT" width={32} height={32} className="dark:invert" />
-                </div>
-                <h3 className="font-sans font-semibold text-navy dark:text-white text-xs">ChatGPT</h3>
-              </div>
-
-              {/* Claude */}
-              <div className="text-center p-4 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
-                <div className="w-10 h-10 mx-auto mb-2 flex items-center justify-center">
-                  <Image src="/logos/claude.svg" alt="Claude" width={32} height={32} />
-                </div>
-                <h3 className="font-sans font-semibold text-navy dark:text-white text-xs">Claude</h3>
-              </div>
-
-              {/* Google Drive */}
-              <div className="text-center p-4 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
-                <div className="w-10 h-10 mx-auto mb-2 flex items-center justify-center">
-                  <Image src="/logos/google-drive.svg" alt="Google Drive" width={32} height={32} />
-                </div>
-                <h3 className="font-sans font-semibold text-navy dark:text-white text-xs">Drive</h3>
-              </div>
-
-              {/* Gmail */}
-              <div className="text-center p-4 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
-                <div className="w-10 h-10 mx-auto mb-2 flex items-center justify-center">
-                  <Image src="/logos/gmail.svg" alt="Gmail" width={32} height={32} />
-                </div>
-                <h3 className="font-sans font-semibold text-navy dark:text-white text-xs">Gmail</h3>
-              </div>
-
-              {/* Google Docs */}
-              <div className="text-center p-4 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
-                <div className="w-10 h-10 mx-auto mb-2 flex items-center justify-center">
-                  <Image src="/logos/google-docs.svg" alt="Google Docs" width={32} height={32} />
-                </div>
-                <h3 className="font-sans font-semibold text-navy dark:text-white text-xs">Docs</h3>
-              </div>
-
-              {/* Google Sheets */}
-              <div className="text-center p-4 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
-                <div className="w-10 h-10 mx-auto mb-2 flex items-center justify-center">
-                  <Image src="/logos/google-sheets.svg" alt="Google Sheets" width={32} height={32} />
-                </div>
-                <h3 className="font-sans font-semibold text-navy dark:text-white text-xs">Sheets</h3>
-              </div>
-            </div>
-
-            {/* Scrolling Marquee - All Tools */}
-            <p className="text-center text-slate-400 dark:text-slate-600 text-xs uppercase tracking-widest mb-4">
-              Plus Many More AI Tools
-            </p>
-          </div>
-          
-          {/* Marquee Container - Full Width */}
-          <div className="relative">
-            <div 
-              className="flex whitespace-nowrap hover:[animation-play-state:paused]"
-              style={{
-                animation: 'marquee 40s linear infinite',
-              }}
-            >
-              {/* First set of logos */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
               {[
-                { src: '/logos/gemini.svg', name: 'Gemini' },
-                { src: '/logos/perplexity.svg', name: 'Perplexity' },
-                { src: '/logos/notion.svg', name: 'Notion', invert: true },
-                { src: '/logos/copilot.svg', name: 'Copilot' },
-                { src: '/logos/midjourney.svg', name: 'Midjourney', invert: true },
-                { src: '/logos/cursor.svg', name: 'Cursor', invert: true },
-                { src: '/logos/v0.svg', name: 'v0', invert: true },
-                { src: '/logos/vercel.svg', name: 'Vercel', invert: true },
-                { src: '/logos/supabase.svg', name: 'Supabase' },
-                { src: '/logos/lovable.svg', name: 'Lovable' },
-                { src: '/logos/windsurf.svg', name: 'Windsurf', invert: true },
-                { src: '/logos/grok.svg', name: 'Grok', invert: true },
-                { src: '/logos/elevenlabs.svg', name: 'ElevenLabs', invert: true },
-                { src: '/logos/meta.svg', name: 'Meta' },
-                { src: '/logos/deepmind.svg', name: 'DeepMind' },
-                { src: '/logos/aistudio.svg', name: 'AI Studio', invert: true },
-                { src: '/logos/asana.svg', name: 'Asana' },
+                { name: "Google Workspace", desc: "Your school's command center" },
+                { name: "NotebookLM", desc: "AI-powered research assistant" },
+                { name: "ChatGPT / Claude", desc: "Your drafting partner" },
+                { name: "Google Drive", desc: "Organized, searchable files" },
               ].map((tool, i) => (
-                <div key={i} className="flex items-center mx-8">
-                  <Image 
-                    src={tool.src} 
-                    alt={tool.name} 
-                    width={28} 
-                    height={28} 
-                    className={tool.invert ? 'dark:invert opacity-60 hover:opacity-100 transition-opacity' : 'opacity-60 hover:opacity-100 transition-opacity'} 
-                  />
-                  <span className="ml-2 text-slate-400 text-sm font-medium">{tool.name}</span>
-                </div>
-              ))}
-              {/* Duplicate for seamless loop */}
-              {[
-                { src: '/logos/gemini.svg', name: 'Gemini' },
-                { src: '/logos/perplexity.svg', name: 'Perplexity' },
-                { src: '/logos/notion.svg', name: 'Notion', invert: true },
-                { src: '/logos/copilot.svg', name: 'Copilot' },
-                { src: '/logos/midjourney.svg', name: 'Midjourney', invert: true },
-                { src: '/logos/cursor.svg', name: 'Cursor', invert: true },
-                { src: '/logos/v0.svg', name: 'v0', invert: true },
-                { src: '/logos/vercel.svg', name: 'Vercel', invert: true },
-                { src: '/logos/supabase.svg', name: 'Supabase' },
-                { src: '/logos/lovable.svg', name: 'Lovable' },
-                { src: '/logos/windsurf.svg', name: 'Windsurf', invert: true },
-                { src: '/logos/grok.svg', name: 'Grok', invert: true },
-                { src: '/logos/elevenlabs.svg', name: 'ElevenLabs', invert: true },
-                { src: '/logos/meta.svg', name: 'Meta' },
-                { src: '/logos/deepmind.svg', name: 'DeepMind' },
-                { src: '/logos/aistudio.svg', name: 'AI Studio', invert: true },
-                { src: '/logos/asana.svg', name: 'Asana' },
-              ].map((tool, i) => (
-                <div key={`dup-${i}`} className="flex items-center mx-8">
-                  <Image 
-                    src={tool.src} 
-                    alt={tool.name} 
-                    width={28} 
-                    height={28} 
-                    className={tool.invert ? 'dark:invert opacity-60 hover:opacity-100 transition-opacity' : 'opacity-60 hover:opacity-100 transition-opacity'} 
-                  />
-                  <span className="ml-2 text-slate-400 text-sm font-medium">{tool.name}</span>
+                <div key={i} className="text-center p-6 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+                  <h3 className="font-sans font-semibold text-navy dark:text-white text-sm mb-1">{tool.name}</h3>
+                  <p className="text-slate-500 text-xs">{tool.desc}</p>
                 </div>
               ))}
             </div>

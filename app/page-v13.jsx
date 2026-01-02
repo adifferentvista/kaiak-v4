@@ -434,148 +434,111 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* ========== 7. TOOL STACK (Core Tools + Scrolling Marquee) ========== */}
-        <section className="py-16 bg-slate-50 dark:bg-navy border-y border-slate-200 dark:border-slate-800 overflow-hidden">
+        {/* ========== 7. TOOL STACK (Logo Grid) ========== */}
+        <section className="py-16 bg-slate-50 dark:bg-navy border-y border-slate-200 dark:border-slate-800">
           <div className="max-w-5xl mx-auto px-6">
             <p className="text-center text-slate-500 dark:text-slate-500 text-sm font-medium uppercase tracking-widest mb-8">
               We Optimize the Tools You Already Use
             </p>
-            
-            {/* Core Tools Grid */}
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4 mb-12">
-              {/* NotebookLM */}
-              <div className="text-center p-4 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
-                <div className="w-10 h-10 mx-auto mb-2 flex items-center justify-center">
-                  <Image src="/logos/notebooklm.svg" alt="NotebookLM" width={32} height={32} className="dark:invert" />
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+              {/* Google Workspace */}
+              <div className="text-center p-6 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+                <div className="w-12 h-12 mx-auto mb-3 flex items-center justify-center">
+                  <svg viewBox="0 0 24 24" className="w-10 h-10" fill="none">
+                    <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                    <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                    <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+                    <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+                  </svg>
                 </div>
-                <h3 className="font-sans font-semibold text-navy dark:text-white text-xs">NotebookLM</h3>
+                <h3 className="font-sans font-semibold text-navy dark:text-white text-sm mb-1">Google Workspace</h3>
+                <p className="text-slate-500 text-xs">Your school&apos;s command center</p>
+              </div>
+
+              {/* NotebookLM */}
+              <div className="text-center p-6 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+                <div className="w-12 h-12 mx-auto mb-3 flex items-center justify-center">
+                  <svg viewBox="0 0 24 24" className="w-10 h-10" fill="none">
+                    <rect x="4" y="2" width="16" height="20" rx="2" className="stroke-[#EA4335]" strokeWidth="1.5" fill="none"/>
+                    <path d="M8 6h8M8 10h8M8 14h5" className="stroke-[#4285F4]" strokeWidth="1.5" strokeLinecap="round"/>
+                    <circle cx="17" cy="17" r="4" className="fill-[#34A853]"/>
+                    <path d="M15.5 17l1 1 2-2" className="stroke-white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </div>
+                <h3 className="font-sans font-semibold text-navy dark:text-white text-sm mb-1">NotebookLM</h3>
+                <p className="text-slate-500 text-xs">AI-powered research assistant</p>
               </div>
 
               {/* ChatGPT */}
-              <div className="text-center p-4 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
-                <div className="w-10 h-10 mx-auto mb-2 flex items-center justify-center">
-                  <Image src="/logos/openai.svg" alt="ChatGPT" width={32} height={32} className="dark:invert" />
+              <div className="text-center p-6 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+                <div className="w-12 h-12 mx-auto mb-3 flex items-center justify-center">
+                  <svg viewBox="0 0 24 24" className="w-10 h-10" fill="none">
+                    <path d="M22.282 9.821a5.985 5.985 0 0 0-.516-4.91 6.046 6.046 0 0 0-6.51-2.9A6.065 6.065 0 0 0 4.981 4.18a5.985 5.985 0 0 0-3.998 2.9 6.046 6.046 0 0 0 .743 7.097 5.98 5.98 0 0 0 .51 4.911 6.051 6.051 0 0 0 6.515 2.9A5.985 5.985 0 0 0 13.26 24a6.056 6.056 0 0 0 5.772-4.206 5.99 5.99 0 0 0 3.997-2.9 6.056 6.056 0 0 0-.747-7.073zM13.26 22.43a4.476 4.476 0 0 1-2.876-1.04l.141-.081 4.779-2.758a.795.795 0 0 0 .392-.681v-6.737l2.02 1.168a.071.071 0 0 1 .038.052v5.583a4.504 4.504 0 0 1-4.494 4.494zM3.6 18.304a4.47 4.47 0 0 1-.535-3.014l.142.085 4.783 2.759a.771.771 0 0 0 .78 0l5.843-3.369v2.332a.08.08 0 0 1-.033.062L9.74 19.95a4.5 4.5 0 0 1-6.14-1.646zM2.34 7.896a4.485 4.485 0 0 1 2.366-1.973V11.6a.766.766 0 0 0 .388.676l5.815 3.355-2.02 1.168a.076.076 0 0 1-.071 0l-4.83-2.786A4.504 4.504 0 0 1 2.34 7.896zm16.597 3.855l-5.833-3.387L15.119 7.2a.076.076 0 0 1 .071 0l4.83 2.791a4.494 4.494 0 0 1-.676 8.105v-5.678a.79.79 0 0 0-.407-.667zm2.01-3.023l-.141-.085-4.774-2.782a.776.776 0 0 0-.785 0L9.409 9.23V6.897a.066.066 0 0 1 .028-.061l4.83-2.787a4.5 4.5 0 0 1 6.68 4.66zm-12.64 4.135l-2.02-1.164a.08.08 0 0 1-.038-.057V6.075a4.5 4.5 0 0 1 7.375-3.453l-.142.08L8.704 5.46a.795.795 0 0 0-.393.681zm1.097-2.365l2.602-1.5 2.607 1.5v2.999l-2.597 1.5-2.607-1.5z" fill="#10A37F"/>
+                  </svg>
                 </div>
-                <h3 className="font-sans font-semibold text-navy dark:text-white text-xs">ChatGPT</h3>
+                <h3 className="font-sans font-semibold text-navy dark:text-white text-sm mb-1">ChatGPT</h3>
+                <p className="text-slate-500 text-xs">AI drafting &amp; brainstorming</p>
               </div>
 
               {/* Claude */}
-              <div className="text-center p-4 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
-                <div className="w-10 h-10 mx-auto mb-2 flex items-center justify-center">
-                  <Image src="/logos/claude.svg" alt="Claude" width={32} height={32} />
+              <div className="text-center p-6 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+                <div className="w-12 h-12 mx-auto mb-3 flex items-center justify-center">
+                  <svg viewBox="0 0 24 24" className="w-10 h-10" fill="none">
+                    <path d="M4.709 15.955l4.72-2.647.08-.23-.08-.128H8.08l-.2-.048-3.17 1.027v2.026zm8.838-5.263l.49.058 5.405-3.202v-.869l-.792-.121-5.2 3.98.097.154zm-6.064 7.156l3.498-2.584.008-.134-.095-.178h-.503l-.166-.014-2.836 1.063.095 1.847zm8.282-4.093l.14.2.347-.005 4.84-3.931v-1.37l-5.327 5.106zm-5.4 6.09l2.218-2.279-.03-.178-.18-.148-.357.014-.163-.044-1.592.823.104 1.813zm5.51-2.787l.18.207.3.03 3.737-4.503v-1.074l-4.216 5.34zm-2.543 4.103l.924-1.783-.082-.22-.252-.112-.27.06-.152-.03-.396.545.228 1.54zm3.148-1.236l.196.17.27.03 2.252-4.341-.07-.511-2.648 4.652zm.566 2.212l-.238-1.238-.157-.186-.294-.044-.17.11-.14-.01.202.891.237.281.298.148.262.048zm.532-2.66l2.648-4.652-.42-1.484-2.647 4.652.419 1.485zM7.565 8.478L12 5.607l.098-.199-.139-.188-.488.005-4.156 3.008.25.245zm6.267-3.06l.152.187.406.024 4.523-2.85-.25-.245-4.533 2.644-.298.24zm-8.397 4.95l4.838-3.132.056-.174-.151-.176-.502-.014-4.49 3.198.249.297zm8.72-3.371l.148.17.43.01 4.186-3.167-.249-.298-4.218 3.044-.297.24zM3.973 12.553l4.948-3.096.032-.147-.154-.188-.512-.028-4.563 3.134.249.325zm9.005-3.277l.148.16.46-.005 3.806-3.212-.25-.325-3.866 3.141-.298.241z" fill="#D4A27F"/>
+                  </svg>
                 </div>
-                <h3 className="font-sans font-semibold text-navy dark:text-white text-xs">Claude</h3>
+                <h3 className="font-sans font-semibold text-navy dark:text-white text-sm mb-1">Claude</h3>
+                <p className="text-slate-500 text-xs">Long-form writing &amp; analysis</p>
               </div>
 
               {/* Google Drive */}
-              <div className="text-center p-4 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
-                <div className="w-10 h-10 mx-auto mb-2 flex items-center justify-center">
-                  <Image src="/logos/google-drive.svg" alt="Google Drive" width={32} height={32} />
+              <div className="text-center p-6 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+                <div className="w-12 h-12 mx-auto mb-3 flex items-center justify-center">
+                  <svg viewBox="0 0 24 24" className="w-10 h-10" fill="none">
+                    <path d="M7.71 3.5L1.15 15l2.43 4.19L10.14 7.69 7.71 3.5z" fill="#0066DA"/>
+                    <path d="M22.85 15L16.29 3.5H9.14l6.57 11.5h7.14z" fill="#00AC47"/>
+                    <path d="M8.14 19.19L10.57 15H1.15l2.43 4.19h4.56z" fill="#EA4335"/>
+                    <path d="M15.71 15l2.43 4.19h4.57L20.29 15h-4.58z" fill="#00832D"/>
+                    <path d="M15.71 15H8.57l-2.43 4.19h12l-2.43-4.19z" fill="#2684FC"/>
+                    <path d="M10.14 7.69L7.71 11.88 10.14 15h5.57l2.43-3.12-2.43-4.19h-5.57z" fill="#FFBA00"/>
+                  </svg>
                 </div>
-                <h3 className="font-sans font-semibold text-navy dark:text-white text-xs">Drive</h3>
+                <h3 className="font-sans font-semibold text-navy dark:text-white text-sm mb-1">Google Drive</h3>
+                <p className="text-slate-500 text-xs">Organized, searchable files</p>
               </div>
 
               {/* Gmail */}
-              <div className="text-center p-4 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
-                <div className="w-10 h-10 mx-auto mb-2 flex items-center justify-center">
-                  <Image src="/logos/gmail.svg" alt="Gmail" width={32} height={32} />
+              <div className="text-center p-6 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+                <div className="w-12 h-12 mx-auto mb-3 flex items-center justify-center">
+                  <svg viewBox="0 0 24 24" className="w-10 h-10" fill="none">
+                    <path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z" fill="#EA4335"/>
+                  </svg>
                 </div>
-                <h3 className="font-sans font-semibold text-navy dark:text-white text-xs">Gmail</h3>
+                <h3 className="font-sans font-semibold text-navy dark:text-white text-sm mb-1">Gmail</h3>
+                <p className="text-slate-500 text-xs">Inbox zero, automated</p>
               </div>
 
               {/* Google Docs */}
-              <div className="text-center p-4 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
-                <div className="w-10 h-10 mx-auto mb-2 flex items-center justify-center">
-                  <Image src="/logos/google-docs.svg" alt="Google Docs" width={32} height={32} />
+              <div className="text-center p-6 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+                <div className="w-12 h-12 mx-auto mb-3 flex items-center justify-center">
+                  <svg viewBox="0 0 24 24" className="w-10 h-10" fill="none">
+                    <path d="M14.727 6.727H14V0H4.91c-.905 0-1.637.732-1.637 1.636v20.728c0 .904.732 1.636 1.636 1.636h14.182c.904 0 1.636-.732 1.636-1.636V6.727h-6zm-.545 10.455H7.09v-1.637h7.09v1.637zm2.727-3.273H7.091v-1.636h9.818v1.636zm0-3.273H7.091V9h9.818v1.636zm-2.182-3.272V.545l6.182 6.182h-5.455c-.402 0-.727-.326-.727-.727z" fill="#4285F4"/>
+                  </svg>
                 </div>
-                <h3 className="font-sans font-semibold text-navy dark:text-white text-xs">Docs</h3>
+                <h3 className="font-sans font-semibold text-navy dark:text-white text-sm mb-1">Google Docs</h3>
+                <p className="text-slate-500 text-xs">AI-assisted writing</p>
               </div>
 
               {/* Google Sheets */}
-              <div className="text-center p-4 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
-                <div className="w-10 h-10 mx-auto mb-2 flex items-center justify-center">
-                  <Image src="/logos/google-sheets.svg" alt="Google Sheets" width={32} height={32} />
+              <div className="text-center p-6 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+                <div className="w-12 h-12 mx-auto mb-3 flex items-center justify-center">
+                  <svg viewBox="0 0 24 24" className="w-10 h-10" fill="none">
+                    <path d="M14.727 6.727H14V0H4.91c-.905 0-1.637.732-1.637 1.636v20.728c0 .904.732 1.636 1.636 1.636h14.182c.904 0 1.636-.732 1.636-1.636V6.727h-6zM9.818 19.09H6.545v-2.18h3.273v2.18zm0-3.817H6.545v-2.182h3.273v2.182zm0-3.819H6.545V9.273h3.273v2.181zm7.091 7.636h-5.454v-2.18h5.454v2.18zm0-3.817h-5.454v-2.182h5.454v2.182zm0-3.819h-5.454V9.273h5.454v2.181zm-2.182-4.09V.545l6.182 6.182h-5.455c-.402 0-.727-.326-.727-.727z" fill="#0F9D58"/>
+                  </svg>
                 </div>
-                <h3 className="font-sans font-semibold text-navy dark:text-white text-xs">Sheets</h3>
+                <h3 className="font-sans font-semibold text-navy dark:text-white text-sm mb-1">Google Sheets</h3>
+                <p className="text-slate-500 text-xs">Automated reporting</p>
               </div>
-            </div>
-
-            {/* Scrolling Marquee - All Tools */}
-            <p className="text-center text-slate-400 dark:text-slate-600 text-xs uppercase tracking-widest mb-4">
-              Plus Many More AI Tools
-            </p>
-          </div>
-          
-          {/* Marquee Container - Full Width */}
-          <div className="relative">
-            <div 
-              className="flex whitespace-nowrap hover:[animation-play-state:paused]"
-              style={{
-                animation: 'marquee 40s linear infinite',
-              }}
-            >
-              {/* First set of logos */}
-              {[
-                { src: '/logos/gemini.svg', name: 'Gemini' },
-                { src: '/logos/perplexity.svg', name: 'Perplexity' },
-                { src: '/logos/notion.svg', name: 'Notion', invert: true },
-                { src: '/logos/copilot.svg', name: 'Copilot' },
-                { src: '/logos/midjourney.svg', name: 'Midjourney', invert: true },
-                { src: '/logos/cursor.svg', name: 'Cursor', invert: true },
-                { src: '/logos/v0.svg', name: 'v0', invert: true },
-                { src: '/logos/vercel.svg', name: 'Vercel', invert: true },
-                { src: '/logos/supabase.svg', name: 'Supabase' },
-                { src: '/logos/lovable.svg', name: 'Lovable' },
-                { src: '/logos/windsurf.svg', name: 'Windsurf', invert: true },
-                { src: '/logos/grok.svg', name: 'Grok', invert: true },
-                { src: '/logos/elevenlabs.svg', name: 'ElevenLabs', invert: true },
-                { src: '/logos/meta.svg', name: 'Meta' },
-                { src: '/logos/deepmind.svg', name: 'DeepMind' },
-                { src: '/logos/aistudio.svg', name: 'AI Studio', invert: true },
-                { src: '/logos/asana.svg', name: 'Asana' },
-              ].map((tool, i) => (
-                <div key={i} className="flex items-center mx-8">
-                  <Image 
-                    src={tool.src} 
-                    alt={tool.name} 
-                    width={28} 
-                    height={28} 
-                    className={tool.invert ? 'dark:invert opacity-60 hover:opacity-100 transition-opacity' : 'opacity-60 hover:opacity-100 transition-opacity'} 
-                  />
-                  <span className="ml-2 text-slate-400 text-sm font-medium">{tool.name}</span>
-                </div>
-              ))}
-              {/* Duplicate for seamless loop */}
-              {[
-                { src: '/logos/gemini.svg', name: 'Gemini' },
-                { src: '/logos/perplexity.svg', name: 'Perplexity' },
-                { src: '/logos/notion.svg', name: 'Notion', invert: true },
-                { src: '/logos/copilot.svg', name: 'Copilot' },
-                { src: '/logos/midjourney.svg', name: 'Midjourney', invert: true },
-                { src: '/logos/cursor.svg', name: 'Cursor', invert: true },
-                { src: '/logos/v0.svg', name: 'v0', invert: true },
-                { src: '/logos/vercel.svg', name: 'Vercel', invert: true },
-                { src: '/logos/supabase.svg', name: 'Supabase' },
-                { src: '/logos/lovable.svg', name: 'Lovable' },
-                { src: '/logos/windsurf.svg', name: 'Windsurf', invert: true },
-                { src: '/logos/grok.svg', name: 'Grok', invert: true },
-                { src: '/logos/elevenlabs.svg', name: 'ElevenLabs', invert: true },
-                { src: '/logos/meta.svg', name: 'Meta' },
-                { src: '/logos/deepmind.svg', name: 'DeepMind' },
-                { src: '/logos/aistudio.svg', name: 'AI Studio', invert: true },
-                { src: '/logos/asana.svg', name: 'Asana' },
-              ].map((tool, i) => (
-                <div key={`dup-${i}`} className="flex items-center mx-8">
-                  <Image 
-                    src={tool.src} 
-                    alt={tool.name} 
-                    width={28} 
-                    height={28} 
-                    className={tool.invert ? 'dark:invert opacity-60 hover:opacity-100 transition-opacity' : 'opacity-60 hover:opacity-100 transition-opacity'} 
-                  />
-                  <span className="ml-2 text-slate-400 text-sm font-medium">{tool.name}</span>
-                </div>
-              ))}
             </div>
           </div>
         </section>
