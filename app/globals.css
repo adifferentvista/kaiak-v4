@@ -90,7 +90,8 @@ code, pre {
 /* Prose styles for blog content - Light mode */
 .prose-kaiak {
   color: #334155;
-  line-height: 1.75;
+  font-size: 1.125rem;  /* 18px */
+  line-height: 1.8;
 }
 
 .prose-kaiak h2 {
