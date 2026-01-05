@@ -179,7 +179,7 @@ const recentPosts = useMemo(() => {
   return (
     <div className="min-h-screen font-sans bg-cream dark:bg-navy transition-colors">
       {/* Navigation */}
-      <nav className="border-b border-slate-200/50 dark:border-slate-700/50 bg-cream/95 dark:bg-navy/95 backdrop-blur-sm">
+      <nav className="sticky top-0 z-50 border-b border-slate-200/50 dark:border-slate-700/50 bg-cream/95 dark:bg-navy/95 backdrop-blur-sm">
         <div className="max-w-5xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <Link href="/" aria-label="KAIAK Home">
