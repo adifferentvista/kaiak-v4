@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Navbar from './components/Navbar';
 import ExitIntentPopup from './components/ExitIntentPopup';
+import NewsletterForm from './components/NewsletterForm';
 import { getFeaturedPosts, pillarLabels } from '@/lib/posts';
 import { 
   ArrowRight, 
@@ -610,25 +611,22 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* ========== 10. LEAD MAGNET / AI TOOLKIT ========== */}
-        <section id="toolkit" className="py-20 md:py-24 bg-cream dark:bg-navy">
+        {/* ========== 10. LEAD MAGNET / NEWSLETTER ========== */}
+        <section id="newsletter" className="py-20 md:py-24 bg-cream dark:bg-navy">
           <div className="max-w-4xl mx-auto px-6">
             <div className="bg-white dark:bg-slate-800 rounded-2xl p-8 md:p-12 border border-slate-200 dark:border-slate-700 grid md:grid-cols-2 gap-12 items-center">
               <div>
-                <p className="text-orange-600 dark:text-amber-400 text-sm font-semibold uppercase tracking-wide mb-2">
-                  Free Download
-                </p>
                 <h2 className="font-serif text-2xl md:text-3xl text-navy dark:text-white mb-4">
-                  The School Leader&apos;s AI Toolkit
+                  The No-Admin Newsletter
                 </h2>
                 <p className="text-slate-600 dark:text-slate-400 mb-6">
-                  NotebookLM vs. Claude vs. ChatGPT — which tool for which task? Get my decision matrix and 15+ copy-paste prompts.
+                  Stay ahead without staying up late. Practical AI tips, Google Workspace shortcuts, and automation strategies for school leaders. Weekly.
                 </p>
                 <ul className="space-y-2 text-sm text-slate-600 dark:text-slate-400">
                   {[
-                    "Decision Matrix: Right tool for each task",
-                    "15+ copy-paste prompts for school leaders",
-                    "The Gmail system for Inbox Zero"
+                    "Time-saving workflows you can implement today",
+                    "AI prompts designed for school contexts",
+                    "Templates and resources — free"
                   ].map((item, i) => (
                     <li key={i} className="flex gap-2 items-center">
                       <Check className="w-4 h-4 text-orange-600 dark:text-amber-400" />
@@ -637,16 +635,8 @@ export default function HomePage() {
                   ))}
                 </ul>
               </div>
-              <div className="text-center">
-                <Link
-                  href="/ai-toolkit"
-                  className="inline-block w-full py-4 px-8 rounded-lg font-semibold text-white bg-orange-600 hover:bg-orange-700 transition-colors mb-4"
-                >
-                  Get the Free Toolkit →
-                </Link>
-                <p className="text-slate-500 dark:text-slate-400 text-sm">
-                  Instant access. No spam.
-                </p>
+              <div>
+                <NewsletterForm />
               </div>
             </div>
           </div>
@@ -724,65 +714,26 @@ export default function HomePage() {
       {/* ========== FOOTER ========== */}
       <footer className="py-12 bg-navy-dark text-slate-400">
         <div className="max-w-5xl mx-auto px-6">
-          <div className="grid md:grid-cols-3 gap-12 mb-12">
-            {/* Brand */}
+          <div className="flex flex-col md:flex-row justify-between items-center gap-6">
             <div>
-              <p className="font-serif text-xl text-white mb-2">KAIAK</p>
+              <p className="font-serif text-xl text-white mb-1">KAIAK</p>
               <p className="text-sm">AI &amp; systems for school leaders</p>
             </div>
-
-            {/* Links */}
-            <div>
-              <p className="text-white font-medium mb-4">Quick Links</p>
-              <div className="flex flex-col gap-2 text-sm">
-                <Link href="/blog" className="hover:text-white transition-colors">Blog</Link>
-                <Link href="/work-with-me" className="hover:text-white transition-colors">Services</Link>
-                <Link href="/#about" className="hover:text-white transition-colors">About</Link>
-                <Link href="/ai-toolkit" className="hover:text-white transition-colors">Free AI Toolkit</Link>
-                <a 
-                  href="https://linkedin.com/in/benedictrinne" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="hover:text-white transition-colors"
-                >
-                  LinkedIn
-                </a>
-              </div>
-            </div>
-
-            {/* Newsletter */}
-            <div>
-              <p className="text-white font-medium mb-4">Stay in the Loop</p>
-              <p className="text-sm mb-4">Weekly AI tips for school leaders. No spam.</p>
-              <form 
-                action="https://app.convertkit.com/forms/8895661/subscriptions" 
-                method="post"
-                className="space-y-3"
+            <div className="flex gap-6 text-sm">
+              <Link href="/blog" className="hover:text-white transition-colors">Blog</Link>
+              <Link href="/work-with-me" className="hover:text-white transition-colors">Services</Link>
+              <Link href="/#about" className="hover:text-white transition-colors">About</Link>
+              <a 
+                href="https://linkedin.com/in/benedictrinne" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="hover:text-white transition-colors"
               >
-                <input
-                  type="text"
-                  name="fields[first_name]"
-                  placeholder="First name"
-                  className="w-full px-3 py-2 rounded bg-slate-800 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-orange-500"
-                />
-                <input
-                  type="email"
-                  name="email_address"
-                  placeholder="Email address"
-                  required
-                  className="w-full px-3 py-2 rounded bg-slate-800 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-orange-500"
-                />
-                <button
-                  type="submit"
-                  className="w-full py-2 rounded bg-orange-600 hover:bg-orange-700 text-white font-medium text-sm transition-colors"
-                >
-                  Subscribe
-                </button>
-              </form>
+                LinkedIn
+              </a>
             </div>
           </div>
-
-          <div className="pt-8 text-sm text-center border-t border-slate-800">
+          <div className="mt-8 pt-8 text-sm text-center border-t border-slate-800">
             <p>&copy; {currentYear} KAIAK. Less admin. More impact.</p>
           </div>
         </div>
