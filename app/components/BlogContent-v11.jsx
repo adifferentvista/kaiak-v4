@@ -11,7 +11,6 @@ const pillarLabels = {
   'systems-thinking': 'Systems Thinking',
   'practical-ai': 'Practical AI',
   'no-admin-life': 'No-Admin Life',
-  'education': 'AI in Education',
 };
 
 const pillarColors = {
@@ -19,7 +18,6 @@ const pillarColors = {
   'systems-thinking': { bg: '#D1FAE5', text: '#065F46' },
   'practical-ai': { bg: '#DBEAFE', text: '#1E40AF' },
   'no-admin-life': { bg: '#FEF3C7', text: '#92400E' },
-  'education': { bg: '#EDE9FE', text: '#7C3AED' },
 };
 
 // Search Icon
