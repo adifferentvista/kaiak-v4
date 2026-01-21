@@ -1,0 +1,122 @@
+---
+title: "How I Use Claude to Draft 20 Parent Emails in 15 Minutes"
+description: "You've got a stack of individual parent updates to send, each needing a slightly different tone. Here's the system that gets me out of my inbox before dinner."
+date: "2025-11-01"
+pillar: "practical-ai"
+contentType: "evergreen"
+readTime: "7 min read"
+featured: true
+interlinks:
+  - "template-library-school-leaders"
+  - "inbox-fifteen"
+---
+
+{/* 
+EXPANDED OUTLINE - 300-500 words per section when fully written
+Target final length: 1,500-2,000 words
+*/}
+
+## The 9pm Inbox Problem
+
+**Open with the scene:** It's Tuesday night. You've got 23 tabs open, a cup of cold coffee, and a list of parent emails that each need a slightly different response. One parent is worried about their kid's math progress. Another wants to know why the field trip permission slip deadline changed. A third is asking - politely but pointedly - why the homework policy seems inconsistent.
+
+**The exhaustion isn't the writing.** It's the context-switching. Each email requires you to shift mental gears, remember the specific situation, calibrate the right tone. By email #8, you're copying and pasting sentences from email #3 and hoping no one notices.
+
+**The real cost:** These aren't just emails. They're relationship maintenance. A thoughtless response creates a phone call. A good one builds trust. But you can't write 20 thoughtful responses when you're running on fumes.
+
+---
+
+## The "Briefing Doc" Approach
+
+**The insight that changed everything:** AI isn't useful when you hand it a single email and say "respond to this." It's useful when you give it *context* and let it handle the *variation*.
+
+**The workflow:**
+
+1. **Create a single briefing document** (I do this weekly)
+   - Current school announcements
+   - Recent policy changes and the reasoning behind them
+   - Any sensitive situations I'm navigating
+   - My general tone preferences ("warm but direct, no corporate speak")
+
+2. **Batch the emails** - Copy all parent queries into a single document
+   
+3. **Single prompt, multiple outputs** - Ask Claude to draft responses to each, referencing the briefing
+
+<Callout type="tip" title="The Key Move">
+You're not asking AI to understand 20 different contexts. You're giving it ONE context and asking it to apply it 20 times. That's the difference between "meh" AI output and actually useful drafts.
+</Callout>
+
+---
+
+## The Actual Prompt I Use
+
+**Show the exact prompt structure:**
+
+```
+I'm the Head of School at [school name]. Here's my current context:
+[paste briefing doc]
+
+Below are parent emails I need to respond to. For each:
+- Draft a response that's warm but direct
+- Reference specific context from my briefing where relevant
+- Keep responses under 150 words unless the situation requires more
+- Flag any emails that need my personal attention rather than a standard response
+
+[paste batched emails]
+```
+
+**Why each element matters:**
+- The role context shapes tone
+- The briefing prevents hallucination
+- The word limit keeps things scannable
+- The "flag for attention" catches edge cases
+
+---
+
+## What I Still Do Myself
+
+**The human layer:**
+
+- **Read every draft** - AI gives me a starting point, not a finished product
+- **Adjust for relationship history** - The system doesn't know I've had three conversations with this parent already
+- **Handle anything emotionally charged** - Complaints, concerns about specific teachers, sensitive family situations
+
+<BeforeAfter 
+  before="2+ hours drafting individual responses, mentally exhausted by the end"
+  after="15-20 minutes reviewing and tweaking AI drafts, energy left for the responses that actually need me"
+/>
+
+**The honest truth:** About 70% of responses go out with minor tweaks. 20% need significant revision. 10% I write from scratch because the situation is too nuanced.
+
+---
+
+## The Template Library Connection
+
+**This is just one workflow.** The real leverage comes from building a library of these context documents:
+
+- Parent communication briefing
+- Board report context
+- Staff feedback templates
+- Student concern response frameworks
+
+<RelatedPost 
+  slug="template-library-school-leaders" 
+  title="The Template Library Every School Leader Needs"
+  context="I break down the full system in this post →"
+/>
+
+---
+
+## Try It This Week
+
+**Start small:**
+1. Write a one-paragraph "current context" document
+2. Batch your next 5 parent emails
+3. Run them through Claude with the prompt structure above
+4. Track how long it takes vs. your usual approach
+
+<TimeSaved hours={3} task="parent email responses" frequency="per week" />
+
+The goal isn't to automate relationships. It's to automate the *scaffolding* so you can show up better for the conversations that matter.
+
+<CallToAction text="Want help building your own template library?" link="/booking" />
