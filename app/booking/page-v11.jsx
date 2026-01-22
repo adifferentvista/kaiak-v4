@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import Navbar from '../components/Navbar';
+import { Logo } from '../components/Icons';
 
 export const metadata = {
   title: 'Book a Strategy Call | KAIAK',
@@ -9,11 +9,14 @@ export const metadata = {
 export default function BookingPage() {
   return (
     <div className="min-h-screen bg-cream dark:bg-navy">
-      {/* Shared Navbar */}
-      <Navbar />
-
-      {/* Spacer for fixed navbar */}
-      <div className="h-[73px]" />
+      {/* Simple Nav with Logo */}
+      <nav className="border-b border-slate-200/50 dark:border-slate-700/50 bg-cream dark:bg-navy">
+        <div className="max-w-4xl mx-auto px-6 py-4">
+          <Link href="/" aria-label="KAIAK Home">
+            <Logo />
+          </Link>
+        </div>
+      </nav>
 
       <main className="max-w-4xl mx-auto px-6 py-12 md:py-20">
         {/* Header */}
@@ -53,7 +56,7 @@ export default function BookingPage() {
           <iframe
             src="https://calendly.com/ben-kaiak/30min?hide_gdpr_banner=1&background_color=ffffff&text_color=0f172a&primary_color=ea580c"
             width="100%"
-            height="750"
+            height="700"
             frameBorder="0"
             title="Schedule a strategy call with Benedict Rinne"
             className="dark:hidden"
@@ -61,7 +64,7 @@ export default function BookingPage() {
           <iframe
             src="https://calendly.com/ben-kaiak/30min?hide_gdpr_banner=1&background_color=1e293b&text_color=f8fafc&primary_color=ea580c"
             width="100%"
-            height="750"
+            height="700"
             frameBorder="0"
             title="Schedule a strategy call with Benedict Rinne"
             className="hidden dark:block"
