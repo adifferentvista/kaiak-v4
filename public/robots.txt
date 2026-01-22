@@ -1,9 +1,10 @@
-# https://www.robotstxt.org/robotstxt.html
+# *
 User-agent: *
 Allow: /
-
-# Sitemap
-Sitemap: https://kaiak.io/sitemap.xml
-
-# Disallow admin or private paths if any
 Disallow: /api/
+
+# Host
+Host: https://kaiak.io
+
+# Sitemaps
+Sitemap: https://kaiak.io/sitemap.xml
