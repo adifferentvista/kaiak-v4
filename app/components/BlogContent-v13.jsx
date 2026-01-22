@@ -3,7 +3,8 @@
 import { useState, useMemo } from 'react';
 import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
-import Navbar from './Navbar';
+import { Logo } from './Icons';
+import ThemeToggle from './ThemeToggle';
 
 const pillarLabels = {
   'leadership': 'Leadership',
@@ -179,11 +180,22 @@ const recentPosts = useMemo(() => {
 
   return (
     <div className="min-h-screen font-sans bg-cream dark:bg-navy transition-colors">
-      {/* Shared Navbar */}
-      <Navbar />
-
-      {/* Spacer for fixed navbar */}
-      <div className="h-[73px]" />
+      {/* Navigation */}
+      <nav className="sticky top-0 z-50 border-b border-slate-200/50 dark:border-slate-700/50 bg-cream/95 dark:bg-navy/95 backdrop-blur-sm">
+        <div className="max-w-5xl mx-auto px-6 py-4">
+          <div className="flex items-center justify-between">
+            <Link href="/" aria-label="KAIAK Home">
+              <Logo />
+            </Link> 
+            <div className="flex items-center gap-4">
+              <Link href="/" className="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white text-sm font-medium">Home</Link>
+              <Link href="/blog" className="text-slate-900 dark:text-white text-sm font-medium">Blog</Link>
+              <Link href="/work-with-me" className="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white text-sm font-medium">Services</Link>
+              <ThemeToggle />
+            </div>
+          </div>
+        </div>
+      </nav>
 
       <main className="max-w-4xl mx-auto px-6 py-16">
         {/* Header - UPDATED TAGLINE */}
@@ -197,7 +209,7 @@ const recentPosts = useMemo(() => {
         </header>
 
         {/* Search and Filter Bar */}
-        <div className="sticky top-[73px] z-40 bg-cream/95 dark:bg-navy/95 backdrop-blur-sm py-4 -mx-6 px-6 mb-8 border-b border-slate-200/50 dark:border-slate-700/50">
+        <div className="sticky top-0 z-40 bg-cream/95 dark:bg-navy/95 backdrop-blur-sm py-4 -mx-6 px-6 mb-8 border-b border-slate-200/50 dark:border-slate-700/50">
           {/* Search Input */}
           <div className="relative mb-4">
             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">

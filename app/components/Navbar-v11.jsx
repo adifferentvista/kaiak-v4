@@ -1,4 +1,5 @@
 'use client';
+
 import { useState } from 'react';
 import Link from 'next/link';
 import { Icons, Logo } from './Icons';
@@ -24,7 +25,6 @@ export default function Navbar() {
           <div className="hidden md:flex items-center gap-8">
             <Link href="/blog" className={navLinkClass}>Blog</Link>
             <Link href="/work-with-me" className={navLinkClass}>Services</Link>
-            <Link href="/ai-toolkit" className={navLinkClass}>Free Toolkit</Link>
             <Link href="/#about" className={navLinkClass}>About</Link>
             <ThemeToggle />
           </div>
@@ -73,14 +73,6 @@ export default function Navbar() {
               role="menuitem"
             >
               Services
-            </Link>
-            <Link
-              href="/ai-toolkit"
-              className="block text-slate-600 dark:text-slate-300 font-medium"
-              onClick={closeMobileMenu}
-              role="menuitem"
-            >
-              Free Toolkit
             </Link>
             <Link
               href="/#about"

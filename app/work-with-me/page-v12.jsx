@@ -1,7 +1,7 @@
 import Link from 'next/link';
-import Navbar from '../components/Navbar';
-import { Icons } from '../components/Icons';
-import { Users, Video, MapPin } from 'lucide-react';
+import { Logo, Icons } from '../components/Icons';
+import ThemeToggle from '../components/ThemeToggle';
+import { Quote, Users, Video, MapPin } from 'lucide-react';
 
 export const metadata = {
   title: 'Work With Me | KAIAK',
@@ -11,11 +11,28 @@ export const metadata = {
 export default function WorkWithMePage() {
   return (
     <div className="min-h-screen bg-cream dark:bg-navy">
-      {/* Shared Navbar */}
-      <Navbar />
-
-      {/* Spacer for fixed navbar */}
-      <div className="h-[73px]" />
+      {/* Navigation */}
+      <nav className="border-b border-slate-200/50 dark:border-slate-700/50 bg-cream/95 dark:bg-navy/95 backdrop-blur-sm">
+        <div className="max-w-6xl mx-auto px-6 py-4">
+          <div className="flex items-center justify-between">
+            <Link href="/" aria-label="KAIAK Home">
+              <Logo />
+            </Link>
+            <div className="flex items-center gap-6">
+              <Link href="/blog" className="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white text-sm font-medium">Blog</Link>
+              <Link href="/ai-toolkit" className="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white text-sm font-medium">Free Toolkit</Link>
+              <Link href="/#about" className="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white text-sm font-medium">About</Link>
+              <ThemeToggle />
+              <Link
+                href="/booking"
+                className="px-5 py-2.5 rounded-lg text-sm font-medium text-white bg-navy-mid dark:bg-amber-500 dark:text-navy hover:bg-navy dark:hover:bg-amber-400 transition-colors"
+              >
+                Book a Call
+              </Link>
+            </div>
+          </div>
+        </div>
+      </nav>
 
       <main>
         {/* Header */}
@@ -66,7 +83,7 @@ export default function WorkWithMePage() {
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               
               {/* Service 1: Strategy Session */}
-              <div className="rounded-2xl p-6 flex flex-col bg-navy-light dark:bg-slate-800 border border-navy-border dark:border-slate-700 transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:shadow-amber-500/10 hover:border-amber-500/50 cursor-pointer">
+              <div className="rounded-2xl p-6 flex flex-col bg-navy-light dark:bg-slate-800 border border-navy-border dark:border-slate-700">
                 <div className="text-3xl mb-4">🎯</div>
                 <h3 className="font-serif text-xl mb-1">Strategy Session</h3>
                 <p className="text-amber-400 text-sm font-medium mb-2">Get clarity fast.</p>
@@ -97,7 +114,7 @@ export default function WorkWithMePage() {
               </div>
 
               {/* Service 2: Quick Win Sprint */}
-              <div className="rounded-2xl p-6 flex flex-col bg-navy-light dark:bg-slate-800 border border-navy-border dark:border-slate-700 transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:shadow-amber-500/10 hover:border-amber-500/50 cursor-pointer">
+              <div className="rounded-2xl p-6 flex flex-col bg-navy-light dark:bg-slate-800 border border-navy-border dark:border-slate-700">
                 <div className="text-3xl mb-4">⚡</div>
                 <h3 className="font-serif text-xl mb-1">Quick Win Sprint</h3>
                 <p className="text-amber-400 text-sm font-medium mb-2">Fast results, focused scope.</p>
@@ -128,7 +145,7 @@ export default function WorkWithMePage() {
               </div>
 
               {/* Service 3: AI Systems Implementation - FEATURED */}
-              <div className="rounded-2xl p-6 flex flex-col bg-navy-light dark:bg-slate-800 border-2 border-amber-500 relative transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:shadow-amber-500/20 cursor-pointer">
+              <div className="rounded-2xl p-6 flex flex-col bg-navy-light dark:bg-slate-800 border-2 border-amber-500 relative">
                 <div className="absolute -top-3 left-4 bg-amber-500 text-navy text-xs font-bold px-3 py-1 rounded-full">
                   MOST POPULAR
                 </div>
@@ -163,7 +180,7 @@ export default function WorkWithMePage() {
               </div>
 
               {/* Service 4: School Ops Accelerator */}
-              <div className="rounded-2xl p-6 flex flex-col bg-navy-light dark:bg-slate-800 border border-navy-border dark:border-slate-700 transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:shadow-amber-500/10 hover:border-amber-500/50 cursor-pointer">
+              <div className="rounded-2xl p-6 flex flex-col bg-navy-light dark:bg-slate-800 border border-navy-border dark:border-slate-700">
                 <div className="text-3xl mb-4">🏫</div>
                 <h3 className="font-serif text-xl mb-1">School Ops Accelerator</h3>
                 <p className="text-amber-400 text-sm font-medium mb-2">Get your foundations built.</p>
@@ -189,8 +206,8 @@ export default function WorkWithMePage() {
                 </ul>
 
                 <div className="pt-4 border-t border-navy-border dark:border-slate-700">
-                  <div className="text-2xl font-bold text-white mb-1">From $9,500</div>
-                  <p className="text-xs text-slate-400">4-8 weeks • Scope varies by context</p>
+                  <div className="text-2xl font-bold text-white mb-1">$9,500</div>
+                  <p className="text-xs text-slate-400">4-8 weeks</p>
                 </div>
               </div>
             </div>
@@ -210,7 +227,7 @@ export default function WorkWithMePage() {
           </div>
         </section>
 
-        {/* Staff Training Section */}
+        {/* Staff Training Section - NEW */}
         <section className="py-20 md:py-28 bg-white dark:bg-navy-light">
           <div className="max-w-6xl mx-auto px-6">
             <div className="text-center mb-16">
@@ -224,7 +241,7 @@ export default function WorkWithMePage() {
             <div className="grid md:grid-cols-3 gap-8">
               
               {/* Keynote / Training Session */}
-              <div className="rounded-2xl p-8 bg-cream dark:bg-slate-800 border border-slate-200 dark:border-slate-700 transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:shadow-orange-500/10 hover:border-orange-400 dark:hover:border-orange-500 cursor-pointer">
+              <div className="rounded-2xl p-8 bg-cream dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
                 <div className="w-12 h-12 bg-orange-100 dark:bg-orange-900/30 rounded-lg flex items-center justify-center mb-6">
                   <Users className="w-6 h-6 text-orange-600 dark:text-orange-400" />
                 </div>
@@ -264,7 +281,7 @@ export default function WorkWithMePage() {
               </div>
 
               {/* Half-Day Workshop */}
-              <div className="rounded-2xl p-8 bg-cream dark:bg-slate-800 border-2 border-orange-300 dark:border-orange-600 relative transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:shadow-orange-500/20 cursor-pointer">
+              <div className="rounded-2xl p-8 bg-cream dark:bg-slate-800 border-2 border-orange-300 dark:border-orange-600 relative">
                 <div className="absolute -top-3 left-4 bg-orange-600 text-white text-xs font-bold px-3 py-1 rounded-full">
                   BEST FOR PD DAYS
                 </div>
@@ -308,7 +325,7 @@ export default function WorkWithMePage() {
               </div>
 
               {/* Staff Training License */}
-              <div className="rounded-2xl p-8 bg-cream dark:bg-slate-800 border border-slate-200 dark:border-slate-700 transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:shadow-orange-500/10 hover:border-orange-400 dark:hover:border-orange-500 cursor-pointer">
+              <div className="rounded-2xl p-8 bg-cream dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
                 <div className="w-12 h-12 bg-orange-100 dark:bg-orange-900/30 rounded-lg flex items-center justify-center mb-6">
                   <Users className="w-6 h-6 text-orange-600 dark:text-orange-400" />
                 </div>
@@ -357,7 +374,7 @@ export default function WorkWithMePage() {
           </div>
         </section>
 
-        {/* TESTIMONIAL SECTION - COMMENTED OUT UNTIL REAL TESTIMONIALS AVAILABLE
+        {/* Testimonial */}
         <section className="py-16 bg-cream dark:bg-navy border-t border-slate-200/50 dark:border-slate-700/50">
           <div className="max-w-3xl mx-auto px-6">
             <div className="bg-white dark:bg-slate-800 p-8 md:p-12 rounded-2xl border border-slate-200 dark:border-slate-700 text-center">
@@ -372,10 +389,9 @@ export default function WorkWithMePage() {
             </div>
           </div>
         </section>
-        */}
 
         {/* Process */}
-        <section className="py-20 md:py-28 bg-cream dark:bg-navy">
+        <section className="py-20 md:py-28 bg-white dark:bg-navy-light">
           <div className="max-w-4xl mx-auto px-6">
             <div className="text-center mb-16">
               <p className="font-medium text-sm tracking-wide uppercase mb-4 text-orange-600 dark:text-orange-400">The Process</p>
@@ -406,7 +422,7 @@ export default function WorkWithMePage() {
                   description: "You get complete documentation so you can maintain everything yourself. Plus ongoing support for questions."
                 }
               ].map((item) => (
-                <div key={item.step} className="flex gap-6 p-6 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 transition-all duration-300 hover:shadow-lg hover:border-orange-300 dark:hover:border-orange-600">
+                <div key={item.step} className="flex gap-6 p-6 rounded-xl bg-cream dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
                   <div className="w-12 h-12 rounded-full bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center flex-shrink-0">
                     <span className="text-xl font-serif text-orange-600 dark:text-orange-400">{item.step}</span>
                   </div>
@@ -421,7 +437,7 @@ export default function WorkWithMePage() {
         </section>
 
         {/* Online Course Teaser */}
-        <section className="py-16 bg-white dark:bg-navy-light border-t border-slate-200/50 dark:border-slate-700/50">
+        <section className="py-16 bg-cream dark:bg-navy border-t border-slate-200/50 dark:border-slate-700/50">
           <div className="max-w-4xl mx-auto px-6">
             <div className="bg-gradient-to-br from-orange-50 to-amber-50 dark:from-slate-800 dark:to-slate-900 p-8 md:p-12 rounded-2xl border border-orange-200 dark:border-slate-700">
               <div className="grid md:grid-cols-2 gap-8 items-center">
@@ -465,7 +481,7 @@ export default function WorkWithMePage() {
         </section>
 
         {/* Not Ready Yet */}
-        <section className="py-16 bg-cream dark:bg-navy border-t border-slate-200/50 dark:border-slate-700/50">
+        <section className="py-16 bg-white dark:bg-navy-light border-t border-slate-200/50 dark:border-slate-700/50">
           <div className="max-w-3xl mx-auto px-6 text-center">
             <h2 className="font-serif text-xl mb-4 text-navy dark:text-white">
               Not Ready for Consulting?
@@ -482,7 +498,7 @@ export default function WorkWithMePage() {
               </Link>
               <Link
                 href="/blog"
-                className="px-6 py-3 rounded-lg font-medium border border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-300 hover:bg-white dark:hover:bg-slate-800 transition-colors"
+                className="px-6 py-3 rounded-lg font-medium border border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-300 hover:bg-cream dark:hover:bg-slate-800 transition-colors"
               >
                 Read the Blog
               </Link>
@@ -491,7 +507,7 @@ export default function WorkWithMePage() {
         </section>
 
         {/* FAQ */}
-        <section className="py-20 md:py-28 bg-white dark:bg-navy-light border-t border-slate-200/50 dark:border-slate-700/50">
+        <section className="py-20 md:py-28 bg-cream dark:bg-navy border-t border-slate-200/50 dark:border-slate-700/50">
           <div className="max-w-3xl mx-auto px-6">
             <h2 className="font-serif text-2xl md:text-3xl mb-12 text-center text-navy dark:text-white">
               Frequently Asked Questions

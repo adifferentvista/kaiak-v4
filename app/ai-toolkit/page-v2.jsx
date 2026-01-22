@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import Navbar from '../components/Navbar';
+import { Logo } from '../components/Icons';
 
 export const metadata = {
   title: "Free AI Toolkit for School Leaders | NotebookLM, Claude, ChatGPT Guide | KAIAK",
@@ -14,11 +14,15 @@ export const metadata = {
 export default function AIToolkitLandingPage() {
   return (
     <div className="min-h-screen bg-cream dark:bg-navy">
-      {/* Shared Navbar */}
-      <Navbar />
-
-      {/* Spacer for fixed navbar */}
-      <div className="h-[73px]" />
+      {/* Minimal Header - No Navigation (Focused on Conversion) */}
+      <header className="py-6 border-b border-slate-200/50 dark:border-slate-700/50">
+        <div className="max-w-5xl mx-auto px-6 flex items-center justify-between">
+          <Link href="/" aria-label="KAIAK Home">
+            <Logo />
+          </Link>
+          <span className="text-slate-500 dark:text-slate-400 text-sm hidden sm:block">Systems for School Leaders</span>
+        </div>
+      </header>
 
       <main className="py-12 md:py-16">
         <div className="max-w-5xl mx-auto px-6">
@@ -146,7 +150,7 @@ export default function AIToolkitLandingPage() {
             </div>
 
             {/* Right Column: The Form (2 cols) */}
-            <div className="md:col-span-2 md:sticky md:top-24">
+            <div className="md:col-span-2 md:sticky md:top-8">
               <div className="p-6 md:p-8 rounded-2xl bg-white dark:bg-slate-800 border-2 border-orange-500 shadow-xl">
                 <h2 className="font-serif text-xl text-navy dark:text-white mb-2 text-center">
                   Get the Toolkit for Free
