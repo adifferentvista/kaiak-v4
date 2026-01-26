@@ -61,7 +61,7 @@ function ArticleJsonLd({ post, slug }) {
       url: 'https://kaiak.io',
     },
     datePublished: new Date(post.date).toISOString(),
-    dateModified: new Date(post.date).toISOString(),
+    dateModified: new Date(post.updated || post.date).toISOString(),
     mainEntityOfPage: {
       '@type': 'WebPage',
       '@id': `https://kaiak.io/blog/${slug}`,
@@ -283,6 +283,15 @@ export default function BlogPostPage({ params }) {
                       month: 'long',
                       day: 'numeric',
                     })}
+                    {post.updated && (
+                      <span className="ml-1">
+                        · Updated {new Date(post.updated).toLocaleDateString('en-US', {
+                          year: 'numeric',
+                          month: 'long',
+                          day: 'numeric',
+                        })}
+                      </span>
+                    )}
                   </span>
                 </div>
 
