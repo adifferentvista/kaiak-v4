@@ -1,15 +1,15 @@
 ---
 title: "What to Automate vs. What to Protect: A Leader's Guide"
-description: "AI can write your emails, but it can't save your relationships. Here is the 'Stakes vs. Complexity' framework for deciding when to use a bot."
+description: "AI can write your emails, but it can't save your relationships. The 'Stakes vs. Verifiability' framework for deciding when to use a bot."
 date: "2025-11-03"
+updated: "2026-01-26"
 pillar: "leadership"
 contentType: "evergreen"
-readTime: "8 min read"
-featured: false
+readTime: "9 min read"
+featured: true
 interlinks:
   - "ai-strategy-leadership"
   - "ai-for-difficult-conversations"
-  - "ten-hours-back"
   - "template-library-school-leaders"
 ---
 
@@ -19,149 +19,186 @@ When I demonstrate how I automate board reports or parent emails, leaders often 
 
 *"But isn't that... lazy? Am I losing the human touch?"*
 
-It's a legitimate worry.
+It's a legitimate worry. Automate everything and you become a bureaucrat managed by algorithms. Automate nothing and you burn out. I burned out once. It took months to recover. Part of what caused it was exactly this trap—believing every email, every document, every decision required my personal attention.
 
-Automate everything and you become a bureaucrat managed by algorithms. Automate nothing and you burn out. I burned out once. It took months to recover. Part of what caused it was exactly this trap—believing every email, every document, every decision required my personal attention. Most didn't. I just lacked a framework for distinguishing which ones did.
-
-The skill isn't avoiding AI. The skill is knowing **exactly when** to use it.
+Most didn't. I just lacked a framework for knowing which ones did.
 
 ---
 
-## Stakes vs. Complexity: A Decision Matrix
+## Why "Easy vs. Hard" Doesn't Work Anymore
 
-I use a 2x2 matrix for every automation decision.
+Here's what surprised me when I started using AI seriously: the difficulty of a task tells you almost nothing about whether you should automate it.
 
-{/* [VISUAL SPEC: 2x2 matrix created in a clean design tool. X-Axis: "Complexity" (Low to High). Y-Axis: "Human Stakes" (Low to High). Quadrant labels: Top-Left = "DELEGATE", Top-Right = "PROTECT", Bottom-Left = "AUTOMATE", Bottom-Right = "HYBRID". Use muted colors—not traffic-light red/green. Caption: "The Automation Decision Matrix."] */}
+A 2023 study from Harvard and BCG tested this with 758 consultants ([Dell'Acqua et al., 2023](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4573321)). Half used GPT-4. Half worked manually. The results were striking:
 
-### Quadrant 1: Low Stakes, Low Complexity → AUTOMATE
+- Consultants using AI finished tasks **25% faster**
+- Their work was rated **40% higher quality**
+- But on tasks that fell *outside* AI's capabilities, they performed **19% worse** than those working alone
 
-**Examples:** Scheduling meetings. Sorting inbox. Summarizing meeting notes. Generating routine data reports.
+They trusted the output, missed the nuance, and failed.
 
-**Principle:** These tasks require no human soul. Hand them to the machine immediately.
+The researchers call this the "jagged frontier"—AI capability isn't a smooth line from easy to hard. It's unpredictable. AI can pass the Bar Exam but struggle to count letters in a word. It can write complex code but miss the sarcasm in a parent's email.
 
-No parent feels disrespected when your calendar link sends an automated confirmation. No teacher notices when meeting notes get summarized by AI. These are administrative transactions, not human connections.
+For school leaders, this creates a real problem. You can't just hand off "routine" work and assume it's safe. You need a different way to decide.
 
-*Tools:* Gmail filters, Calendly, Otter.ai, ChatGPT for first-draft summaries.
+---
 
-I've written about reclaiming time through this kind of automation in my [Ten Hours Back](/blog/ten-hours-back) post. Time saved matters less than cognitive space freed.
+## The Framework: Stakes vs. Verifiability
 
-### Quadrant 2: Low Stakes, High Complexity → DELEGATE
+For years I tried to decide based on complexity. That was a mistake.
 
-**Examples:** First drafts of policies. Research summaries. Agenda preparation. Benchmark comparisons.
+A complex task (like analyzing enrollment trends) might be perfectly safe to delegate—I can check the numbers. A simple task (like a two-sentence reply to an upset parent) might be catastrophic to automate—I can't check whether it landed emotionally.
 
-**Principle:** The task requires effort but not your specific judgment. AI handles the heavy lifting; you review and refine.
+The better question isn't "How hard is this?" It's "How easily can I catch a mistake?"
 
-You're not asking AI to *decide*—you're asking it to *prepare*. The complexity lies in gathering and organizing information, not in the human relationship at stake.
+I now use two questions for every potential AI task:
 
-*Example:* Before a Board meeting, I have AI pull enrollment trends, benchmark data, and draft talking points. I review and edit. Preparation time drops from 4 hours to 45 minutes. The final product remains mine—I just didn't start from a blank page.
+1. **What's the cost if the AI gets this wrong?**
+2. **How quickly can I verify the output?**
 
-### Quadrant 3: High Stakes, Low Complexity → DELEGATE (with review)
+<div style={{display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0', maxWidth: '700px', margin: '2rem auto', border: '2px solid #e2e8f0', borderRadius: '12px', overflow: 'hidden'}}>
+  <div style={{padding: '1.5rem', backgroundColor: '#dbeafe', borderRight: '1px solid #e2e8f0', borderBottom: '1px solid #e2e8f0'}}>
+    <div style={{fontSize: '0.75rem', color: '#1e40af', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '0.5rem'}}>High Stakes + Easy to Verify</div>
+    <div style={{fontSize: '1.25rem', fontWeight: '700', color: '#1e3a8a', marginBottom: '0.75rem'}}>✨ AUGMENT</div>
+    <div style={{fontSize: '0.875rem', color: '#172554'}}>The sweet spot. AI drafts, you edit.</div>
+  </div>
+  <div style={{padding: '1.5rem', backgroundColor: '#fee2e2', borderBottom: '1px solid #e2e8f0'}}>
+    <div style={{fontSize: '0.75rem', color: '#991b1b', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '0.5rem'}}>High Stakes + Hard to Verify</div>
+    <div style={{fontSize: '1.25rem', fontWeight: '700', color: '#7f1d1d', marginBottom: '0.75rem'}}>🛡️ PROTECT</div>
+    <div style={{fontSize: '0.875rem', color: '#450a0a'}}>The human zone. Do this yourself.</div>
+  </div>
+  <div style={{padding: '1.5rem', backgroundColor: '#d1fae5', borderRight: '1px solid #e2e8f0'}}>
+    <div style={{fontSize: '0.75rem', color: '#065f46', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '0.5rem'}}>Low Stakes + Easy to Verify</div>
+    <div style={{fontSize: '1.25rem', fontWeight: '700', color: '#064e3b', marginBottom: '0.75rem'}}>🤖 AUTOMATE</div>
+    <div style={{fontSize: '0.875rem', color: '#022c22'}}>Let the machine run.</div>
+  </div>
+  <div style={{padding: '1.5rem', backgroundColor: '#f3f4f6'}}>
+    <div style={{fontSize: '0.75rem', color: '#374151', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '0.5rem'}}>Low Stakes + Hard to Verify</div>
+    <div style={{fontSize: '1.25rem', fontWeight: '700', color: '#1f2937', marginBottom: '0.75rem'}}>⏭️ SKIP</div>
+    <div style={{fontSize: '0.875rem', color: '#111827'}}>Not worth the effort to check.</div>
+  </div>
+</div>
 
-**Examples:** Routine parent updates during a crisis (facts only). Standard disciplinary documentation. Compliance checklists.
+<p style={{textAlign: 'center', fontSize: '0.875rem', color: '#64748b', marginTop: '-1rem', marginBottom: '2rem'}}>The AI Delegation Matrix</p>
 
-**Principle:** The communication carries weight, but the content is straightforward. Template it, have AI draft it, review before sending.
+---
 
-The stakes are real—a parent receiving information about their child, a teacher receiving documentation about a concern—but the message doesn't require creative judgment. What it requires is accuracy and care.
+### 🤖 AUTOMATE: Low Stakes, Easy to Verify
 
-*Approach:* Use a template. Have AI draft. Read it out loud before sending. If it sounds robotic, revise. If it sounds human, send.
+**Examples:** Meeting summaries. Calendar scheduling. Formatting data. First-draft brainstorming. Inbox sorting.
 
-The [Template Library](/blog/template-library-school-leaders) exists for exactly this quadrant. High stakes doesn't mean high effort—it means high attention.
+If the AI gets it wrong, I see it instantly. No harm done.
 
-### Quadrant 4: High Stakes, High Complexity → PROTECT
+No parent feels disrespected when my calendar link sends an automated confirmation. No teacher notices when meeting notes get summarized by AI. These are administrative transactions, not human connections.
 
-**Examples:** Firing a staff member. Managing a PR crisis. Comforting a grieving family. Negotiating a contract dispute. Mediating serious conflict between teachers.
+I used to spend 20 minutes after every leadership team meeting typing up notes. Now I let Otter.ai draft them and spend 3 minutes scanning for errors. Same output. Fraction of the time.
 
-**Principle:** Do not let a bot send this email. Your physical presence and specific words matter more than efficiency.
+### ✨ AUGMENT: High Stakes, Easy to Verify
 
-These are the moments your job exists for. Anyone can send an email. Only you can sit across from a teacher whose contract you're not renewing and treat them with dignity. Only you can call a parent whose child was injured and convey genuine care.
+**Examples:** Strategic plan drafts. Board presentation outlines. Survey data analysis. Policy first drafts. Budget scenarios.
 
-*Tool of choice:* **Yourself.**
+This is the sweet spot. The stakes are real, but checking the work is easier than doing it from scratch.
 
-<Callout type="warning" title="Text makes it worse">
-The highest-stakes moments are when you're most tempted to hide behind email. A difficult conversation feels easier in writing. It isn't. It's just delayed—and usually made worse.
+Before a Board meeting, I have AI pull enrollment trends, benchmark data, and draft talking points. I review and edit. Preparation time drops from 4 hours to 45 minutes. The final product is still mine—I just didn't start from a blank page.
+
+The Harvard study found that consultants in this zone produced work rated 40% higher quality. Not because AI is smarter than humans, but because it handles the grunt work and lets you focus on judgment.
+
+You become the editor, not the writer. That's a good trade.
+
+### ⏭️ SKIP: Low Stakes, Hard to Verify
+
+**Examples:** Fact-checking obscure claims. Generating large volumes of unchecked content. Complex calculations without source data.
+
+The effort to verify exceeds the value of the task. You'll spend more time checking than you saved.
+
+Either do it yourself quickly, or decide it doesn't matter enough to do at all. Don't let AI create work for you.
+
+### 🛡️ PROTECT: High Stakes, Hard to Verify
+
+**Examples:** Difficult conversations. Crisis communications. Personnel decisions. The apology. The firing. The vision.
+
+You cannot "verify" a relationship. You have to feel it.
+
+When a parent is furious, they don't want an efficient answer. They want to know a human being is absorbing their anger, considering it, carrying the weight of it.
+
+If you automate that—even if the AI writes a "perfect" empathetic email—you have failed. The value was never the text. The value was the emotional labor of showing up.
+
+I learned this the hard way. Early in my AI experimentation, I let a tool draft a response to a parent complaint. The words were fine. The tone was fine. But something was missing—and the parent knew it. What should have been a 10-minute resolution became a 3-week escalation.
+
+Some messages need to come from your hands, not your tools.
+
+<Callout type="warning" title="The Crumple Zone">
+In aviation, the plane's structure is designed to absorb impact and protect the humans inside. In leadership, **you** are the crumple zone. Some moments require you to absorb the weight personally. That's not inefficiency. That's the job.
 </Callout>
 
 ---
 
-## The Cyborg Approach
+## The Decision Tree
 
-Ethan Mollick, a Wharton professor studying AI and work, describes two collaboration models: "Centaur" and "Cyborg" ([Mollick, 2024](https://www.oneusefulthing.org/p/centaurs-and-cyborgs-on-the-jagged)).
+Stop guessing. Run every potential AI task through this logic:
 
-**Centaur:** Human and AI work on separate tasks. You decide what AI handles; you handle the rest. Clear division.
+**Can I verify the output in under one minute?**
 
-**Cyborg:** Human and AI integrate on the same task. AI drafts, you refine. AI researches, you synthesize. Continuous collaboration.
+→ **NO:** Is the cost of being wrong essentially zero?
+  - **YES:** Automate anyway (low risk, low reward)
+  - **NO:** **PROTECT.** Do not use AI for this.
 
-Most leadership work is Cyborg work. The quadrants above help determine *how integrated* the collaboration should be.
+→ **YES:** Does this require the other person to feel *heard*, not just *informed*?
+  - **YES:** **AUGMENT.** Use AI to prepare. You deliver.
+  - **NO:** **AUTOMATE.** Let the bot handle it.
 
-**Example: Preparing for a Difficult Conversation**
-
-I never let AI have a difficult conversation for me. That would be cowardly and ineffective.
-
-But I always use AI to prepare.
-
-{/* [VISUAL SPEC: Screenshot of the KAIAK Toolkit showing the 'Difficult Conversation' prompt input area, with a sample context like "I need to tell a vendor we are cancelling their contract. They have been with us for 5 years. I want to be firm but kind." Show the text input, not the output.] */}
-
-I paste the situation into my dashboard:
-
-*"I need to tell a long-time vendor we're ending our contract. They've been with us for five years. I want to be firm but kind."*
-
-AI generates a script. I don't read it verbatim—that would sound hollow.
-
-But reading it clarifies my thoughts. It shows me what I might forget. It lowers my blood pressure. I walk into the room fully present, because I'm not scrambling for words.
-
-The full breakdown of this approach appears in my post on [AI for difficult conversations](/blog/ai-for-difficult-conversations). Automate the *preparation*, protect the *delivery*.
+The key question isn't "Is this task hard?" It's "Can I catch a mistake before it costs me?"
 
 ---
 
-## The Complacency Risk
+## The 19% Trap
 
-There's a documented phenomenon called "automation complacency"—when we over-trust automated systems, our own monitoring and judgment atrophies ([Parasuraman & Manzey, 2010](https://doi.org/10.1518/001872010X12529674470583)).
+Remember those consultants who performed 19% worse with AI on certain tasks?
 
-For school leaders using AI, this matters.
+They weren't lazy. They were skilled professionals who fell into what researchers call "automation complacency"—when we over-trust automated systems, our own judgment atrophies.
 
-Let AI write parent communications without careful review, and you'll eventually send something tone-deaf. Let AI summarize meeting notes without checking them, and you'll miss the subtext—the concern that wasn't voiced, the tension that wasn't captured.
+For school leaders, this is the real danger. Not that AI will write something obviously wrong. But that it will write something *subtly* wrong—a tone-deaf phrase, a missing context, a politically naive framing—and you'll miss it because the output looked professional.
 
-The matrix isn't about finding tasks you can ignore. It's about allocating attention intentionally.
+I've caught myself doing this. A draft looks polished, so I skim instead of read. Then a colleague points out that the email accidentally promised something we can't deliver. The AI didn't know our budget situation. I did, but I wasn't paying attention.
 
-**Low-stakes, low-complexity:** Trust and verify quickly.
-**High-stakes, any complexity:** Review carefully. Every time.
+The matrix isn't about finding tasks you can ignore. It's about allocating your attention intentionally.
 
-<Callout type="tip" title="The real question">
-Before delegating any task to AI, ask: "Does this recipient need to feel *heard* or just receive the *data*?" Heard = protect. Data = automate. Mixed = hybrid.
+---
+
+## Developing Your Own Judgment
+
+Your job is no longer to be the smartest person in the room. AI processes data faster than you ever will.
+
+Your job is to know your context better than any algorithm can.
+
+You need a sense for when the AI is likely to miss something. You need to know that for *this* specific parent, a template email will cause a lawsuit, while for *that* parent, it will be fine. You need to recognize that *this* board member reads every word while *that* one skims for the bottom line.
+
+That judgment—that contextual, relational, political awareness—is the one thing we can't automate. It's also the thing that makes you worth your salary.
+
+<Callout type="tip" title="The question that matters">
+Before delegating any task to AI, ask: "If I miss an error in this output, what's the worst realistic consequence?" If the answer makes you uncomfortable, you've found a PROTECT task.
 </Callout>
 
 ---
 
 ## Mapping Your Own Work
 
-The matrix only helps if you apply it to actual tasks.
+The framework only helps if you apply it.
 
-**Week one:** List the ten tasks that consumed the most time last week. Plot each one on the matrix.
+**This week:** List the ten tasks that consumed the most time. For each one, answer: What's the cost of error? How long would verification take?
 
-**Month one:** For everything in "Automate," find or build a tool. For everything in "Protect," stop looking for shortcuts.
+**This month:** For everything in AUTOMATE, build or find a tool. For everything in PROTECT, stop looking for shortcuts.
 
-**Quarter one:** Review your map. Has anything shifted? Tasks that felt high-stakes six months ago might feel routine now—and vice versa.
+**This quarter:** Review your map. Some tasks migrate as your judgment improves. What felt risky six months ago might feel routine now.
 
-The goal isn't maximum automation. The goal is strategic automation so you have energy left for human work.
+The goal isn't maximum automation. The goal is strategic automation—so you have energy left for the work that actually requires you.
 
----
-
-## Strategic Leadership, Not Lazy Leadership
-
-The leaders who thrive in the next decade won't adopt every AI tool. They'll know when *not* to use them.
-
-Automation multiplies efficiency—but also multiplies mistakes when applied carelessly.
-
-The 2x2 matrix provides a decision framework. The real skill remains judgment: recognizing that this email needs your voice, that meeting needs your presence, that parent needs to see your face.
-
-You automate the boring stuff *so that* you have energy for the human stuff. That's strategic leadership.
-
-<CallToAction text="Get the decision matrix and prompts in the free toolkit" link="/ai-toolkit" />
+<CallToAction text="Get the decision matrix template in the free toolkit" link="/ai-toolkit" />
 
 ---
 
 ## References
 
-1. Mollick, E. (2024). *Centaurs and Cyborgs on the Jagged Frontier*. One Useful Thing. https://www.oneusefulthing.org/p/centaurs-and-cyborgs-on-the-jagged
+1. Dell'Acqua, F., McFowland, E., Mollick, E., et al. (2023). Navigating the Jagged Technological Frontier: Field Experimental Evidence of the Effects of AI on Knowledge Worker Productivity and Quality. *Harvard Business School Working Paper*. https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4573321
 
-2. Parasuraman, R., & Manzey, D. H. (2010). Complacency and bias in human use of automation: An attentional integration. *Human Factors*, 52(3), 381-410. https://doi.org/10.1518/001872010X12529674470583
+2. Mollick, E. (2024). *Co-Intelligence: Living and Working with AI*. Portfolio/Penguin.
