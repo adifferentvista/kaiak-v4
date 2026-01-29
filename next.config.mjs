@@ -25,6 +25,12 @@ const nextConfig = {
         destination: '/work-with-me',
         permanent: true,
       },
+      // Redirect /second-brain to /products/second-brain-guide
+      {
+        source: '/second-brain',
+        destination: '/products/second-brain-guide',
+        permanent: true,
+      },
     ];
   },
 }
