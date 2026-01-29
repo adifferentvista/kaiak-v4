@@ -13,6 +13,12 @@ const nextConfig = {
         destination: 'https://kaiak.io/:path*',
         permanent: true,
       },
+      // Redirect /contact to /booking
+      {
+        source: '/contact',
+        destination: '/booking',
+        permanent: true,
+      },
     ];
   },
 }
