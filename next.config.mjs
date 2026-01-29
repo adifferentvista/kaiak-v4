@@ -19,6 +19,12 @@ const nextConfig = {
         destination: '/booking',
         permanent: true,
       },
+      // Redirect /services to /work-with-me
+      {
+        source: '/services',
+        destination: '/work-with-me',
+        permanent: true,
+      },
     ];
   },
 }
