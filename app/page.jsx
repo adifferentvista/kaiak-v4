@@ -2,12 +2,12 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Navbar from './components/Navbar';
 import ExitIntentPopup from './components/ExitIntentPopup';
-import { getFeaturedPosts, pillarLabels } from '@/lib/posts';
-import { 
-  ArrowRight, 
-  Check, 
-  Clock, 
-  AlertCircle, 
+import { getFeaturedPosts, getAllPosts, pillarLabels, pillarColors } from '@/lib/posts';
+import {
+  ArrowRight,
+  Check,
+  Clock,
+  AlertCircle,
   Layers,
   Search,
   Compass,
@@ -19,7 +19,12 @@ import {
   Shield,
   Inbox,
   BarChart3,
-  Quote
+  Quote,
+  Bot,
+  Cog,
+  Crown,
+  Coffee,
+  GraduationCap
 } from 'lucide-react';
 
 // ============================================
@@ -28,9 +33,30 @@ import {
 // Cream/navy palette, no hero photo
 // ============================================
 
+const pillarDescriptions = {
+  'practical-ai': 'Hands-on guides to ChatGPT, Claude, NotebookLM, and more for school operations.',
+  'systems-thinking': 'Frameworks for building workflows that run without you.',
+  'leadership': 'Strategic thinking, decision-making, and leading through change.',
+  'no-admin-life': 'Reclaim your time by automating the tasks that drain your energy.',
+  'education': 'How AI is reshaping teaching, learning, and school culture.',
+};
+
+const pillarIcons = {
+  'practical-ai': Bot,
+  'systems-thinking': Cog,
+  'leadership': Crown,
+  'no-admin-life': Coffee,
+  'education': GraduationCap,
+};
+
 export default function HomePage() {
   const currentYear = new Date().getFullYear();
   const featuredPosts = getFeaturedPosts();
+  const allPosts = getAllPosts();
+  const pillarCounts = Object.keys(pillarLabels).reduce((acc, key) => {
+    acc[key] = allPosts.filter(p => p.pillar === key).length;
+    return acc;
+  }, {});
 
   return (
     <div className="font-sans antialiased bg-cream dark:bg-navy text-slate-800 dark:text-slate-200">
@@ -381,7 +407,127 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* ========== 6. QUICK WINS (Secondary Offers) ========== */}
+        {/* ========== 6. IN-DEPTH GUIDES (Featured Posts) ========== */}
+        {featuredPosts.length > 0 && (
+          <section className="py-20 md:py-28 bg-white dark:bg-navy-light">
+            <div className="max-w-5xl mx-auto px-6">
+              <div className="flex justify-between items-end mb-12">
+                <div>
+                  <div className="text-orange-600 dark:text-amber-400 font-bold uppercase tracking-wider text-sm mb-2">
+                    From the Blog
+                  </div>
+                  <h2 className="font-serif text-3xl md:text-4xl text-navy dark:text-white">
+                    In-Depth Guides
+                  </h2>
+                </div>
+                <Link
+                  href="/blog"
+                  className="hidden sm:flex items-center gap-2 font-medium text-orange-600 dark:text-orange-400 hover:underline"
+                >
+                  View all <ArrowRight className="w-4 h-4" />
+                </Link>
+              </div>
+
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {featuredPosts.map((post) => {
+                  const colors = pillarColors[post.pillar] || { bg: '#f3f4f6', text: '#374151' };
+                  return (
+                    <Link
+                      key={post.slug}
+                      href={`/blog/${post.slug}`}
+                      className="group block bg-cream dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-slate-300 dark:hover:border-slate-600 hover:shadow-md transition-all overflow-hidden"
+                    >
+                      {post.image && (
+                        <div className="relative aspect-video overflow-hidden">
+                          <Image
+                            src={post.image}
+                            alt={post.imageAlt || post.title}
+                            fill
+                            className="object-cover transition-transform duration-300 group-hover:scale-105"
+                            sizes="(max-width: 768px) 100vw, 33vw"
+                          />
+                        </div>
+                      )}
+                      <div className="p-6">
+                        <div className="flex items-center gap-3 mb-3">
+                          <span
+                            className="text-xs font-bold px-2 py-1 rounded-full uppercase tracking-wide"
+                            style={{ backgroundColor: colors.bg, color: colors.text }}
+                          >
+                            {pillarLabels[post.pillar] || post.pillar}
+                          </span>
+                          <span className="text-xs text-slate-400 dark:text-slate-500">
+                            {post.readTime}
+                          </span>
+                        </div>
+                        <h3 className="font-serif text-lg text-navy dark:text-white mb-2 group-hover:text-slate-600 dark:group-hover:text-slate-300 transition-colors">
+                          {post.title}
+                        </h3>
+                        <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                          {post.description}
+                        </p>
+                      </div>
+                    </Link>
+                  );
+                })}
+              </div>
+
+              <Link
+                href="/blog"
+                className="sm:hidden flex items-center justify-center gap-2 font-medium mt-8 text-orange-600 dark:text-orange-400"
+              >
+                View all posts <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+          </section>
+        )}
+
+        {/* ========== 7. PILLAR COLLECTIONS ========== */}
+        <section className="py-20 md:py-28 bg-cream dark:bg-navy">
+          <div className="max-w-5xl mx-auto px-6">
+            <div className="text-center mb-12">
+              <div className="text-orange-600 dark:text-amber-400 font-bold uppercase tracking-wider text-sm mb-2">
+                Browse by Topic
+              </div>
+              <h2 className="font-serif text-3xl md:text-4xl text-navy dark:text-white">
+                Pillar Collections
+              </h2>
+            </div>
+
+            <div className="grid md:grid-cols-3 lg:grid-cols-5 gap-4">
+              {Object.entries(pillarLabels).map(([key, label]) => {
+                const Icon = pillarIcons[key];
+                const colors = pillarColors[key] || { bg: '#f3f4f6', text: '#374151' };
+                const count = pillarCounts[key] || 0;
+                return (
+                  <Link
+                    key={key}
+                    href={`/blog?pillar=${key}`}
+                    className="group p-6 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:border-slate-300 dark:hover:border-slate-600 hover:shadow-md transition-all text-center"
+                  >
+                    <div
+                      className="w-12 h-12 mx-auto mb-3 rounded-full flex items-center justify-center"
+                      style={{ backgroundColor: colors.bg }}
+                    >
+                      <Icon className="w-6 h-6" style={{ color: colors.text }} />
+                    </div>
+                    <h3 className="font-medium text-navy dark:text-white text-sm mb-1">
+                      {label}
+                    </h3>
+                    <p className="text-xs text-slate-400 dark:text-slate-500 mb-2">
+                      {count} post{count !== 1 ? 's' : ''}
+                    </p>
+                    <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+                      {pillarDescriptions[key]}
+                    </p>
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        {/* ========== 8. QUICK WINS (Secondary Offers) ========== */}
         <section className="py-20 md:py-28 bg-white dark:bg-navy-light">
           <div className="max-w-5xl mx-auto px-6">
             <div className="mb-12">
@@ -649,51 +795,6 @@ export default function HomePage() {
                 </p>
               </div>
             </div>
-          </div>
-        </section>
-
-        {/* ========== 11. FEATURED POSTS ========== */}
-        <section className="py-20 md:py-28 bg-white dark:bg-navy-light border-t border-slate-200 dark:border-slate-700">
-          <div className="max-w-5xl mx-auto px-6">
-            <div className="flex justify-between items-end mb-12">
-              <div>
-                <div className="text-orange-600 dark:text-amber-400 font-bold uppercase tracking-wider text-sm mb-2">
-                  From the Blog
-                </div>
-                <h2 className="font-serif text-3xl md:text-4xl text-navy dark:text-white">Start Here</h2>
-              </div>
-              <Link 
-                href="/blog" 
-                className="hidden sm:flex items-center gap-2 font-medium text-orange-600 dark:text-orange-400 hover:underline"
-              >
-                View all <ArrowRight className="w-4 h-4" />
-              </Link>
-            </div>
-
-            <div className="space-y-4">
-              {featuredPosts.map((post) => (
-                <Link
-                  key={post.slug}
-                  href={`/blog/${post.slug}`}
-                  className="flex items-center justify-between p-6 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-slate-300 dark:hover:border-slate-600 hover:shadow-sm transition-all bg-cream dark:bg-slate-800"
-                >
-                  <div className="flex items-center gap-6">
-                    <span className="text-xs font-bold px-2 py-1 rounded-full uppercase tracking-wide bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-400">
-                      {pillarLabels[post.pillar] || post.pillar}
-                    </span>
-                    <span className="font-serif text-lg text-navy dark:text-white">{post.title}</span>
-                  </div>
-                  <ChevronRight className="hidden sm:block w-5 h-5 text-slate-400" />
-                </Link>
-              ))}
-            </div>
-
-            <Link 
-              href="/blog" 
-              className="sm:hidden flex items-center justify-center gap-2 font-medium mt-8 text-orange-600 dark:text-orange-400"
-            >
-              View all posts <ArrowRight className="w-4 h-4" />
-            </Link>
           </div>
         </section>
 
