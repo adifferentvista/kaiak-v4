@@ -2,8 +2,10 @@
 
 import { useState, useMemo } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Navbar from './Navbar';
+import NewsletterForm from './NewsletterForm';
 
 const pillarLabels = {
   'leadership': 'Leadership',
@@ -35,46 +37,58 @@ const ClearIcon = () => (
   </svg>
 );
 
-// Post Card Component (your original design)
+// Post Card Component with optional thumbnail
 function PostCard({ post, featured = false }) {
   const pillar = pillarColors[post.pillar] || { bg: '#f3f4f6', text: '#374151' };
 
   return (
     <Link href={`/blog/${post.slug}`} className="block group">
       <article className={`
-        border border-slate-200 dark:border-slate-700 rounded-xl p-6
+        border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden
         hover:border-slate-300 dark:hover:border-slate-600 hover:shadow-sm
         transition-all duration-200 bg-white dark:bg-slate-800
-        ${featured ? 'md:p-8' : ''}
       `}>
-        <div className="flex items-center gap-3 mb-3">
-          <span
-            className="text-xs font-bold px-2 py-1 rounded-full uppercase tracking-wide"
-            style={{ backgroundColor: pillar.bg, color: pillar.text }}
-          >
-            {pillarLabels[post.pillar] || post.pillar}
-          </span>
-          <span className="text-xs text-slate-400 dark:text-slate-500">{post.readTime}</span>
+        {post.image && (
+          <div className="relative aspect-video overflow-hidden">
+            <Image
+              src={post.image}
+              alt={post.imageAlt || post.title}
+              fill
+              className="object-cover transition-transform duration-300 group-hover:scale-105"
+              sizes="(max-width: 768px) 100vw, 50vw"
+            />
+          </div>
+        )}
+        <div className={featured ? 'p-6 md:p-8' : 'p-6'}>
+          <div className="flex items-center gap-3 mb-3">
+            <span
+              className="text-xs font-bold px-2 py-1 rounded-full uppercase tracking-wide"
+              style={{ backgroundColor: pillar.bg, color: pillar.text }}
+            >
+              {pillarLabels[post.pillar] || post.pillar}
+            </span>
+            <span className="text-xs text-slate-400 dark:text-slate-500">{post.readTime}</span>
+          </div>
+
+          <h3 className={`
+            font-serif text-navy dark:text-white group-hover:text-slate-600 dark:group-hover:text-slate-300 transition-colors
+            ${featured ? 'text-2xl mb-3' : 'text-lg mb-2'}
+          `}>
+            {post.title}
+          </h3>
+
+          <p className={`text-slate-600 dark:text-slate-300 leading-relaxed ${featured ? 'text-base' : 'text-sm'}`}>
+            {post.description}
+          </p>
+
+          <p className="text-xs text-slate-400 dark:text-slate-500 mt-4">
+            {new Date(post.date).toLocaleDateString('en-US', {
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric',
+            })}
+          </p>
         </div>
-
-        <h3 className={`
-          font-serif text-navy dark:text-white group-hover:text-slate-600 dark:group-hover:text-slate-300 transition-colors
-          ${featured ? 'text-2xl mb-3' : 'text-lg mb-2'}
-        `}>
-          {post.title}
-        </h3>
-
-        <p className={`text-slate-600 dark:text-slate-300 leading-relaxed ${featured ? 'text-base' : 'text-sm'}`}>
-          {post.description}
-        </p>
-
-        <p className="text-xs text-slate-400 dark:text-slate-500 mt-4">
-          {new Date(post.date).toLocaleDateString('en-US', {
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric',
-          })}
-        </p>
       </article>
     </Link>
   );
@@ -284,6 +298,19 @@ const recentPosts = useMemo(() => {
                 <PostCard key={post.slug} post={post} featured />
               ))}
             </div>
+          </section>
+        )}
+
+        {/* Newsletter Section (only when not filtering) */}
+        {!isFiltering && (
+          <section className="mb-16 p-8 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 text-center">
+            <h2 className="font-serif text-2xl text-navy dark:text-white mb-2">
+              The Weekly Edge
+            </h2>
+            <p className="text-slate-600 dark:text-slate-400 mb-6 max-w-lg mx-auto">
+              Weekly AI strategies for school leaders. Practical tips, new tools, and systems you can use right away.
+            </p>
+            <NewsletterForm />
           </section>
         )}
 

@@ -1,5 +1,63 @@
 import Link from 'next/link';
 
+// Heading ID helpers
+function slugify(text) {
+  return text
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/(^-|-$)/g, '');
+}
+
+function getTextContent(children) {
+  if (typeof children === 'string') return children;
+  if (Array.isArray(children)) return children.map(getTextContent).join('');
+  if (children?.props?.children) return getTextContent(children.props.children);
+  return '';
+}
+
+// Heading components with auto-generated IDs
+function H2({ children, ...props }) {
+  const text = getTextContent(children);
+  const id = slugify(text);
+  return <h2 id={id} className="scroll-mt-24" {...props}>{children}</h2>;
+}
+
+function H3({ children, ...props }) {
+  const text = getTextContent(children);
+  const id = slugify(text);
+  return <h3 id={id} className="scroll-mt-24" {...props}>{children}</h3>;
+}
+
+// Comparison table component
+export function ComparisonTable({ columns, rows }) {
+  return (
+    <div className="my-8 overflow-x-auto">
+      <table className="w-full text-sm border border-slate-200 dark:border-slate-700 rounded-lg overflow-hidden">
+        <thead>
+          <tr className="bg-slate-100 dark:bg-slate-800">
+            {columns.map((col, i) => (
+              <th key={i} className="px-4 py-3 text-left font-semibold text-navy dark:text-white border-b border-slate-200 dark:border-slate-700">
+                {col}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((row, i) => (
+            <tr key={i} className={i % 2 === 0 ? 'bg-white dark:bg-slate-900' : 'bg-slate-50 dark:bg-slate-800/50'}>
+              {row.map((cell, j) => (
+                <td key={j} className="px-4 py-3 text-slate-700 dark:text-slate-300 border-b border-slate-200 dark:border-slate-700">
+                  {cell}
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
 // Call to Action component
 export function CallToAction({ 
   text = "Book a Call", 
@@ -153,6 +211,8 @@ export function YouTube({ id, title = "Video" }) {
 
 // Default export as object for MDXRemote
 const MDXComponents = {
+  h2: H2,
+  h3: H3,
   CallToAction,
   Callout,
   Tool,
@@ -160,6 +220,7 @@ const MDXComponents = {
   TimeSaved,
   RelatedPost,
   YouTube,
+  ComparisonTable,
 };
 
 export default MDXComponents;

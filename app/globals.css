@@ -97,21 +97,28 @@ code, pre {
 .prose-kaiak h2 {
   color: #0F172A;
   font-family: var(--font-instrument), Georgia, serif;
-  font-size: 1.75rem;
+  font-size: 1.65rem;
   font-weight: 400;
   margin-top: 2.5rem;
   margin-bottom: 1rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 1px solid #E2E8F0;
 }
 
 .prose-kaiak h3 {
   color: #0F172A;
   font-family: var(--font-instrument), Georgia, serif;
-  font-size: 1.25rem;
-  font-weight: 500;
+  font-size: 1.35rem;
+  font-weight: 400;
   margin-top: 2rem;
   margin-bottom: 0.75rem;
+}
+
+.prose-kaiak h4 {
+  color: #0F172A;
+  font-family: var(--font-instrument), Georgia, serif;
+  font-size: 1.15rem;
+  font-weight: 400;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .prose-kaiak p {
@@ -202,10 +209,13 @@ code, pre {
 
 .dark .prose-kaiak h2 {
   color: #F8FAFC;
-  border-bottom-color: #334155;
 }
 
 .dark .prose-kaiak h3 {
+  color: #F8FAFC;
+}
+
+.dark .prose-kaiak h4 {
   color: #F8FAFC;
 }
 
