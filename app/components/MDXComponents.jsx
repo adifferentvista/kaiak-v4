@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import CodeBlock from './CodeBlock';
 
 // Heading ID helpers
 function slugify(text) {
@@ -213,6 +214,7 @@ export function YouTube({ id, title = "Video" }) {
 const MDXComponents = {
   h2: H2,
   h3: H3,
+  pre: CodeBlock,
   CallToAction,
   Callout,
   Tool,

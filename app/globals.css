@@ -187,20 +187,116 @@ code, pre {
   font-family: var(--font-mono), monospace;
 }
 
-.prose-kaiak pre {
-  background: #1E293B;
-  color: #E2E8F0;
-  padding: 1rem;
-  border-radius: 0.5rem;
-  overflow-x: auto;
+/* Code block container (wraps header + pre) */
+.prose-kaiak .code-block-container {
+  position: relative;
   margin: 1.5rem 0;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  border: 1px solid #334155;
+}
+
+.prose-kaiak .code-block-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+  background: #151d2e;
+  border-bottom: 1px solid #334155;
+  min-height: 2.25rem;
+}
+
+.prose-kaiak .code-block-lang {
+  font-size: 0.75rem;
+  font-family: var(--font-mono), monospace;
+  color: #94A3B8;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.prose-kaiak .code-block-copy {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.75rem;
+  font-family: var(--font-mono), monospace;
+  color: #94A3B8;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+.prose-kaiak .code-block-copy:hover {
+  color: #E2E8F0;
+  background: #334155;
+}
+
+.prose-kaiak pre {
+  margin: 0;
+  padding: 1rem;
+  overflow-x: auto;
+  border-radius: 0;
+  font-size: 0.875rem;
+  line-height: 1.7;
+  background: #282c34;
+  color: #abb2bf;
 }
 
 .prose-kaiak pre code {
   background: none;
   padding: 0;
   color: inherit;
+  font-size: inherit;
+  display: block;
 }
+
+/* highlight.js One Dark theme tokens */
+.prose-kaiak .hljs-keyword,
+.prose-kaiak .hljs-selector-tag,
+.prose-kaiak .hljs-deletion { color: #c678dd; }
+
+.prose-kaiak .hljs-function,
+.prose-kaiak .hljs-title,
+.prose-kaiak .hljs-title.function_ { color: #61afef; }
+
+.prose-kaiak .hljs-string,
+.prose-kaiak .hljs-addition { color: #98c379; }
+
+.prose-kaiak .hljs-number,
+.prose-kaiak .hljs-literal { color: #d19a66; }
+
+.prose-kaiak .hljs-variable,
+.prose-kaiak .hljs-template-variable,
+.prose-kaiak .hljs-attr { color: #d19a66; }
+
+.prose-kaiak .hljs-type,
+.prose-kaiak .hljs-built_in { color: #e5c07b; }
+
+.prose-kaiak .hljs-comment,
+.prose-kaiak .hljs-quote { color: #5c6370; font-style: italic; }
+
+.prose-kaiak .hljs-meta,
+.prose-kaiak .hljs-tag { color: #e06c75; }
+
+.prose-kaiak .hljs-attribute { color: #d19a66; }
+
+.prose-kaiak .hljs-selector-class,
+.prose-kaiak .hljs-selector-id { color: #e06c75; }
+
+.prose-kaiak .hljs-name { color: #e06c75; }
+
+.prose-kaiak .hljs-symbol,
+.prose-kaiak .hljs-bullet { color: #61afef; }
+
+.prose-kaiak .hljs-params { color: #abb2bf; }
+
+.prose-kaiak .hljs-section { color: #61afef; font-weight: bold; }
+
+.prose-kaiak .hljs-emphasis { font-style: italic; }
+.prose-kaiak .hljs-strong { font-weight: bold; }
 
 /* Prose styles - Dark mode */
 .dark .prose-kaiak {

@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { getAllPostSlugs, getPostBySlug, getSeriesPosts, pillarLabels, pillarColors } from '@/lib/posts';
 import { MDXRemote } from 'next-mdx-remote/rsc';
+import rehypeHighlight from 'rehype-highlight';
 import MDXComponents from '../../components/MDXComponents';
 import ThemeToggle from '../../components/ThemeToggle';
 import AuthorBio from '../../components/AuthorBio';
@@ -231,7 +232,15 @@ export default function BlogPostPage({ params }) {
 
               {/* Article Content */}
               <article className="prose-kaiak">
-                <MDXRemote source={post.content} components={MDXComponents} />
+                <MDXRemote
+                  source={post.content}
+                  components={MDXComponents}
+                  options={{
+                    mdxOptions: {
+                      rehypePlugins: [rehypeHighlight],
+                    },
+                  }}
+                />
               </article>
 
               {/* Author Bio */}
