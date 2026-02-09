@@ -87,3 +87,47 @@ Components using `'use client'`: `Navbar.jsx` (mobile menu), `BlogContent.jsx` (
 ### SEO
 
 Dynamic sitemap in `app/sitemap.js`. Blog posts include JSON-LD structured data. Each page exports a `metadata` object for `<head>` tags.
+
+## Author Context
+
+The author is a **former head of school** (past tense — not currently in the role). All content referencing school leadership, boards, or school policy must use past tense ("my school" → "my last school", "I'm approaching" → "I approached"). The author works from home — no commute references.
+
+## Agent Routing Rules
+
+When a task matches one of the patterns below, delegate to the appropriate skill. If a task spans multiple skills, execute them in the pipeline order shown.
+
+### Single-Skill Routing
+
+| Trigger | Skill | What It Does |
+|---------|-------|-------------|
+| "research [topic]", "find sources on", "run the pipeline", "what's new in" | `automated-research` | Search academic + web sources, summarize, generate digest |
+| "outline a post", "find evidence for", "source this claim", "pre-mortem this idea" | `content-research-writer` | Research sourcing, outline frameworks, citation standards, source quality evaluation |
+| "draft this post", "review this draft", "check for slop", "does this sound like me" | `content-voice-style` | Anti-AI-slop filter, voice preservation, hook patterns, section feedback |
+| "format for publishing", "add frontmatter", "prep MDX", "SEO check", "optimize for AI search" | `kaiak-web-publishing` | MDX formatting, frontmatter, pillar taxonomy, SEO/GEO, content type templates |
+| "write a LinkedIn post", "prep for LinkedIn", "adapt this for LinkedIn" | `linkedin-post-generator` | Practitioner-style LinkedIn posts, trust-optimized, anti-engagement-bait |
+| "build a component", "design a page", "create a landing page", "update the UI" | `frontend-design` | Production-grade frontend interfaces, Tailwind + Next.js components |
+
+### Multi-Skill Pipelines
+
+**Full Content Production** — "write a post about [topic]" or "full production run"
+1. `automated-research` → produce research digest on the topic
+2. `content-research-writer` → outline post using digest findings, source claims with inline citations
+3. `content-voice-style` → draft in Executive Engineer style, run anti-slop and voice checks
+4. `kaiak-web-publishing` → format MDX, set frontmatter, optimize SEO/GEO, populate interlinks
+5. Review checkpoint: present draft for author approval before publishing
+
+**Post + Distribution** — "publish and distribute [post]"
+1. `kaiak-web-publishing` → final MDX formatting and SEO/GEO pass
+2. `linkedin-post-generator` → create LinkedIn distribution post from the published content
+3. Deliver both files for review
+
+**Research to Brief** — "brief me on [topic]"
+1. `automated-research` → search and summarize latest sources
+2. `content-research-writer` → structure findings into a content brief with source quality ratings
+
+### Routing Principles
+
+- **Never skip the voice check.** Every post draft must pass through `content-voice-style` before publishing.
+- **Always check tense.** Scan for present-tense school leadership references before any content is finalized (see Author Context above).
+- **Skills work together, not alone.** `content-research-writer` handles the sourcing; `content-voice-style` handles the writing quality; `kaiak-web-publishing` handles the formatting. Do not collapse these into a single step.
+- **Author approval before publish.** No content goes to `content/posts/` without explicit author sign-off.
