@@ -1,6 +1,6 @@
 ---
-title: "How I Built an Automated Research Pipeline That Emails Me Industry News Every Few Days"
-description: "A step-by-step walkthrough of using Claude Code skills to search, summarize, and deliver research digests on AI in education, leadership, and systems thinking."
+title: "How I Built an Automated Research Pipeline That Keeps Me Current Without the Tab Hoarding"
+description: "A step-by-step walkthrough of using Claude Code skills to automatically search, summarize, and organize research digests on AI in education, leadership, and systems thinking."
 date: "2026-02-05"
 pillar: "practical-ai"
 contentType: "evergreen"
@@ -26,9 +26,9 @@ sources:
     date: "2026"
 ---
 
-Last month, I realized I had 47 tabs open across three browser windows. Half were AI in education studies I'd bookmarked and never read. The other half were leadership articles someone had shared in a group chat that I'd "get to later." I wasn't staying on top of the research that informed the decisions I was making as a head of school. I was hoarding links.
+Last month, I realized I had 47 tabs open across three browser windows. Half were AI in education studies I'd bookmarked and never read. The other half were leadership articles someone had shared in a group chat that I'd "get to later." This was exactly the problem I'd faced when I was a head of school: never staying on top of the research that should have informed my decisions. I was still hoarding links.
 
-So I built something to fix it. It's not a product or a subscription — it's a Claude Code skill that searches for new research on my topics, downloads what it can, summarizes everything, and emails me a digest every few days. The whole thing runs on a schedule and costs nothing beyond what I already pay for Claude.
+So I built something to fix it. Not a product or a subscription. It's a Claude Code skill that searches for new research on my topics, downloads what it can, summarizes everything, and generates a structured digest I can scan in under a minute. The whole thing runs on a schedule and costs nothing beyond what I already pay for Claude.
 
 Here's exactly how it works and how to set it up yourself.
 
@@ -36,27 +36,35 @@ Here's exactly how it works and how to set it up yourself.
 
 The system runs five stages:
 
-1. **Search** — Queries arXiv, Google Scholar, and web sources for new content matching my keywords
+1. **Search** — Queries arXiv and RSS feeds for new content matching my keywords (web search via Brave API is also supported)
 2. **Download** — Fetches everything freely accessible. Flags paywalled content so I know it exists.
 3. **Summarize** — Claude generates a structured summary of each source: key findings, methodology, notable data, and why it matters
 4. **Digest** — Compiles everything into a single document with statistics pulled out and emerging themes identified
-5. **Deliver** — Emails me the digest and syncs all files to Google Drive, where NotebookLM picks them up
+5. **Deliver** — Saves everything locally, organized by topic and date. Can optionally email the digest or sync to Google Drive for NotebookLM.
 
-I track five research pillars: AI in education, leadership, systems thinking, productivity, and practical AI. Each one runs on its own schedule — AI in education runs weekly (the field moves fast but studies take time), while practical AI runs every three days (tools and workflows change constantly).
+I track four research pillars: AI in education, leadership, systems thinking, and practical AI. Each one runs on its own schedule. AI in education runs weekly (the field moves fast but studies take time), while practical AI runs every three days (tools and workflows change constantly).
 
 ## The Setup: Step by Step
 
 ### Step 1: Install the Skill
 
-The pipeline is a Claude Code skill — a markdown file that tells Claude how to do the work. You put it in your project's `.claude/skills/` folder.
+The pipeline is a Claude Code skill with Python scripts that handle the searching, summarizing, and delivery. Clone it and install dependencies:
 
 ```bash
 git clone https://github.com/kaiak-io/claude-code-skills.git
-cp -r claude-code-skills/skills/research/automated-research/ \
-  your-project/.claude/skills/automated-research/
+cd claude-code-skills/skills/research/automated-research/
+
+# Install Python dependencies
+pip install -r requirements.txt
+
+# Copy the example config
+cp config.yaml.example config.yaml
 ```
 
-That's it for installation. The skill includes the main instructions and the Python helper scripts that handle the scraping and delivery, so you don't need to write code — just configure and run it.
+The skill includes:
+- `scripts/search.py` — queries arXiv and RSS feeds (optionally Brave web search)
+- `scripts/summarize.py` — generates summaries using Claude CLI
+- `scripts/deliver.py` — optionally sends email and syncs to Google Drive
 
 ### Step 2: Configure Your Topics
 
@@ -71,8 +79,9 @@ settings:
   delivery:
     email:
       enabled: true
-      provider: gmail
+      provider: resend           # or gmail
       recipient: "you@example.com"
+      from_email: "research@yourdomain.com"
     drive:
       enabled: true
       method: rclone
@@ -81,56 +90,79 @@ settings:
 topics:
   ai-in-education:
     keywords:
-      - "AI in education"
-      - "generative AI students"
-      - "AI education policy"
-    sources: [arxiv, google_scholar, web]
+      - "large language model education"
+      - "LLM tutoring"
+      - "generative AI learning"
+      - "AI literacy"
+    sources: [arxiv, rss]
     frequency: weekly
+    rss_feeds:
+      - "https://blog.google/technology/ai/rss/"
+      - "https://openai.com/blog/rss.xml"
     summary_focus: "methodology, effect sizes, and policy implications"
 
   leadership:
     keywords:
-      - "school leadership AI transformation"
-      - "educational leadership frameworks"
-    sources: [web]
-    frequency: every_3_days
+      - "organizational decision making"
+      - "leadership cognition"
+      - "distributed leadership"
+    sources: [arxiv, rss]
+    frequency: biweekly
+    rss_feeds:
+      - "https://sloanreview.mit.edu/feed/"
     summary_focus: "frameworks, decision-making models, school leadership"
 ```
 
-The `summary_focus` field matters. It tells Claude what to pay attention to when summarizing. For education research, I want methodology and effect sizes — not just conclusions. For leadership content, I want frameworks I can actually use.
+The `summary_focus` field matters. It tells Claude what to pay attention to when summarizing. For education research, I want methodology and effect sizes, not just conclusions. For leadership content, I want frameworks I can actually use.
+
+The RSS feeds are key. In my full config I pull from AI lab blogs (Google, OpenAI), business publications (MIT Sloan Review), and technical blogs (Simon Willison, Latent Space). Combined with arXiv for academic papers, this covers both research and industry developments.
 
 ### Step 3: Run It
 
-Tell Claude Code to run the pipeline:
+Run the pipeline scripts directly:
 
-```
-Run the research pipeline for all topics that are due.
+```bash
+# Search for new content
+python scripts/search.py
+
+# Generate summaries (requires Claude CLI installed)
+python scripts/summarize.py
+
+# Send emails and sync to Drive (optional)
+python scripts/deliver.py
 ```
 
 On the first run, everything is "due" so all topics search simultaneously. After that, each topic runs on its own schedule. The pipeline checks the last run date and only processes topics when their interval has passed.
 
-### Step 4: Set Up Email Delivery
+To automate it, set up scheduled tasks (Windows Task Scheduler or cron) to run the scripts daily: search in the morning, summarize in the evening.
 
-I use Gmail's SMTP with an App Password. The setup is straightforward:
+### Step 4: Set Up Email Delivery (Optional)
 
-1. Enable 2FA on your Google account (you should already have this)
+You have two options for email delivery:
+
+**Option A: Resend (Recommended)**
+1. Sign up at [resend.com](https://resend.com) (free tier: 100 emails/day)
+2. Verify your domain (add their DNS records)
+3. Get your API key and add it to `.env`: `RESEND_API_KEY=re_xxxxx`
+
+**Option B: Gmail SMTP**
+1. Enable 2FA on your Google account
 2. Generate an App Password: Google Account → Security → App Passwords
-3. Store the credentials in a `.env` file (never commit this)
-4. The pipeline's delivery script picks up the credentials and sends the digest after each run
+3. Add credentials to `.env`: `GMAIL_ADDRESS` and `GMAIL_APP_PASSWORD`
 
-The email I get looks like this: a subject line with the topic and date, a count of sources found, the top findings with links, key statistics pulled out, and emerging themes. Scannable in 30 seconds. If something looks important, I click through to the full source.
+The email digest includes: topic and date, count of sources found, top findings with links, key statistics pulled out, and emerging themes. Scannable in 30 seconds.
 
-### Step 5: Connect Google Drive and NotebookLM
+**Or skip email entirely.** The pipeline saves everything locally. You can upload the `notes/` folders directly to NotebookLM without any email setup.
 
-The Drive + NotebookLM layer is what took this from a news feed to an actual learning system.
+### Step 5: Connect to NotebookLM
 
-I use rclone to sync the research folder to Google Drive after each pipeline run. One command added to the scheduled task:
+The NotebookLM layer is what took this from a news feed to an actual learning system.
 
-```bash
-rclone sync ./research gdrive:Research
-```
+**The simple approach (what I do):** After the pipeline runs, I drag the `notes/` folders directly into NotebookLM as sources. Each topic gets its own notebook. It takes 30 seconds and I do it weekly.
 
-In Google Drive, I now have a folder per topic with all the downloaded sources and summaries. Then I created a NotebookLM notebook for each research pillar and pointed each one at its Drive folder. A quick "Sync" click in the source settings after each pipeline run ensures the latest digest is ready for questioning.
+**The automated approach (optional):** You can use [rclone](https://rclone.org) to sync the research folder to Google Drive automatically, then point NotebookLM at the Drive folder. This requires installing rclone and configuring a Google Drive remote. More setup, but fully hands-off once it's working.
+
+Either way, once the sources are in NotebookLM, click "Sync" in the source settings to ensure the latest summaries are indexed.
 
 This means I can ask NotebookLM questions like:
 
@@ -138,31 +170,33 @@ This means I can ask NotebookLM questions like:
 - "Where do the studies disagree on AI's impact on student outcomes?"
 - "What gaps exist in my research on school leadership?"
 
-NotebookLM grounds its answers in the actual sources, so I'm not getting hallucinated citations. And it can generate audio overviews — I've started listening to weekly research summaries as background audio while I work instead of podcasts.
+NotebookLM grounds its answers in the actual sources, so I'm not getting hallucinated citations. And it can generate audio overviews. I've started listening to weekly research summaries as background audio while I work instead of podcasts.
 
-## What I've Learned After a Month
+## What I've Learned So Far
 
 <Callout type="tip" title="The filter changes the behavior">
-Having a structured digest show up in my inbox changed how I engage with research. Before this, I'd set aside time to "catch up on reading" and not do it. Now the reading comes to me, already summarized, with key statistics pulled out. I still read full sources when something matters — but the triage is automated.
+Having a structured digest waiting for me each morning changed how I engage with research. Before this, I'd set aside time to "catch up on reading" and not do it. Now the reading is already done: summarized, with key statistics pulled out. I still read full sources when something matters, but the triage is automated.
 </Callout>
 
-**The numbers after one month:**
+**The numbers after the first week:**
 
-- 5 topics tracked across education, leadership, and AI
-- 70+ sources downloaded and summarized
-- 15 digests delivered to my inbox
-- 3 paywalled sources I went and retrieved manually because the abstracts looked important
-- 1 study that changed how I approached AI policy at my school (a RAND study showing 60% of schools have no AI guidance for teachers)
+- 4 topics tracked across education, leadership, and AI
+- 75 sources downloaded, 40 summarized so far
+- 6 digests generated, organized by topic and date
+- Multiple paywalled sources flagged that I wouldn't have found manually
+- 1 study that would have changed how I approached AI policy when I led a school (a RAND study showing 60% of schools have no AI guidance for teachers)
 
 **What works:**
 
-The per-topic scheduling is critical. AI in education research doesn't need daily checking — major studies come out weekly or monthly. But practical AI tools change every few days. Having different frequencies per pillar means I'm not drowning in noise on slow topics or missing things on fast ones.
+The per-topic scheduling is critical. AI in education research doesn't need daily checking. Major studies come out weekly or monthly. But practical AI tools change every few days. Having different frequencies per pillar means I'm not drowning in noise on slow topics or missing things on fast ones.
 
-The structured summaries are better than my own notes would be. The pipeline extracts methodology, effect sizes, and specific statistics — the things you need when making a case to a board or writing a policy recommendation. I used to skim articles and highlight vaguely. Now I have a searchable archive of structured notes.
+The structured summaries are better than my own notes would be. The pipeline extracts methodology, effect sizes, and specific statistics. The things you need when making a case to a board or writing a policy recommendation. I used to skim articles and highlight vaguely. Now I have a searchable archive of structured notes.
 
 **What doesn't work yet:**
 
-Paywalled content is still manual. About 20% of academic sources are behind journal paywalls, and the pipeline can only flag them — I still have to go retrieve them through library access or by requesting them directly from authors.
+Email delivery and Google Drive sync are built but not configured yet. The scripts support Resend, Gmail SMTP, and rclone, but I haven't verified my sending domain or set up Drive sync. For now I'm reading the digests locally and uploading to NotebookLM manually. It takes 30 seconds and honestly I'm not sure the email step adds much. The value is in the summaries, not the delivery mechanism.
+
+Paywalled content is still manual. About 20% of academic sources are behind journal paywalls, and the pipeline can only flag them. I still have to go retrieve them through library access or by requesting them directly from authors.
 
 The summaries occasionally miss nuance. They're good for "what did this study find?" but not great for "how does this challenge existing assumptions?" I still need to read the important ones myself. The pipeline is a filter, not a replacement for thinking.
 
