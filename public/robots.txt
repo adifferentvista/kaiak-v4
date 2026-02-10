@@ -8,3 +8,6 @@ Host: https://kaiak.io
 
 # Sitemaps
 Sitemap: https://kaiak.io/sitemap.xml
+
+# RSS Feed
+# https://kaiak.io/feed.xml
