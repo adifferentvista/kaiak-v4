@@ -39,11 +39,13 @@ export const metadata = {
     siteName: 'KAIAK',
     locale: 'en_US',
     type: 'website',
+    images: [{ url: '/api/og', width: 1200, height: 630, alt: 'KAIAK | AI & Systems for Leaders' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'KAIAK | AI & Systems for Leaders',
     description: 'I help leaders reclaim 10+ hours a week through AI automation and smart systems.',
+    images: ['/api/og'],
   },
   robots: {
     index: true,

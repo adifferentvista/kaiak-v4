@@ -51,6 +51,10 @@ export async function generateMetadata({ params }) {
     const imageUrl = `https://kaiak.io${post.image}`;
     metadata.openGraph.images = [{ url: imageUrl, alt: post.imageAlt || post.title }];
     metadata.twitter.images = [imageUrl];
+  } else {
+    const ogUrl = `/api/og?title=${encodeURIComponent(post.title)}&pillar=${encodeURIComponent(post.pillar || '')}`;
+    metadata.openGraph.images = [{ url: ogUrl, width: 1200, height: 630, alt: post.title }];
+    metadata.twitter.images = [ogUrl];
   }
 
   return metadata;
