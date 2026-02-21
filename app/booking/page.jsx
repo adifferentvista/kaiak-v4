@@ -4,6 +4,7 @@ import Navbar from '../components/Navbar';
 export const metadata = {
   title: 'Book a Strategy Call | KAIAK',
   description: 'Schedule a free 30-minute strategy call. We\'ll discuss what\'s eating your time and whether I can help.',
+  alternates: { canonical: '/booking' },
 };
 
 export default function BookingPage() {

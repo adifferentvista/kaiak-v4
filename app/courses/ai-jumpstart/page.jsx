@@ -6,6 +6,7 @@ import { Play, FileText, Award, Clock, CheckCircle2, Users } from 'lucide-react'
 export const metadata = {
   title: 'AI for School Leaders: 5-Day Jumpstart | KAIAK',
   description: 'Learn to use AI tools effectively in just 5 days. Self-paced video course with prompts, templates, and certificate of completion.',
+  alternates: { canonical: '/courses/ai-jumpstart' },
 };
 
 export default function AIJumpstartCoursePage() {

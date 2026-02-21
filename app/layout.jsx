@@ -49,9 +49,6 @@ export const metadata = {
     index: true,
     follow: true,
   },
-  alternates: {
-    canonical: 'https://kaiak.io',
-  },
   icons: {
     icon: [
       { url: '/favicon-dark.png', media: '(prefers-color-scheme: light)' },

@@ -6,6 +6,7 @@ import { Users, Video, MapPin } from 'lucide-react';
 export const metadata = {
   title: 'Work With Me | KAIAK',
   description: 'AI systems and operational infrastructure for international school leaders. Done-with-you consulting to reclaim your time.',
+  alternates: { canonical: '/work-with-me' },
 };
 
 export default function WorkWithMePage() {

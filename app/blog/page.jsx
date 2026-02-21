@@ -6,6 +6,7 @@ import BlogContent from '../components/BlogContent';
 export const metadata = {
   title: 'Blog | KAIAK',
   description: 'Thoughts on AI, systems, and reclaiming your time from administrative chaos.',
+  alternates: { canonical: '/blog' },
 };
 
 export default function BlogPage({ searchParams }) {

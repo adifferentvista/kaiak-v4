@@ -27,6 +27,10 @@ import {
   GraduationCap
 } from 'lucide-react';
 
+export const metadata = {
+  alternates: { canonical: '/' },
+};
+
 // ============================================
 // KAIAK HOMEPAGE v5.1
 // AI Advantage structure + Lucide icons

@@ -5,6 +5,7 @@ import WaitlistForm from '../../components/WaitlistForm';
 export const metadata = {
   title: 'The No-Admin Second Brain Guide | KAIAK',
   description: 'A complete system for capturing, organizing, and retrieving everything—without spending hours on maintenance. Built specifically for busy school leaders.',
+  alternates: { canonical: '/products/second-brain-guide' },
 };
 
 export default function SecondBrainGuideWaitlist() {

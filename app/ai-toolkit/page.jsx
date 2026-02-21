@@ -5,6 +5,7 @@ export const metadata = {
   title: "Free AI Toolkit for School Leaders | NotebookLM, Claude, ChatGPT Guide | KAIAK",
   description: "Download the free guide: NotebookLM vs. Claude vs. ChatGPT for school leaders. Get 15+ copy-paste prompts for board reports, parent emails, policy lookup, and more.",
   keywords: ["AI for school leaders", "NotebookLM for schools", "ChatGPT for principals", "school administration AI", "AI toolkit education"],
+  alternates: { canonical: '/ai-toolkit' },
   openGraph: {
     title: "The School Leader's AI Toolkit — Free Download",
     description: "NotebookLM vs. Claude vs. ChatGPT: The Decision Matrix (With My Exact Prompts)",
