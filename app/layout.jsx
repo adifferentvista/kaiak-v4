@@ -90,7 +90,7 @@ export default function RootLayout({ children }) {
           }}
         />
       </head>
-      <body className="font-sans antialiased bg-cream dark:bg-navy">
+      <body suppressHydrationWarning className="font-sans antialiased bg-cream dark:bg-navy">
         <ThemeProvider>
           {children}
         </ThemeProvider>
