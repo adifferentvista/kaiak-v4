@@ -115,7 +115,7 @@ export default function ExitIntentPopup() {
                   Free 15-Page Guide
                 </p>
                 <h3 className="font-serif text-2xl text-navy dark:text-white mb-2">
-                  NotebookLM vs. Claude vs. ChatGPT
+                  4 AI Tools Every School Leader Needs
                 </h3>
                 <p className="text-slate-500 dark:text-slate-400 text-sm">
                   The decision matrix I used to save 15 hours a week as a Head of School.
@@ -126,7 +126,7 @@ export default function ExitIntentPopup() {
               <div className="space-y-2.5 mb-6">
                 {[
                   'The right tool for every school task',
-                  '15+ copy-paste prompts you can use today',
+                  '20+ copy-paste prompts you can use today',
                   'The 10 admin tasks to automate first',
                 ].map((item, i) => (
                   <div key={i} className="flex items-center gap-2.5">
@@ -166,7 +166,7 @@ export default function ExitIntentPopup() {
                   disabled={status === 'loading'}
                   className="w-full px-6 py-3 rounded-lg font-bold text-white bg-orange-600 hover:bg-orange-700 transition-colors disabled:opacity-50 uppercase tracking-wide text-sm"
                 >
-                  {status === 'loading' ? 'Sending...' : 'Get My 15 Free Prompts'}
+                  {status === 'loading' ? 'Sending...' : 'Get My 20 Free Prompts'}
                 </button>
 
                 {status === 'error' && (

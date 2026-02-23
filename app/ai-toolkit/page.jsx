@@ -2,13 +2,13 @@ import Link from 'next/link';
 import Navbar from '../components/Navbar';
 
 export const metadata = {
-  title: "Free AI Toolkit for School Leaders | NotebookLM, Claude, ChatGPT Guide | KAIAK",
-  description: "Download the free guide: NotebookLM vs. Claude vs. ChatGPT for school leaders. Get 15+ copy-paste prompts for board reports, parent emails, policy lookup, and more.",
-  keywords: ["AI for school leaders", "NotebookLM for schools", "ChatGPT for principals", "school administration AI", "AI toolkit education"],
+  title: "Free AI Toolkit for School Leaders | NotebookLM, Claude, ChatGPT, Gemini | KAIAK",
+  description: "Free guide: NotebookLM vs. Claude vs. ChatGPT vs. Gemini for school leaders. 20+ copy-paste prompts for board reports, parent emails, policy lookup, and more.",
+  keywords: ["AI for school leaders", "NotebookLM for schools", "ChatGPT for principals", "Gemini for schools", "school administration AI", "AI toolkit education"],
   alternates: { canonical: '/ai-toolkit' },
   openGraph: {
     title: "The School Leader's AI Toolkit — Free Download",
-    description: "NotebookLM vs. Claude vs. ChatGPT: The Decision Matrix (With My Exact Prompts)",
+    description: "NotebookLM vs. Claude vs. ChatGPT vs. Gemini: The Decision Matrix (With My Exact Prompts)",
   },
 };
 
@@ -32,7 +32,7 @@ export default function AIToolkitLandingPage() {
               </p>
               
               <h1 className="font-serif text-3xl md:text-4xl text-navy dark:text-white mb-4 leading-tight">
-                NotebookLM vs. Claude vs. ChatGPT
+                NotebookLM vs. Claude vs. ChatGPT vs. Gemini
               </h1>
               
               <p className="text-xl md:text-2xl text-slate-600 dark:text-slate-300 mb-6">
@@ -44,8 +44,8 @@ export default function AIToolkitLandingPage() {
                 The exact workflows, decision framework, and copy-paste prompts I used to save 15 hours a week as a Head of School. <strong className="text-navy dark:text-white">Stop guessing which tool to use and start automating your admin.</strong>
               </p>
 
-              {/* 3 Feature Cards */}
-              <div className="grid sm:grid-cols-3 gap-4 mb-10">
+              {/* 4 Feature Cards */}
+              <div className="grid sm:grid-cols-2 gap-4 mb-10">
                 <div className="p-4 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:-translate-y-1 hover:shadow-lg transition-all cursor-default">
                   <div className="text-2xl mb-2">🧠</div>
                   <h3 className="font-semibold text-navy dark:text-white text-sm mb-1">The "Second Brain"</h3>
@@ -58,6 +58,13 @@ export default function AIToolkitLandingPage() {
                   <h3 className="font-semibold text-navy dark:text-white text-sm mb-1">The "Chief of Staff"</h3>
                   <p className="text-slate-500 dark:text-slate-400 text-xs">
                     Claude prompts for empathetic board reports and crisis communications.
+                  </p>
+                </div>
+                <div className="p-4 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:-translate-y-1 hover:shadow-lg transition-all cursor-default">
+                  <div className="text-2xl mb-2">🔍</div>
+                  <h3 className="font-semibold text-navy dark:text-white text-sm mb-1">The "Research Assistant"</h3>
+                  <p className="text-slate-500 dark:text-slate-400 text-xs">
+                    Gemini for live research, Google Workspace drafts, and data summaries inside Sheets.
                   </p>
                 </div>
                 <div className="p-4 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:-translate-y-1 hover:shadow-lg transition-all cursor-default">
@@ -84,8 +91,8 @@ export default function AIToolkitLandingPage() {
                 <p className="font-semibold text-navy dark:text-white mb-4">Inside this free 15-page toolkit:</p>
                 <ul className="space-y-3">
                   {[
-                    { title: 'The Decision Matrix', desc: 'When to use ChatGPT (Speed) vs. Claude (Strategy) vs. NotebookLM (Accuracy)' },
-                    { title: '15+ Copy-Paste Prompts', desc: 'For difficult parent emails, meeting summaries, and curriculum gap analysis' },
+                    { title: 'The Decision Matrix', desc: 'When to use ChatGPT (Speed) vs. Claude (Strategy) vs. NotebookLM (Accuracy) vs. Gemini (Research)' },
+                    { title: '20+ Copy-Paste Prompts', desc: 'For difficult parent emails, meeting summaries, curriculum gap analysis, and live research' },
                     { title: 'The "Kill Switch" List', desc: '10 admin tasks you can automate today' },
                   ].map((item, i) => (
                     <li key={i} className="flex items-start gap-3">
@@ -108,7 +115,7 @@ export default function AIToolkitLandingPage() {
                 <div className="space-y-4">
                   {[
                     { num: 1, title: 'Pick the task', desc: 'Use the Decision Matrix to choose the right tool' },
-                    { num: 2, title: 'Copy the prompt', desc: 'Paste one of 15+ ready-made prompts' },
+                    { num: 2, title: 'Copy the prompt', desc: 'Paste one of 20+ ready-made prompts' },
                     { num: 3, title: 'Get time back', desc: 'Watch hours of admin disappear' },
                   ].map((step) => (
                     <div 
