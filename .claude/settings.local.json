@@ -1,7 +1,16 @@
 {
   "permissions": {
     "allow": [
-      "Bash(npm run dev:*)"
+      "Bash(npm run dev:*)",
+      "WebFetch(domain:www.producttalk.org)",
+      "Bash(cd E:\\\\App Projects\\\\Kaiak\\\\Kaiak-v4\\\\kaiak-v4:*)",
+      "Bash(where gh:*)",
+      "WebSearch",
+      "Bash(cd \"E:\\\\App Projects\\\\Kaiak\\\\Kaiak-v4\\\\kaiak-v4\" && npm run build 2>&1)",
+      "WebFetch(domain:kaiak.io)",
+      "Bash(cd:*)",
+      "Bash(echo not available:*)",
+      "Bash(python:*)"
     ]
   }
 }

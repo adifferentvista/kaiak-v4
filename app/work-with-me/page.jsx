@@ -572,7 +572,7 @@ export default function WorkWithMePage() {
               <Link href="/#about" className="hover:text-white transition-colors">About</Link>
               <Link href="/ai-toolkit" className="hover:text-white transition-colors">Free Toolkit</Link>
               <a 
-                href="https://linkedin.com/in/yourprofile" 
+                href="https://linkedin.com/in/benedictrinne" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="hover:text-white transition-colors"

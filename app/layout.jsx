@@ -1,6 +1,7 @@
 import Script from 'next/script'
 import { Inter, Instrument_Serif, Space_Mono } from 'next/font/google'
 import { ThemeProvider } from './components/ThemeProvider'
+import AgentWidget from './components/AgentWidget'
 import './globals.css'
 
 // Fonts using next/font (Performance: no render-blocking @import)
@@ -93,6 +94,7 @@ export default function RootLayout({ children }) {
       <body suppressHydrationWarning className="font-sans antialiased bg-cream dark:bg-navy">
         <ThemeProvider>
           {children}
+          <AgentWidget />
         </ThemeProvider>
         
         {/* Calendly JS - kept for /booking page embed */}
