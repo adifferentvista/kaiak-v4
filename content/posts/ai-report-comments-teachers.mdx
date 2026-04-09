@@ -2,6 +2,7 @@
 title: "10 Report Comments in 20 Minutes: The AI Workflow That Saved My Teaching Team"
 description: "Most AI-generated report comments are generic garbage. Here's the exact prompt and verification process I taught 50+ teachers — step by step, with the settings that actually matter."
 date: "2026-02-20"
+draft: true
 pillar: "practical-ai"
 contentType: "trending"
 readTime: "9 min read"
@@ -25,7 +26,7 @@ sources:
 
 ## The Report Card Problem
 
-Australian teachers spend 4.7 hours per week on administrative tasks — the fourth highest in the OECD. A massive chunk of that is report writing.
+According to the [OECD TALIS 2024 survey](https://oecd.org/en/publications/results-from-talis-2024_90df6235-en), over half of teachers across OECD countries report administrative work as their biggest source of stress - more than any other demand. Australia's admin workload has increased since 2018, and in my experience, a significant portion of that burden is report writing.
 
 I've watched teachers spend entire weekends writing individualised comments. Thirty students, two subjects each, 60 comments that need to sound personal, accurate, and parent-ready. The maths is brutal.
 
@@ -39,7 +40,7 @@ Here's the workflow I built and taught to over 50 teachers. It produces 10 indiv
 
 ## Why Most AI Comments Fail
 
-Before the how-to, you need to understand what goes wrong. Most teachers open ChatGPT or Claude and type something like:
+Before the how-to, you need to understand what goes wrong. Most teachers open ChatGPT or [Claude](https://claude.ai) and type something like:
 
 ```
 Write a report comment for a student in Year 4 Maths who is doing well.
@@ -55,7 +56,7 @@ The AI didn't fail. You gave it nothing specific to work with. No observation no
 
 ## The RCFCC Comment Prompt
 
-This is the exact prompt structure I teach. It uses the RCFCC framework — Role, Context, Format, Constraints, Call to Action. Copy it, modify the details in brackets, and paste it into Claude or ChatGPT.
+This is the exact prompt structure I teach. It uses the RCFCC framework - Role, Context, Format, Constraints, Call to Action. Copy it, modify the details in brackets, and paste it into Claude or ChatGPT.
 
 ```
 ROLE: You are an experienced classroom teacher writing end-of-term
@@ -68,7 +69,7 @@ CONTEXT:
 - Curriculum: [e.g., "Australian Curriculum v9" or "IB PYP"]
 - Term: [e.g., "Term 1, 2026"]
 - Student name: [First name]
-- Observation notes: [Paste your raw notes — bullet points are fine]
+- Observation notes: [Paste your raw notes - bullet points are fine]
 - Assessment data: [e.g., "Scored 78% on unit test. Struggles with
   fractions but strong in multiplication."]
 
@@ -84,7 +85,7 @@ CONSTRAINTS:
 - Do not invent achievements or behaviours not mentioned in the notes
 - Do not use deficit language ("struggles," "fails to," "unable to")
 - Use growth-oriented language for areas of development
-- Match Australian English spelling conventions
+- Match [e.g., "American English," "British English," or "Australian English"] spelling conventions
 
 CALL TO ACTION:
 Write one report comment for [Student Name] based on the notes above.
@@ -98,9 +99,21 @@ Here's the exact workflow, written for someone who has never used an AI tool.
 
 **Step 1: Gather your raw notes.**
 
-Before you open any AI tool, pull together your observation notes for each student. These can be messy — bullet points, shorthand, whatever you normally write. The key is specificity. "Good at maths" is useless. "Confidently solves 3-digit multiplication but freezes when fractions appear" gives the AI something real to work with.
+Before you open any AI tool, pull together your observation notes for each student. These can be messy - bullet points, shorthand, whatever you normally write. The key is specificity. "Good at maths" is useless. "Confidently solves 3-digit multiplication but freezes when fractions appear" gives the AI something real to work with.
 
 If you don't have notes, open your gradebook or assessment records. Pull out two things per student: one strength (with evidence) and one area for growth (with evidence).
+
+**If you use an LMS, this step is even faster.** Most international schools already have structured assessment data sitting in their learning management system - rubric scores, task-specific feedback, learning outcomes, attendance patterns. That data is exactly what makes AI comments specific instead of generic.
+
+Here's how to pull it depending on your platform:
+
+- **[ManageBac](https://www.managebac.com):** Go to your class → Progress Reports or Gradebook. You can export student assessment data as a CSV, or simply copy the rubric scores and task comments for each student. ManageBac's unit planners also store your ATL (Approaches to Learning) observations - those make excellent input for the prompt's "Observation notes" field.
+
+- **[Toddle](https://www.toddleapp.com):** Navigate to your class portfolio or assessment overview. Toddle stores learning evidence, learning outcome ratings, and teacher reflections per student. Copy the outcome ratings and any written reflections - these feed directly into both the "Assessment data" and "Observation notes" fields in the prompt.
+
+- **[Google Classroom](https://classroom.google.com):** Open your Gradebook for the class. You can see scores per assignment and any private comments you've left on student work. For richer data, check your Google Sheets rubrics if you use them. The scores alone are helpful, but your private comments on their submissions are gold - those are the specific observations that make each comment unique.
+
+The point is the same regardless of platform: **your LMS already has the structured data that makes AI comments good.** Instead of manually typing observation notes from memory, you're copying what you've already recorded throughout the term. "Step 1: Gather your raw notes" becomes "Step 1: Export from your LMS" - faster, more consistent, and more specific.
 
 **Step 2: Open Claude or ChatGPT.**
 
@@ -112,11 +125,11 @@ Copy the prompt template above. Paste it into the chat box. Don't hit Enter yet.
 
 **Step 4: Fill in the brackets.**
 
-Replace every bracketed section with your actual information. The most important field is **Observation notes** — this is where quality of input determines quality of output. Paste your real notes for the first student. Even rough notes like "Emma — strong reader, needs work on inference questions, loves group work, sometimes rushes written tasks" will produce a dramatically better comment than giving no notes at all.
+Replace every bracketed section with your actual information. The most important field is **Observation notes** - the quality of your input directly determines the quality of the output. Paste your real notes for the first student. Even rough notes like "Emma - strong reader, needs work on inference questions, loves group work, sometimes rushes written tasks" will produce a dramatically better comment than giving no notes at all.
 
 **Step 5: Hit Enter and read the output.**
 
-The AI generates a comment. Read it carefully. Does it sound like something you'd actually write? Does it reference specific things from your notes? If it mentions something you didn't include in your notes, that's a red flag — the AI invented it.
+The AI generates a comment. Read it carefully. Does it sound like something you'd actually write? Does it reference specific things from your notes? If it mentions something you didn't include in your notes, that's a red flag - the AI invented it.
 
 **Step 6: Generate the next comment.**
 
@@ -143,13 +156,15 @@ This is the part most people skip. It's the most important part.
 
 No AI-generated comment should reach a parent without passing through three checks. I teach this as a non-negotiable rule.
 
-**Step 1 — FACT CHECK.** Read the comment against your notes. Did the AI add anything you didn't provide? Check student names, subject references, assessment details, and any specific claims. If the comment says "Emma excelled in the geometry unit" and your notes don't mention geometry, delete that sentence. The AI made it up.
+**Step 1 - FACT CHECK.** Read the comment against your notes. Did the AI add anything you didn't provide? Check student names, subject references, assessment details, and any specific claims. If the comment says "Emma excelled in the geometry unit" and your notes don't mention geometry, delete that sentence. The AI made it up.
 
-**Step 2 — TONE CHECK.** Read the comment out loud. Does it sound like you? AI tends to drift toward corporate language — phrases like "demonstrates proficiency" or "exhibits a strong commitment to" don't sound like a teacher. Rewrite anything that sounds like a LinkedIn post instead of a report card.
+**Step 2 - TONE CHECK.** Read the comment out loud. Does it sound like you? AI tends to drift toward corporate language - phrases like "demonstrates proficiency" or "exhibits a strong commitment to" don't sound like a teacher. Rewrite anything that sounds like a LinkedIn post instead of a report card.
 
-**Step 3 — BIAS CHECK.** Look for assumptions about family structure ("parents" vs "family"), socioeconomic assumptions, cultural assumptions, or deficit language. AI models carry biases from training data. A comment that says "with more support at home, [student] could improve" makes assumptions you may not intend. Rewrite to focus on what happens in the classroom.
+**Step 3 - BIAS CHECK.** Look for assumptions about family structure ("parents" vs "family"), socioeconomic assumptions, cultural assumptions, or deficit language. AI models carry biases from training data. A comment that says "with more support at home, [student] could improve" makes assumptions you may not intend. Rewrite to focus on what happens in the classroom.
 
 This audit takes about 2 minutes per comment. For 30 students, that's an hour of review. Total time: 15 minutes generating + 60 minutes reviewing = 75 minutes for 30 individualised comments. Compare that to a weekend.
+
+According to [Azumo's AI in the Workplace research](https://azumo.com/artificial-intelligence/ai-insights/ai-in-workplace-statistics), professionals using AI for administrative tasks save an average of 3.5 hours per week. For teachers, that time goes straight back into planning, feedback, and the work that actually matters.
 
 ---
 
@@ -157,9 +172,9 @@ This audit takes about 2 minutes per comment. For 30 students, that's an hour of
 
 Once you've done this once, you have a reusable system.
 
-**Save your prompt.** Copy the RCFCC prompt with your school-specific details into a Google Doc. Title it "[Your Name] Report Comment Prompt — [Year/Subject]." Next term, you open the doc, update the term, and you're ready.
+**Save your prompt.** Copy the RCFCC prompt with your school-specific details into a Google Doc. Title it "[Your Name] Report Comment Prompt - [Year/Subject]." Next term, you open the doc, update the term, and you're ready.
 
-**Build a Claude Project.** If you use Claude Pro ($20/month), you can create a Project. Upload your curriculum documents, school style guide, and previous report samples. Set the RCFCC prompt as the project instructions. Now every conversation in that project starts with full context — you just paste student notes and get comments that match your school's voice.
+**Build a Claude Project.** If you use Claude Pro ($20/month), you can create a Project. Upload your curriculum documents, school style guide, and previous report samples. Set the RCFCC prompt as the project instructions. Now every conversation in that project starts with full context - you just paste student notes and get comments that match your school's voice.
 
 **Create a template spreadsheet.** Set up a simple spreadsheet with columns for student name, strength notes, growth notes, and assessment data. Fill it in throughout the term instead of scrambling at report time. When reports are due, copy each row into your AI prompt. The investment is 30 seconds per student per week. The payoff is a 20-minute report writing session instead of a 20-hour one.
 
@@ -169,10 +184,10 @@ Once you've done this once, you have a reusable system.
 
 AI writes the first draft. You write the final version.
 
-The verification audit isn't optional. It's the difference between a tool that helps you and a tool that creates problems. A single hallucinated detail in a report comment — a subject the student doesn't take, an achievement they didn't earn, a name that's wrong — destroys trust with the parent and with your school leadership.
+The verification audit isn't optional. It's the difference between a tool that helps you and a tool that creates problems. A single hallucinated detail in a report comment - a subject the student doesn't take, an achievement they didn't earn, a name that's wrong - destroys trust with the parent and with your school leadership.
 
 The AI doesn't know your students. It knows what you told it about your students. The quality of every comment is bounded by the quality of your observation notes. That's not a limitation of the tool. That's just good teaching practice showing up in a different format.
 
 ---
 
-**I teach this workflow in depth — along with the verification habits, the prompt library, and the full RCFCC framework — in my [AI Leadership course](https://academy.kaiak.io).** If you want the complete system for integrating AI into your professional practice without cutting corners on quality, that's where to start.
+**I teach this workflow in depth - along with the verification habits, the prompt library, and the full RCFCC framework - in my [AI Leadership course](https://academy.kaiak.io).** If you want the complete system for integrating AI into your professional practice without cutting corners on quality, that's where to start.

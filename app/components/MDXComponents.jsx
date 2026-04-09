@@ -210,6 +210,16 @@ export function YouTube({ id, title = "Video" }) {
   );
 }
 
+// Affiliate disclosure notice
+export function AffiliateDisclosure() {
+  return (
+    <div className="text-sm text-slate-500 dark:text-slate-400 bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-lg px-4 py-3 mb-8 italic">
+      This post contains affiliate links. If you purchase through them, I earn a small commission at no extra cost to you. I only recommend tools I use.{' '}
+      <a href="/disclosure" className="text-orange-600 dark:text-orange-400 hover:underline not-italic">Full disclosure</a>.
+    </div>
+  );
+}
+
 // Default export as object for MDXRemote
 const MDXComponents = {
   h2: H2,
@@ -223,6 +233,7 @@ const MDXComponents = {
   RelatedPost,
   YouTube,
   ComparisonTable,
+  AffiliateDisclosure,
 };
 
 export default MDXComponents;

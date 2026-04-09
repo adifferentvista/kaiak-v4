@@ -71,8 +71,8 @@ function PostCard({ post, featured = false }) {
           </div>
 
           <h3 className={`
-            font-serif text-navy dark:text-white group-hover:text-slate-600 dark:group-hover:text-slate-300 transition-colors
-            ${featured ? 'text-2xl mb-3' : 'text-lg mb-2'}
+            font-serif font-medium text-navy dark:text-white group-hover:text-slate-600 dark:group-hover:text-slate-300 transition-colors leading-snug
+            ${featured ? 'text-2xl mb-3' : 'text-xl mb-2'}
           `}>
             {post.title}
           </h3>

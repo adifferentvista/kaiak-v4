@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { getAllPostSlugs, getPostBySlug, getSeriesPosts, pillarLabels, pillarColors } from '@/lib/posts';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import rehypeHighlight from 'rehype-highlight';
+import remarkGfm from 'remark-gfm';
 import MDXComponents from '../../components/MDXComponents';
 import ThemeToggle from '../../components/ThemeToggle';
 import AuthorBio from '../../components/AuthorBio';
@@ -241,6 +242,7 @@ export default function BlogPostPage({ params }) {
                   components={MDXComponents}
                   options={{
                     mdxOptions: {
+                      remarkPlugins: [remarkGfm],
                       rehypePlugins: [rehypeHighlight],
                     },
                   }}

@@ -173,6 +173,43 @@ code, pre {
   border-radius: 0 0.5rem 0.5rem 0;
 }
 
+.prose-kaiak table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  font-size: 0.9375rem;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  border: 1px solid #E2E8F0;
+}
+
+.prose-kaiak thead {
+  background: #F1F5F9;
+}
+
+.prose-kaiak th {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  font-weight: 600;
+  color: #0F172A;
+  border-bottom: 2px solid #E2E8F0;
+  font-size: 0.875rem;
+}
+
+.prose-kaiak td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #E2E8F0;
+  color: #475569;
+}
+
+.prose-kaiak tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.prose-kaiak tbody tr:nth-child(even) {
+  background: #FAFAFA;
+}
+
 .prose-kaiak hr {
   border: none;
   border-top: 1px solid #E2E8F0;
@@ -331,6 +368,28 @@ code, pre {
   background: #1E293B;
   color: #94A3B8;
   border-left-color: #EA580C;
+}
+
+.dark .prose-kaiak table {
+  border-color: #334155;
+}
+
+.dark .prose-kaiak thead {
+  background: #1E293B;
+}
+
+.dark .prose-kaiak th {
+  color: #F8FAFC;
+  border-bottom-color: #334155;
+}
+
+.dark .prose-kaiak td {
+  border-bottom-color: #334155;
+  color: #CBD5E1;
+}
+
+.dark .prose-kaiak tbody tr:nth-child(even) {
+  background: #1E293B50;
 }
 
 .dark .prose-kaiak hr {
