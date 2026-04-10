@@ -8,6 +8,7 @@ import remarkGfm from 'remark-gfm';
 import MDXComponents from '../../components/MDXComponents';
 import ThemeToggle from '../../components/ThemeToggle';
 import AuthorBio from '../../components/AuthorBio';
+import ShareButtons from '../../components/ShareButtons';
 import TableOfContents from '../../components/TableOfContents';
 import SeriesNav from '../../components/SeriesNav';
 
@@ -248,6 +249,9 @@ export default function BlogPostPage({ params }) {
                   }}
                 />
               </article>
+
+              {/* Share Buttons */}
+              <ShareButtons title={post.title} slug={params.slug} />
 
               {/* Author Bio */}
               <AuthorBio />
