@@ -31,6 +31,73 @@ const nextConfig = {
         destination: '/products/second-brain-guide',
         permanent: true,
       },
+      // Common pages people look for
+      {
+        source: '/about',
+        destination: '/#about',
+        permanent: true,
+      },
+      {
+        source: '/courses',
+        destination: '/work-with-me',
+        permanent: true,
+      },
+      {
+        source: '/pricing',
+        destination: '/work-with-me',
+        permanent: true,
+      },
+      {
+        source: '/products',
+        destination: '/work-with-me',
+        permanent: true,
+      },
+      {
+        source: '/academy',
+        destination: '/work-with-me',
+        permanent: true,
+      },
+      {
+        source: '/resources',
+        destination: '/ai-toolkit',
+        permanent: true,
+      },
+      {
+        source: '/tools',
+        destination: '/ai-toolkit',
+        permanent: true,
+      },
+      // Old/partial blog slugs
+      {
+        source: '/blog/jagged-frontier',
+        destination: '/blog/what-to-automate-what-to-protect',
+        permanent: true,
+      },
+      {
+        source: '/blog/ai-meeting-notes-pipeline',
+        destination: '/blog/automated-research-pipeline',
+        permanent: true,
+      },
+      {
+        source: '/blog/ai-toolkit-guide',
+        destination: '/ai-toolkit',
+        permanent: true,
+      },
+      {
+        source: '/blog/ai-report-comments',
+        destination: '/blog/ai-report-comments-teachers',
+        permanent: true,
+      },
+      {
+        source: '/blog/heygen',
+        destination: '/blog/heygen-ai-avatar-video-guide',
+        permanent: true,
+      },
+      {
+        source: '/blog/elevenlabs',
+        destination: '/blog/elevenlabs-voice-cloning-guide',
+        permanent: true,
+      },
     ];
   },
 }
