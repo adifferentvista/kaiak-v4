@@ -159,7 +159,7 @@ export default function BlogPostPage({ params }) {
               <div className="flex items-center gap-4">
                 <Link href="/" className="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white text-sm font-medium">Home</Link>
                 <Link href="/blog" className="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white text-sm font-medium">Blog</Link>
-                <Link href="/products/second-brain-guide" className="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white text-sm font-medium">The Guide</Link>
+                <Link href="/ai-toolkit" className="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white text-sm font-medium">Free Toolkit</Link>
                 <ThemeToggle />
               </div>
             </div>
@@ -272,10 +272,10 @@ export default function BlogPostPage({ params }) {
                     Book a Call
                   </Link>
                   <Link
-                    href="/products/second-brain-guide"
+                    href="/ai-toolkit"
                     className="inline-block bg-white dark:bg-slate-700 text-navy dark:text-white border border-slate-300 dark:border-slate-600 px-6 py-3 rounded-lg font-medium hover:bg-slate-50 dark:hover:bg-slate-600 transition-colors"
                   >
-                    Get the Guide
+                    Free AI Toolkit
                   </Link>
                 </div>
               </div>

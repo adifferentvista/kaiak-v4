@@ -115,17 +115,17 @@ export default function ExitIntentPopup() {
                   Free 15-Page Guide
                 </p>
                 <h3 className="font-serif text-2xl text-navy dark:text-white mb-2">
-                  4 AI Tools Every School Leader Needs
+                  4 AI Tools Every Leader Needs
                 </h3>
                 <p className="text-slate-500 dark:text-slate-400 text-sm">
-                  The decision matrix I used to save 15 hours a week as a Head of School.
+                  The decision matrix I used to save 15 hours a week as a leader.
                 </p>
               </div>
 
               {/* What you get */}
               <div className="space-y-2.5 mb-6">
                 {[
-                  'The right tool for every school task',
+                  'The right tool for every task',
                   '20+ copy-paste prompts you can use today',
                   'The 10 admin tasks to automate first',
                 ].map((item, i) => (
@@ -156,7 +156,7 @@ export default function ExitIntentPopup() {
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="you@school.edu"
+                  placeholder="you@email.com"
                   required
                   disabled={status === 'loading'}
                   className="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-900 text-slate-800 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-orange-400 focus:border-transparent disabled:opacity-50"

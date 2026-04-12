@@ -98,6 +98,31 @@ const nextConfig = {
         destination: '/blog/elevenlabs-voice-cloning-guide',
         permanent: true,
       },
+      {
+        source: '/products/academy',
+        destination: '/work-with-me',
+        permanent: true,
+      },
+      {
+        source: '/courses/ai-jumpstart',
+        destination: '/work-with-me',
+        permanent: true,
+      },
+      {
+        source: '/workshop',
+        destination: '/work-with-me',
+        permanent: true,
+      },
+      {
+        source: '/products/second-brain-guide',
+        destination: '/ai-toolkit',
+        permanent: true,
+      },
+      {
+        source: '/journal',
+        destination: '/blog',
+        permanent: true,
+      },
     ];
   },
 }

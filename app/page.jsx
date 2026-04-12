@@ -38,11 +38,11 @@ export const metadata = {
 // ============================================
 
 const pillarDescriptions = {
-  'practical-ai': 'Hands-on guides to ChatGPT, Claude, NotebookLM, and more for school operations.',
+  'practical-ai': 'Hands-on guides to ChatGPT, Claude, NotebookLM, and more for operational efficiency.',
   'systems-thinking': 'Frameworks for building workflows that run without you.',
   'leadership': 'Strategic thinking, decision-making, and leading through change.',
   'no-admin-life': 'Reclaim your time by automating the tasks that drain your energy.',
-  'education': 'How AI is reshaping teaching, learning, and school culture.',
+  'education': 'How AI is reshaping education and professional development.',
 };
 
 const pillarIcons = {
@@ -83,13 +83,13 @@ export default function HomePage() {
               {/* Left: Text */}
               <div>
                 <div className="inline-block px-3 py-1 bg-orange-100 dark:bg-orange-900/30 rounded-full text-orange-700 dark:text-orange-400 text-xs font-bold uppercase tracking-wider mb-6">
-                  For International School Leaders
+                  For Leaders & Professionals
                 </div>
                 <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl leading-tight mb-6 text-navy dark:text-white">
-                  Simplify, Streamline, and Scale Your School Leadership.
+                  AI Systems That Work While You Lead.
                 </h1>
                 <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed mb-8 max-w-lg">
-                  Discover how AI-powered systems can save you 10+ hours a week. Stop being the bottleneck and get back to what matters: leading your school.
+                  I help leaders and professionals reclaim 10+ hours a week through AI automation, smart systems, and workflows that actually work.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Link 
@@ -101,7 +101,7 @@ export default function HomePage() {
                   </Link>
                 </div>
                 <p className="text-sm text-slate-500 dark:text-slate-500 mt-6">
-                  Trusted by school leaders across Asia, Middle East, and beyond.
+                  Trusted by leaders across education, consulting, and business.
                 </p>
               </div>
 
@@ -130,9 +130,9 @@ export default function HomePage() {
                   </div>
                   <div className="space-y-3">
                     {[
-                      "Board Report Draft (Auto-generated)",
-                      "Parent Weekly Update (Scheduled)",
-                      "Staff Absence Log (Synced)"
+                      "Weekly Report (Auto-generated)",
+                      "Client Update (Scheduled)",
+                      "Task Log (Synced)"
                     ].map((item, i) => (
                       <div key={i} className="flex items-center gap-3 text-sm text-slate-600 dark:text-slate-300">
                         <div className="w-5 h-5 rounded-full bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center">
@@ -156,7 +156,7 @@ export default function HomePage() {
                 Are You Drowning in Admin?
               </h2>
               <p className="text-slate-600 dark:text-slate-400">
-                You became a Head of School to make an impact — not to spend every evening on compliance paperwork.
+                You became a leader to make an impact — not to spend every evening buried in busywork.
               </p>
             </div>
 
@@ -175,7 +175,7 @@ export default function HomePage() {
                 { 
                   icon: Layers, 
                   title: "Systems in Your Head", 
-                  text: "If you step away, the school stops. Nothing is documented or delegated." 
+                  text: "If you step away, everything stops. Nothing is documented or delegated." 
                 }
               ].map((item, i) => (
                 <div key={i} className="flex flex-col items-center">
@@ -215,7 +215,7 @@ export default function HomePage() {
                   Break Free From Admin Overwhelm in 6 Weeks
                 </h2>
                 <p className="text-slate-600 dark:text-slate-400 text-lg mb-8 leading-relaxed">
-                  You&apos;ve built your school from the ground up, but running it shouldn&apos;t feel this hard. Streamline your leadership with a personalized approach to AI and automation.
+                  You&apos;ve built something meaningful, but running it shouldn&apos;t feel this hard. Streamline your leadership with a personalized approach to AI and automation.
                 </p>
 
                 <div className="space-y-6 mb-8">
@@ -228,7 +228,7 @@ export default function HomePage() {
                     { 
                       icon: FileText,
                       title: "Build Your Second Brain", 
-                      desc: "NotebookLM-powered knowledge base for instant policy and document retrieval." 
+                      desc: "AI-powered knowledge base for instant document and information retrieval." 
                     },
                     { 
                       icon: BarChart3,
@@ -269,7 +269,7 @@ export default function HomePage() {
                 <div className="py-8 space-y-4">
                   {[
                     { icon: Calendar, text: "6 weekly strategy calls" },
-                    { icon: FileText, text: "Full second brain setup" },
+                    { icon: FileText, text: "Custom AI knowledge base" },
                     { icon: Inbox, text: "Email & reporting automation" },
                     { icon: Mail, text: "30 days email support" },
                   ].map((item, i) => (
@@ -362,7 +362,7 @@ export default function HomePage() {
                 What Others Are Saying
               </h2>
               <p className="text-slate-600 dark:text-slate-400">
-                Real results from real school leaders.
+                Real results from real leaders.
               </p>
             </div>
 
@@ -405,7 +405,7 @@ export default function HomePage() {
 
             <div className="text-center mt-8">
               <p className="text-slate-500 dark:text-slate-500 text-sm">
-                1,000+ educators trained • DNA Masterclass 2025 speaker • 50+ schools reached
+                1,000+ professionals trained • DNA Masterclass 2025 speaker • 50+ organizations served
               </p>
             </div>
           </div>
@@ -486,51 +486,6 @@ export default function HomePage() {
           </section>
         )}
 
-        {/* ========== 7. PILLAR COLLECTIONS ========== */}
-        <section className="py-20 md:py-28 bg-cream dark:bg-navy">
-          <div className="max-w-5xl mx-auto px-6">
-            <div className="text-center mb-12">
-              <div className="text-orange-600 dark:text-amber-400 font-bold uppercase tracking-wider text-sm mb-2">
-                Browse by Topic
-              </div>
-              <h2 className="font-serif text-3xl md:text-4xl text-navy dark:text-white">
-                Pillar Collections
-              </h2>
-            </div>
-
-            <div className="grid md:grid-cols-3 lg:grid-cols-5 gap-4">
-              {Object.entries(pillarLabels).map(([key, label]) => {
-                const Icon = pillarIcons[key];
-                const colors = pillarColors[key] || { bg: '#f3f4f6', text: '#374151' };
-                const count = pillarCounts[key] || 0;
-                return (
-                  <Link
-                    key={key}
-                    href={`/blog?pillar=${key}`}
-                    className="group p-6 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:border-slate-300 dark:hover:border-slate-600 hover:shadow-md transition-all text-center"
-                  >
-                    <div
-                      className="w-12 h-12 mx-auto mb-3 rounded-full flex items-center justify-center"
-                      style={{ backgroundColor: colors.bg }}
-                    >
-                      <Icon className="w-6 h-6" style={{ color: colors.text }} />
-                    </div>
-                    <h3 className="font-medium text-navy dark:text-white text-sm mb-1">
-                      {label}
-                    </h3>
-                    <p className="text-xs text-slate-400 dark:text-slate-500 mb-2">
-                      {count} post{count !== 1 ? 's' : ''}
-                    </p>
-                    <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
-                      {pillarDescriptions[key]}
-                    </p>
-                  </Link>
-                );
-              })}
-            </div>
-          </div>
-        </section>
-
         {/* ========== 8. QUICK WINS (Secondary Offers) ========== */}
         <section className="py-20 md:py-28 bg-white dark:bg-navy-light">
           <div className="max-w-5xl mx-auto px-6">
@@ -548,23 +503,23 @@ export default function HomePage() {
 
             <div className="grid md:grid-cols-3 gap-6">
               {[
-                { 
-                  icon: Inbox,
-                  title: "Quick Win Sprint", 
-                  time: "1 Week",
-                  desc: "One workflow automated. Immediate time savings with focused implementation." 
-                },
-                { 
-                  icon: FileText,
-                  title: "School Ops Accelerator", 
-                  time: "4-8 Weeks",
-                  desc: "Handbooks, policies, and reporting systems built fast for new Heads." 
-                },
-                { 
+                {
                   icon: Calendar,
-                  title: "Strategy Session", 
-                  time: "90 Minutes",
-                  desc: "Map out your school's AI roadmap with an expert who's been in your shoes." 
+                  title: "Strategy Session",
+                  time: "90 Minutes · $297",
+                  desc: "Map out your AI roadmap with an expert who's been in your shoes."
+                },
+                {
+                  icon: Rocket,
+                  title: "AI Systems Implementation",
+                  time: "6 Weeks · $5,000",
+                  desc: "Done-with-you consulting. Your knowledge base, automations, and workflows built and running."
+                },
+                {
+                  icon: FileText,
+                  title: "AI Avatar Course Production",
+                  time: "Custom",
+                  desc: "Professional AI avatar video courses for organizations ready to scale training."
                 }
               ].map((offer, i) => (
                 <div key={i} className="p-8 border border-slate-200 dark:border-slate-700 rounded-xl hover:border-orange-300 dark:hover:border-orange-600 transition-colors bg-cream dark:bg-slate-800 group">
@@ -705,7 +660,7 @@ export default function HomePage() {
                     I realized that if I didn&apos;t systematize the &ldquo;noise,&rdquo; I&apos;d never have time for what actually mattered: the students, the teachers, the vision.
                   </p>
                   <p>
-                    <strong className="text-navy dark:text-white">So I built AI-powered systems to survive.</strong> Now I help other school leaders do the same — without the two years of trial and error.
+                    <strong className="text-navy dark:text-white">So I built AI-powered systems to survive.</strong> What started in education became a system I now bring to leaders across industries — consultants, business owners, creators, and anyone drowning in operational admin.
                   </p>
                 </div>
                 <Link 
@@ -732,7 +687,7 @@ export default function HomePage() {
               {[
                 {
                   q: "Who do you work with?",
-                  a: "International school leaders — Heads of School, Principals, Directors — who use Google Workspace and want to reduce admin overwhelm while actually leading their schools."
+                  a: "Leaders and professionals who want to reduce admin overwhelm — school principals, consultants, coaches, small business owners, content creators. If you use Google Workspace or common productivity tools, I can help."
                 },
                 {
                   q: "Do I need to be technical?",
@@ -747,8 +702,8 @@ export default function HomePage() {
                   a: "Clients typically reduce administrative workload by 50% within the first two months. The real transformation is having clear, reliable systems so you can focus on leading."
                 },
                 {
-                  q: "Do you work with schools outside the IB system?",
-                  a: "Yes. My experience is primarily IB, but the systems apply to any international school — British, American, or local curriculum."
+                  q: "Do you only work with schools?",
+                  a: "No. My background is in international education, but the systems I build work for any leader or professional drowning in operational tasks. Consultants, coaches, and small business owners all face the same admin overwhelm."
                 }
               ].map((item, i) => (
                 <div key={i} className="bg-cream dark:bg-slate-800 rounded-xl p-6 border border-slate-200 dark:border-slate-700">
@@ -769,7 +724,7 @@ export default function HomePage() {
                   Free Download
                 </p>
                 <h2 className="font-serif text-2xl md:text-3xl text-navy dark:text-white mb-4">
-                  The School Leader&apos;s AI Toolkit
+                  The Leader&apos;s AI Toolkit
                 </h2>
                 <p className="text-slate-600 dark:text-slate-400 mb-6">
                   NotebookLM vs. Claude vs. ChatGPT — which tool for which task? Get my decision matrix and 15+ copy-paste prompts.
@@ -777,7 +732,7 @@ export default function HomePage() {
                 <ul className="space-y-2 text-sm text-slate-600 dark:text-slate-400">
                   {[
                     "Decision Matrix: Right tool for each task",
-                    "15+ copy-paste prompts for school leaders",
+                    "15+ copy-paste prompts for busy leaders",
                     "The Gmail system for Inbox Zero"
                   ].map((item, i) => (
                     <li key={i} className="flex gap-2 items-center">
@@ -809,7 +764,7 @@ export default function HomePage() {
               Ready to Take the Next Step?
             </h2>
             <p className="text-slate-300 text-lg mb-10 max-w-xl mx-auto">
-              Let&apos;s create a smarter, faster way for you to run your school. Book a free 30-minute strategy call.
+              Let&apos;s create a smarter, faster way for you to lead. Book a free 30-minute strategy call.
             </p>
             <Link 
               href="/booking" 
@@ -833,7 +788,7 @@ export default function HomePage() {
             {/* Brand */}
             <div>
               <p className="font-serif text-xl text-white mb-2">KAIAK</p>
-              <p className="text-sm">AI &amp; systems for school leaders</p>
+              <p className="text-sm">AI systems for leaders</p>
             </div>
 
             {/* Links */}
@@ -858,7 +813,7 @@ export default function HomePage() {
             {/* Newsletter */}
             <div>
               <p className="text-white font-medium mb-4">Stay in the Loop</p>
-              <p className="text-sm mb-4">Weekly AI tips for school leaders. No spam.</p>
+              <p className="text-sm mb-4">Weekly AI tips for leaders. No spam.</p>
               <form 
                 action="https://app.convertkit.com/forms/8895661/subscriptions" 
                 method="post"
@@ -887,8 +842,13 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="pt-8 text-sm text-center border-t border-slate-800">
+          <div className="pt-8 text-sm border-t border-slate-800 flex flex-col md:flex-row items-center justify-between gap-4">
             <p>&copy; {currentYear} KAIAK. Less admin. More impact.</p>
+            <div className="flex gap-6 text-slate-500">
+              <Link href="/privacy" className="hover:text-white transition-colors">Privacy</Link>
+              <Link href="/terms" className="hover:text-white transition-colors">Terms</Link>
+              <Link href="/disclosure" className="hover:text-white transition-colors">Disclosure</Link>
+            </div>
           </div>
         </div>
       </footer>

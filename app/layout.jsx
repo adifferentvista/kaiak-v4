@@ -29,7 +29,7 @@ const spaceMono = Space_Mono({
 export const metadata = {
   title: 'KAIAK | AI & Systems for Leaders',
   description: 'I help leaders reclaim 10+ hours a week through AI automation, smart systems, and operational foundations that actually work.',
-  keywords: ['leadership', 'AI for education', 'productivity', 'school operations', 'NotebookLM', 'second brain', 'workflow automation'],
+  keywords: ['leadership', 'AI automation', 'productivity', 'workflow automation', 'AI consulting', 'NotebookLM', 'second brain', 'operational efficiency'],
   authors: [{ name: 'Benedict' }],
   // Canonical URL: kaiak.io (non-www)
   metadataBase: new URL('https://kaiak.io'),

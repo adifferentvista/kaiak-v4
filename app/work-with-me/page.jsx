@@ -5,7 +5,7 @@ import { Users, Video, MapPin } from 'lucide-react';
 
 export const metadata = {
   title: 'Work With Me | KAIAK',
-  description: 'AI systems and operational infrastructure for international school leaders. Done-with-you consulting to reclaim your time.',
+  description: 'AI systems and automation for leaders and professionals. Done-with-you consulting to reclaim your time.',
   alternates: { canonical: '/work-with-me' },
 };
 
@@ -23,10 +23,10 @@ export default function WorkWithMePage() {
         <section className="py-20 md:py-28 bg-cream dark:bg-navy">
           <div className="max-w-4xl mx-auto px-6 text-center">
             <h1 className="font-serif text-4xl md:text-5xl mb-6 text-navy dark:text-white">
-              Stop Drowning in Admin.<br />Start Leading Your School.
+              Stop Drowning in Admin.<br />Start Leading.
             </h1>
             <p className="text-xl text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
-              Get 10+ hours back every week with AI-powered systems built specifically for international school leaders.
+              Get 10+ hours back every week with AI-powered systems built for the way you actually work.
             </p>
           </div>
         </section>
@@ -39,7 +39,7 @@ export default function WorkWithMePage() {
             </h2>
             <div className="grid md:grid-cols-2 gap-4">
               {[
-                "You're a school leader (Head, Principal, Director) feeling buried in admin",
+                "You're a leader (Principal, Director, Consultant, Business Owner) feeling buried in admin",
                 "You're willing to invest time in building systems that last",
                 "You want a partner who's been in your shoes, not a generic consultant",
                 "You use Google Workspace and want to get more out of it",
@@ -163,24 +163,24 @@ export default function WorkWithMePage() {
                 </div>
               </div>
 
-              {/* Service 4: School Ops Accelerator */}
+              {/* Service 4: AI Avatar Course Production */}
               <div className="rounded-2xl p-6 flex flex-col bg-navy-light dark:bg-slate-800 border border-navy-border dark:border-slate-700 transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:shadow-amber-500/10 hover:border-amber-500/50 cursor-pointer">
-                <div className="text-3xl mb-4">🏫</div>
-                <h3 className="font-serif text-xl mb-1">School Ops Accelerator</h3>
-                <p className="text-amber-400 text-sm font-medium mb-2">Get your foundations built.</p>
-                <p className="text-slate-400 text-xs mb-4">For new Heads needing operational docs</p>
+                <div className="text-3xl mb-4">🎬</div>
+                <h3 className="font-serif text-xl mb-1">AI Avatar Course Production</h3>
+                <p className="text-amber-400 text-sm font-medium mb-2">Scale your expertise.</p>
+                <p className="text-slate-400 text-xs mb-4">For organizations ready to scale training</p>
 
                 <p className="text-slate-300 text-sm leading-relaxed mb-4">
-                  I build your handbooks, policies, and reporting systems fast. Skip months of template hunting.
+                  Professional AI avatar video courses. I produce your training content using HeyGen, ElevenLabs, and custom workflows.
                 </p>
 
                 <ul className="space-y-2 mb-6 flex-grow">
                   {[
-                    'Parent-student handbook',
-                    'Staff policy framework',
-                    'Board reporting templates',
-                    'Emergency procedures',
-                    'Customized to your context',
+                    'Full course production',
+                    'AI avatar setup & voice cloning',
+                    'Script writing & editing',
+                    'SCORM export for LMS',
+                    'Multilingual delivery',
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-2 text-xs text-slate-300">
                       <Icons.Check className="w-4 h-4 flex-shrink-0 text-amber-400" />
@@ -190,8 +190,8 @@ export default function WorkWithMePage() {
                 </ul>
 
                 <div className="pt-4 border-t border-navy-border dark:border-slate-700">
-                  <div className="text-2xl font-bold text-white mb-1">From $9,500</div>
-                  <p className="text-xs text-slate-400">4-8 weeks • Scope varies by context</p>
+                  <div className="text-2xl font-bold text-white mb-1">Custom</div>
+                  <p className="text-xs text-slate-400">Scope & timeline vary by project</p>
                 </div>
               </div>
             </div>
@@ -215,8 +215,8 @@ export default function WorkWithMePage() {
         <section className="py-20 md:py-28 bg-white dark:bg-navy-light">
           <div className="max-w-6xl mx-auto px-6">
             <div className="text-center mb-16">
-              <p className="font-medium text-sm tracking-wide uppercase mb-4 text-orange-600 dark:text-amber-400">For Schools & Teams</p>
-              <h2 className="font-serif text-3xl md:text-4xl mb-4 text-navy dark:text-white">Staff Training & Workshops</h2>
+              <p className="font-medium text-sm tracking-wide uppercase mb-4 text-orange-600 dark:text-amber-400">For Teams & Organizations</p>
+              <h2 className="font-serif text-3xl md:text-4xl mb-4 text-navy dark:text-white">Team Training & Workshops</h2>
               <p className="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
                 Upskill your entire leadership team or admin staff. Perfect for PD days, conferences, and school-wide AI adoption.
               </p>

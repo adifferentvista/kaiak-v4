@@ -2,12 +2,12 @@ import Link from 'next/link';
 import Navbar from '../components/Navbar';
 
 export const metadata = {
-  title: "Free AI Toolkit for School Leaders | NotebookLM, Claude, ChatGPT, Gemini | KAIAK",
-  description: "Free guide: NotebookLM vs. Claude vs. ChatGPT vs. Gemini for school leaders. 20+ copy-paste prompts for board reports, parent emails, policy lookup, and more.",
-  keywords: ["AI for school leaders", "NotebookLM for schools", "ChatGPT for principals", "Gemini for schools", "school administration AI", "AI toolkit education"],
+  title: "Free AI Toolkit for Leaders | NotebookLM, Claude, ChatGPT, Gemini | KAIAK",
+  description: "Free guide: NotebookLM vs. Claude vs. ChatGPT vs. Gemini for leaders and professionals. 20+ copy-paste prompts for reports, emails, research, and more.",
+  keywords: ["AI toolkit", "NotebookLM guide", "ChatGPT prompts", "AI for leaders", "AI automation", "AI productivity"],
   alternates: { canonical: '/ai-toolkit' },
   openGraph: {
-    title: "The School Leader's AI Toolkit — Free Download",
+    title: "The Leader's AI Toolkit — Free Download",
     description: "NotebookLM vs. Claude vs. ChatGPT vs. Gemini: The Decision Matrix (With My Exact Prompts)",
   },
 };
@@ -36,7 +36,7 @@ export default function AIToolkitLandingPage() {
               </h1>
               
               <p className="text-xl md:text-2xl text-slate-600 dark:text-slate-300 mb-6">
-                The School Leader's Decision Matrix<br />
+                The Leader's Decision Matrix<br />
                 <span className="text-orange-600 dark:text-amber-400 font-medium">(With My Exact Prompts)</span>
               </p>
 
@@ -146,7 +146,7 @@ export default function AIToolkitLandingPage() {
                       Former Head of School • Founder, KAIAK
                     </p>
                     <p className="text-slate-600 dark:text-slate-300 text-sm italic">
-                      "I built these systems because I was drowning. Now I help other school leaders get their evenings back."
+                      "I built these systems because I was drowning. Now I help other leaders get their evenings back."
                     </p>
                   </div>
                 </div>
