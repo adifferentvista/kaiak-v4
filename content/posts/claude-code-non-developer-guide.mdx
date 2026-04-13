@@ -20,37 +20,54 @@ sources:
     date: "April 2026"
 ---
 
-## What Claude Code Actually Does (Plain English)
+## The Problem: You Know What You Need, But You Can't Build It
 
-Claude Code is not a chatbot. It's not autocomplete. It's not GitHub Copilot suggesting the next line.
+Every leader I work with has the same frustration. You know exactly what would save you time — a script that formats your weekly report, a pipeline that produces consistent social images, a tool that processes the same spreadsheet you manually wrangle every month. You can describe it perfectly. You just can't build it.
 
-Claude Code is an AI agent that runs in your terminal. It can read your files, write new ones, run commands, check the results, and iterate based on your feedback. It sees your entire project — every file, every folder, every configuration — and makes changes in context.
+So you do it manually. Or you hire someone. Or you spend a weekend learning a tool that does 80% of what you need and none of the 20% that actually matters.
 
-The difference matters. When you ask ChatGPT to write a script, it gives you code in a chat window. You copy it, paste it into a file, run it, hit an error, go back to the chat, paste the error, get a fix, paste it back. That loop is slow and brittle.
+I was in the same position. I'm not a developer. I'm a school leader turned AI consultant. I needed to produce branded content at scale — blog images, video compositions, website updates — and I didn't have a team to delegate to or a budget to outsource.
 
-When you ask Claude Code to write a script, it writes the file directly in your project, runs it, sees the error, fixes it, and runs it again. You watch. When it works, you move on.
+Claude Code changed that equation completely. In one month, I built:
 
-I'm not a developer. I'm a school leader turned AI consultant. In the past month, I've used Claude Code to build:
+- An image generation pipeline that produces branded featured images in under 10 minutes each
+- 30 video compositions with 3D animations and professional motion design
+- A complete website redesign
+- Deployment workflows that take three terminal commands instead of an hour of clicking
 
-- An image generation pipeline using the Google Imagen 4 API
-- A compositing script that produces branded featured images from a CSV
-- 30 Remotion video compositions with 3D animations and spring physics
-- A complete website redesign with Next.js
-- Blog post templates, data processing scripts, and deployment workflows
-
-None of this required me to understand React, Node.js, or APIs at a technical level. I needed to understand what I wanted and how to describe it clearly.
+None of this required me to understand React, Node.js, or APIs at a technical level. I described what I needed. Claude Code built it.
 
 ---
 
-## My First Real Project: An Image Generation Script in 20 Minutes
+## What Claude Code Actually Is (And Why It's Different From ChatGPT)
 
-The first thing I built with Claude Code was `generate-image.js` — a script that calls the Google Imagen 4 API with a text prompt and saves the result as a PNG.
+Claude Code is not a chatbot. It's an AI agent that runs in your terminal — the command line on your computer. It reads your files, writes new ones, runs commands, checks the results, and iterates based on your feedback.
 
-I described what I needed: "Write a Node.js script that takes a text prompt as a command line argument, sends it to the Google Imagen 4 API, and saves the resulting image to a file path I specify. The aspect ratio should always be 16:9."
+The difference from ChatGPT matters for one reason: **speed of execution.**
 
-Claude Code wrote the script. I ran it. It worked on the first try. Fifty lines of JavaScript that I use multiple times a week.
+When you use ChatGPT to write code, the loop looks like this: ask → copy the code → paste into a file → run it → hit an error → go back to ChatGPT → paste the error → get a fix → paste it back → run again. That loop takes 5-10 minutes per iteration. Most people give up after two rounds.
 
-What I learned from this first project: **specificity in the request matters more than technical knowledge.** I didn't say "write me some code." I said exactly what I wanted: the input (text prompt), the output (PNG file), the constraint (16:9), and the interface (command line arguments). The more precise you are about *what* you want, the less you need to know about *how* it gets built.
+With Claude Code, the loop is: describe what you want → it writes the file → it runs the file → it sees the error → it fixes the error → it runs again. You watch. When it works, you move on. The whole cycle takes under a minute.
+
+![The Claude Code feedback loop: Describe → Build → Test → Feedback → Done](/blog/headers/claude-code-loop.webp)
+
+For a leader producing content, this is the difference between "I'll get to it this weekend" and "it's done before lunch."
+
+---
+
+## My First Real Project: From "I Need This" to "It's Done" in 20 Minutes
+
+I needed to produce branded blog images. Forty-three of them. The manual process — generate in ChatGPT, download, open Canva, position, export, rename, upload — took 15-20 minutes per image. That's 11+ hours of repetitive work.
+
+So I described what I needed to Claude Code: "Write a Node.js script that takes a text prompt as a command line argument, sends it to the Google Imagen 4 API, and saves the resulting image to a file path I specify. The aspect ratio should always be 16:9."
+
+Claude Code wrote the script. I ran it. It worked on the first try. Fifty lines of JavaScript that I now use multiple times a week. Those 11 hours of manual Canva work became a 10-minute terminal command.
+
+What I learned: **specificity matters more than technical knowledge.** I didn't say "write me some code." I said exactly what I wanted: the input (text prompt), the output (PNG file), the constraint (16:9), and the interface (command line arguments). The clearer you are about *what* you need, the less you need to know about *how* it gets built.
+
+This is the skill leaders already have. You spend your days specifying outcomes, defining requirements, and evaluating results. That's exactly the skill Claude Code rewards.
+
+![Before: 15 minutes per image manually. After: 45 seconds with the pipeline.](/blog/headers/manual-vs-automated.webp)
 
 ---
 
@@ -122,35 +139,43 @@ The mental model shift: **think of yourself as a creative director, not a coder.
 
 ---
 
-## Five Projects You Could Build This Week
+## Five Things You Could Stop Doing Manually This Week
 
-If you're a founder or team leader who's never used Claude Code, here are practical starting points. Each takes under an hour.
+These are real projects that take under an hour to build with Claude Code. Each one eliminates a recurring task you're probably doing by hand right now.
 
-### 1. Email Template Generator
-Describe your common email formats. Claude Code writes a script that takes a few inputs (recipient name, topic, key points) and generates a formatted draft. Stop rewriting the same email structures.
+### 1. The Weekly Report You Reformat Every Friday
+You pull data from the same three sources, paste it into the same template, adjust the same formatting. Describe the inputs and the output format to Claude Code. It writes a script that takes raw data and produces a formatted report in seconds. **Time saved: 1-2 hours per week.**
 
-### 2. CSV Data Processor
-Got a spreadsheet you process the same way every month? Describe the transformations. Claude Code writes a script that reads the CSV, applies the changes, and outputs a clean result. Board report data, student enrolment figures, financial summaries — anything repetitive.
+### 2. The Spreadsheet You Manually Process Every Month
+Enrolment data. Financial summaries. Board metrics. Whatever CSV you download and manually wrangle into shape. Claude Code writes a script that does the same transformations automatically. Run it once a month, get clean data, move on. **Time saved: 30-60 minutes per month.**
 
-### 3. Image Batch Resizer
-"Write a script that takes all images in a folder, resizes them to 1200px wide, converts to WebP at 80% quality, and saves them to an output folder." One command, handles 100 images in seconds.
+### 3. The 50 Images You Resize One at a Time
+Event photos for the newsletter. Social media crops. Thumbnails for your website. "Write a script that takes all images in a folder, resizes them to 1200px wide, converts to WebP, and saves them to an output folder." One command, 100 images in seconds. **Time saved: varies, but the annoyance saved is immeasurable.**
 
-### 4. Meeting Agenda Template
-Describe your meeting format. Claude Code generates a script that creates a formatted agenda from a few inputs. Date, attendees, topics, time allocations — filled in and ready to send.
+### 4. The Social Media Posts You Design from Scratch
+You open Canva, create a 1080x1080 canvas, pick a background, add text, fiddle with fonts, export. Every time. Claude Code can write a script that takes a quote and your brand colours and produces a consistent card. Same look every time, no design decisions. **Time saved: 10-15 minutes per post.**
 
-### 5. Social Media Image Generator
-Similar to my featured image pipeline, but simpler. A script that takes a quote and your brand colours, generates a 1080x1080 image with text overlay. Consistent social cards without touching Canva.
+### 5. The Content You Produce Inconsistently
+Blog posts that look different every time. Newsletters with varying formats. Presentations that never quite match your brand. Claude Code can build templates, pipelines, and automation that enforce consistency without requiring discipline. **The result: professional output at the pace of "good enough."**
 
-Each of these starts the same way: describe what you want clearly, let Claude Code build it, test it, give feedback, iterate. The first project teaches you the workflow. Everything after that gets faster.
+Each project starts the same way: describe what you want, let Claude Code build it, test it, give feedback, iterate. The first one takes an hour. The tenth takes ten minutes.
+
+![Time saved per task when you automate with Claude Code](/blog/headers/time-saved-dashboard.webp)
 
 ---
 
-## The Bigger Point
+## Why This Matters for Leaders Specifically
 
-Claude Code doesn't make you a developer. It makes you someone who can build things without being a developer. That's a different — and arguably more powerful — position.
+The bottleneck for most leaders isn't ideas. It's execution. You know what content you should be producing. You know what processes you should be automating. You know what systems your team needs. You just don't have the time, the budget, or the technical skills to build them.
 
-A developer writes code. A creative director describes what they want, evaluates the output, and directs the iteration. Claude Code makes the second role viable for people who've never written a line of JavaScript.
+Claude Code removes the technical barrier. Not by teaching you to code — by making coding unnecessary. You describe the outcome. It handles the implementation. You evaluate the result. It iterates until it's right.
 
-The tools you build won't be as elegant as what a senior engineer would produce. The architecture won't be as clean. But they'll work. And they'll solve your specific problems in ways that no off-the-shelf tool ever will, because they're built around your exact workflow.
+This changes the math on what's worth building. That image pipeline I mentioned? A freelancer would have quoted me $2,000-3,000 and taken two weeks. I built it in an afternoon. The 30 video compositions? A motion design studio would have charged $500-1,000 each. I produced them in a week.
 
-That's the shift. Not "anyone can code now." More like: **anyone can build now.**
+The tools won't be as architecturally elegant as what a senior engineer would produce. But they work. They solve your specific problems. And they're built around your exact workflow — not a generic template designed for someone else's use case.
+
+For leaders who need to get content out quickly and consistently, that's the real shift. Not "anyone can code now." More like: **you can build exactly what you need, without waiting for anyone else to build it for you.**
+
+---
+
+*If you'd rather have someone build these systems alongside you than figure it out alone, that's exactly what my [AI Systems Implementation](/work-with-me) programme does — 6 weeks, done with you, and you own everything at the end.*

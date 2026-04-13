@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import CodeBlock from './CodeBlock';
+import BlogImage from './BlogImage';
 
 // Heading ID helpers
 function slugify(text) {
@@ -224,6 +225,7 @@ export function AffiliateDisclosure() {
 const MDXComponents = {
   h2: H2,
   h3: H3,
+  img: BlogImage,
   pre: CodeBlock,
   CallToAction,
   Callout,
