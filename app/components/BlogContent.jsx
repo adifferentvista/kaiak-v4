@@ -3,7 +3,7 @@
 import { useState, useMemo } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import Navbar from './Navbar';
 import NewsletterForm from './NewsletterForm';
 
@@ -23,31 +23,182 @@ const pillarColors = {
   'education': { bg: '#EDE9FE', text: '#7C3AED' },
 };
 
-// Search Icon
 const SearchIcon = () => (
   <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
   </svg>
 );
 
-// Clear Icon
 const ClearIcon = () => (
   <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
   </svg>
 );
 
-// Post Card Component with optional thumbnail
-function PostCard({ post, featured = false }) {
-  const pillar = pillarColors[post.pillar] || { bg: '#f3f4f6', text: '#374151' };
+// Tag pills — shown on post cards, link to /blog?tag=X
+function TagPills({ tags, onTagClick }) {
+  if (!tags || tags.length === 0) return null;
+  return (
+    <div className="flex flex-wrap gap-1.5">
+      {tags.map(tag => (
+        <button
+          key={tag}
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            onTagClick(tag);
+          }}
+          className="text-[10px] font-medium text-orange-600 dark:text-orange-400 bg-orange-50 dark:bg-orange-900/20 px-2 py-0.5 rounded-full hover:bg-orange-600 hover:text-white dark:hover:bg-orange-600 dark:hover:text-white transition-colors"
+        >
+          {tag}
+        </button>
+      ))}
+    </div>
+  );
+}
 
+// Large featured card — hero style
+function FeaturedCardLarge({ post, onTagClick }) {
+  const pillar = pillarColors[post.pillar] || { bg: '#f3f4f6', text: '#374151' };
   return (
     <Link href={`/blog/${post.slug}`} className="block group">
-      <article className={`
-        border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden
-        hover:border-slate-300 dark:hover:border-slate-600 hover:shadow-sm
-        transition-all duration-200 bg-white dark:bg-slate-800
-      `}>
+      <article className="border border-slate-200 dark:border-slate-700 rounded-2xl overflow-hidden hover:border-slate-300 dark:hover:border-slate-600 hover:shadow-md transition-all duration-200 bg-white dark:bg-slate-800 h-full">
+        {post.image && (
+          <div className="relative aspect-[16/9] overflow-hidden">
+            <Image
+              src={post.image}
+              alt={post.imageAlt || post.title}
+              fill
+              className="object-cover transition-transform duration-300 group-hover:scale-105"
+              sizes="(max-width: 768px) 100vw, 60vw"
+              priority
+            />
+          </div>
+        )}
+        <div className="p-6 md:p-8">
+          <div className="flex items-center gap-3 mb-3">
+            <span
+              className="text-xs font-bold px-2.5 py-1 rounded-full uppercase tracking-wide"
+              style={{ backgroundColor: pillar.bg, color: pillar.text }}
+            >
+              {pillarLabels[post.pillar] || post.pillar}
+            </span>
+            <span className="text-xs text-slate-400 dark:text-slate-500">{post.readTime}</span>
+          </div>
+          {post.tags && post.tags.length > 0 && (
+            <div className="mb-3">
+              <TagPills tags={post.tags} onTagClick={onTagClick} />
+            </div>
+          )}
+          <h3 className="text-2xl md:text-3xl font-serif font-medium text-navy dark:text-white group-hover:text-slate-600 dark:group-hover:text-slate-300 transition-colors leading-snug mb-3">
+            {post.title}
+          </h3>
+          <p className="text-slate-600 dark:text-slate-300 leading-relaxed text-base line-clamp-3">
+            {post.description}
+          </p>
+        </div>
+      </article>
+    </Link>
+  );
+}
+
+// Small featured card — sidebar style
+function FeaturedCardSmall({ post, onTagClick }) {
+  const pillar = pillarColors[post.pillar] || { bg: '#f3f4f6', text: '#374151' };
+  return (
+    <Link href={`/blog/${post.slug}`} className="block group">
+      <article className="border border-slate-200 dark:border-slate-700 rounded-2xl overflow-hidden hover:border-slate-300 dark:hover:border-slate-600 hover:shadow-md transition-all duration-200 bg-white dark:bg-slate-800 h-full flex flex-col">
+        {post.image && (
+          <div className="relative aspect-[16/9] overflow-hidden">
+            <Image
+              src={post.image}
+              alt={post.imageAlt || post.title}
+              fill
+              className="object-cover transition-transform duration-300 group-hover:scale-105"
+              sizes="(max-width: 768px) 100vw, 30vw"
+            />
+          </div>
+        )}
+        <div className="p-5 flex-1 flex flex-col">
+          <div className="flex items-center gap-2 mb-2">
+            <span
+              className="text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wide"
+              style={{ backgroundColor: pillar.bg, color: pillar.text }}
+            >
+              {pillarLabels[post.pillar] || post.pillar}
+            </span>
+            <span className="text-[10px] text-slate-400 dark:text-slate-500">{post.readTime}</span>
+          </div>
+          {post.tags && post.tags.length > 0 && (
+            <div className="mb-2">
+              <TagPills tags={post.tags} onTagClick={onTagClick} />
+            </div>
+          )}
+          <h3 className="text-lg font-serif font-medium text-navy dark:text-white group-hover:text-slate-600 dark:group-hover:text-slate-300 transition-colors leading-snug mb-2 flex-1">
+            {post.title}
+          </h3>
+          <p className="text-sm text-slate-500 dark:text-slate-400 line-clamp-2">
+            {post.description}
+          </p>
+        </div>
+      </article>
+    </Link>
+  );
+}
+
+// Compact list row for "Latest" section
+function PostRow({ post, index, onTagClick }) {
+  const pillar = pillarColors[post.pillar] || { bg: '#f3f4f6', text: '#374151' };
+  return (
+    <Link href={`/blog/${post.slug}`} className="block group">
+      <article className={`flex gap-4 md:gap-6 py-5 ${index > 0 ? 'border-t border-slate-200/70 dark:border-slate-700/70' : ''}`}>
+        {post.image && (
+          <div className="relative w-24 h-24 md:w-32 md:h-20 rounded-xl overflow-hidden flex-shrink-0">
+            <Image
+              src={post.image}
+              alt={post.imageAlt || post.title}
+              fill
+              className="object-cover transition-transform duration-300 group-hover:scale-105"
+              sizes="128px"
+            />
+          </div>
+        )}
+        <div className="flex-1 min-w-0">
+          <div className="flex items-center gap-2 mb-1.5">
+            <span
+              className="text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wide"
+              style={{ backgroundColor: pillar.bg, color: pillar.text }}
+            >
+              {pillarLabels[post.pillar] || post.pillar}
+            </span>
+            <span className="text-[10px] text-slate-400 dark:text-slate-500">{post.readTime}</span>
+            <span className="text-[10px] text-slate-400 dark:text-slate-500">
+              {new Date(post.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
+            </span>
+          </div>
+          {post.tags && post.tags.length > 0 && (
+            <div className="mb-1.5 hidden md:block">
+              <TagPills tags={post.tags} onTagClick={onTagClick} />
+            </div>
+          )}
+          <h3 className="text-base md:text-lg font-serif font-medium text-navy dark:text-white group-hover:text-slate-600 dark:group-hover:text-slate-300 transition-colors leading-snug mb-1">
+            {post.title}
+          </h3>
+          <p className="text-sm text-slate-500 dark:text-slate-400 line-clamp-1 hidden md:block">
+            {post.description}
+          </p>
+        </div>
+      </article>
+    </Link>
+  );
+}
+
+// Grid card for "All Posts" section
+function PostCard({ post, onTagClick }) {
+  const pillar = pillarColors[post.pillar] || { bg: '#f3f4f6', text: '#374151' };
+  return (
+    <Link href={`/blog/${post.slug}`} className="block group">
+      <article className="border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden hover:border-slate-300 dark:hover:border-slate-600 hover:shadow-sm transition-all duration-200 bg-white dark:bg-slate-800">
         {post.image && (
           <div className="relative aspect-video overflow-hidden">
             <Image
@@ -59,29 +210,28 @@ function PostCard({ post, featured = false }) {
             />
           </div>
         )}
-        <div className={featured ? 'p-6 md:p-8' : 'p-6'}>
-          <div className="flex items-center gap-3 mb-3">
+        <div className="p-5">
+          <div className="flex items-center gap-2 mb-2">
             <span
-              className="text-xs font-bold px-2 py-1 rounded-full uppercase tracking-wide"
+              className="text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wide"
               style={{ backgroundColor: pillar.bg, color: pillar.text }}
             >
               {pillarLabels[post.pillar] || post.pillar}
             </span>
-            <span className="text-xs text-slate-400 dark:text-slate-500">{post.readTime}</span>
+            <span className="text-[10px] text-slate-400 dark:text-slate-500">{post.readTime}</span>
           </div>
-
-          <h3 className={`
-            font-serif font-medium text-navy dark:text-white group-hover:text-slate-600 dark:group-hover:text-slate-300 transition-colors leading-snug
-            ${featured ? 'text-2xl mb-3' : 'text-xl mb-2'}
-          `}>
+          {post.tags && post.tags.length > 0 && (
+            <div className="mb-2">
+              <TagPills tags={post.tags} onTagClick={onTagClick} />
+            </div>
+          )}
+          <h3 className="text-lg font-serif font-medium text-navy dark:text-white group-hover:text-slate-600 dark:group-hover:text-slate-300 transition-colors leading-snug mb-2">
             {post.title}
           </h3>
-
-          <p className={`text-slate-600 dark:text-slate-300 leading-relaxed ${featured ? 'text-base' : 'text-sm'}`}>
+          <p className="text-sm text-slate-500 dark:text-slate-400 line-clamp-2">
             {post.description}
           </p>
-
-          <p className="text-xs text-slate-400 dark:text-slate-500 mt-4">
+          <p className="text-xs text-slate-400 dark:text-slate-500 mt-3">
             {new Date(post.date).toLocaleDateString('en-US', {
               year: 'numeric',
               month: 'long',
@@ -94,15 +244,15 @@ function PostCard({ post, featured = false }) {
   );
 }
 
-// Filter Pill Component
+// Filter Pill
 function FilterPill({ label, isActive, onClick, count }) {
   return (
     <button
       onClick={onClick}
       className={`
         px-4 py-2 rounded-full text-sm font-medium transition-all whitespace-nowrap
-        ${isActive 
-          ? 'bg-navy dark:bg-orange-600 text-white shadow-sm' 
+        ${isActive
+          ? 'bg-navy dark:bg-orange-600 text-white shadow-sm'
           : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:border-slate-300 dark:hover:border-slate-600 hover:bg-slate-50 dark:hover:bg-slate-700'
         }
       `}
@@ -117,40 +267,46 @@ function FilterPill({ label, isActive, onClick, count }) {
   );
 }
 
-export default function BlogContent({ allPosts, featuredPosts, initialPillar, initialSearch }) {
+export default function BlogContent({ allPosts, featuredPosts, allTags = [], initialPillar, initialTag, initialSearch }) {
   const router = useRouter();
   const [activePillar, setActivePillar] = useState(initialPillar);
+  const [activeTag, setActiveTag] = useState(initialTag || null);
   const [searchQuery, setSearchQuery] = useState(initialSearch);
   const [isSearchFocused, setIsSearchFocused] = useState(false);
+  const [showAllPosts, setShowAllPosts] = useState(false);
 
   // Filter and search posts
   const filteredPosts = useMemo(() => {
     let posts = allPosts;
-
-    // Filter by pillar
     if (activePillar) {
       posts = posts.filter(p => p.pillar === activePillar);
     }
-
-    // Filter by search query
+    if (activeTag) {
+      posts = posts.filter(p => (p.tags || []).includes(activeTag));
+    }
     if (searchQuery.trim()) {
       const query = searchQuery.toLowerCase();
-      posts = posts.filter(p => 
+      posts = posts.filter(p =>
         p.title.toLowerCase().includes(query) ||
         p.description.toLowerCase().includes(query)
       );
     }
-
     return posts;
-  }, [allPosts, activePillar, searchQuery]);
+  }, [allPosts, activePillar, activeTag, searchQuery]);
 
-  // Get posts for "All Posts" section (includes featured posts)
-const recentPosts = useMemo(() => {
-  if (activePillar || searchQuery.trim()) {
-    return filteredPosts;
-  }
-  return allPosts;
-}, [filteredPosts, allPosts, activePillar, searchQuery]);
+  // Latest posts (most recent, excluding featured)
+  const latestPosts = useMemo(() => {
+    const featuredSlugs = new Set(featuredPosts.map(p => p.slug));
+    return allPosts.filter(p => !featuredSlugs.has(p.slug)).slice(0, 8);
+  }, [allPosts, featuredPosts]);
+
+  // Posts for the "All Posts" grid (when filtering or browsing all)
+  const gridPosts = useMemo(() => {
+    if (activePillar || searchQuery.trim()) {
+      return filteredPosts;
+    }
+    return allPosts;
+  }, [filteredPosts, allPosts, activePillar, searchQuery]);
 
   // Count posts per pillar
   const pillarCounts = useMemo(() => {
@@ -160,12 +316,11 @@ const recentPosts = useMemo(() => {
     }, {});
   }, [allPosts]);
 
-  // Handle filter change
   const handleFilterChange = (pillar) => {
     setActivePillar(pillar);
-    setSearchQuery(''); // Clear search when changing filters
-    
-    // Update URL
+    setActiveTag(null);
+    setSearchQuery('');
+    setShowAllPosts(true);
     if (pillar) {
       router.push(`/blog?pillar=${pillar}`, { scroll: false });
     } else {
@@ -173,85 +328,111 @@ const recentPosts = useMemo(() => {
     }
   };
 
-  // Handle search
-  const handleSearch = (e) => {
-    const query = e.target.value;
-    setSearchQuery(query);
-    
-    if (query.trim()) {
-      setActivePillar(null); // Clear pillar filter when searching
+  const handleTagChange = (tag) => {
+    if (activeTag === tag) {
+      setActiveTag(null);
+      setShowAllPosts(false);
+      router.push('/blog', { scroll: false });
+    } else {
+      setActiveTag(tag);
+      setActivePillar(null);
+      setSearchQuery('');
+      setShowAllPosts(true);
+      router.push(`/blog?tag=${encodeURIComponent(tag)}`, { scroll: false });
     }
   };
 
-  // Clear search
+  const handleSearch = (e) => {
+    const query = e.target.value;
+    setSearchQuery(query);
+    if (query.trim()) {
+      setActivePillar(null);
+      setActiveTag(null);
+      setShowAllPosts(true);
+    }
+  };
+
   const clearSearch = () => {
     setSearchQuery('');
   };
 
-  const showFeatured = !activePillar && !searchQuery.trim() && featuredPosts.length > 0;
-  const isFiltering = activePillar || searchQuery.trim();
+  const isFiltering = activePillar || activeTag || searchQuery.trim();
+  const showHeroSections = !isFiltering && !showAllPosts;
 
   return (
     <div className="min-h-screen font-sans bg-cream dark:bg-navy transition-colors">
-      {/* Shared Navbar */}
       <Navbar />
-
-      {/* Spacer for fixed navbar */}
       <div className="h-[73px]" />
 
-      <main className="max-w-4xl mx-auto px-6 py-16">
-        {/* Header - UPDATED TAGLINE */}
-        <header className="mb-8">
-          <h1 className="text-4xl font-serif text-navy dark:text-white mb-4">
-            The KAIAK Blog
-          </h1>
-          <p className="text-xl text-slate-600 dark:text-slate-300 max-w-2xl">
-            Practical notes on AI, systems, and school leadership.
-          </p>
+      <main className="max-w-5xl mx-auto px-6 py-12">
+        {/* Header */}
+        <header className="mb-10">
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+            <div>
+              <h1 className="text-4xl md:text-5xl font-serif text-navy dark:text-white mb-2">
+                The KAIAK Blog
+              </h1>
+              <p className="text-base text-slate-500 dark:text-slate-400">
+                AI systems, workflow automation, and building things that run without you.
+              </p>
+            </div>
+            <div className="flex items-center gap-3 flex-shrink-0">
+              <div className="hidden md:flex items-center gap-1.5 text-xs text-slate-400 dark:text-slate-500">
+                <svg className="w-3.5 h-3.5 text-orange-500" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                  <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+                </svg>
+                <span>The Weekly Edge</span>
+              </div>
+              <NewsletterForm />
+            </div>
+          </div>
         </header>
 
-        {/* Search and Filter Bar */}
+        {/* Search + Filter Bar */}
         <div className="sticky top-[73px] z-40 bg-cream/95 dark:bg-navy/95 backdrop-blur-sm py-4 -mx-6 px-6 mb-8 border-b border-slate-200/50 dark:border-slate-700/50">
-          {/* Search Input */}
-          <div className="relative mb-4">
-            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
-              <SearchIcon />
+          <div className="flex flex-col md:flex-row gap-3">
+            <div className="relative flex-1">
+              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
+                <SearchIcon />
+              </div>
+              <input
+                type="text"
+                placeholder="Search posts..."
+                value={searchQuery}
+                onChange={handleSearch}
+                onFocus={() => setIsSearchFocused(true)}
+                onBlur={() => setIsSearchFocused(false)}
+                className={`
+                  w-full pl-10 pr-10 py-2.5 rounded-xl border text-sm
+                  bg-white dark:bg-slate-800
+                  text-slate-900 dark:text-white
+                  placeholder-slate-400 dark:placeholder-slate-500
+                  transition-all
+                  ${isSearchFocused
+                    ? 'border-orange-500 dark:border-orange-500 ring-2 ring-orange-500/20'
+                    : 'border-slate-200 dark:border-slate-700'
+                  }
+                `}
+              />
+              {searchQuery && (
+                <button
+                  onClick={clearSearch}
+                  className="absolute inset-y-0 right-0 pr-3 flex items-center text-slate-400 hover:text-slate-600 dark:hover:text-slate-300"
+                >
+                  <ClearIcon />
+                </button>
+              )}
             </div>
-            <input
-              type="text"
-              placeholder="Search posts..."
-              value={searchQuery}
-              onChange={handleSearch}
-              onFocus={() => setIsSearchFocused(true)}
-              onBlur={() => setIsSearchFocused(false)}
-              className={`
-                w-full pl-10 pr-10 py-3 rounded-xl border text-sm
-                bg-white dark:bg-slate-800 
-                text-slate-900 dark:text-white
-                placeholder-slate-400 dark:placeholder-slate-500
-                transition-all
-                ${isSearchFocused 
-                  ? 'border-orange-500 dark:border-orange-500 ring-2 ring-orange-500/20' 
-                  : 'border-slate-200 dark:border-slate-700'
-                }
-              `}
-            />
-            {searchQuery && (
-              <button
-                onClick={clearSearch}
-                className="absolute inset-y-0 right-0 pr-3 flex items-center text-slate-400 hover:text-slate-600 dark:hover:text-slate-300"
-              >
-                <ClearIcon />
-              </button>
-            )}
           </div>
-
-          {/* Filter Pills */}
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-2 mt-3">
             <FilterPill
               label="All"
               isActive={!activePillar && !searchQuery.trim()}
-              onClick={() => handleFilterChange(null)}
+              onClick={() => {
+                handleFilterChange(null);
+                setShowAllPosts(false);
+              }}
               count={allPosts.length}
             />
             {Object.entries(pillarLabels).map(([key, label]) => (
@@ -266,96 +447,129 @@ const recentPosts = useMemo(() => {
           </div>
         </div>
 
-        {/* Search Results Header */}
+        {/* Search/Filter Results Header */}
         {searchQuery.trim() && (
-          <div className="mb-8">
+          <div className="mb-6">
             <p className="text-slate-600 dark:text-slate-400">
-              {filteredPosts.length} result{filteredPosts.length !== 1 ? 's' : ''} for "{searchQuery}"
+              {filteredPosts.length} result{filteredPosts.length !== 1 ? 's' : ''} for &ldquo;{searchQuery}&rdquo;
             </p>
           </div>
         )}
-
-        {/* Pillar Filter Header */}
         {activePillar && !searchQuery.trim() && (
-          <div className="mb-8">
+          <div className="mb-6">
             <p className="text-slate-600 dark:text-slate-400">
               {filteredPosts.length} post{filteredPosts.length !== 1 ? 's' : ''} in {pillarLabels[activePillar]}
             </p>
           </div>
         )}
-
-        {/* Start Here - Featured/Evergreen (only when NOT filtering) */}
-        {showFeatured && (
-          <section className="mb-16">
-            <div className="flex items-center gap-3 mb-6">
-              <h2 className="text-sm font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide">
-                Start Here
-              </h2>
-              <div className="flex-1 h-px bg-slate-200 dark:bg-slate-700" />
-            </div>
-            <div className="space-y-6">
-              {featuredPosts.map((post) => (
-                <PostCard key={post.slug} post={post} featured />
-              ))}
-            </div>
-          </section>
-        )}
-
-        {/* Newsletter Section (only when not filtering) */}
-        {!isFiltering && (
-          <section className="mb-16 p-8 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 text-center">
-            <h2 className="font-serif text-2xl text-navy dark:text-white mb-2">
-              The Weekly Edge
-            </h2>
-            <p className="text-slate-600 dark:text-slate-400 mb-6 max-w-lg mx-auto">
-              Weekly AI strategies for school leaders. Practical tips, new tools, and systems you can use right away.
+        {activeTag && !searchQuery.trim() && (
+          <div className="mb-6">
+            <p className="text-slate-600 dark:text-slate-400">
+              {filteredPosts.length} post{filteredPosts.length !== 1 ? 's' : ''} tagged &ldquo;{activeTag}&rdquo;
             </p>
-            <NewsletterForm />
-          </section>
+          </div>
         )}
 
-        {/* Posts Section */}
-        <section>
-          {!isFiltering && (
-            <div className="flex items-center gap-3 mb-6">
-              <h2 className="text-sm font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide">
-                All Posts
-              </h2>
-              <div className="flex-1 h-px bg-slate-200 dark:bg-slate-700" />
+        {/* ===== HERO SECTIONS (only when not filtering) ===== */}
+        {showHeroSections && (
+          <>
+            {/* Most Popular — 1 large + 2 small */}
+            {featuredPosts.length > 0 && (
+              <section className="mb-14">
+                <div className="flex items-center gap-3 mb-6">
+                  <h2 className="text-sm font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide">
+                    Most Popular
+                  </h2>
+                  <div className="flex-1 h-px bg-slate-200 dark:bg-slate-700" />
+                </div>
+                <div className="grid md:grid-cols-3 gap-5">
+                  {featuredPosts.slice(0, 6).map((post) => (
+                    <FeaturedCardSmall key={post.slug} post={post} onTagClick={handleTagChange} />
+                  ))}
+                </div>
+              </section>
+            )}
+
+            {/* Latest Posts — compact list */}
+            <section className="mb-14">
+              <div className="flex items-center gap-3 mb-4">
+                <h2 className="text-sm font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide">
+                  Latest
+                </h2>
+                <div className="flex-1 h-px bg-slate-200 dark:bg-slate-700" />
+              </div>
+              <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 px-5 md:px-6">
+                {latestPosts.map((post, index) => (
+                  <PostRow key={post.slug} post={post} index={index} onTagClick={handleTagChange} />
+                ))}
+              </div>
+            </section>
+
+            {/* Browse All button */}
+            <div className="text-center mb-14">
+              <button
+                onClick={() => setShowAllPosts(true)}
+                className="px-8 py-3 rounded-xl text-sm font-semibold bg-navy dark:bg-orange-600 text-white hover:bg-slate-800 dark:hover:bg-orange-700 transition-colors"
+              >
+                Browse All {allPosts.length} Posts
+              </button>
             </div>
-          )}
-          
-          {recentPosts.length > 0 ? (
-            <div className="grid md:grid-cols-2 gap-6">
-              {recentPosts.map((post) => (
-                <PostCard key={post.slug} post={post} />
-              ))}
-            </div>
-          ) : (
-            <div className="text-center py-12">
-              <p className="text-slate-500 dark:text-slate-400 mb-4">
-                No posts found{searchQuery.trim() ? ` for "${searchQuery}"` : ''}.
-              </p>
-              {(searchQuery.trim() || activePillar) && (
+          </>
+        )}
+
+        {/* ===== ALL POSTS GRID (when filtering or "browse all") ===== */}
+        {(showAllPosts || isFiltering) && (
+          <section>
+            {!isFiltering && (
+              <div className="flex items-center justify-between mb-6">
+                <div className="flex items-center gap-3 flex-1">
+                  <h2 className="text-sm font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide">
+                    All Posts
+                  </h2>
+                  <div className="flex-1 h-px bg-slate-200 dark:bg-slate-700" />
+                </div>
                 <button
-                  onClick={() => {
-                    setSearchQuery('');
-                    handleFilterChange(null);
-                  }}
-                  className="text-orange-600 dark:text-orange-400 hover:underline text-sm font-medium"
+                  onClick={() => setShowAllPosts(false)}
+                  className="text-sm text-orange-600 dark:text-orange-400 hover:underline font-medium ml-4"
                 >
-                  Clear filters
+                  Back to top
                 </button>
-              )}
-            </div>
-          )}
-        </section>
+              </div>
+            )}
+
+            {gridPosts.length > 0 ? (
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+                {gridPosts.map((post) => (
+                  <PostCard key={post.slug} post={post} onTagClick={handleTagChange} />
+                ))}
+              </div>
+            ) : (
+              <div className="text-center py-12">
+                <p className="text-slate-500 dark:text-slate-400 mb-4">
+                  No posts found{searchQuery.trim() ? ` for "${searchQuery}"` : ''}.
+                </p>
+                {(searchQuery.trim() || activePillar || activeTag) && (
+                  <button
+                    onClick={() => {
+                      setSearchQuery('');
+                      setActiveTag(null);
+                      handleFilterChange(null);
+                      setShowAllPosts(false);
+                    }}
+                    className="text-orange-600 dark:text-orange-400 hover:underline text-sm font-medium"
+                  >
+                    Clear filters
+                  </button>
+                )}
+              </div>
+            )}
+          </section>
+        )}
       </main>
 
-      {/* Footer */}
       <footer className="py-8 border-t border-slate-200 dark:border-slate-700 bg-cream dark:bg-navy">
-        <div className="max-w-4xl mx-auto px-6 text-center text-sm text-slate-500 dark:text-slate-400">
-          <p>© {new Date().getFullYear()} KAIAK. <Link href="/" className="text-orange-600 dark:text-orange-400 hover:underline">Back to home</Link></p>
+        <div className="max-w-5xl mx-auto px-6 text-center text-sm text-slate-500 dark:text-slate-400">
+          <p>&copy; {new Date().getFullYear()} KAIAK. <Link href="/" className="text-orange-600 dark:text-orange-400 hover:underline">Back to home</Link></p>
         </div>
       </footer>
     </div>

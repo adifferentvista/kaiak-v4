@@ -1,0 +1,277 @@
+---
+title: "From ChatGPT Prompts to a Production API: How I Automated AI Image Generation"
+description: "I was copy-pasting prompts into ChatGPT to generate images one at a time. Then I built a 50-line script that calls an API instead. Here's why that single change transformed my workflow."
+date: "2026-04-17"
+pillar: "practical-ai"
+contentType: "evergreen"
+readTime: "10 min read"
+featured: false
+image: "/blog/headers/kaiak-chatgpt-to-production-api.webp"
+imageAlt: "Illustration for: Copy-pasting prompts into ChatGPT. I built an API call instead."
+tags: ["Google Imagen", "Node.js", "API", "Claude Code"]
+keywords: ["AI API tutorial", "Google Imagen 4 API", "ChatGPT to API", "automated image generation", "AI workflow automation", "production API guide"]
+interlinks:
+  - "featured-image-pipeline-ai-nodejs"
+  - "claude-code-non-developer-guide"
+sources:
+  - title: "Google Imagen API Documentation"
+    url: "https://cloud.google.com/vertex-ai/generative-ai/docs/image/generate-images"
+    publication: "Google Cloud"
+    date: "April 2026"
+---
+
+## The ChatGPT Image Workflow That Didn't Scale
+
+Here's what my image generation process looked like three months ago:
+
+1. Open ChatGPT
+2. Paste a long prompt describing what I wanted
+3. Wait 30-60 seconds
+4. Look at the result — usually not quite right
+5. Paste a correction prompt
+6. Wait again
+7. Download the image
+8. Rename it from `image_2026_03_14.png` to something meaningful
+9. Move it to the correct project folder
+
+This worked for five images. Maybe ten. When I needed to produce featured images for 43 blog posts, it collapsed.
+
+The problems:
+
+**Inconsistency.** ChatGPT's image generation doesn't produce identical results even with the same prompt. The colour palette would drift. The style would vary. Image 12 looked nothing like image 1.
+
+**No reproducibility.** I couldn't regenerate an image exactly. If I needed a slightly different version of image 7, I had to start from scratch and hope the AI produced something close.
+
+**Lost prompts.** After 20 images, I couldn't find the prompt I'd used for a specific post. Chat histories scrolled off. The editorial decisions that produced each image were buried in conversation threads.
+
+**Manual file management.** Every image required downloading, renaming, and moving to the right folder. Multiply by 43 and you're spending more time managing files than creating content.
+
+The workflow wasn't wrong for five images. But it didn't scale, and scaling was exactly what I needed.
+
+---
+
+## What "Using an API" Actually Means (No Jargon)
+
+An API is a way to send a request to an AI service and get a result back — all from a script running on your computer, without opening a browser.
+
+Instead of typing a prompt into a chat window, you write a command that says: "Generate an image with these settings and save it to this file." The image appears in your project folder. No browser, no downloading, no renaming.
+
+Here's the mental model: **ChatGPT is like walking into a restaurant and ordering verbally. An API is like sending a written order to the kitchen.** Both get you food. But the written order is reproducible, consistent, and can be sent 100 times without you standing at the counter.
+
+The jump from "chat interface" to "API call" is the single biggest productivity leap most AI users never make. It's the difference between using AI as a tool you operate manually and using AI as a component in an automated system.
+
+---
+
+## The Generate-Image Script: 50 Lines That Changed My Workflow
+
+The entire image generation script is 50 lines of JavaScript. Claude Code wrote the first version in about five minutes. Here's the core of it:
+
+```javascript
+async function generateImage(prompt, outputPath) {
+  const url = `https://generativelanguage.googleapis.com/v1beta/models/imagen-4.0-generate-001:predict?key=${API_KEY}`;
+
+  const body = {
+    instances: [{ prompt }],
+    parameters: {
+      sampleCount: 1,
+      aspectRatio: "16:9",
+    }
+  };
+
+  const response = await fetch(url, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(body),
+  });
+
+  const data = await response.json();
+  const imageData = data.predictions[0].bytesBase64Encoded;
+  const buffer = Buffer.from(imageData, 'base64');
+  fs.writeFileSync(outputPath, buffer);
+}
+```
+
+You run it from the terminal:
+
+```bash
+node generate-image.js "Your prompt here" "output/filename.png"
+```
+
+That's it. The API returns a base64-encoded image. The script decodes it and writes it to the path you specified. The aspect ratio is locked to 16:9 in the parameters, so you never think about dimensions.
+
+### What Happens Under the Hood
+
+1. The script sends your prompt to Google's Imagen 4 API as a JSON request
+2. The API generates an image based on your prompt
+3. The response comes back as a base64-encoded string (a text representation of the image data)
+4. The script converts that string into actual image bytes
+5. It writes those bytes to a PNG file on your computer
+
+You don't need to understand base64 or JSON or HTTP POST requests to use this script. You need to know one thing: run the command with a prompt and a filename, and an image appears.
+
+---
+
+## Prompt Engineering for Consistent Visual Output
+
+Having an API doesn't solve the consistency problem on its own. If you send a different prompt each time, you'll get different-looking images — just faster.
+
+The solution is a standard prompt prefix. Every image I generate starts with the same block of text:
+
+```
+Wide landscape editorial illustration. Plain flat warm cream background.
+Illustration on RIGHT 55 percent. LEFT 40 percent empty cream.
+NO TEXT. NO LETTERS. NO SYMBOLS.
+Thick black outlines. Bold flat fills.
+ONLY orange, terracotta, peach, cream, black. ZERO cool colors.
+```
+
+Then I append one or two sentences describing the specific illustration for this post. The prefix handles everything that should be consistent across all images. The suffix handles what's unique to each one.
+
+### The "Never Use" List
+
+I also learned to include negative constraints in prompts. AI image generators love to add visual cliches — gears for "systems," lightbulbs for "innovation," rockets for "growth." Banning these explicitly in the prompt prefix forces the AI to generate more original visuals.
+
+### Constraining Produces Better Results Than Freedom
+
+This is counterintuitive. You'd think giving an AI more creative freedom would produce better images. The opposite is true. When I told the AI "generate an illustration about AI in education," I got generic, forgettable results. When I told it "warm cream background, illustration on the right, only orange and terracotta, thick black outlines, no text, no gears, no lightbulbs," the results were distinctive and on-brand.
+
+Constraints force the AI down a narrower path. That narrower path happens to be your brand.
+
+---
+
+## The Pixel-Level Problem: Background Colour Matching
+
+Here's a detail that demonstrates the difference between "good enough" and "professional."
+
+AI-generated images produce backgrounds that are *almost* the right colour. When I ask for a cream background, the AI generates something close — maybe `#F3EDE2` or `#F8F4ED`. In isolation, these look fine. When placed on a canvas with the exact brand cream `#F5F0E8`, you can see the boundary. It's subtle, but it looks like someone pasted clip art onto a background.
+
+The compositing script fixes this with a pixel-by-pixel scan:
+
+```javascript
+for (let i = 0; i < data.length; i += channels) {
+  const r = data[i], g = data[i + 1], b = data[i + 2];
+  // If pixel is close to any cream/beige shade
+  if (r > 210 && g > 200 && b > 180 &&
+      Math.abs(r - g) < 35 && Math.abs(g - b) < 35) {
+    data[i] = 245;     // Exact brand R
+    data[i + 1] = 240; // Exact brand G
+    data[i + 2] = 232; // Exact brand B
+  }
+}
+```
+
+Every pixel that's "close to cream" gets replaced with the exact brand cream. The illustration blends seamlessly into the background. No visible edges. No colour mismatch.
+
+This is a 10-line addition to the script. It took a few minutes to write (Claude Code, naturally). But it's the difference between output that looks "probably fine" and output that looks intentional. Professional isn't about big decisions. It's about getting the small ones right automatically.
+
+---
+
+## When to Graduate From Chat to Code
+
+Not everything needs to be an API call. If you're generating one image for a presentation next week, ChatGPT is fine. Open it, type a prompt, download the result, move on.
+
+But there's a clear decision framework for when to switch:
+
+### Move from chat to code when:
+
+**You'll do it more than five times.** If you're generating a single image, stay in chat. If you're generating five or more, the manual overhead of downloading, renaming, and moving files justifies a script.
+
+**Consistency matters.** If every output needs to match a brand, a template, or a format, the chat interface will produce drift. A script with locked parameters produces identical formats every time.
+
+**Reproducibility matters.** If you might need to regenerate an image three months from now with slightly different content, you need the prompt and parameters saved in code — not buried in a chat history.
+
+**You want to chain operations.** The image generation script feeds into the compositing script, which feeds into the deployment process. This kind of pipeline is impossible in a chat interface. Each script's output becomes the next script's input.
+
+### Stay in chat when:
+
+- You're exploring or brainstorming
+- The task is genuinely one-off
+- You don't know exactly what you want yet
+- Speed of iteration matters more than consistency
+
+The graduation path is clear: start in chat to figure out what you want, then move to code to produce it reliably at scale.
+
+---
+
+## The Mistake I Made (And You Will Too): I Leaked My API Key
+
+I'm including this because if you follow the advice in this post — moving from chat to code, writing your first API script — you will almost certainly make this exact mistake.
+
+When Claude Code wrote my `generate-image.js` script, it put the API key directly in the code:
+
+```javascript
+const API_KEY = 'AIzaSyBf...the-rest-of-the-key';
+```
+
+This worked. The script ran. I committed the file to git, pushed it to GitHub, and moved on.
+
+Three weeks later, Google disabled my API key. The error message: "Your API key was reported as leaked."
+
+What happened: GitHub automatically scans every commit in every public repository for known API key patterns. It found my Google API key hardcoded in the source file, reported it to Google, and Google killed it. The key was also in my workflow documentation and in my IDE settings file — both committed to the same repo.
+
+The key was dead in my script, which meant my entire image pipeline stopped working until I generated a new one.
+
+### The Fix: Environment Variables
+
+API keys should never be in your code. They go in a `.env` file:
+
+```
+GOOGLE_API_KEY=your-key-here
+```
+
+Your script reads the key from the environment:
+
+```javascript
+require('dotenv').config();
+const API_KEY = process.env.GOOGLE_API_KEY;
+```
+
+And your `.gitignore` file includes `.env` so it never gets committed:
+
+```
+.env
+```
+
+This is a three-minute setup. Install the `dotenv` package (`npm install dotenv`), create the `.env` file, update your script to read from `process.env`, and add `.env` to `.gitignore`. That's it.
+
+### The Checklist Before You Push
+
+Every time you commit code that uses an API:
+
+1. **Search your files for the key.** Literally search for the first few characters of your API key across your entire project. You'll be surprised where it shows up — documentation, config files, terminal history logs.
+2. **Check `.gitignore`.** Make sure `.env` is listed. If you created the `.env` file before adding it to `.gitignore`, git may already be tracking it — run `git rm --cached .env` to fix that.
+3. **Never put keys in documentation.** I had my key in WORKFLOW.md as a "reference." That file got committed and pushed. Write "stored in `.env` file" instead.
+
+### Was My Key Actually Used By Someone Else?
+
+Probably not. Google's scanners are fast — they typically catch exposed keys within minutes and disable them before anyone else finds them. You can check in Google Cloud Console under APIs & Services > Metrics to see if there was any usage you don't recognise.
+
+But "probably not" isn't "definitely not." The moment a key hits a public repository, you should assume it's compromised and rotate it immediately. Don't wait to investigate. Generate a new key, update your `.env` file, delete the old one.
+
+This is one of those lessons that's obvious in hindsight and invisible in the moment. When you're focused on getting a script to work, security is the last thing on your mind. Build the habit now: **keys go in `.env`, never in code, never in docs.**
+
+---
+
+## This Pattern Applies Beyond Images
+
+The "chat to API" graduation isn't specific to image generation. The same principle applies to:
+
+**Text generation.** If you're writing email templates, report sections, or social media posts using ChatGPT, consider whether a script that calls the API with structured prompts would produce more consistent results.
+
+**Data processing.** If you're pasting spreadsheet data into ChatGPT for analysis, a script that calls the API with the raw data and a specific analysis prompt will give you reproducible results.
+
+**Document generation.** If you're manually creating reports by prompting an AI in a chat window, a script that feeds in data and a template prompt will produce consistent documents every time.
+
+The threshold is the same: more than five times, consistency matters, reproducibility matters. When those conditions are met, the investment in a script pays for itself immediately.
+
+---
+
+## The Real Lesson
+
+The script I wrote is 50 lines. It took five minutes to create. It generates images that are indistinguishable from what ChatGPT produces — because it's calling the same class of model.
+
+The difference isn't in the output quality. It's in the workflow quality. Reproducible. Consistent. Scriptable. Chainable. No browser, no downloading, no renaming, no chat history to search through.
+
+Moving from a chat interface to an API call is the moment AI stops being a tool you use and starts being a component in a system you build. That's the shift that turns occasional productivity gains into compounding automation.
+
+If you're still copy-pasting prompts into a chat window for recurring tasks, you're working harder than you need to. Fifty lines of code is all it takes to change that.

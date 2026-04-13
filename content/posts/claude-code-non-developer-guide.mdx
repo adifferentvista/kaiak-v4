@@ -1,0 +1,156 @@
+---
+title: "Claude Code Changed How I Build Things (And I'm Not a Developer)"
+description: "How a non-developer used Claude Code to build image pipelines, video compositions, website redesigns, and automation scripts. The mental model shift that makes it work."
+date: "2026-04-14"
+pillar: "practical-ai"
+contentType: "evergreen"
+readTime: "10 min read"
+featured: false
+image: "/blog/headers/kaiak-claude-code-non-developer-guide.webp"
+imageAlt: "Illustration for: I describe. It builds. No Stack Overflow required."
+tags: ["Claude Code", "Anthropic", "AI Development"]
+keywords: ["Claude Code", "AI coding assistant", "non-developer AI tools", "Claude Code tutorial", "AI agent coding", "build with AI"]
+interlinks:
+  - "featured-image-pipeline-ai-nodejs"
+  - "remotion-video-content-non-developer"
+sources:
+  - title: "Claude Code Documentation"
+    url: "https://docs.anthropic.com/en/docs/claude-code"
+    publication: "Anthropic"
+    date: "April 2026"
+---
+
+## What Claude Code Actually Does (Plain English)
+
+Claude Code is not a chatbot. It's not autocomplete. It's not GitHub Copilot suggesting the next line.
+
+Claude Code is an AI agent that runs in your terminal. It can read your files, write new ones, run commands, check the results, and iterate based on your feedback. It sees your entire project — every file, every folder, every configuration — and makes changes in context.
+
+The difference matters. When you ask ChatGPT to write a script, it gives you code in a chat window. You copy it, paste it into a file, run it, hit an error, go back to the chat, paste the error, get a fix, paste it back. That loop is slow and brittle.
+
+When you ask Claude Code to write a script, it writes the file directly in your project, runs it, sees the error, fixes it, and runs it again. You watch. When it works, you move on.
+
+I'm not a developer. I'm a school leader turned AI consultant. In the past month, I've used Claude Code to build:
+
+- An image generation pipeline using the Google Imagen 4 API
+- A compositing script that produces branded featured images from a CSV
+- 30 Remotion video compositions with 3D animations and spring physics
+- A complete website redesign with Next.js
+- Blog post templates, data processing scripts, and deployment workflows
+
+None of this required me to understand React, Node.js, or APIs at a technical level. I needed to understand what I wanted and how to describe it clearly.
+
+---
+
+## My First Real Project: An Image Generation Script in 20 Minutes
+
+The first thing I built with Claude Code was `generate-image.js` — a script that calls the Google Imagen 4 API with a text prompt and saves the result as a PNG.
+
+I described what I needed: "Write a Node.js script that takes a text prompt as a command line argument, sends it to the Google Imagen 4 API, and saves the resulting image to a file path I specify. The aspect ratio should always be 16:9."
+
+Claude Code wrote the script. I ran it. It worked on the first try. Fifty lines of JavaScript that I use multiple times a week.
+
+What I learned from this first project: **specificity in the request matters more than technical knowledge.** I didn't say "write me some code." I said exactly what I wanted: the input (text prompt), the output (PNG file), the constraint (16:9), and the interface (command line arguments). The more precise you are about *what* you want, the less you need to know about *how* it gets built.
+
+---
+
+## The Feedback Loop That Makes It Work
+
+The real power of Claude Code isn't the first generation. It's the iteration.
+
+Here's how building a Remotion composition actually feels:
+
+**Me:** "Create a video composition that shows a 3D floating dashboard with workflow stats. Navy background, orange accents, the dashboard should look like it's floating in space with a slight perspective tilt."
+
+**Claude Code:** *generates PerspectiveLaunch.tsx, opens Remotion Studio for preview*
+
+**Me:** "The dashboard is too flat. Add more perspective — like it's tilted 15 degrees. And the cards inside should have subtle shadows to create depth."
+
+**Claude Code:** *updates the transforms and shadow values*
+
+**Me:** "Better. But everything appears at once. I want the cards to stagger in — each one entering 6 frames after the previous one, with a spring animation."
+
+**Claude Code:** *adds staggered spring entrances*
+
+**Me:** "That's it. That's exactly what I wanted."
+
+Four exchanges. Each one took under a minute. The total time from "I want a 3D dashboard" to a finished, production-quality video composition was about 15 minutes.
+
+The key insight: **feedback doesn't require technical language.** "Too flat," "too slow," "the colours are wrong," "make it feel more premium" — Claude Code translates these into specific code changes. You're the creative director. It's the production team.
+
+---
+
+## Project Memory: Teaching Claude Your Preferences
+
+After rejecting three blog header approaches (one was "super bad," another was "AI slop," the third was "just a reskin of the default"), Claude Code started to understand what "premium" meant for KAIAK.
+
+This happens through two mechanisms:
+
+### CLAUDE.md Files
+
+A CLAUDE.md file lives in your project root and contains permanent instructions. Mine points to the knowledge graph, the brand guide, and key rules. Every time Claude Code starts a session, it reads this file first.
+
+### Memory Files
+
+Claude Code maintains a memory directory with files about your preferences, your project context, and feedback you've given. When I said "I love 3D and premium styles, I hate flat counter layouts," that became a memory file. Now Claude Code knows not to propose flat designs before I have to reject them.
+
+This compounds over time. The more you work with Claude Code, the more context it accumulates. After a few weeks, it knows your brand colours, your animation preferences, your file naming conventions, and your tolerance for complexity. Starting a new session doesn't mean starting from zero.
+
+### BRANDING.md
+
+The most powerful "teaching" document is BRANDING.md — a 65KB file that defines every visual rule for the project. Colours, typography, animation timing, composition rules, what to avoid. Claude Code reads this before generating any visual component, and the output is immediately on-brand.
+
+The lesson: **the time you invest in documenting your preferences pays exponential returns.** Write it down once, and every future interaction benefits.
+
+---
+
+## What You Still Need to Know (It's Less Than You Think)
+
+You do not need to understand React to build Remotion compositions. You do not need to understand Node.js to build API scripts. You do not need to understand Next.js to modify your website.
+
+Here's what you actually need:
+
+**File system basics.** Know what files and folders are. Know that `src/components/` is where the component files live. Know that `public/` is where static assets go. If you can navigate Windows Explorer or Finder, you have this.
+
+**Terminal basics.** Know how to open a terminal, navigate to your project folder, and run a command like `node script.js` or `npm run dev`. Five commands are enough for 90% of the work.
+
+**Clear description skills.** This is the actual skill. Being able to say "I want a 3D floating dashboard with navy background, orange accent cards, spring-based stagger animations, and a perspective tilt of about 15 degrees" is more valuable than knowing React.
+
+**An eye for quality.** You need to know when something looks right and when it doesn't. That's not a technical skill — it's taste. If you can look at a design and say "this feels flat" or "this looks premium," you can direct Claude Code effectively.
+
+The mental model shift: **think of yourself as a creative director, not a coder.** You set the vision, provide the feedback, and make the decisions. Claude Code handles the implementation.
+
+---
+
+## Five Projects You Could Build This Week
+
+If you're a founder or team leader who's never used Claude Code, here are practical starting points. Each takes under an hour.
+
+### 1. Email Template Generator
+Describe your common email formats. Claude Code writes a script that takes a few inputs (recipient name, topic, key points) and generates a formatted draft. Stop rewriting the same email structures.
+
+### 2. CSV Data Processor
+Got a spreadsheet you process the same way every month? Describe the transformations. Claude Code writes a script that reads the CSV, applies the changes, and outputs a clean result. Board report data, student enrolment figures, financial summaries — anything repetitive.
+
+### 3. Image Batch Resizer
+"Write a script that takes all images in a folder, resizes them to 1200px wide, converts to WebP at 80% quality, and saves them to an output folder." One command, handles 100 images in seconds.
+
+### 4. Meeting Agenda Template
+Describe your meeting format. Claude Code generates a script that creates a formatted agenda from a few inputs. Date, attendees, topics, time allocations — filled in and ready to send.
+
+### 5. Social Media Image Generator
+Similar to my featured image pipeline, but simpler. A script that takes a quote and your brand colours, generates a 1080x1080 image with text overlay. Consistent social cards without touching Canva.
+
+Each of these starts the same way: describe what you want clearly, let Claude Code build it, test it, give feedback, iterate. The first project teaches you the workflow. Everything after that gets faster.
+
+---
+
+## The Bigger Point
+
+Claude Code doesn't make you a developer. It makes you someone who can build things without being a developer. That's a different — and arguably more powerful — position.
+
+A developer writes code. A creative director describes what they want, evaluates the output, and directs the iteration. Claude Code makes the second role viable for people who've never written a line of JavaScript.
+
+The tools you build won't be as elegant as what a senior engineer would produce. The architecture won't be as clean. But they'll work. And they'll solve your specific problems in ways that no off-the-shelf tool ever will, because they're built around your exact workflow.
+
+That's the shift. Not "anyone can code now." More like: **anyone can build now.**

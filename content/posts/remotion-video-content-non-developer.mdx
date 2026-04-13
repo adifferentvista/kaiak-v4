@@ -1,0 +1,193 @@
+---
+title: "Building Branded Video Content With Remotion (Without Being a Developer)"
+description: "How I built 30 video compositions using Remotion and Claude Code — without writing the code myself. React renders video now, and you don't need to be a developer to use it."
+date: "2026-05-01"
+pillar: "practical-ai"
+contentType: "evergreen"
+readTime: "12 min read"
+featured: false
+image: "/blog/headers/kaiak-remotion-video-content-non-developer.webp"
+imageAlt: "Illustration for: React renders video now. I didn't write the code."
+tags: ["Remotion", "Claude Code", "Video", "React"]
+keywords: ["Remotion video", "React video", "programmatic video", "Claude Code Remotion", "video automation", "branded video content"]
+interlinks:
+  - "featured-image-pipeline-ai-nodejs"
+  - "claude-projects-leadership-workspace"
+sources:
+  - title: "Remotion Documentation"
+    url: "https://www.remotion.dev/docs"
+    publication: "Remotion"
+    date: "April 2026"
+---
+
+## What Remotion Actually Is
+
+Remotion turns React components into MP4 video files. If that sentence means nothing to you, here's the plain English version: you describe a video scene using code, preview it in a browser, and export it as a finished video file. No After Effects. No timeline editors. No drag-and-drop.
+
+Why does that matter for someone who isn't a developer? Because every frame is deterministic. Run the same code twice, you get the same video twice. Change the data — a name, a number, a colour — and every frame updates automatically. You can render a video the same way you deploy a website.
+
+I built 30 video compositions with Remotion. Dashboard animations, kinetic typography, 3D perspective launches, map journeys, before-and-after comparisons. I didn't write the code myself. Claude Code did.
+
+---
+
+## How Claude Code Wrote My Entire Video Project
+
+The workflow looks like this:
+
+1. I describe what I want in natural language
+2. Claude Code generates the React component
+3. I preview it in Remotion Studio (a browser-based editor)
+4. I give feedback: "the animation is too fast," "the colours are wrong," "make the text larger"
+5. Claude Code iterates
+6. I render to MP4
+
+The critical ingredient is a document called BRANDING.md — a 65KB file that defines every visual rule for KAIAK videos. Colours, typography, animation timing, what to avoid, what to use. When Claude Code reads this file before generating a composition, the output is immediately on-brand.
+
+Here's a real example. I asked for a "3D floating dashboard that shows before-and-after workflow stats." Claude Code generated PerspectiveLaunch.tsx — a composition with perspective transforms, spring animations, and a dark navy dashboard floating in 3D space. The first version was close. After three rounds of feedback ("make the cards float more," "add a subtle glow," "slow the entrance"), it was exactly what I wanted.
+
+That composition became the hero visual for my website.
+
+---
+
+## The Compositions That Worked (and the Ones That Didn't)
+
+After building 30 compositions, a clear pattern emerged.
+
+### What worked: dimensional, layered, animated
+
+**PerspectiveLaunch** — A 3D floating dashboard with perspective transforms, stats cards, and staggered spring animations. This felt premium. It had depth. It looked like something a design studio would charge thousands for.
+
+**MapJourney** — An animated path connecting cities on a stylised map, showing my international journey. Distinctive because it told a story through motion. Each city appeared with a spring animation as the path drew itself.
+
+**KineticTypography** — Text that builds word by word with spring physics. "AI Systems. That Work. While You Lead." Each phrase enters, holds, and the cumulative sentence reveals itself. Simple concept, strong execution.
+
+**CinematicIntro** — A full-screen cinematic opener with light leaks (using Remotion's built-in light leak library), logo reveal, and tagline animation. Felt like a movie title sequence.
+
+### What didn't work: flat, static, template-looking
+
+**SocialProof** — Animated counters showing "1,000+ educators trained." The numbers counted up, but the layout was a flat card on a cream background. It looked like a PowerPoint slide that learned to move.
+
+**BlogHeader** — Static text on cream with a subtle fade-in. Indistinguishable from a Canva template. No depth, no personality.
+
+**The pattern:** Dimensional compositions with layers, perspective, and spring-based motion feel premium. Flat layouts with simple fades feel generic, regardless of how polished the code is.
+
+---
+
+## The Brand System That Makes Every Video Look Like KAIAK
+
+BRANDING.md is the single most important file in the project. It defines:
+
+**Colours:**
+- Navy `#1a2037` for primary text and headings
+- Orange `#e2711d` for accents, highlights, CTAs
+- Cream `#faf7f2` to `#f0ebe3` gradient for backgrounds
+- Never use pure black `#000` — always navy
+
+**Typography:**
+- Georgia for headings (weight 400 for body, 700 for emphasis)
+- System-UI or Inter for body text
+- Heading sizes: 48-52px for main, 22-28px for sub
+- Letter spacing: -0.5 to -1 for large headings
+
+**Animation Rules:**
+- Spring physics, not CSS transitions (Remotion doesn't allow CSS animations)
+- Stagger delays: 4-12 frames between elements
+- Fade durations: 12-20 frames
+- Hold at full visibility: minimum 30 frames before any exit
+- Easing: always spring-based, never linear
+
+**What to Avoid:**
+- Bright orange `#f97316` (too harsh — use the warmer `#e2711d`)
+- Dark backgrounds for brand videos (cream is on-brand)
+- Flat layouts without depth or layering
+
+When Claude Code reads this file, it generates compositions that follow these rules automatically. I don't have to remind it about colours or timing. The document does the work.
+
+This is worth emphasising: **a BRANDING.md file is worth more than a hundred Canva templates.** A template gives you one layout. A brand document gives any AI the ability to generate unlimited on-brand variations.
+
+---
+
+## Spring Physics: The Animation Rules That Matter
+
+Remotion forbids CSS animations and transitions. Everything is controlled through `useCurrentFrame()` — a hook that returns the current frame number. You use this to calculate positions, opacities, and transforms for every element in every frame.
+
+This sounds limiting. It's actually a superpower. Because you control every frame explicitly, animations are perfectly deterministic. And when you use Remotion's `spring()` function, the motion feels natural — elements accelerate and decelerate like physical objects.
+
+The difference between a spring animation and a linear fade is the difference between "this looks professional" and "this looks like a PowerPoint transition."
+
+My timing guidelines (documented in BRANDING.md):
+
+| Animation Type | Duration | Notes |
+|---|---|---|
+| Element fade in | 12-20 frames | Opacity 0 → 1 |
+| Stagger between items | 4-12 frames | Delay between sequential reveals |
+| Hold at full visibility | 30+ frames | Let elements breathe |
+| Spring entrance | ~30 frames | Position + scale with spring physics |
+| Exit animation | 15-20 frames | Faster than entrance |
+
+The "hold" rule is the most commonly violated. New animators make everything move constantly. The eye needs time to read. A text element should appear, settle, and hold for at least a second before anything else moves.
+
+---
+
+## From Composition to Production: Rendering and Deploying
+
+Once a composition looks right in Remotion Studio, rendering is one command:
+
+```bash
+npx remotion render src/index.ts PerspectiveLaunch out/perspective-launch.mp4
+```
+
+This renders every frame, encodes to H.264, and saves the file. A 10-second composition at 30fps renders in about a minute on a decent machine.
+
+For transparent backgrounds (useful for overlaying on other video), you render to ProRes:
+
+```bash
+npx remotion render src/index.ts CinematicIntro out/intro.mov --codec prores --props '{"transparent": true}'
+```
+
+The `--props` flag lets you pass data to the composition at render time. This is how the same composition can produce different videos for different content — change the props, render again, get a new video.
+
+---
+
+## The Full Component Library
+
+Here's what I've built over the past few weeks. All 30 compositions, all generated by Claude Code, all following the BRANDING.md rules:
+
+**Intros & Outros:**
+CinematicIntro, TerminalIntro, BrandOutro
+
+**Data Visualization:**
+Dashboard, BarChart, CourseOverview (3 icon variants)
+
+**Marketing:**
+PerspectiveLaunch (2 variants), KineticTypography, KineticMarketing, TransparentCTA
+
+**Storytelling:**
+MapJourney, TestimonialSpotlight, SocialProof, SolutionReveal
+
+**Before/After:**
+BeforeAfter (4 icon library variants: default, Fluent, Heroicons, Phosphor)
+
+**Blog:**
+BlogHeader, BlogHero, BlogHeroVisual, FeaturedImage
+
+**Utility:**
+BrowserWindow, ClaudeTerminal, CodeDiff, ToolShowcase, LogoTest, YouTubePlayer
+
+Each composition is a self-contained React component that can be previewed, customised with props, and rendered independently.
+
+---
+
+## Your Move: What Video Content Could You Automate?
+
+This approach makes sense for any recurring video content where brand consistency matters:
+
+- **Course intro videos** — Render a new intro for each module by changing the title prop
+- **Event promotional clips** — Same template, different event details
+- **Data visualization videos** — Feed in new numbers, render updated charts
+- **Social media clips** — Kinetic text animations from your best blog post headlines
+- **Client presentations** — Before/after workflows specific to each engagement
+
+The minimum viable setup: install Node.js, install Remotion (`npx create-video@latest`), install Claude Code, write a BRANDING.md file, and start describing what you want. Your first composition will take an hour. Your tenth will take ten minutes.
+
+The real value isn't the individual videos. It's the library. Once you have 30 compositions, producing new video content is just changing data and hitting render.
