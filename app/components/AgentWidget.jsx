@@ -3,10 +3,10 @@
 import { useState, useRef, useEffect, useCallback } from "react";
 
 const STARTER_PROMPTS = [
-  "Can you build an AI agent for my school?",
-  "How does avatar training production work?",
-  "Tell me about the workshop",
-  "What's the free toolkit?",
+  "How can you help me automate my workflows?",
+  "What does the 6-week implementation look like?",
+  "Tell me about AI avatar course production",
+  "What's free to start with?",
 ];
 
 export default function AgentWidget() {
@@ -32,7 +32,7 @@ export default function AgentWidget() {
         {
           role: "assistant",
           content:
-            "Hi — I'm KAIAK's AI assistant. I can help you find the right service, answer questions about AI for school leadership, or point you to something free to start with. What's on your mind?",
+            "Hi — I'm KAIAK's AI assistant. I can help you find the right service, answer questions about AI systems and automation, or point you to free resources. What are you working on?",
         },
       ]);
     }
@@ -172,6 +172,7 @@ export default function AgentWidget() {
           </svg>
         )}
         {showPulse && !isOpen && <span className="agent-fab-pulse" />}
+        {!isOpen && <span className="agent-fab-label">Ask AI</span>}
       </button>
 
       {/* Chat window */}
@@ -293,6 +294,44 @@ export default function AgentWidget() {
         }
         .dark .agent-fab:hover {
           background: #f97316;
+        }
+
+        .agent-fab-label {
+          position: absolute;
+          right: 64px;
+          background: white;
+          color: #0f172a;
+          font-size: 13px;
+          font-weight: 600;
+          padding: 6px 14px;
+          border-radius: 8px;
+          white-space: nowrap;
+          box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+          pointer-events: none;
+          animation: agentLabelIn 0.3s ease;
+        }
+        .agent-fab-label::after {
+          content: '';
+          position: absolute;
+          right: -6px;
+          top: 50%;
+          transform: translateY(-50%);
+          border: 6px solid transparent;
+          border-left-color: white;
+        }
+        .dark .agent-fab-label {
+          background: #1e293b;
+          color: #e2e8f0;
+        }
+        .dark .agent-fab-label::after {
+          border-left-color: #1e293b;
+        }
+        @keyframes agentLabelIn {
+          from { opacity: 0; transform: translateX(8px); }
+          to { opacity: 1; transform: translateX(0); }
+        }
+        @media (max-width: 480px) {
+          .agent-fab-label { display: none; }
         }
 
         .agent-fab-pulse {

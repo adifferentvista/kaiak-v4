@@ -473,7 +473,7 @@ export default function BlogContent({ allPosts, featuredPosts, allTags = [], ini
         {/* ===== HERO SECTIONS (only when not filtering) ===== */}
         {showHeroSections && (
           <>
-            {/* Most Popular — 1 large + 2 small */}
+            {/* Most Popular — horizontal scroll on mobile, 3-col grid on desktop */}
             {featuredPosts.length > 0 && (
               <section className="mb-14">
                 <div className="flex items-center gap-3 mb-6">
@@ -482,7 +482,16 @@ export default function BlogContent({ allPosts, featuredPosts, allTags = [], ini
                   </h2>
                   <div className="flex-1 h-px bg-slate-200 dark:bg-slate-700" />
                 </div>
-                <div className="grid md:grid-cols-3 gap-5">
+                {/* Mobile: horizontal scroll row */}
+                <div className="md:hidden flex gap-4 overflow-x-auto pb-4 -mx-6 px-6 snap-x snap-mandatory scrollbar-hide">
+                  {featuredPosts.slice(0, 6).map((post) => (
+                    <div key={post.slug} className="min-w-[280px] max-w-[300px] flex-shrink-0 snap-start">
+                      <FeaturedCardSmall post={post} onTagClick={handleTagChange} />
+                    </div>
+                  ))}
+                </div>
+                {/* Desktop: grid */}
+                <div className="hidden md:grid md:grid-cols-3 gap-5">
                   {featuredPosts.slice(0, 6).map((post) => (
                     <FeaturedCardSmall key={post.slug} post={post} onTagClick={handleTagChange} />
                   ))}

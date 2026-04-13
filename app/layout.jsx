@@ -117,7 +117,8 @@ export default function RootLayout({ children }) {
           `}
         </Script>
         
-        {/* iubenda Cookie Banner - All URLs are https */}
+        {/* iubenda Cookie Banner - DISABLED (trial expired, blocking chatbot)
+            TODO: Re-enable with iubenda subscription or switch to free alternative
         <Script id="iubenda-config" strategy="beforeInteractive">
           {`
             var _iub = _iub || [];
@@ -129,19 +130,20 @@ export default function RootLayout({ children }) {
             };
           `}
         </Script>
-        <Script 
-          src="https://cs.iubenda.com/autoblocking/4350956.js" 
+        <Script
+          src="https://cs.iubenda.com/autoblocking/4350956.js"
           strategy="beforeInteractive"
         />
-        <Script 
-          src="https://cdn.iubenda.com/cs/gpp/stub.js" 
+        <Script
+          src="https://cdn.iubenda.com/cs/gpp/stub.js"
           strategy="beforeInteractive"
         />
-        <Script 
-          src="https://cdn.iubenda.com/cs/iubenda_cs.js" 
-          charSet="UTF-8" 
+        <Script
+          src="https://cdn.iubenda.com/cs/iubenda_cs.js"
+          charSet="UTF-8"
           strategy="beforeInteractive"
         />
+        */}
       </body>
     </html>
   )
