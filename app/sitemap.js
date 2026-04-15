@@ -1,10 +1,10 @@
-import { getAllPostSlugs, getPostBySlug } from '@/lib/posts';
+import { getPublishedSlugs, getPostBySlug } from '@/lib/posts';
 
 export default function sitemap() {
   const baseUrl = 'https://kaiak.io';
-  
-  // Get all blog posts
-  const slugs = getAllPostSlugs();
+
+  // Get only published blog posts (excludes drafts and future-dated)
+  const slugs = getPublishedSlugs();
   const blogUrls = slugs.map((slug) => {
     const post = getPostBySlug(slug);
     return {
@@ -15,7 +15,7 @@ export default function sitemap() {
     };
   });
   
-  // Static pages
+  // Static pages (only real pages, no redirect-only URLs)
   const staticPages = [
     {
       url: baseUrl,
@@ -36,19 +36,7 @@ export default function sitemap() {
       priority: 0.9,
     },
     {
-      url: `${baseUrl}/work-with-me`,          // ← ADD THIS BLOCK
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/products/second-brain-guide`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/workshop`,
+      url: `${baseUrl}/work-with-me`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.9,
@@ -58,6 +46,24 @@ export default function sitemap() {
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/privacy`,
+      lastModified: new Date(),
+      changeFrequency: 'yearly',
+      priority: 0.3,
+    },
+    {
+      url: `${baseUrl}/terms`,
+      lastModified: new Date(),
+      changeFrequency: 'yearly',
+      priority: 0.3,
+    },
+    {
+      url: `${baseUrl}/disclosure`,
+      lastModified: new Date(),
+      changeFrequency: 'yearly',
+      priority: 0.3,
     },
   ];
   

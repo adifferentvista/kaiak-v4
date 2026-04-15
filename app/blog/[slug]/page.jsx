@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
-import { getAllPostSlugs, getPostBySlug, getSeriesPosts, pillarLabels, pillarColors } from '@/lib/posts';
+import { getPublishedSlugs, getPostBySlug, getSeriesPosts, pillarLabels, pillarColors } from '@/lib/posts';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import rehypeHighlight from 'rehype-highlight';
 import remarkGfm from 'remark-gfm';
@@ -13,7 +13,7 @@ import TableOfContents from '../../components/TableOfContents';
 import SeriesNav from '../../components/SeriesNav';
 
 export async function generateStaticParams() {
-  const slugs = getAllPostSlugs();
+  const slugs = getPublishedSlugs();
   return slugs.map((slug) => ({ slug }));
 }
 

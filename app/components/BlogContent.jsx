@@ -61,44 +61,44 @@ function TagPills({ tags, onTagClick }) {
 function FeaturedCardLarge({ post, onTagClick }) {
   const pillar = pillarColors[post.pillar] || { bg: '#f3f4f6', text: '#374151' };
   return (
-    <Link href={`/blog/${post.slug}`} className="block group">
-      <article className="border border-slate-200 dark:border-slate-700 rounded-2xl overflow-hidden hover:border-slate-300 dark:hover:border-slate-600 hover:shadow-md transition-all duration-200 bg-white dark:bg-slate-800 h-full">
-        {post.image && (
-          <div className="relative aspect-[16/9] overflow-hidden">
-            <Image
-              src={post.image}
-              alt={post.imageAlt || post.title}
-              fill
-              className="object-cover transition-transform duration-300 group-hover:scale-105"
-              sizes="(max-width: 768px) 100vw, 60vw"
-              priority
-            />
+    <article className="relative border border-slate-200 dark:border-slate-700 rounded-2xl overflow-hidden hover:border-slate-300 dark:hover:border-slate-600 hover:shadow-md transition-all duration-200 bg-white dark:bg-slate-800 h-full group">
+      {post.image && (
+        <div className="relative aspect-[16/9] overflow-hidden">
+          <Image
+            src={post.image}
+            alt={post.imageAlt || post.title}
+            fill
+            className="object-cover transition-transform duration-300 group-hover:scale-105"
+            sizes="(max-width: 768px) 100vw, 60vw"
+            priority
+          />
+        </div>
+      )}
+      <div className="p-6 md:p-8">
+        <div className="flex items-center gap-3 mb-3">
+          <span
+            className="text-xs font-bold px-2.5 py-1 rounded-full uppercase tracking-wide"
+            style={{ backgroundColor: pillar.bg, color: pillar.text }}
+          >
+            {pillarLabels[post.pillar] || post.pillar}
+          </span>
+          <span className="text-xs text-slate-400 dark:text-slate-500">{post.readTime}</span>
+        </div>
+        {post.tags && post.tags.length > 0 && (
+          <div className="mb-3 relative z-10">
+            <TagPills tags={post.tags} onTagClick={onTagClick} />
           </div>
         )}
-        <div className="p-6 md:p-8">
-          <div className="flex items-center gap-3 mb-3">
-            <span
-              className="text-xs font-bold px-2.5 py-1 rounded-full uppercase tracking-wide"
-              style={{ backgroundColor: pillar.bg, color: pillar.text }}
-            >
-              {pillarLabels[post.pillar] || post.pillar}
-            </span>
-            <span className="text-xs text-slate-400 dark:text-slate-500">{post.readTime}</span>
-          </div>
-          {post.tags && post.tags.length > 0 && (
-            <div className="mb-3">
-              <TagPills tags={post.tags} onTagClick={onTagClick} />
-            </div>
-          )}
-          <h3 className="text-2xl md:text-3xl font-serif font-medium text-navy dark:text-white group-hover:text-slate-600 dark:group-hover:text-slate-300 transition-colors leading-snug mb-3">
+        <h3 className="text-2xl md:text-3xl font-serif font-medium text-navy dark:text-white group-hover:text-slate-600 dark:group-hover:text-slate-300 transition-colors leading-snug mb-3">
+          <Link href={`/blog/${post.slug}`} className="after:absolute after:inset-0">
             {post.title}
-          </h3>
-          <p className="text-slate-600 dark:text-slate-300 leading-relaxed text-base line-clamp-3">
-            {post.description}
-          </p>
-        </div>
-      </article>
-    </Link>
+          </Link>
+        </h3>
+        <p className="text-slate-600 dark:text-slate-300 leading-relaxed text-base line-clamp-3">
+          {post.description}
+        </p>
+      </div>
+    </article>
   );
 }
 
@@ -106,43 +106,43 @@ function FeaturedCardLarge({ post, onTagClick }) {
 function FeaturedCardSmall({ post, onTagClick }) {
   const pillar = pillarColors[post.pillar] || { bg: '#f3f4f6', text: '#374151' };
   return (
-    <Link href={`/blog/${post.slug}`} className="block group">
-      <article className="border border-slate-200 dark:border-slate-700 rounded-2xl overflow-hidden hover:border-slate-300 dark:hover:border-slate-600 hover:shadow-md transition-all duration-200 bg-white dark:bg-slate-800 h-full flex flex-col">
-        {post.image && (
-          <div className="relative aspect-[16/9] overflow-hidden">
-            <Image
-              src={post.image}
-              alt={post.imageAlt || post.title}
-              fill
-              className="object-cover transition-transform duration-300 group-hover:scale-105"
-              sizes="(max-width: 768px) 100vw, 30vw"
-            />
+    <article className="relative border border-slate-200 dark:border-slate-700 rounded-2xl overflow-hidden hover:border-slate-300 dark:hover:border-slate-600 hover:shadow-md transition-all duration-200 bg-white dark:bg-slate-800 h-full flex flex-col group">
+      {post.image && (
+        <div className="relative aspect-[16/9] overflow-hidden">
+          <Image
+            src={post.image}
+            alt={post.imageAlt || post.title}
+            fill
+            className="object-cover transition-transform duration-300 group-hover:scale-105"
+            sizes="(max-width: 768px) 100vw, 30vw"
+          />
+        </div>
+      )}
+      <div className="p-5 flex-1 flex flex-col">
+        <div className="flex items-center gap-2 mb-2">
+          <span
+            className="text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wide"
+            style={{ backgroundColor: pillar.bg, color: pillar.text }}
+          >
+            {pillarLabels[post.pillar] || post.pillar}
+          </span>
+          <span className="text-[10px] text-slate-400 dark:text-slate-500">{post.readTime}</span>
+        </div>
+        {post.tags && post.tags.length > 0 && (
+          <div className="mb-2 relative z-10">
+            <TagPills tags={post.tags} onTagClick={onTagClick} />
           </div>
         )}
-        <div className="p-5 flex-1 flex flex-col">
-          <div className="flex items-center gap-2 mb-2">
-            <span
-              className="text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wide"
-              style={{ backgroundColor: pillar.bg, color: pillar.text }}
-            >
-              {pillarLabels[post.pillar] || post.pillar}
-            </span>
-            <span className="text-[10px] text-slate-400 dark:text-slate-500">{post.readTime}</span>
-          </div>
-          {post.tags && post.tags.length > 0 && (
-            <div className="mb-2">
-              <TagPills tags={post.tags} onTagClick={onTagClick} />
-            </div>
-          )}
-          <h3 className="text-lg font-serif font-medium text-navy dark:text-white group-hover:text-slate-600 dark:group-hover:text-slate-300 transition-colors leading-snug mb-2 flex-1">
+        <h3 className="text-lg font-serif font-medium text-navy dark:text-white group-hover:text-slate-600 dark:group-hover:text-slate-300 transition-colors leading-snug mb-2 flex-1">
+          <Link href={`/blog/${post.slug}`} className="after:absolute after:inset-0">
             {post.title}
-          </h3>
-          <p className="text-sm text-slate-500 dark:text-slate-400 line-clamp-2">
-            {post.description}
-          </p>
-        </div>
-      </article>
-    </Link>
+          </Link>
+        </h3>
+        <p className="text-sm text-slate-500 dark:text-slate-400 line-clamp-2">
+          {post.description}
+        </p>
+      </div>
+    </article>
   );
 }
 
@@ -150,46 +150,46 @@ function FeaturedCardSmall({ post, onTagClick }) {
 function PostRow({ post, index, onTagClick }) {
   const pillar = pillarColors[post.pillar] || { bg: '#f3f4f6', text: '#374151' };
   return (
-    <Link href={`/blog/${post.slug}`} className="block group">
-      <article className={`flex gap-4 md:gap-6 py-5 ${index > 0 ? 'border-t border-slate-200/70 dark:border-slate-700/70' : ''}`}>
-        {post.image && (
-          <div className="relative w-24 h-24 md:w-32 md:h-20 rounded-xl overflow-hidden flex-shrink-0">
-            <Image
-              src={post.image}
-              alt={post.imageAlt || post.title}
-              fill
-              className="object-cover transition-transform duration-300 group-hover:scale-105"
-              sizes="128px"
-            />
+    <article className={`relative flex gap-4 md:gap-6 py-5 group ${index > 0 ? 'border-t border-slate-200/70 dark:border-slate-700/70' : ''}`}>
+      {post.image && (
+        <div className="relative w-24 h-24 md:w-32 md:h-20 rounded-xl overflow-hidden flex-shrink-0">
+          <Image
+            src={post.image}
+            alt={post.imageAlt || post.title}
+            fill
+            className="object-cover transition-transform duration-300 group-hover:scale-105"
+            sizes="128px"
+          />
+        </div>
+      )}
+      <div className="flex-1 min-w-0">
+        <div className="flex items-center gap-2 mb-1.5">
+          <span
+            className="text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wide"
+            style={{ backgroundColor: pillar.bg, color: pillar.text }}
+          >
+            {pillarLabels[post.pillar] || post.pillar}
+          </span>
+          <span className="text-[10px] text-slate-400 dark:text-slate-500">{post.readTime}</span>
+          <span className="text-[10px] text-slate-400 dark:text-slate-500">
+            {new Date(post.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
+          </span>
+        </div>
+        {post.tags && post.tags.length > 0 && (
+          <div className="mb-1.5 hidden md:block relative z-10">
+            <TagPills tags={post.tags} onTagClick={onTagClick} />
           </div>
         )}
-        <div className="flex-1 min-w-0">
-          <div className="flex items-center gap-2 mb-1.5">
-            <span
-              className="text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wide"
-              style={{ backgroundColor: pillar.bg, color: pillar.text }}
-            >
-              {pillarLabels[post.pillar] || post.pillar}
-            </span>
-            <span className="text-[10px] text-slate-400 dark:text-slate-500">{post.readTime}</span>
-            <span className="text-[10px] text-slate-400 dark:text-slate-500">
-              {new Date(post.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
-            </span>
-          </div>
-          {post.tags && post.tags.length > 0 && (
-            <div className="mb-1.5 hidden md:block">
-              <TagPills tags={post.tags} onTagClick={onTagClick} />
-            </div>
-          )}
-          <h3 className="text-base md:text-lg font-serif font-medium text-navy dark:text-white group-hover:text-slate-600 dark:group-hover:text-slate-300 transition-colors leading-snug mb-1">
+        <h3 className="text-base md:text-lg font-serif font-medium text-navy dark:text-white group-hover:text-slate-600 dark:group-hover:text-slate-300 transition-colors leading-snug mb-1">
+          <Link href={`/blog/${post.slug}`} className="after:absolute after:inset-0">
             {post.title}
-          </h3>
-          <p className="text-sm text-slate-500 dark:text-slate-400 line-clamp-1 hidden md:block">
-            {post.description}
-          </p>
-        </div>
-      </article>
-    </Link>
+          </Link>
+        </h3>
+        <p className="text-sm text-slate-500 dark:text-slate-400 line-clamp-1 hidden md:block">
+          {post.description}
+        </p>
+      </div>
+    </article>
   );
 }
 
@@ -197,50 +197,50 @@ function PostRow({ post, index, onTagClick }) {
 function PostCard({ post, onTagClick }) {
   const pillar = pillarColors[post.pillar] || { bg: '#f3f4f6', text: '#374151' };
   return (
-    <Link href={`/blog/${post.slug}`} className="block group">
-      <article className="border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden hover:border-slate-300 dark:hover:border-slate-600 hover:shadow-sm transition-all duration-200 bg-white dark:bg-slate-800">
-        {post.image && (
-          <div className="relative aspect-video overflow-hidden">
-            <Image
-              src={post.image}
-              alt={post.imageAlt || post.title}
-              fill
-              className="object-cover transition-transform duration-300 group-hover:scale-105"
-              sizes="(max-width: 768px) 100vw, 50vw"
-            />
+    <article className="relative border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden hover:border-slate-300 dark:hover:border-slate-600 hover:shadow-sm transition-all duration-200 bg-white dark:bg-slate-800 group">
+      {post.image && (
+        <div className="relative aspect-video overflow-hidden">
+          <Image
+            src={post.image}
+            alt={post.imageAlt || post.title}
+            fill
+            className="object-cover transition-transform duration-300 group-hover:scale-105"
+            sizes="(max-width: 768px) 100vw, 50vw"
+          />
+        </div>
+      )}
+      <div className="p-5">
+        <div className="flex items-center gap-2 mb-2">
+          <span
+            className="text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wide"
+            style={{ backgroundColor: pillar.bg, color: pillar.text }}
+          >
+            {pillarLabels[post.pillar] || post.pillar}
+          </span>
+          <span className="text-[10px] text-slate-400 dark:text-slate-500">{post.readTime}</span>
+        </div>
+        {post.tags && post.tags.length > 0 && (
+          <div className="mb-2 relative z-10">
+            <TagPills tags={post.tags} onTagClick={onTagClick} />
           </div>
         )}
-        <div className="p-5">
-          <div className="flex items-center gap-2 mb-2">
-            <span
-              className="text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wide"
-              style={{ backgroundColor: pillar.bg, color: pillar.text }}
-            >
-              {pillarLabels[post.pillar] || post.pillar}
-            </span>
-            <span className="text-[10px] text-slate-400 dark:text-slate-500">{post.readTime}</span>
-          </div>
-          {post.tags && post.tags.length > 0 && (
-            <div className="mb-2">
-              <TagPills tags={post.tags} onTagClick={onTagClick} />
-            </div>
-          )}
-          <h3 className="text-lg font-serif font-medium text-navy dark:text-white group-hover:text-slate-600 dark:group-hover:text-slate-300 transition-colors leading-snug mb-2">
+        <h3 className="text-lg font-serif font-medium text-navy dark:text-white group-hover:text-slate-600 dark:group-hover:text-slate-300 transition-colors leading-snug mb-2">
+          <Link href={`/blog/${post.slug}`} className="after:absolute after:inset-0">
             {post.title}
-          </h3>
-          <p className="text-sm text-slate-500 dark:text-slate-400 line-clamp-2">
-            {post.description}
-          </p>
-          <p className="text-xs text-slate-400 dark:text-slate-500 mt-3">
-            {new Date(post.date).toLocaleDateString('en-US', {
-              year: 'numeric',
-              month: 'long',
-              day: 'numeric',
-            })}
-          </p>
-        </div>
-      </article>
-    </Link>
+          </Link>
+        </h3>
+        <p className="text-sm text-slate-500 dark:text-slate-400 line-clamp-2">
+          {post.description}
+        </p>
+        <p className="text-xs text-slate-400 dark:text-slate-500 mt-3">
+          {new Date(post.date).toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+          })}
+        </p>
+      </div>
+    </article>
   );
 }
 
@@ -273,7 +273,7 @@ export default function BlogContent({ allPosts, featuredPosts, allTags = [], ini
   const [activeTag, setActiveTag] = useState(initialTag || null);
   const [searchQuery, setSearchQuery] = useState(initialSearch);
   const [isSearchFocused, setIsSearchFocused] = useState(false);
-  const [showAllPosts, setShowAllPosts] = useState(false);
+  const [showAllPosts, setShowAllPosts] = useState(!!(initialPillar || initialTag || initialSearch));
 
   // Filter and search posts
   const filteredPosts = useMemo(() => {
@@ -302,11 +302,11 @@ export default function BlogContent({ allPosts, featuredPosts, allTags = [], ini
 
   // Posts for the "All Posts" grid (when filtering or browsing all)
   const gridPosts = useMemo(() => {
-    if (activePillar || searchQuery.trim()) {
+    if (activePillar || activeTag || searchQuery.trim()) {
       return filteredPosts;
     }
     return allPosts;
-  }, [filteredPosts, allPosts, activePillar, searchQuery]);
+  }, [filteredPosts, allPosts, activePillar, activeTag, searchQuery]);
 
   // Count posts per pillar
   const pillarCounts = useMemo(() => {
