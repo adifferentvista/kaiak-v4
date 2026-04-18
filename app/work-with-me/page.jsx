@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Navbar from '../components/Navbar';
+import HeroBackdrop from '../components/HeroBackdrop';
 import { Icons } from '../components/Icons';
 import { Users, Video, MapPin } from 'lucide-react';
 
@@ -20,8 +21,9 @@ export default function WorkWithMePage() {
 
       <main>
         {/* Header */}
-        <section className="py-20 md:py-28 bg-cream dark:bg-navy">
-          <div className="max-w-4xl mx-auto px-6 text-center">
+        <section className="relative overflow-hidden py-20 md:py-28 bg-cream dark:bg-navy">
+          <HeroBackdrop />
+          <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
             <h1 className="font-serif text-4xl md:text-5xl mb-6 text-navy dark:text-white">
               Stop Drowning in Admin.<br />Start Leading.
             </h1>

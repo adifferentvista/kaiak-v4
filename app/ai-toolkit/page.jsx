@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Navbar from '../components/Navbar';
+import HeroBackdrop from '../components/HeroBackdrop';
 
 export const metadata = {
   title: "Free AI Toolkit for Leaders | NotebookLM, Claude, ChatGPT, Gemini | KAIAK",
@@ -21,8 +22,9 @@ export default function AIToolkitLandingPage() {
       {/* Spacer for fixed navbar */}
       <div className="h-[73px]" />
 
-      <main className="py-12 md:py-16">
-        <div className="max-w-5xl mx-auto px-6">
+      <main className="relative overflow-hidden py-12 md:py-16">
+        <HeroBackdrop />
+        <div className="relative z-10 max-w-5xl mx-auto px-6">
           <div className="grid md:grid-cols-5 gap-12 items-start">
             
             {/* Left Column: The Pitch (3 cols) */}
@@ -79,7 +81,7 @@ export default function AIToolkitLandingPage() {
               {/* The Problem */}
               <div className="mb-8">
                 <p className="text-slate-700 dark:text-slate-300 leading-relaxed mb-4">
-                  <strong className="text-navy dark:text-white">Most "AI for Schools" advice is fluff.</strong> It tells you that you <em>should</em> use AI, but not <em>how</em> to fit it into a Principal's insane schedule.
+                  <strong className="text-navy dark:text-white">Most "AI for Schools" advice is vague.</strong> It tells you that you <em>should</em> use AI, but not <em>how</em> to fit it into a Principal's insane schedule.
                 </p>
                 <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
                   I spent 20 years in education and founded an IB World School in Indonesia. I didn't build these systems to be a "guru." I built them because I was drowning in 60-hour weeks.

@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Navbar from '../components/Navbar';
+import HeroBackdrop from '../components/HeroBackdrop';
 
 export const metadata = {
   title: 'Book a Strategy Call | KAIAK',
@@ -16,9 +17,9 @@ export default function BookingPage() {
       {/* Spacer for fixed navbar */}
       <div className="h-[73px]" />
 
-      <main className="max-w-4xl mx-auto px-6 py-12 md:py-20">
-        {/* Header */}
-        <div className="text-center mb-12">
+      <main className="relative overflow-hidden max-w-4xl mx-auto px-6 py-12 md:py-20">
+        <HeroBackdrop />
+        <div className="relative z-10 text-center mb-12">
           <p className="font-medium text-sm tracking-wide uppercase mb-4 text-orange-600 dark:text-orange-400">
             Free 30-Minute Call
           </p>
@@ -31,7 +32,7 @@ export default function BookingPage() {
         </div>
 
         {/* What to Expect */}
-        <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-6 md:p-8 mb-10">
+        <div className="relative z-10 bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-6 md:p-8 mb-10">
           <h2 className="font-serif text-xl mb-4 text-navy dark:text-white">What to Expect</h2>
           <ul className="space-y-3 text-slate-600 dark:text-slate-300">
             <li className="flex items-start gap-3">
@@ -50,7 +51,7 @@ export default function BookingPage() {
         </div>
 
         {/* Calendly Embed */}
-        <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 overflow-hidden">
+        <div className="relative z-10 bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 overflow-hidden">
           <iframe
             src="https://calendly.com/ben-kaiak/30min?hide_gdpr_banner=1&background_color=ffffff&text_color=0f172a&primary_color=ea580c"
             width="100%"
@@ -70,7 +71,7 @@ export default function BookingPage() {
         </div>
 
         {/* Alternative Contact */}
-        <div className="text-center mt-10 text-slate-500 dark:text-slate-400">
+        <div className="relative z-10 text-center mt-10 text-slate-500 dark:text-slate-400">
           <p>
             Prefer email? Reach me at{' '}
             <a href="mailto:ben@kaiak.io" className="text-orange-600 dark:text-orange-400 hover:underline">

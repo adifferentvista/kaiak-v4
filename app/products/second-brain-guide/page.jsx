@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { Logo, Icons } from '../../components/Icons';
 import WaitlistForm from '../../components/WaitlistForm';
+import HeroBackdrop from '../../components/HeroBackdrop';
 
 export const metadata = {
   title: 'The No-Admin Second Brain Guide | KAIAK',
@@ -26,8 +27,9 @@ export default function SecondBrainGuideWaitlist() {
       </nav>
 
       {/* Main Content */}
-      <main className="py-20 md:py-28">
-        <div className="max-w-2xl mx-auto px-6 text-center">
+      <main className="relative overflow-hidden py-20 md:py-28">
+        <HeroBackdrop />
+        <div className="relative z-10 max-w-2xl mx-auto px-6 text-center">
           {/* Icon */}
           <div className="text-6xl mb-6">📘</div>
 

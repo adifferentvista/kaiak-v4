@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import Navbar from './Navbar';
 import NewsletterForm from './NewsletterForm';
+import HeroBackdrop from './HeroBackdrop';
 
 const pillarLabels = {
   'leadership': 'Leadership',
@@ -364,30 +365,36 @@ export default function BlogContent({ allPosts, featuredPosts, allTags = [], ini
       <Navbar />
       <div className="h-[73px]" />
 
-      <main className="max-w-5xl mx-auto px-6 py-12">
-        {/* Header */}
-        <header className="mb-10">
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
-            <div>
-              <h1 className="text-4xl md:text-5xl font-serif text-navy dark:text-white mb-2">
-                The KAIAK Blog
-              </h1>
-              <p className="text-base text-slate-500 dark:text-slate-400">
-                AI systems, workflow automation, and building things that run without you.
-              </p>
-            </div>
-            <div className="flex items-center gap-3 flex-shrink-0">
-              <div className="hidden md:flex items-center gap-1.5 text-xs text-slate-400 dark:text-slate-500">
-                <svg className="w-3.5 h-3.5 text-orange-500" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
-                  <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
-                </svg>
-                <span>The Weekly Edge</span>
+      <section className="relative overflow-hidden">
+        <HeroBackdrop />
+        <div className="relative z-10 max-w-5xl mx-auto px-6 pt-12">
+          {/* Header */}
+          <header className="mb-10">
+            <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+              <div>
+                <h1 className="text-4xl md:text-5xl font-serif text-navy dark:text-white mb-2">
+                  The KAIAK Blog
+                </h1>
+                <p className="text-base text-slate-500 dark:text-slate-400">
+                  AI systems, workflow automation, and building things that run without you.
+                </p>
               </div>
-              <NewsletterForm />
+              <div className="flex items-center gap-3 flex-shrink-0">
+                <div className="hidden md:flex items-center gap-1.5 text-xs text-slate-400 dark:text-slate-500">
+                  <svg className="w-3.5 h-3.5 text-orange-500" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                    <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+                  </svg>
+                  <span>The Weekly Edge</span>
+                </div>
+                <NewsletterForm />
+              </div>
             </div>
-          </div>
-        </header>
+          </header>
+        </div>
+      </section>
+
+      <main className="max-w-5xl mx-auto px-6 pb-12">
 
         {/* Search + Filter Bar */}
         <div className="sticky top-[73px] z-40 bg-cream/95 dark:bg-navy/95 backdrop-blur-sm py-4 -mx-6 px-6 mb-8 border-b border-slate-200/50 dark:border-slate-700/50">

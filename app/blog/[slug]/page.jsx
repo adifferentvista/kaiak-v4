@@ -11,6 +11,7 @@ import AuthorBio from '../../components/AuthorBio';
 import ShareButtons from '../../components/ShareButtons';
 import TableOfContents from '../../components/TableOfContents';
 import SeriesNav from '../../components/SeriesNav';
+import HeroBackdrop from '../../components/HeroBackdrop';
 
 export async function generateStaticParams() {
   const slugs = getPublishedSlugs();
@@ -180,8 +181,9 @@ export default function BlogPostPage({ params }) {
               </Link>
 
               {/* Article Header */}
-              <header className="mb-10 mt-4">
-                <div className="flex items-center gap-3 mb-4">
+              <header className="relative overflow-hidden mb-10 mt-4 -mx-6 px-6 py-10 rounded-2xl">
+                <HeroBackdrop />
+                <div className="relative z-10 flex items-center gap-3 mb-4">
                   <Link 
                     href={`/blog?pillar=${post.pillar}`}
                     className="text-xs font-medium px-2 py-1 rounded-full hover:opacity-80 transition-opacity"
@@ -209,16 +211,16 @@ export default function BlogPostPage({ params }) {
                   </span>
                 </div>
 
-                <h1 className="text-3xl md:text-4xl font-serif text-navy dark:text-white mb-4 leading-tight">
+                <h1 className="relative z-10 text-3xl md:text-4xl font-serif text-navy dark:text-white mb-4 leading-tight">
                   {post.title}
                 </h1>
 
-                <p className="text-xl text-slate-600 dark:text-slate-300">
+                <p className="relative z-10 text-xl text-slate-600 dark:text-slate-300">
                   {post.description}
                 </p>
 
                 {post.image && (
-                  <div className="mt-8 relative aspect-video rounded-xl overflow-hidden">
+                  <div className="relative z-10 mt-8 aspect-video rounded-xl overflow-hidden">
                     <Image
                       src={post.image}
                       alt={post.imageAlt || post.title}

@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import HeroBackdrop from '../../components/HeroBackdrop';
 
 // ============================================
 // COLORS
@@ -54,8 +55,9 @@ export default function AcademyPage() {
       </nav>
 
       {/* Main Content */}
-      <section className="py-20 md:py-32">
-        <div className="max-w-2xl mx-auto px-6 text-center">
+      <section className="relative overflow-hidden py-20 md:py-32">
+        <HeroBackdrop />
+        <div className="relative z-10 max-w-2xl mx-auto px-6 text-center">
           <span className="inline-block text-6xl mb-8">🎓</span>
           
           <h1 className="font-serif text-4xl md:text-5xl mb-6" style={{ color: colors.navy }}>

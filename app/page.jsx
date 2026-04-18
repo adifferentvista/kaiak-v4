@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Navbar from './components/Navbar';
 import ExitIntentPopup from './components/ExitIntentPopup';
+import HeroBackdrop from './components/HeroBackdrop';
 import { getFeaturedPosts, getAllPosts, pillarLabels, pillarColors } from '@/lib/posts';
 import {
   ArrowRight,
@@ -77,8 +78,9 @@ export default function HomePage() {
       <main id="main-content">
         
         {/* ========== 1. HERO (Text + Illustration) ========== */}
-        <section className="pt-32 pb-20 md:pt-40 md:pb-28 bg-cream dark:bg-navy">
-          <div className="max-w-6xl mx-auto px-6">
+        <section className="relative overflow-hidden pt-32 pb-20 md:pt-40 md:pb-28 bg-cream dark:bg-navy">
+          <HeroBackdrop />
+          <div className="relative z-10 max-w-6xl mx-auto px-6">
             <div className="grid md:grid-cols-2 gap-12 items-center">
               {/* Left: Text */}
               <div>
@@ -203,8 +205,9 @@ export default function HomePage() {
         </section>
 
         {/* ========== 3. SIGNATURE OFFER (Split Layout) ========== */}
-        <section className="py-20 md:py-28 bg-cream dark:bg-navy">
-          <div className="max-w-6xl mx-auto px-6">
+        <section className="relative overflow-hidden py-20 md:py-28 bg-cream dark:bg-navy">
+          <HeroBackdrop />
+          <div className="relative z-10 max-w-6xl mx-auto px-6">
             <div className="grid md:grid-cols-2 gap-16 items-center">
               {/* Left: Description */}
               <div>
@@ -355,8 +358,9 @@ export default function HomePage() {
         </section>
 
         {/* ========== 5. TESTIMONIALS ========== */}
-        <section className="py-20 md:py-28 bg-cream dark:bg-navy">
-          <div className="max-w-5xl mx-auto px-6">
+        <section className="relative overflow-hidden py-20 md:py-28 bg-cream dark:bg-navy">
+          <HeroBackdrop />
+          <div className="relative z-10 max-w-5xl mx-auto px-6">
             <div className="text-center mb-16">
               <h2 className="font-serif text-3xl md:text-4xl text-navy dark:text-white mb-4">
                 What Others Are Saying
@@ -607,8 +611,9 @@ export default function HomePage() {
         </section>
 
         {/* ========== 8. ABOUT SLICE (Small Photo + Stats) ========== */}
-        <section id="about" className="py-20 md:py-28 bg-cream dark:bg-navy">
-          <div className="max-w-5xl mx-auto px-6">
+        <section id="about" className="relative overflow-hidden py-20 md:py-28 bg-cream dark:bg-navy">
+          <HeroBackdrop />
+          <div className="relative z-10 max-w-5xl mx-auto px-6">
             <div className="grid md:grid-cols-2 gap-12 items-center">
               {/* Left: Photo + Stats */}
               <div>

@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Navbar from '../components/Navbar';
+import HeroBackdrop from '../components/HeroBackdrop';
 
 export const metadata = {
   title: 'AI Leadership in Practice — The Live Workshop | KAIAK',
@@ -70,8 +71,9 @@ export default function WorkshopPage() {
 
       <main>
         {/* Hero */}
-        <section className="py-20 md:py-28 bg-cream dark:bg-navy">
-          <div className="max-w-4xl mx-auto px-6 text-center">
+        <section className="relative overflow-hidden py-20 md:py-28 bg-cream dark:bg-navy">
+          <HeroBackdrop />
+          <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
             <p className="font-medium text-sm tracking-wide uppercase mb-4 text-orange-600 dark:text-amber-400">
               Live Workshop
             </p>
