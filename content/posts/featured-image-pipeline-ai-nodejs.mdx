@@ -2,17 +2,19 @@
 title: "I Built a Featured Image Pipeline With AI and Node.js — Here's the Whole System"
 description: "How I automated blog featured images using Google Imagen 4, a Node.js compositing script, and a CSV file. The full pipeline that produces consistent, branded images in under 10 minutes each."
 date: "2026-04-21"
+lastUpdated: "2026-04-24"
 pillar: "practical-ai"
 contentType: "evergreen"
-readTime: "11 min read"
+readTime: "12 min read"
 featured: false
 image: "/blog/headers/kaiak-featured-image-pipeline-ai-nodejs.webp"
 imageAlt: "Illustration for: 10 minutes per image. From AI prompt to production."
 tags: ["Node.js", "Google Imagen", "Sharp", "Automation"]
-keywords: ["AI image generation", "featured image automation", "Google Imagen 4 API", "Node.js Sharp", "blog image pipeline", "automated design workflow"]
+keywords: ["AI image generation", "featured image automation", "Google Imagen 4 API", "Node.js Sharp", "blog image pipeline", "automated design workflow", "Imagen 4 rate limit", "Google AI quota"]
 interlinks:
   - "automated-research-pipeline"
   - "claude-projects-leadership-workspace"
+  - "chatgpt-to-production-api"
 sources:
   - title: "Google Imagen 4 API Documentation"
     url: "https://cloud.google.com/vertex-ai/generative-ai/docs/image/generate-images"
@@ -21,6 +23,10 @@ sources:
   - title: "Sharp Image Processing Library"
     url: "https://sharp.pixelplumbing.com/"
     publication: "Sharp"
+    date: "April 2026"
+  - title: "Gemini API Rate Limits"
+    url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+    publication: "Google AI for Developers"
     date: "April 2026"
 ---
 
@@ -183,8 +189,8 @@ The hook text for each image is stored in a simple CSV file:
 
 ```csv
 slug,"Hook line 1.","Hook line 2 (italic orange).","slug.png"
-ai-critical-thinking,"94% of AI work goes undetected.","The tools catch the innocent.","ai-critical-thinking.png"
-ai-policy-framework,"Most AI policies are written in fear.","This one starts with trust.","ai-policy-framework.png"
+ai-detection-arms-race-over,"94% of AI work goes undetected.","The tools catch the innocent.","ai-detection-arms-race-over.png"
+ai-policy-framework,"60% of schools have no AI rules.","Students made their own.","ai-policy-framework.png"
 ```
 
 This is the editorial layer. Hook text is deliberately different from blog titles. A blog title explains what the post is about. Hook text is a two-line magazine cover pitch that stops the scroll.
@@ -220,6 +226,42 @@ After iterating on 43 images, here's what I've learned:
 **The two-line hook format is non-negotiable.** I tried three-line hooks. They crowd the canvas. I tried one-line hooks. They feel incomplete. Two lines — setup and punch — is the sweet spot.
 
 **Constraining AI produces better results than freedom.** Every rule I added (warm colours only, no cliches, illustration on right) made the output better. The system makes every image look like it belongs to the same brand not because of skill, but because of constraints.
+
+---
+
+## The 70-Image Daily Wall I Hit (Update — April 24)
+
+A week after publishing this, I was generating 44 course hero images with a batched version of the same script. At image number 60-something, the API started returning HTTP 429 with `RESOURCE_EXHAUSTED`. Not a transient error. A hard daily ceiling.
+
+Google's paid tier 1 for `imagen-4.0-generate` caps you at 70 images per day. I couldn't find this in the docs I was reading when I first built the pipeline. The limit only shows up in the [Gemini API rate limits page](https://ai.google.dev/gemini-api/docs/rate-limits), which I hadn't bookmarked.
+
+Three things you should know before scaling this pipeline:
+
+**The ceiling is 70 images per model per day on tier 1.** Not per hour. Not per script. Total across every call you make that day. For a single blog post, this is irrelevant. For a course catalog, a batch redesign, or any library-scale job — you will hit it.
+
+**The reset is daily at Pacific midnight.** Not a rolling 24-hour window. If you burn through the quota at 6pm, you're waiting until midnight Pacific, not noon your local time.
+
+**The workaround is boringly simple: make your batch script resume-safe.** My generator skips any output file that already exists. Hit the quota, quit the script, come back tomorrow, rerun. The completed images are skipped, the remaining ones generate. No state file. No retry queue. Just `fs.existsSync`.
+
+Here's the pattern:
+
+```javascript
+for (const course of courses) {
+  const outPath = `public/hero/${course.slug}.png`;
+  if (fs.existsSync(outPath)) {
+    console.log(`skip: ${course.slug}`);
+    continue;
+  }
+  await generate(course.prompt, outPath);
+  await sleep(1500); // rate limit between calls
+}
+```
+
+That's it. Three lines of safety that let a 44-image job span two days without thought.
+
+If you're planning volume that consistently exceeds 70 a day, request a tier upgrade via the Google AI Studio console. I haven't needed to — a two-day chunk works for everything I've built so far.
+
+The cost lesson: every API-driven pipeline has a ceiling somewhere. Find it early. Build around it before you need it. And write every batch job to be interruption-safe — not because of quotas specifically, but because batch jobs always fail eventually and starting over from scratch is not a plan.
 
 ---
 
