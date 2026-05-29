@@ -5,8 +5,8 @@ import { Icons } from '../components/Icons';
 import { PlayCircle, Globe, Zap, Sparkles, Users, Award, Clock, DollarSign, Languages, RefreshCw } from 'lucide-react';
 
 export const metadata = {
-  title: 'AI Video Production for Trainers, Course Creators & Schools | KAIAK',
-  description: 'Done-for-you AI video production for training programs, online courses, and education businesses. 48-hour turnaround. Multilingual. By a former Head of School with 20 years of training-content experience.',
+  title: 'AI Course Production for Schools, HR, GTM & Training Teams | KAIAK',
+  description: 'Done-for-you AI course production — interactive lessons, scoped AI tutor, multilingual delivery, SCORM-ready export. Built in a week. By a former Head of School with 20 years of course design experience.',
   alternates: { canonical: '/video' },
 };
 
@@ -47,13 +47,13 @@ export default function VideoAgencyPage() {
             <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
               <div>
                 <p className="font-medium text-sm tracking-wide uppercase mb-4 text-amber-600 dark:text-amber-400">
-                  AI Video Production for Course Creators, Trainers & Schools
+                  AI Course Production for Schools, HR, Sales Enablement & Training Teams
                 </p>
                 <h1 className="font-serif text-4xl md:text-5xl mb-6 text-navy dark:text-white leading-tight">
-                  Course videos, training content,<br />UGC-style explainers.<br />Without a film crew.
+                  Premium AI-driven courses.<br />Built in a week.<br />Without a learning design team.
                 </h1>
                 <p className="text-lg text-slate-600 dark:text-slate-300 mb-6">
-                  Production-grade AI videos in 48 hours. Multilingual. Written by a former Head of School with 20 years of course and training-content experience. Starting at $497.
+                  Interactive lessons + scoped AI tutor + multilingual delivery + SCORM-ready export. By a former Head of School with 20 years of course design experience. Single videos from $497. Full course builds from $7,500.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-3">
                   <Link
@@ -87,18 +87,18 @@ export default function VideoAgencyPage() {
           </div>
         </section>
 
-        {/* Three sample demos */}
+        {/* Sample lessons from different course types */}
         <section id="demos" className="py-16 md:py-20 bg-white dark:bg-navy-light border-t border-slate-200/50 dark:border-slate-700/50">
           <div className="max-w-6xl mx-auto px-6">
             <div className="text-center mb-12">
               <p className="font-medium text-sm tracking-wide uppercase mb-3 text-amber-600 dark:text-amber-400">
-                Three Use Cases · Three Videos
+                Sample Lessons · From Different Course Types
               </p>
               <h2 className="font-serif text-3xl md:text-4xl mb-3 text-navy dark:text-white">
-                What this could look like for you
+                What we build for different teams
               </h2>
               <p className="text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
-                Sample videos using stock AI avatars. Yours can use the same — or your own face, your own instructor, or any avatar you choose.
+                Each clip below is one lesson from a full course we would build for you — complete with interactive elements, AI tutor, downloadable resources, and SCORM-ready export. The avatar speaker is interchangeable: your face, your instructor, or any stock avatar.
               </p>
             </div>
 
@@ -107,22 +107,22 @@ export default function VideoAgencyPage() {
                 {
                   src: DEMO_COURSE_PREVIEW,
                   poster: POSTER_COURSE_PREVIEW,
-                  label: 'Course Preview',
-                  desc: '"Welcome to Year 12 IB" — for enrollment funnels, course intros, and program overviews.',
+                  label: 'Education / Schools',
+                  desc: 'One lesson from a 10-module academic program — enrolment funnel, course intro, parent-facing program overview. Full version includes quizzes, downloadable syllabus, and tour-booking interactivity.',
                   duration: '75 sec',
                 },
                 {
                   src: DEMO_SCHOOL_MARKETING,
                   poster: POSTER_SCHOOL_MARKETING,
-                  label: 'School Marketing',
-                  desc: '"Why families choose us" — multilingual marketing for international schools and language centers.',
+                  label: 'HR / People Operations',
+                  desc: 'One lesson from a new-hire onboarding course — values, expectations, first-week guidance. Full version includes role-specific branches, mid-lesson quizzes, and SCORM completion tracking.',
                   duration: '60 sec',
                 },
                 {
                   src: DEMO_TRAINER_INTRO,
                   poster: POSTER_TRAINER_INTRO,
-                  label: 'Trainer Introduction',
-                  desc: '"Meet your trainer" — L&D and corporate training onboarding content.',
+                  label: 'GTM / Sales Enablement',
+                  desc: 'One lesson from a product walkthrough or sales onboarding course. Full version includes scoped AI tutor for product questions, customer-context branching, and per-rep completion analytics.',
                   duration: '90 sec',
                 },
               ].map((demo, i) => (
