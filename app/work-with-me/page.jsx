@@ -198,22 +198,22 @@ export default function WorkWithMePage() {
                 <div className="absolute -top-3 right-4 bg-amber-500 text-navy text-xs font-bold px-3 py-1 rounded-full">
                   NEW · PRODUCTIZED
                 </div>
-                <div className="text-3xl mb-4">🎬</div>
-                <h3 className="font-serif text-xl mb-1">AI Video Production</h3>
-                <p className="text-amber-400 text-sm font-medium mb-2">Course, training & UGC videos.</p>
-                <p className="text-slate-400 text-xs mb-4">For course creators, trainers, and education businesses</p>
+                <div className="text-3xl mb-4">🎓</div>
+                <h3 className="font-serif text-xl mb-1">AI Course Production</h3>
+                <p className="text-amber-400 text-sm font-medium mb-2">Interactive courses + AI tutor + SCORM.</p>
+                <p className="text-slate-400 text-xs mb-4">For HR onboarding · GTM enablement · schools · training teams</p>
 
                 <p className="text-slate-300 text-sm leading-relaxed mb-4">
-                  Done-for-you AI video. 48-hour turnaround. Multilingual. Starting at $497 — fixed pricing, no custom quotes needed.
+                  Full interactive courses built in a week. Lessons + quizzes + scoped AI tutor + multilingual + LMS-ready. Productized pricing from a $497 lesson pilot to multi-course enterprise builds.
                 </p>
 
                 <ul className="space-y-2 mb-6 flex-grow">
                   {[
-                    'Starter Video — $497 (one video, 48h)',
-                    'Five-Pack — $1,497 (5 videos or 5 languages)',
-                    'Education Retainer — $2,500/mo (8 videos)',
-                    'Script writing & 2 revisions included',
-                    'Built on HeyGen + ElevenLabs + Remotion',
+                    'Course Lesson Pilot — $497 (1 lesson)',
+                    'Multilingual Video Pack — $1,497',
+                    'Course Module — From $3,500',
+                    'Premium Course Build — From $7,500',
+                    'Built on HeyGen + ElevenLabs + KAIAK Academy',
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-2 text-xs text-slate-300">
                       <Icons.Check className="w-4 h-4 flex-shrink-0 text-amber-400" />

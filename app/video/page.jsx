@@ -236,17 +236,17 @@ export default function VideoAgencyPage() {
         <section className="py-16 bg-cream dark:bg-navy border-t border-slate-200/50 dark:border-slate-700/50">
           <div className="max-w-3xl mx-auto px-6">
             <h2 className="font-serif text-3xl md:text-4xl mb-6 text-navy dark:text-white">
-              Why a former Head of School makes this different
+              Why a former Head of School builds better courses
             </h2>
             <div className="space-y-4 text-slate-700 dark:text-slate-300 text-lg leading-relaxed">
               <p>
-                Most AI-video services give you generic explainer videos. The scripts read like marketing fluff. The pacing assumes the viewer is a B2B SaaS prospect, not a parent, a student, or an L&D buyer.
+                Most AI-video services give you generic explainer videos. The scripts read like marketing fluff. The lessons assume the learner is a B2B SaaS prospect, not a new hire, a student, or a customer trying to learn your product.
               </p>
               <p>
-                I write your video script first — and I have spent 20 years inside international education, founded an IB World School, and trained admissions teams across SEA. I know what parents want to hear at a prospect tour. I know what your board wants to see in a programme brief. I know how to frame an instructor introduction for corporate L&D buyers.
+                I write your course first — and I have spent 20 years inside international education, founded an IB World School, and designed training programmes for educators across multiple regions. I know what makes a lesson land, what makes a learner finish a course, and what makes a training programme actually change behaviour.
               </p>
               <p>
-                The avatar then delivers it cleanly, in any of six languages. Yours, by the end of business tomorrow.
+                Every course we ship includes <strong className="text-navy dark:text-white">mini-quizzes between content blocks</strong>, <strong className="text-navy dark:text-white">accordions and carousels</strong> for reference material, <strong className="text-navy dark:text-white">reflection prompts</strong> to drive engagement, and a <strong className="text-navy dark:text-white">scoped AI tutor</strong> (Virtual Learning Companion) that students can ask anything — answered only from the course material, never from outside. SCORM-ready. Bilingual or multilingual. Built in a week.
               </p>
             </div>
             <div className="mt-8 flex items-start gap-4 p-5 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
@@ -287,13 +287,13 @@ export default function VideoAgencyPage() {
                 </div>
                 <div className="p-6">
                   <p className="text-xs font-medium uppercase tracking-wide text-amber-600 dark:text-amber-400 mb-2">
-                    ACCA-Approved Learning Partner (Asia)
+                    ACCA-Approved Learning Partner
                   </p>
                   <h3 className="font-serif text-xl mb-3 text-navy dark:text-white">
-                    Full Financial Accounting course production
+                    Full interactive course with scoped AI tutor
                   </h3>
                   <p className="text-slate-700 dark:text-slate-300 leading-relaxed text-sm">
-                    Built a 12-chapter Financial Accounting course end-to-end — script writing, avatar narration, bilingual delivery (English + Bahasa), inline quizzes, and chapter-completion checkpoints. Same workflow available for any training, certification, or onboarding programme.
+                    Built a 12-chapter Financial Accounting course end-to-end: avatar-narrated video lessons, inline mini-quizzes, scoped AI tutor (Coach trained only on course material — no hallucinated answers), bilingual EN + Bahasa narration, completion tracking, SCORM-ready export. Delivered in 6 weeks. The same workflow available for any certification, onboarding, or compliance programme.
                   </p>
                 </div>
               </div>
@@ -313,10 +313,10 @@ export default function VideoAgencyPage() {
                     KAIAK Academy
                   </p>
                   <h3 className="font-serif text-xl mb-3 text-navy dark:text-white">
-                    44-course catalogue in production
+                    Multi-course library — proof of scale
                   </h3>
                   <p className="text-slate-700 dark:text-slate-300 leading-relaxed text-sm">
-                    Internal course-creation pipeline producing structured 5-lesson micro-courses with avatar instruction, screen recordings, downloadable assets, and quiz-based progression. The same pipeline ships for clients building their own internal academies.
+                    44-course catalogue in production on our own platform. Same pipeline ships for enterprise clients building branded internal academies — multiple courses, shared brand voice, central analytics, SSO-ready. If you need 1 course this quarter and 5 more next year, this is the architecture.
                   </p>
                 </div>
               </div>
@@ -344,25 +344,26 @@ export default function VideoAgencyPage() {
               <div className="flex items-center gap-3 mb-6">
                 <div className="flex items-center gap-3">
                   <Zap className="w-5 h-5 text-amber-400" />
-                  <h3 className="font-serif text-xl text-white">Video Assets</h3>
+                  <h3 className="font-serif text-xl text-white">Lesson Pilot · Multilingual · Retainer</h3>
                 </div>
                 <div className="flex-grow border-t border-slate-700"></div>
-                <p className="text-slate-400 text-xs">Best for: teams that need polished AI avatar videos without a full course wrap</p>
+                <p className="text-slate-400 text-xs">Pilot one lesson · launch in multiple markets · run an ongoing content engine</p>
               </div>
 
               <div className="grid md:grid-cols-3 gap-6">
-                {/* Starter */}
+                {/* Course Lesson Pilot — replaces old Starter Video */}
                 <div className="rounded-2xl p-6 flex flex-col bg-navy-light dark:bg-slate-800 border border-navy-border dark:border-slate-700 transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:shadow-amber-500/10 hover:border-amber-500/50">
                   <Zap className="w-8 h-8 mb-4 text-amber-400" />
-                  <h3 className="font-serif text-xl mb-1">Starter Video</h3>
-                  <p className="text-amber-400 text-sm font-medium mb-2">One video. 48-hour turnaround.</p>
-                  <p className="text-slate-400 text-xs mb-4">Best for: a single video to test the format</p>
+                  <h3 className="font-serif text-xl mb-1">Course Lesson Pilot</h3>
+                  <p className="text-amber-400 text-sm font-medium mb-2">One complete interactive lesson. 5-day build.</p>
+                  <p className="text-slate-400 text-xs mb-4">Best for: evaluating KAIAK's lesson quality before committing to a Course Module or Premium Build</p>
                   <ul className="text-slate-300 text-sm space-y-2 mb-6">
-                    <li className="flex items-start gap-2"><span className="text-amber-400">✓</span> 60-90 sec video, single language</li>
-                    <li className="flex items-start gap-2"><span className="text-amber-400">✓</span> Stock or supplied AI avatar</li>
-                    <li className="flex items-start gap-2"><span className="text-amber-400">✓</span> Professional script (yours or written for you)</li>
-                    <li className="flex items-start gap-2"><span className="text-amber-400">✓</span> 2 revision rounds included</li>
-                    <li className="flex items-start gap-2"><span className="text-amber-400">✓</span> 1080p MP4 + captions</li>
+                    <li className="flex items-start gap-2"><span className="text-amber-400">✓</span> One 5-8 min finished lesson</li>
+                    <li className="flex items-start gap-2"><span className="text-amber-400">✓</span> Video + inline mini-quizzes + accordion / reflection blocks</li>
+                    <li className="flex items-start gap-2"><span className="text-amber-400">✓</span> Scoped AI tutor trained on this lesson's content</li>
+                    <li className="flex items-start gap-2"><span className="text-amber-400">✓</span> SCORM 1.2 / 2004 export — drop into any LMS</li>
+                    <li className="flex items-start gap-2"><span className="text-amber-400">✓</span> Bilingual option +$100 (EN + one of Bahasa / Mandarin / etc.)</li>
+                    <li className="flex items-start gap-2"><span className="text-amber-400">✓</span> Full credit applied if you upgrade within 30 days</li>
                   </ul>
                   <div className="mt-auto">
                     <p className="font-serif text-3xl mb-3">$497 <span className="text-base text-slate-400">USD</span></p>
@@ -370,22 +371,23 @@ export default function VideoAgencyPage() {
                       href={STRIPE_STARTER_URL}
                       className="block w-full text-center px-4 py-2 rounded-lg bg-amber-500 hover:bg-amber-600 text-navy font-medium transition-all"
                     >
-                      Order a Starter Video
+                      Order a Pilot Lesson
                     </Link>
                   </div>
                 </div>
 
-                {/* Five-Pack */}
+                {/* Multilingual Video Pack — renamed Five-Pack with sharper positioning */}
                 <div className="rounded-2xl p-6 flex flex-col bg-navy-light dark:bg-slate-800 border border-navy-border dark:border-slate-700 transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:shadow-amber-500/10 hover:border-amber-500/50">
                   <Globe className="w-8 h-8 mb-4 text-amber-400" />
-                  <h3 className="font-serif text-xl mb-1">Five-Pack</h3>
-                  <p className="text-amber-400 text-sm font-medium mb-2">Five videos OR one in 5 languages.</p>
-                  <p className="text-slate-400 text-xs mb-4">Best for: a training series or full multilingual rollout</p>
+                  <h3 className="font-serif text-xl mb-1">Multilingual Video Pack</h3>
+                  <p className="text-amber-400 text-sm font-medium mb-2">One script. Five languages. Same speaker.</p>
+                  <p className="text-slate-400 text-xs mb-4">Best for: GTM marketing teams launching in multiple markets · international content rollouts</p>
                   <ul className="text-slate-300 text-sm space-y-2 mb-6">
-                    <li className="flex items-start gap-2"><span className="text-amber-400">✓</span> Everything in Starter ×5</li>
-                    <li className="flex items-start gap-2"><span className="text-amber-400">✓</span> Pick: 5 different videos OR same video in 5 languages</li>
-                    <li className="flex items-start gap-2"><span className="text-amber-400">✓</span> Supported languages: EN / Bahasa / Mandarin / Japanese / Korean / Arabic</li>
+                    <li className="flex items-start gap-2"><span className="text-amber-400">✓</span> One script produced in 5 languages with native lip-sync</li>
+                    <li className="flex items-start gap-2"><span className="text-amber-400">✓</span> Languages: EN / Bahasa / Mandarin / Japanese / Korean / Arabic (pick 5)</li>
+                    <li className="flex items-start gap-2"><span className="text-amber-400">✓</span> Or use the budget for 5 different videos in a single language</li>
                     <li className="flex items-start gap-2"><span className="text-amber-400">✓</span> Delivered in 5 business days</li>
+                    <li className="flex items-start gap-2"><span className="text-amber-400">✓</span> Same brand voice and avatar across all variants</li>
                   </ul>
                   <div className="mt-auto">
                     <p className="font-serif text-3xl mb-3">$1,497 <span className="text-base text-slate-400">USD</span></p>
@@ -393,19 +395,19 @@ export default function VideoAgencyPage() {
                       href={STRIPE_FIVE_PACK_URL}
                       className="block w-full text-center px-4 py-2 rounded-lg bg-amber-500 hover:bg-amber-600 text-navy font-medium transition-all"
                     >
-                      Order a Five-Pack
+                      Order a Multilingual Pack
                     </Link>
                   </div>
                 </div>
 
-                {/* Retainer */}
+                {/* Content Retainer */}
                 <div className="rounded-2xl p-6 flex flex-col bg-navy-light dark:bg-slate-800 border border-navy-border dark:border-slate-700 transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:shadow-amber-500/10 hover:border-amber-500/50">
                   <Sparkles className="w-8 h-8 mb-4 text-amber-400" />
                   <h3 className="font-serif text-xl mb-1">Content Retainer</h3>
                   <p className="text-amber-400 text-sm font-medium mb-2">8 videos/month. Brand voice owned.</p>
-                  <p className="text-slate-400 text-xs mb-4">Best for: ongoing content engine for a school, training company, or marketing team</p>
+                  <p className="text-slate-400 text-xs mb-4">Best for: GTM marketing teams · ongoing content engines · multi-variant product launches</p>
                   <ul className="text-slate-300 text-sm space-y-2 mb-6">
-                    <li className="flex items-start gap-2"><span className="text-amber-400">✓</span> 8 videos per month</li>
+                    <li className="flex items-start gap-2"><span className="text-amber-400">✓</span> 8 videos per month — variants, market localization, audience splits</li>
                     <li className="flex items-start gap-2"><span className="text-amber-400">✓</span> Brand-voice library (we learn your voice)</li>
                     <li className="flex items-start gap-2"><span className="text-amber-400">✓</span> Monthly strategy call</li>
                     <li className="flex items-start gap-2"><span className="text-amber-400">✓</span> Priority turnaround (24h on standard videos)</li>
@@ -607,6 +609,22 @@ export default function VideoAgencyPage() {
                 {
                   q: 'What if I want changes after delivery?',
                   a: '2 revision rounds are included in every package. Additional revisions are $100 each. Most clients use 0-1 revisions because the script-approval step catches misunderstandings before production.',
+                },
+                {
+                  q: 'Will this work in our LMS — Cornerstone, Workday, Moodle, etc.?',
+                  a: 'Yes. Every course we produce exports as SCORM 1.2 or SCORM 2004 packages — the LMS interchange standard. Drop the .zip into your LMS, course imports with completion tracking, quiz scoring, and reporting intact. Tested with Cornerstone OnDemand, Workday Learning, Moodle, TalentLMS, LearnUpon, Docebo, and Open edX. If you use something niche, send us a sample course package and we will confirm compatibility before you commit.',
+                },
+                {
+                  q: 'Can I see where students get stuck?',
+                  a: 'Yes. Every Premium Course Build and Enterprise engagement includes anonymised analytics from the AI tutor — what questions students ask, which lessons they revisit, where they pause or drop. You get a quarterly review report showing exactly which lessons need strengthening. This is the difference between a course you launch and a course you improve.',
+                },
+                {
+                  q: 'Can you produce multiple GTM marketing video variants for the same product?',
+                  a: 'Yes. The Content Retainer is built for this — 8 videos a month means you can run product launch variants by audience (founder vs. operator vs. end-user), market localisations, or campaign A/B tests, all in the same brand voice and same avatar. Same script becomes 5 cuts. Same product gets bilingual launch in week 1.',
+                },
+                {
+                  q: 'I need an HR onboarding course — what does that look like?',
+                  a: 'Typically a Course Module (4-6 lessons) covering values + first-week expectations + role-specific guidance + compliance basics. Each lesson includes a mini-quiz, a scoped AI tutor your new hire can ask anything about, and SCORM completion tracking so HR sees who finished what. Built in a week. If you have 3+ role types, a Premium Course Build with role-branching is the right scope.',
                 },
                 {
                   q: 'Refund policy?',
