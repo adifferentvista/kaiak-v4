@@ -2,7 +2,7 @@ import Link from 'next/link';
 import Navbar from '../components/Navbar';
 import HeroBackdrop from '../components/HeroBackdrop';
 import { Icons } from '../components/Icons';
-import { PlayCircle, Globe, Zap, Sparkles, Users, Award, Clock, DollarSign, Languages, RefreshCw } from 'lucide-react';
+import { PlayCircle, Globe, Zap, Sparkles, Users, Award, Clock, DollarSign, Languages, RefreshCw, GraduationCap, Layers, Building2 } from 'lucide-react';
 
 export const metadata = {
   title: 'AI Course Production for Schools, HR, GTM & Training Teams | KAIAK',
@@ -333,90 +333,208 @@ export default function VideoAgencyPage() {
           <div className="max-w-6xl mx-auto px-6">
             <div className="text-center mb-14">
               <p className="font-medium text-sm tracking-wide uppercase mb-4 text-amber-400">Pricing</p>
-              <h2 className="font-serif text-3xl md:text-4xl mb-4">Fixed prices. No surprises.</h2>
+              <h2 className="font-serif text-3xl md:text-4xl mb-4">Pick the scope that matches your team.</h2>
               <p className="text-slate-400 max-w-2xl mx-auto">
-                Every package includes script writing, avatar selection, voice direction, captions, and 2 revision rounds.
+                From a single explainer to a full multi-course academy. Fixed pricing for every tier under Enterprise — no custom quotes, no scope creep.
               </p>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-6">
-              {/* Starter */}
-              <div className="rounded-2xl p-6 flex flex-col bg-navy-light dark:bg-slate-800 border border-navy-border dark:border-slate-700 transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:shadow-amber-500/10 hover:border-amber-500/50">
-                <Zap className="w-8 h-8 mb-4 text-amber-400" />
-                <h3 className="font-serif text-xl mb-1">Starter Video</h3>
-                <p className="text-amber-400 text-sm font-medium mb-2">One video. 48-hour turnaround.</p>
-                <p className="text-slate-400 text-xs mb-4">Best for: a single video to test the format</p>
-                <ul className="text-slate-300 text-sm space-y-2 mb-6">
-                  <li className="flex items-start gap-2"><span className="text-amber-400">✓</span> 60-90 sec video, single language</li>
-                  <li className="flex items-start gap-2"><span className="text-amber-400">✓</span> Stock or supplied AI avatar</li>
-                  <li className="flex items-start gap-2"><span className="text-amber-400">✓</span> Professional script (yours or written for you)</li>
-                  <li className="flex items-start gap-2"><span className="text-amber-400">✓</span> 2 revision rounds included</li>
-                  <li className="flex items-start gap-2"><span className="text-amber-400">✓</span> 1080p MP4 + captions</li>
-                </ul>
-                <div className="mt-auto">
-                  <p className="font-serif text-3xl mb-3">$497 <span className="text-base text-slate-400">USD</span></p>
-                  <Link
-                    href={STRIPE_STARTER_URL}
-                    className="block w-full text-center px-4 py-2 rounded-lg bg-amber-500 hover:bg-amber-600 text-navy font-medium transition-all"
-                  >
-                    Order a Starter Video
-                  </Link>
+            {/* ========== VIDEO ASSETS ========== */}
+            <div className="mb-14">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="flex items-center gap-3">
+                  <Zap className="w-5 h-5 text-amber-400" />
+                  <h3 className="font-serif text-xl text-white">Video Assets</h3>
                 </div>
+                <div className="flex-grow border-t border-slate-700"></div>
+                <p className="text-slate-400 text-xs">Best for: teams that need polished AI avatar videos without a full course wrap</p>
               </div>
 
-              {/* Five-Pack */}
-              <div className="rounded-2xl p-6 flex flex-col bg-navy-light dark:bg-slate-800 border-2 border-amber-500 transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:shadow-amber-500/20 relative">
-                <span className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-amber-500 text-navy text-xs font-bold">
-                  Most popular
-                </span>
-                <Globe className="w-8 h-8 mb-4 text-amber-400" />
-                <h3 className="font-serif text-xl mb-1">Five-Pack</h3>
-                <p className="text-amber-400 text-sm font-medium mb-2">Five videos OR one in 5 languages.</p>
-                <p className="text-slate-400 text-xs mb-4">Best for: a training series or full multilingual rollout</p>
-                <ul className="text-slate-300 text-sm space-y-2 mb-6">
-                  <li className="flex items-start gap-2"><span className="text-amber-400">✓</span> Everything in Starter ×5</li>
-                  <li className="flex items-start gap-2"><span className="text-amber-400">✓</span> Pick: 5 different videos OR same video in 5 languages</li>
-                  <li className="flex items-start gap-2"><span className="text-amber-400">✓</span> Supported languages: EN / Bahasa / Mandarin / Japanese / Korean / Arabic</li>
-                  <li className="flex items-start gap-2"><span className="text-amber-400">✓</span> Delivered in 5 business days</li>
-                </ul>
-                <div className="mt-auto">
-                  <p className="font-serif text-3xl mb-3">$1,497 <span className="text-base text-slate-400">USD</span></p>
-                  <Link
-                    href={STRIPE_FIVE_PACK_URL}
-                    className="block w-full text-center px-4 py-2 rounded-lg bg-amber-500 hover:bg-amber-600 text-navy font-medium transition-all"
-                  >
-                    Order a Five-Pack
-                  </Link>
+              <div className="grid md:grid-cols-3 gap-6">
+                {/* Starter */}
+                <div className="rounded-2xl p-6 flex flex-col bg-navy-light dark:bg-slate-800 border border-navy-border dark:border-slate-700 transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:shadow-amber-500/10 hover:border-amber-500/50">
+                  <Zap className="w-8 h-8 mb-4 text-amber-400" />
+                  <h3 className="font-serif text-xl mb-1">Starter Video</h3>
+                  <p className="text-amber-400 text-sm font-medium mb-2">One video. 48-hour turnaround.</p>
+                  <p className="text-slate-400 text-xs mb-4">Best for: a single video to test the format</p>
+                  <ul className="text-slate-300 text-sm space-y-2 mb-6">
+                    <li className="flex items-start gap-2"><span className="text-amber-400">✓</span> 60-90 sec video, single language</li>
+                    <li className="flex items-start gap-2"><span className="text-amber-400">✓</span> Stock or supplied AI avatar</li>
+                    <li className="flex items-start gap-2"><span className="text-amber-400">✓</span> Professional script (yours or written for you)</li>
+                    <li className="flex items-start gap-2"><span className="text-amber-400">✓</span> 2 revision rounds included</li>
+                    <li className="flex items-start gap-2"><span className="text-amber-400">✓</span> 1080p MP4 + captions</li>
+                  </ul>
+                  <div className="mt-auto">
+                    <p className="font-serif text-3xl mb-3">$497 <span className="text-base text-slate-400">USD</span></p>
+                    <Link
+                      href={STRIPE_STARTER_URL}
+                      className="block w-full text-center px-4 py-2 rounded-lg bg-amber-500 hover:bg-amber-600 text-navy font-medium transition-all"
+                    >
+                      Order a Starter Video
+                    </Link>
+                  </div>
+                </div>
+
+                {/* Five-Pack */}
+                <div className="rounded-2xl p-6 flex flex-col bg-navy-light dark:bg-slate-800 border border-navy-border dark:border-slate-700 transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:shadow-amber-500/10 hover:border-amber-500/50">
+                  <Globe className="w-8 h-8 mb-4 text-amber-400" />
+                  <h3 className="font-serif text-xl mb-1">Five-Pack</h3>
+                  <p className="text-amber-400 text-sm font-medium mb-2">Five videos OR one in 5 languages.</p>
+                  <p className="text-slate-400 text-xs mb-4">Best for: a training series or full multilingual rollout</p>
+                  <ul className="text-slate-300 text-sm space-y-2 mb-6">
+                    <li className="flex items-start gap-2"><span className="text-amber-400">✓</span> Everything in Starter ×5</li>
+                    <li className="flex items-start gap-2"><span className="text-amber-400">✓</span> Pick: 5 different videos OR same video in 5 languages</li>
+                    <li className="flex items-start gap-2"><span className="text-amber-400">✓</span> Supported languages: EN / Bahasa / Mandarin / Japanese / Korean / Arabic</li>
+                    <li className="flex items-start gap-2"><span className="text-amber-400">✓</span> Delivered in 5 business days</li>
+                  </ul>
+                  <div className="mt-auto">
+                    <p className="font-serif text-3xl mb-3">$1,497 <span className="text-base text-slate-400">USD</span></p>
+                    <Link
+                      href={STRIPE_FIVE_PACK_URL}
+                      className="block w-full text-center px-4 py-2 rounded-lg bg-amber-500 hover:bg-amber-600 text-navy font-medium transition-all"
+                    >
+                      Order a Five-Pack
+                    </Link>
+                  </div>
+                </div>
+
+                {/* Retainer */}
+                <div className="rounded-2xl p-6 flex flex-col bg-navy-light dark:bg-slate-800 border border-navy-border dark:border-slate-700 transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:shadow-amber-500/10 hover:border-amber-500/50">
+                  <Sparkles className="w-8 h-8 mb-4 text-amber-400" />
+                  <h3 className="font-serif text-xl mb-1">Content Retainer</h3>
+                  <p className="text-amber-400 text-sm font-medium mb-2">8 videos/month. Brand voice owned.</p>
+                  <p className="text-slate-400 text-xs mb-4">Best for: ongoing content engine for a school, training company, or marketing team</p>
+                  <ul className="text-slate-300 text-sm space-y-2 mb-6">
+                    <li className="flex items-start gap-2"><span className="text-amber-400">✓</span> 8 videos per month</li>
+                    <li className="flex items-start gap-2"><span className="text-amber-400">✓</span> Brand-voice library (we learn your voice)</li>
+                    <li className="flex items-start gap-2"><span className="text-amber-400">✓</span> Monthly strategy call</li>
+                    <li className="flex items-start gap-2"><span className="text-amber-400">✓</span> Priority turnaround (24h on standard videos)</li>
+                    <li className="flex items-start gap-2"><span className="text-amber-400">✓</span> Cancel anytime, no contract lock-in</li>
+                  </ul>
+                  <div className="mt-auto">
+                    <p className="font-serif text-3xl mb-3">$2,500 <span className="text-base text-slate-400">/mo USD</span></p>
+                    <Link
+                      href={STRIPE_RETAINER_URL}
+                      className="block w-full text-center px-4 py-2 rounded-lg border border-amber-500 text-amber-500 hover:bg-amber-500 hover:text-navy font-medium transition-all"
+                    >
+                      Start the Retainer
+                    </Link>
+                  </div>
                 </div>
               </div>
+            </div>
 
-              {/* Retainer */}
-              <div className="rounded-2xl p-6 flex flex-col bg-navy-light dark:bg-slate-800 border border-navy-border dark:border-slate-700 transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:shadow-amber-500/10 hover:border-amber-500/50">
-                <Sparkles className="w-8 h-8 mb-4 text-amber-400" />
-                <h3 className="font-serif text-xl mb-1">Education Retainer</h3>
-                <p className="text-amber-400 text-sm font-medium mb-2">8 videos/month. Brand voice owned.</p>
-                <p className="text-slate-400 text-xs mb-4">Best for: ongoing content engine for a school or training company</p>
-                <ul className="text-slate-300 text-sm space-y-2 mb-6">
-                  <li className="flex items-start gap-2"><span className="text-amber-400">✓</span> 8 videos per month</li>
-                  <li className="flex items-start gap-2"><span className="text-amber-400">✓</span> Brand-voice library (we learn your voice)</li>
-                  <li className="flex items-start gap-2"><span className="text-amber-400">✓</span> Monthly strategy call</li>
-                  <li className="flex items-start gap-2"><span className="text-amber-400">✓</span> Priority turnaround (24h on standard videos)</li>
-                  <li className="flex items-start gap-2"><span className="text-amber-400">✓</span> Cancel anytime, no contract lock-in</li>
-                </ul>
-                <div className="mt-auto">
-                  <p className="font-serif text-3xl mb-3">$2,500 <span className="text-base text-slate-400">/mo USD</span></p>
-                  <Link
-                    href={STRIPE_RETAINER_URL}
-                    className="block w-full text-center px-4 py-2 rounded-lg border border-amber-500 text-amber-500 hover:bg-amber-500 hover:text-navy font-medium transition-all"
-                  >
-                    Start the Retainer
-                  </Link>
+            {/* ========== COURSE PRODUCTION ========== */}
+            <div className="mb-14">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="flex items-center gap-3">
+                  <GraduationCap className="w-5 h-5 text-amber-400" />
+                  <h3 className="font-serif text-xl text-white">Course Production</h3>
+                </div>
+                <div className="flex-grow border-t border-slate-700"></div>
+                <p className="text-slate-400 text-xs">Best for: teams that need a structured learning experience — lessons, interactivity, AI tutor, LMS export</p>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-6">
+                {/* Course Module */}
+                <div className="rounded-2xl p-6 flex flex-col bg-navy-light dark:bg-slate-800 border border-navy-border dark:border-slate-700 transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:shadow-amber-500/10 hover:border-amber-500/50">
+                  <Layers className="w-8 h-8 mb-4 text-amber-400" />
+                  <h3 className="font-serif text-xl mb-1">Course Module</h3>
+                  <p className="text-amber-400 text-sm font-medium mb-2">One 4-6 lesson module. Built in a week.</p>
+                  <p className="text-slate-400 text-xs mb-4">Best for: HR onboarding · GTM enablement · compliance training · customer education</p>
+                  <ul className="text-slate-300 text-sm space-y-2 mb-6">
+                    <li className="flex items-start gap-2"><span className="text-amber-400">✓</span> 4-6 lessons, scripted + produced</li>
+                    <li className="flex items-start gap-2"><span className="text-amber-400">✓</span> Interactive elements: mini-quizzes, accordion, carousel, reflection prompts</li>
+                    <li className="flex items-start gap-2"><span className="text-amber-400">✓</span> Scoped AI tutor trained on the module content</li>
+                    <li className="flex items-start gap-2"><span className="text-amber-400">✓</span> Single language, downloadable resources included</li>
+                    <li className="flex items-start gap-2"><span className="text-amber-400">✓</span> SCORM 1.2 / 2004 export ready</li>
+                    <li className="flex items-start gap-2"><span className="text-amber-400">✓</span> 7-day delivery from approved storyboard</li>
+                  </ul>
+                  <div className="mt-auto">
+                    <p className="font-serif text-3xl mb-3">From $3,500 <span className="text-base text-slate-400">USD</span></p>
+                    <Link
+                      href={CALENDLY_URL}
+                      className="block w-full text-center px-4 py-2 rounded-lg bg-amber-500 hover:bg-amber-600 text-navy font-medium transition-all"
+                    >
+                      Book a Scoping Call
+                    </Link>
+                  </div>
+                </div>
+
+                {/* Premium Course Build — MOST POPULAR */}
+                <div className="rounded-2xl p-6 flex flex-col bg-navy-light dark:bg-slate-800 border-2 border-amber-500 transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:shadow-amber-500/20 relative">
+                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-amber-500 text-navy text-xs font-bold whitespace-nowrap">
+                    Most popular
+                  </span>
+                  <GraduationCap className="w-8 h-8 mb-4 text-amber-400" />
+                  <h3 className="font-serif text-xl mb-1">Premium Course Build</h3>
+                  <p className="text-amber-400 text-sm font-medium mb-2">8-12 lesson full course. Built in 1-2 weeks.</p>
+                  <p className="text-slate-400 text-xs mb-4">Best for: certification programs · academies · multi-stakeholder training initiatives</p>
+                  <ul className="text-slate-300 text-sm space-y-2 mb-6">
+                    <li className="flex items-start gap-2"><span className="text-amber-400">✓</span> 8-12 lessons, scripted + produced + interactive</li>
+                    <li className="flex items-start gap-2"><span className="text-amber-400">✓</span> Multi-format: video + reading + quizzes + reflection</li>
+                    <li className="flex items-start gap-2"><span className="text-amber-400">✓</span> Scoped AI tutor (Virtual Learning Companion) trained on full course</li>
+                    <li className="flex items-start gap-2"><span className="text-amber-400">✓</span> Bilingual or multilingual delivery (up to 3 languages)</li>
+                    <li className="flex items-start gap-2"><span className="text-amber-400">✓</span> SCORM-ready export + completion tracking + analytics</li>
+                    <li className="flex items-start gap-2"><span className="text-amber-400">✓</span> Hosted preview on KAIAK Academy or delivered to your LMS</li>
+                    <li className="flex items-start gap-2"><span className="text-amber-400">✓</span> 30 days of post-launch iteration included</li>
+                  </ul>
+                  <div className="mt-auto">
+                    <p className="font-serif text-3xl mb-3">From $7,500 <span className="text-base text-slate-400">USD</span></p>
+                    <Link
+                      href={CALENDLY_URL}
+                      className="block w-full text-center px-4 py-2 rounded-lg bg-amber-500 hover:bg-amber-600 text-navy font-medium transition-all"
+                    >
+                      Book a Scoping Call
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* ========== ENTERPRISE ========== */}
+            <div className="mb-8">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="flex items-center gap-3">
+                  <Building2 className="w-5 h-5 text-amber-400" />
+                  <h3 className="font-serif text-xl text-white">Enterprise</h3>
+                </div>
+                <div className="flex-grow border-t border-slate-700"></div>
+                <p className="text-slate-400 text-xs">Best for: multi-course curriculum, hosted academy, ongoing iteration</p>
+              </div>
+
+              <div className="rounded-2xl p-6 md:p-8 bg-navy-light dark:bg-slate-800 border border-navy-border dark:border-slate-700">
+                <div className="grid md:grid-cols-3 gap-8 items-center">
+                  <div>
+                    <Building2 className="w-10 h-10 mb-4 text-amber-400" />
+                    <h3 className="font-serif text-2xl mb-2 text-white">Enterprise Engagement</h3>
+                    <p className="text-amber-400 text-sm font-medium">Multi-course curriculum + hosted academy.</p>
+                  </div>
+                  <div className="md:col-span-2">
+                    <ul className="text-slate-300 text-sm grid md:grid-cols-2 gap-x-6 gap-y-2 mb-6">
+                      <li className="flex items-start gap-2"><span className="text-amber-400">✓</span> 3+ Premium Course Builds over 90-180 days</li>
+                      <li className="flex items-start gap-2"><span className="text-amber-400">✓</span> Hosted KAIAK Academy instance (your domain)</li>
+                      <li className="flex items-start gap-2"><span className="text-amber-400">✓</span> Multi-language production at scale</li>
+                      <li className="flex items-start gap-2"><span className="text-amber-400">✓</span> SSO / SCIM / SCORM enterprise integration</li>
+                      <li className="flex items-start gap-2"><span className="text-amber-400">✓</span> Quarterly course refresh + analytics review</li>
+                      <li className="flex items-start gap-2"><span className="text-amber-400">✓</span> Dedicated production cadence</li>
+                    </ul>
+                    <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
+                      <p className="font-serif text-2xl text-white">Custom <span className="text-base text-slate-400">/ engagement</span></p>
+                      <Link
+                        href={CALENDLY_URL}
+                        className="inline-flex items-center justify-center px-5 py-2 rounded-lg border border-amber-500 text-amber-500 hover:bg-amber-500 hover:text-navy font-medium transition-all"
+                      >
+                        Talk to Benedict
+                      </Link>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
 
             <p className="text-center text-slate-400 text-sm mt-8">
-              Add-ons: custom HeyGen avatar of your instructor +$300 · embedded SRT/VTT captions +$50 · aspect-ratio variants (9:16 + 1:1) +$100 per video
+              Video Asset add-ons: custom HeyGen avatar of your instructor +$300 · embedded SRT/VTT captions +$50 · aspect-ratio variants (9:16 + 1:1) +$100 per video
             </p>
           </div>
         </section>
