@@ -2,13 +2,20 @@ import Link from 'next/link';
 import Navbar from '../components/Navbar';
 import HeroBackdrop from '../components/HeroBackdrop';
 import { Icons } from '../components/Icons';
-import { Users, Video, MapPin } from 'lucide-react';
+import { Users, Video, MapPin, ArrowRight, PlayCircle } from 'lucide-react';
 
 export const metadata = {
   title: 'Work With Me | KAIAK',
   description: 'AI systems and automation for leaders and professionals. Done-with-you consulting to reclaim your time.',
   alternates: { canonical: '/work-with-me' },
 };
+
+// ─────────────────────────────────────────────────────────────
+// CTA destinations — replace with Stripe Payment Links when set up
+// ─────────────────────────────────────────────────────────────
+const BOOKING_URL = '/booking';                                    // Calendly-backed discovery flow
+const STRIPE_STRATEGY_SESSION = '/booking';                        // TODO: swap to Stripe Payment Link when live
+const VIDEO_AGENCY_URL = '/video';                                 // Productized video service
 
 export default function WorkWithMePage() {
   return (
@@ -95,7 +102,13 @@ export default function WorkWithMePage() {
 
                 <div className="pt-4 border-t border-navy-border dark:border-slate-700">
                   <div className="text-2xl font-bold text-white mb-1">$297</div>
-                  <p className="text-xs text-slate-400">One session</p>
+                  <p className="text-xs text-slate-400 mb-4">One session</p>
+                  <Link
+                    href={STRIPE_STRATEGY_SESSION}
+                    className="block w-full text-center px-4 py-2.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-navy text-sm font-semibold transition-colors"
+                  >
+                    Book Strategy Session
+                  </Link>
                 </div>
               </div>
 
@@ -126,7 +139,13 @@ export default function WorkWithMePage() {
 
                 <div className="pt-4 border-t border-navy-border dark:border-slate-700">
                   <div className="text-2xl font-bold text-white mb-1">$1,500</div>
-                  <p className="text-xs text-slate-400">1 week</p>
+                  <p className="text-xs text-slate-400 mb-4">1 week</p>
+                  <Link
+                    href={BOOKING_URL}
+                    className="block w-full text-center px-4 py-2.5 rounded-lg border border-amber-500 text-amber-400 hover:bg-amber-500 hover:text-navy text-sm font-semibold transition-colors"
+                  >
+                    Book a Discovery Call
+                  </Link>
                 </div>
               </div>
 
@@ -161,28 +180,40 @@ export default function WorkWithMePage() {
 
                 <div className="pt-4 border-t border-navy-border dark:border-slate-700">
                   <div className="text-2xl font-bold text-white mb-1">$5,000</div>
-                  <p className="text-xs text-slate-400">6 weeks</p>
+                  <p className="text-xs text-slate-400 mb-4">6 weeks</p>
+                  <Link
+                    href={BOOKING_URL}
+                    className="block w-full text-center px-4 py-2.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-navy text-sm font-semibold transition-colors"
+                  >
+                    Book a Discovery Call
+                  </Link>
                 </div>
               </div>
 
-              {/* Service 4: AI Avatar Course Production */}
-              <div className="rounded-2xl p-6 flex flex-col bg-navy-light dark:bg-slate-800 border border-navy-border dark:border-slate-700 transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:shadow-amber-500/10 hover:border-amber-500/50 cursor-pointer">
+              {/* Service 4: AI Video Production — productized → see /video */}
+              <Link
+                href={VIDEO_AGENCY_URL}
+                className="group rounded-2xl p-6 flex flex-col bg-navy-light dark:bg-slate-800 border border-navy-border dark:border-slate-700 transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:shadow-amber-500/20 hover:border-amber-500/50 cursor-pointer relative overflow-hidden"
+              >
+                <div className="absolute -top-3 right-4 bg-amber-500 text-navy text-xs font-bold px-3 py-1 rounded-full">
+                  NEW · PRODUCTIZED
+                </div>
                 <div className="text-3xl mb-4">🎬</div>
-                <h3 className="font-serif text-xl mb-1">AI Avatar Course Production</h3>
-                <p className="text-amber-400 text-sm font-medium mb-2">Scale your expertise.</p>
-                <p className="text-slate-400 text-xs mb-4">For organizations ready to scale training</p>
+                <h3 className="font-serif text-xl mb-1">AI Video Production</h3>
+                <p className="text-amber-400 text-sm font-medium mb-2">Course, training & UGC videos.</p>
+                <p className="text-slate-400 text-xs mb-4">For course creators, trainers, and education businesses</p>
 
                 <p className="text-slate-300 text-sm leading-relaxed mb-4">
-                  Professional AI avatar video courses. I produce your training content using HeyGen, ElevenLabs, and custom workflows.
+                  Done-for-you AI video. 48-hour turnaround. Multilingual. Starting at $497 — fixed pricing, no custom quotes needed.
                 </p>
 
                 <ul className="space-y-2 mb-6 flex-grow">
                   {[
-                    'Full course production',
-                    'AI avatar setup & voice cloning',
-                    'Script writing & editing',
-                    'SCORM export for LMS',
-                    'Multilingual delivery',
+                    'Starter Video — $497 (one video, 48h)',
+                    'Five-Pack — $1,497 (5 videos or 5 languages)',
+                    'Education Retainer — $2,500/mo (8 videos)',
+                    'Script writing & 2 revisions included',
+                    'Built on HeyGen + ElevenLabs + Remotion',
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-2 text-xs text-slate-300">
                       <Icons.Check className="w-4 h-4 flex-shrink-0 text-amber-400" />
@@ -192,10 +223,12 @@ export default function WorkWithMePage() {
                 </ul>
 
                 <div className="pt-4 border-t border-navy-border dark:border-slate-700">
-                  <div className="text-2xl font-bold text-white mb-1">Custom</div>
-                  <p className="text-xs text-slate-400">Scope & timeline vary by project</p>
+                  <div className="text-2xl font-bold text-white mb-1">From $497</div>
+                  <p className="text-xs text-amber-400 group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">
+                    See pricing & samples <ArrowRight className="w-3 h-3" />
+                  </p>
                 </div>
-              </div>
+              </Link>
             </div>
 
             {/* Single CTA under all cards */}
@@ -250,7 +283,7 @@ export default function WorkWithMePage() {
                   ))}
                 </ul>
 
-                <div className="pt-6 border-t border-slate-200 dark:border-slate-700 space-y-2">
+                <div className="pt-6 border-t border-slate-200 dark:border-slate-700 space-y-2 mb-4">
                   <div className="flex items-center justify-between">
                     <span className="flex items-center gap-2 text-sm text-slate-500">
                       <Video className="w-4 h-4" /> Virtual
@@ -264,6 +297,12 @@ export default function WorkWithMePage() {
                     <span className="font-bold text-navy dark:text-white">$2,500+</span>
                   </div>
                 </div>
+                <Link
+                  href={BOOKING_URL}
+                  className="block w-full text-center px-4 py-2.5 rounded-lg bg-orange-600 hover:bg-orange-500 text-white text-sm font-semibold transition-colors"
+                >
+                  Inquire About Training
+                </Link>
               </div>
 
               {/* Half-Day Workshop */}
@@ -294,7 +333,7 @@ export default function WorkWithMePage() {
                   ))}
                 </ul>
 
-                <div className="pt-6 border-t border-slate-200 dark:border-slate-700 space-y-2">
+                <div className="pt-6 border-t border-slate-200 dark:border-slate-700 space-y-2 mb-4">
                   <div className="flex items-center justify-between">
                     <span className="flex items-center gap-2 text-sm text-slate-500">
                       <Video className="w-4 h-4" /> Virtual
@@ -308,6 +347,12 @@ export default function WorkWithMePage() {
                     <span className="font-bold text-navy dark:text-white">$4,000+</span>
                   </div>
                 </div>
+                <Link
+                  href={BOOKING_URL}
+                  className="block w-full text-center px-4 py-2.5 rounded-lg bg-orange-600 hover:bg-orange-500 text-white text-sm font-semibold transition-colors"
+                >
+                  Inquire About Workshop
+                </Link>
               </div>
 
               {/* Staff Training License */}
@@ -335,20 +380,26 @@ export default function WorkWithMePage() {
                   ))}
                 </ul>
 
-                <div className="pt-6 border-t border-slate-200 dark:border-slate-700">
+                <div className="pt-6 border-t border-slate-200 dark:border-slate-700 mb-4">
                   <div className="flex items-center justify-between">
                     <span className="text-sm text-slate-500">Up to 20 staff</span>
                     <span className="font-bold text-navy dark:text-white">$2,000</span>
                   </div>
                   <p className="text-xs text-slate-500 mt-2">Additional seats available</p>
                 </div>
+                <Link
+                  href={BOOKING_URL}
+                  className="block w-full text-center px-4 py-2.5 rounded-lg bg-orange-600 hover:bg-orange-500 text-white text-sm font-semibold transition-colors"
+                >
+                  Inquire About Licensing
+                </Link>
               </div>
             </div>
 
             <div className="text-center mt-12">
               <p className="text-slate-500 dark:text-slate-400 text-sm mb-4">
                 <MapPin className="w-4 h-4 inline mr-1" />
-                In-person pricing includes travel from Indonesia. Final quote based on location.
+                In-person pricing varies by location. Final quote provided after a brief intake call.
               </p>
               <Link
                 href="/booking"
@@ -532,7 +583,7 @@ export default function WorkWithMePage() {
                 },
                 {
                   q: "Do you travel for in-person training?",
-                  a: "Yes. I'm based in Indonesia and travel throughout Asia, Middle East, and beyond. In-person pricing includes travel costs — I'll provide a specific quote based on your location."
+                  a: "Yes — travel arrangements are confirmed during your discovery call. In-person pricing includes travel costs, and I'll provide a specific quote based on your location."
                 }
               ].map((item, i) => (
                 <div key={i}>
