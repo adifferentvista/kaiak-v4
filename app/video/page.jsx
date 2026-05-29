@@ -53,7 +53,7 @@ export default function VideoAgencyPage() {
                   Premium AI-driven courses.<br />Built in a week.<br />Without a learning design team.
                 </h1>
                 <p className="text-lg text-slate-600 dark:text-slate-300 mb-6">
-                  Interactive lessons + scoped AI tutor + multilingual delivery + SCORM-ready export. By a former Head of School with 20 years of course design experience. Single videos from $497. Full course builds from $7,500.
+                  Interactive lessons. Scoped AI tutor. Multilingual delivery. SCORM-ready export. Built by a former Head of School with 20 years of designing learner experiences that actually work.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-3">
                   <Link
